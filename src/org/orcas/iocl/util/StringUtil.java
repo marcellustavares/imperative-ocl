@@ -32,29 +32,29 @@ public class StringUtil {
             return str;
         }
     }
-    
-    public static String unescape(String str){
-    	if (str == null){
-    		return null;
-    	}
-    	
-    	StringBuilder unescapedString = new StringBuilder();
-    	
-    	char[] charArray = str.toCharArray();
-    	
-    	for (int i = 0; i < charArray.length; i++) {
-			char c = charArray[i];
-			
-			switch (c) {
-				case '\'':
-					break;
 
-				default:
-					unescapedString.append(c);
-			}
-		}
-    	
-    	return unescapedString.toString();
+    public static String unescape(String str) {
+        if (str == null) {
+            return null;
+        }
+
+        StringBuilder unescapedString = new StringBuilder();
+
+        char[] charArray = str.toCharArray();
+
+        for (int i = 0; i < charArray.length; i++) {
+            char c = charArray[i];
+
+            switch (c) {
+                case '\'':
+                    break;
+
+                default:
+                    unescapedString.append(c);
+            }
+        }
+
+        return unescapedString.toString();
     }
 
 }

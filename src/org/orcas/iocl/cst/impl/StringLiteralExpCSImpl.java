@@ -21,4 +21,5 @@ public class StringLiteralExpCSImpl extends PrimitiveLiteralExpCSImpl
     }
 
     private String _stringSymbol;
+
 }

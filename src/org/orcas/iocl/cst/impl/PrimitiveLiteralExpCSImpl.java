@@ -12,14 +12,4 @@ public class PrimitiveLiteralExpCSImpl extends LiteralExpCSImpl
         super(token);
     }
 
-    public String getSymbol() {
-        return _symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        _symbol = symbol;
-    }
-
-    private String _symbol;
-
 }

@@ -7,19 +7,24 @@ options {
 }
 
 @lexer::header{
-package iocl.parser;
+package org.orcas.iocl.parser;
 }
 
 @header {
-package iocl.parser;
+package org.orcas.iocl.parser;
 
-import iocl.cst.NodeCS;
-import iocl.cst.IOCLExpressionCS;
-import iocl.cst.OCLExpressionCS;
-import iocl.cst.StringLiteralExpCS;
-import iocl.cst.PrimitiveLiteralExpCS;
-import iocl.cst.LiteralExpCS;
 import org.antlr.runtime.Token;
+
+import org.orcas.iocl.cst.BooleanLiteralExpCS;
+import org.orcas.iocl.cst.IntegerLiteralExpCS;
+import org.orcas.iocl.cst.IOCLExpressionCS;
+import org.orcas.iocl.cst.LiteralExpCS;
+import org.orcas.iocl.cst.NodeCS;
+import org.orcas.iocl.cst.NumericLiteralExpCS;
+import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.PrimitiveLiteralExpCS;
+import org.orcas.iocl.cst.RealLiteralExpCS;
+import org.orcas.iocl.cst.StringLiteralExpCS;
 }
 
 @members{
@@ -38,24 +43,31 @@ literalExpCS  returns [LiteralExpCS literalExpCS]
 	;
 
 primitiveLiteralExpCS returns [PrimitiveLiteralExpCS primitiveLiteralExpCS] 	
-	:  sle = stringLiteralExpCS { $primitiveLiteralExpCS = $sle.stringLiteralExpCS; }
+	:  nle = numericLiteralExpCS { $primitiveLiteralExpCS = $nle.numericLiteralExpCS; }
+	|  sle = stringLiteralExpCS { $primitiveLiteralExpCS = $sle.stringLiteralExpCS; }
+	|  ble = booleanLiteralExpCS { $primitiveLiteralExpCS = $ble.booleanLiteralExpCS; }
+	;
+
+numericLiteralExpCS  returns [NumericLiteralExpCS numericLiteralExpCS]
+	:  ile = integerLiteralExpCS { $numericLiteralExpCS = $ile.integerLiteralExpCS; }
+	|  rle = realLiteralExpCS { $numericLiteralExpCS = $rle.realLiteralExpCS; }
 	;
 
 stringLiteralExpCS  returns [StringLiteralExpCS stringLiteralExpCS]
 	: STRING_LITERAL { $stringLiteralExpCS = createStringLiteralExpCS($STRING_LITERAL, $STRING_LITERAL.text); }
 	;	
 
-ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
-    ;
+booleanLiteralExpCS  returns [BooleanLiteralExpCS booleanLiteralExpCS]
+	: BOOLEAN_LITERAL { $booleanLiteralExpCS = createBooleanLiteralExpCS($BOOLEAN_LITERAL, $BOOLEAN_LITERAL.text); }
+	;
 
-INT :	'0'..'9'+
-    ;
+integerLiteralExpCS  returns [IntegerLiteralExpCS integerLiteralExpCS]
+	: INTEGER_LITERAL { $integerLiteralExpCS = createIntegerLiteralExpCS($INTEGER_LITERAL, $INTEGER_LITERAL.text); }
+	;	
 
-FLOAT
-    :   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    |   '.' ('0'..'9')+ EXPONENT?
-    |   ('0'..'9')+ EXPONENT
-    ;
+realLiteralExpCS  returns [RealLiteralExpCS realLiteralExpCS]
+	: REAL_LITERAL { $realLiteralExpCS = createRealLiteralExpCS($REAL_LITERAL, $REAL_LITERAL.text); }
+	;
 
 WS  :   ( ' '
         | '\t'
@@ -64,9 +76,26 @@ WS  :   ( ' '
         ) {$channel=HIDDEN;}
     ;
 
+BOOLEAN_LITERAL 
+	:	'true' | 'false'
+	;
+	
 STRING_LITERAL
-    :  '\'' ( ESC_SEQ | ~('\\'|'"') )* '\''
-    ;
+	:  '\'' ( ESC_SEQ | ~('\\'|'"') )* '\''
+	;
+
+INTEGER_LITERAL
+	:	'0'..'9'+
+	; 
+
+REAL_LITERAL
+	:   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+	|   '.' ('0'..'9')+ EXPONENT?
+	|   ('0'..'9')+ EXPONENT
+	;	
+
+ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
+    ;	   
 
 CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
     ;

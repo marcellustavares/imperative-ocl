@@ -1,8 +1,7 @@
 package org.orcas.iocl.exp;
 
-
 public interface Visitor<T> {
 
-    T visitStringLiteralExp(StringLiteralExp stringLiteralExp);
+    public T visitStringLiteralExp(StringLiteralExp stringLiteralExp);
 
 }

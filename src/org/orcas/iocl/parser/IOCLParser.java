@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-03-18 00:07:09
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-03-19 00:20:52
 
 package org.orcas.iocl.parser;
 
@@ -26,20 +26,19 @@ import org.antlr.runtime.tree.*;
 
 public class IOCLParser extends IOCLBaseParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "STRING_LITERAL", "BOOLEAN_LITERAL", "INTEGER_LITERAL", "REAL_LITERAL", "WS", "ESC_SEQ", "EXPONENT", "ID", "CHAR", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "STRING_LITERAL", "BOOLEAN_LITERAL", "INTEGER_LITERAL", "REAL_LITERAL", "EXPONENT", "ESC_SEQ", "ID", "WS", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC"
     };
     public static final int BOOLEAN_LITERAL=5;
-    public static final int EXPONENT=10;
+    public static final int EXPONENT=8;
+    public static final int WS=11;
     public static final int ESC_SEQ=9;
-    public static final int WS=8;
     public static final int STRING_LITERAL=4;
     public static final int REAL_LITERAL=7;
     public static final int INTEGER_LITERAL=6;
-    public static final int UNICODE_ESC=14;
-    public static final int OCTAL_ESC=15;
-    public static final int CHAR=12;
-    public static final int HEX_DIGIT=13;
-    public static final int ID=11;
+    public static final int UNICODE_ESC=13;
+    public static final int OCTAL_ESC=14;
+    public static final int HEX_DIGIT=12;
+    public static final int ID=10;
     public static final int EOF=-1;
 
     // delegates
@@ -93,7 +92,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_oclExpressionCS_in_ioclExpressionCS70);
+            pushFollow(FOLLOW_oclExpressionCS_in_ioclExpressionCS58);
             ocle=oclExpressionCS();
 
             state._fsp--;
@@ -145,7 +144,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_literalExpCS_in_oclExpressionCS92);
+            pushFollow(FOLLOW_literalExpCS_in_oclExpressionCS80);
             le=literalExpCS();
 
             state._fsp--;
@@ -193,11 +192,11 @@ public class IOCLParser extends IOCLBaseParser {
 
         try {
             // IOCL.g:42:2: (ple= primitiveLiteralExpCS )
-            // IOCL.g:42:5: ple= primitiveLiteralExpCS
+            // IOCL.g:42:4: ple= primitiveLiteralExpCS
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_primitiveLiteralExpCS_in_literalExpCS115);
+            pushFollow(FOLLOW_primitiveLiteralExpCS_in_literalExpCS102);
             ple=primitiveLiteralExpCS();
 
             state._fsp--;
@@ -276,11 +275,11 @@ public class IOCLParser extends IOCLBaseParser {
 
             switch (alt1) {
                 case 1 :
-                    // IOCL.g:46:5: nle= numericLiteralExpCS
+                    // IOCL.g:46:4: nle= numericLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS139);
+                    pushFollow(FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS125);
                     nle=numericLiteralExpCS();
 
                     state._fsp--;
@@ -291,11 +290,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:47:5: sle= stringLiteralExpCS
+                    // IOCL.g:47:4: sle= stringLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS151);
+                    pushFollow(FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS136);
                     sle=stringLiteralExpCS();
 
                     state._fsp--;
@@ -306,11 +305,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:48:5: ble= booleanLiteralExpCS
+                    // IOCL.g:48:4: ble= booleanLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS163);
+                    pushFollow(FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS147);
                     ble=booleanLiteralExpCS();
 
                     state._fsp--;
@@ -379,11 +378,11 @@ public class IOCLParser extends IOCLBaseParser {
             }
             switch (alt2) {
                 case 1 :
-                    // IOCL.g:52:5: ile= integerLiteralExpCS
+                    // IOCL.g:52:4: ile= integerLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS186);
+                    pushFollow(FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS169);
                     ile=integerLiteralExpCS();
 
                     state._fsp--;
@@ -394,11 +393,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:53:5: rle= realLiteralExpCS
+                    // IOCL.g:53:4: rle= realLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_realLiteralExpCS_in_numericLiteralExpCS198);
+                    pushFollow(FOLLOW_realLiteralExpCS_in_numericLiteralExpCS180);
                     rle=realLiteralExpCS();
 
                     state._fsp--;
@@ -452,7 +451,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            STRING_LITERAL1=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_stringLiteralExpCS216); 
+            STRING_LITERAL1=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_stringLiteralExpCS198); 
             STRING_LITERAL1_tree = (NodeCS)adaptor.create(STRING_LITERAL1);
             adaptor.addChild(root_0, STRING_LITERAL1_tree);
 
@@ -502,7 +501,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            BOOLEAN_LITERAL2=(Token)match(input,BOOLEAN_LITERAL,FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS235); 
+            BOOLEAN_LITERAL2=(Token)match(input,BOOLEAN_LITERAL,FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS217); 
             BOOLEAN_LITERAL2_tree = (NodeCS)adaptor.create(BOOLEAN_LITERAL2);
             adaptor.addChild(root_0, BOOLEAN_LITERAL2_tree);
 
@@ -552,7 +551,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            INTEGER_LITERAL3=(Token)match(input,INTEGER_LITERAL,FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS253); 
+            INTEGER_LITERAL3=(Token)match(input,INTEGER_LITERAL,FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS235); 
             INTEGER_LITERAL3_tree = (NodeCS)adaptor.create(INTEGER_LITERAL3);
             adaptor.addChild(root_0, INTEGER_LITERAL3_tree);
 
@@ -602,7 +601,7 @@ public class IOCLParser extends IOCLBaseParser {
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            REAL_LITERAL4=(Token)match(input,REAL_LITERAL,FOLLOW_REAL_LITERAL_in_realLiteralExpCS272); 
+            REAL_LITERAL4=(Token)match(input,REAL_LITERAL,FOLLOW_REAL_LITERAL_in_realLiteralExpCS254); 
             REAL_LITERAL4_tree = (NodeCS)adaptor.create(REAL_LITERAL4);
             adaptor.addChild(root_0, REAL_LITERAL4_tree);
 
@@ -633,17 +632,17 @@ public class IOCLParser extends IOCLBaseParser {
 
  
 
-    public static final BitSet FOLLOW_oclExpressionCS_in_ioclExpressionCS70 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_literalExpCS_in_oclExpressionCS92 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveLiteralExpCS_in_literalExpCS115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS151 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS186 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_realLiteralExpCS_in_numericLiteralExpCS198 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_LITERAL_in_stringLiteralExpCS216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REAL_LITERAL_in_realLiteralExpCS272 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExpressionCS_in_ioclExpressionCS58 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_literalExpCS_in_oclExpressionCS80 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveLiteralExpCS_in_literalExpCS102 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS147 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS169 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_realLiteralExpCS_in_numericLiteralExpCS180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_LITERAL_in_stringLiteralExpCS198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REAL_LITERAL_in_realLiteralExpCS254 = new BitSet(new long[]{0x0000000000000002L});
 
 }

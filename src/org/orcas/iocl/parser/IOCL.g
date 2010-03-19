@@ -1,9 +1,9 @@
 grammar IOCL;
 
 options {
-    ASTLabelType=NodeCS;
-    output=AST;
-    superClass=IOCLBaseParser;
+ASTLabelType=NodeCS;
+output=AST;
+superClass=IOCLBaseParser;
 }
 
 @lexer::header{
@@ -39,18 +39,18 @@ oclExpressionCS returns [OCLExpressionCS oclExpressionCS]
 	;
 
 literalExpCS  returns [LiteralExpCS literalExpCS]
-	:  ple = primitiveLiteralExpCS { $literalExpCS = $ple.primitiveLiteralExpCS; }
+	: ple = primitiveLiteralExpCS { $literalExpCS = $ple.primitiveLiteralExpCS; }
 	;
 
 primitiveLiteralExpCS returns [PrimitiveLiteralExpCS primitiveLiteralExpCS] 	
-	:  nle = numericLiteralExpCS { $primitiveLiteralExpCS = $nle.numericLiteralExpCS; }
-	|  sle = stringLiteralExpCS { $primitiveLiteralExpCS = $sle.stringLiteralExpCS; }
-	|  ble = booleanLiteralExpCS { $primitiveLiteralExpCS = $ble.booleanLiteralExpCS; }
+	: nle = numericLiteralExpCS { $primitiveLiteralExpCS = $nle.numericLiteralExpCS; }
+	| sle = stringLiteralExpCS { $primitiveLiteralExpCS = $sle.stringLiteralExpCS; }
+	| ble = booleanLiteralExpCS { $primitiveLiteralExpCS = $ble.booleanLiteralExpCS; }
 	;
 
 numericLiteralExpCS  returns [NumericLiteralExpCS numericLiteralExpCS]
-	:  ile = integerLiteralExpCS { $numericLiteralExpCS = $ile.integerLiteralExpCS; }
-	|  rle = realLiteralExpCS { $numericLiteralExpCS = $rle.realLiteralExpCS; }
+	: ile = integerLiteralExpCS { $numericLiteralExpCS = $ile.integerLiteralExpCS; }
+	| rle = realLiteralExpCS { $numericLiteralExpCS = $rle.realLiteralExpCS; }
 	;
 
 stringLiteralExpCS  returns [StringLiteralExpCS stringLiteralExpCS]
@@ -69,58 +69,61 @@ realLiteralExpCS  returns [RealLiteralExpCS realLiteralExpCS]
 	: REAL_LITERAL { $realLiteralExpCS = createRealLiteralExpCS($REAL_LITERAL, $REAL_LITERAL.text); }
 	;
 
-WS  :   ( ' '
+BOOLEAN_LITERAL 
+	: 'true' 
+	| 'false'
+	;
+
+INTEGER_LITERAL
+	: '0'..'9'+
+	; 
+
+REAL_LITERAL
+	: ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+	| '.' ('0'..'9')+ EXPONENT?
+	| ('0'..'9')+ EXPONENT
+	;
+		
+STRING_LITERAL
+	: '\'' ( ESC_SEQ | ~('\\'|'"') )* '\''
+	;
+
+ID  
+	: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
+    	;	   
+
+WS  
+	: ( ' '
         | '\t'
         | '\r'
         | '\n'
         ) {$channel=HIDDEN;}
-    ;
-
-BOOLEAN_LITERAL 
-	:	'true' | 'false'
-	;
-	
-STRING_LITERAL
-	:  '\'' ( ESC_SEQ | ~('\\'|'"') )* '\''
 	;
 
-INTEGER_LITERAL
-	:	'0'..'9'+
-	; 
-
-REAL_LITERAL
-	:   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-	|   '.' ('0'..'9')+ EXPONENT?
-	|   ('0'..'9')+ EXPONENT
-	;	
-
-ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
-    ;	   
-
-CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
-    ;
+fragment
+EXPONENT 
+	: ('e'|'E') ('+'|'-')? ('0'..'9')+ 
+	;
 
 fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
-
-fragment
-HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
+HEX_DIGIT 
+	: ('0'..'9'|'a'..'f'|'A'..'F') ;
 
 fragment
 ESC_SEQ
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
-    |   UNICODE_ESC
-    |   OCTAL_ESC
-    ;
+	: '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+	| UNICODE_ESC
+	| OCTAL_ESC
+	;
 
 fragment
 OCTAL_ESC
-    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7')
-    ;
+	: '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+	| '\\' ('0'..'7') ('0'..'7')
+	| '\\' ('0'..'7')
+	;
 
 fragment
 UNICODE_ESC
-    :   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-    ;
+	: '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+	;

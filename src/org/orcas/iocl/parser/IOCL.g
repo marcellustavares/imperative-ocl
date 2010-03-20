@@ -120,7 +120,7 @@ REAL_LITERAL
 	;
 		
 STRING_LITERAL
-	: '\'' ( ESC_SEQ | ~('\\'|'"') )* '\''
+	: '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
 	;
 
 ID  

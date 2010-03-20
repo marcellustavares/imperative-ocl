@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-03-20 16:16:32
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-03-20 18:46:17
 
 package org.orcas.iocl.parser;
 
@@ -523,29 +523,20 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:123:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\"' ) )* '\\'' )
-            // IOCL.g:123:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\"' ) )* '\\''
+            // IOCL.g:123:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\'' )
+            // IOCL.g:123:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\''
             {
             match('\''); 
-            // IOCL.g:123:9: ( ESC_SEQ | ~ ( '\\\\' | '\"' ) )*
+            // IOCL.g:123:9: ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )*
             loop11:
             do {
                 int alt11=3;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0=='\'') ) {
-                    int LA11_1 = input.LA(2);
-
-                    if ( ((LA11_1>='\u0000' && LA11_1<='!')||(LA11_1>='#' && LA11_1<='\uFFFF')) ) {
-                        alt11=2;
-                    }
-
-
-                }
-                else if ( (LA11_0=='\\') ) {
+                if ( (LA11_0=='\\') ) {
                     alt11=1;
                 }
-                else if ( ((LA11_0>='\u0000' && LA11_0<='!')||(LA11_0>='#' && LA11_0<='&')||(LA11_0>='(' && LA11_0<='[')||(LA11_0>=']' && LA11_0<='\uFFFF')) ) {
+                else if ( ((LA11_0>='\u0000' && LA11_0<='&')||(LA11_0>='(' && LA11_0<='[')||(LA11_0>=']' && LA11_0<='\uFFFF')) ) {
                     alt11=2;
                 }
 
@@ -559,9 +550,9 @@ public class IOCLLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // IOCL.g:123:21: ~ ( '\\\\' | '\"' )
+            	    // IOCL.g:123:21: ~ ( '\\\\' | '\\'' )
             	    {
-            	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+            	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
 
             	    }

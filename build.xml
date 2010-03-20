@@ -17,4 +17,13 @@
 			newenvironment="true"
 		/>
 	</target>
+
+	<target name="test">
+		<java
+			classname="OCLExpressionTest"
+			classpathref="project.classpath"
+			fork="true"
+			newenvironment="true"
+		/>
+	</target>
 </project>

@@ -2,6 +2,7 @@ grammar IOCL;
 
 options {
 ASTLabelType=NodeCS;
+backtrack=true;
 output=AST;
 superClass=IOCLBaseParser;
 }
@@ -16,6 +17,10 @@ package org.orcas.iocl.parser;
 import org.antlr.runtime.Token;
 
 import org.orcas.iocl.cst.BooleanLiteralExpCS;
+import org.orcas.iocl.cst.CollectionLiteralExpCS;
+import org.orcas.iocl.cst.CollectionLiteralPartCS;
+import org.orcas.iocl.cst.CollectionLiteralPartsCS;
+import org.orcas.iocl.cst.CollectionTypeIdentifierCS;
 import org.orcas.iocl.cst.IntegerLiteralExpCS;
 import org.orcas.iocl.cst.IOCLExpressionCS;
 import org.orcas.iocl.cst.LiteralExpCS;
@@ -39,7 +44,29 @@ oclExpressionCS returns [OCLExpressionCS oclExpressionCS]
 	;
 
 literalExpCS  returns [LiteralExpCS literalExpCS]
-	: ple = primitiveLiteralExpCS { $literalExpCS = $ple.primitiveLiteralExpCS; }
+	: cle = collectionLiteralExpCS { $literalExpCS = $cle.collectionLiteralExpCS; }
+	| ple = primitiveLiteralExpCS { $literalExpCS = $ple.primitiveLiteralExpCS; }
+	;
+
+collectionLiteralExpCS returns [CollectionLiteralExpCS collectionLiteralExpCS]
+	: cti = collectionTypeIdentifierCS '{' clpts = collectionLiteralPartsCS?  '}' { $collectionLiteralExpCS = createCollectionLiteralExpCS($cti.collectionTypeIdentifierCS, $clpts.collectionLiteralPartsCS); } 
+	;
+
+collectionTypeIdentifierCS returns [CollectionTypeIdentifierCS collectionTypeIdentifierCS]
+	: COLLECTION_TYPE_LITERAL { $collectionTypeIdentifierCS = createCollectionTypeIdentifierCS($COLLECTION_TYPE_LITERAL, $COLLECTION_TYPE_LITERAL.text); }
+	;
+
+collectionLiteralPartsCS returns [CollectionLiteralPartsCS collectionLiteralPartsCS]
+	: clpe = collectionLiteralPartCS { $collectionLiteralPartsCS = createCollectionLiteralPartsCS($clpe.collectionLiteralPartCS); } (',' collectionLiteralPartsCS)?
+	;		 
+
+collectionLiteralPartCS returns [CollectionLiteralPartCS collectionLiteralPartCS]
+	: collectionRangeCS
+	| ocle = oclExpressionCS { $collectionLiteralPartCS = createCollectionLiteralPartCS($ocle.oclExpressionCS); }
+	;
+
+collectionRangeCS
+	: oclExpressionCS '..' oclExpressionCS
 	;
 
 primitiveLiteralExpCS returns [PrimitiveLiteralExpCS primitiveLiteralExpCS] 	
@@ -72,6 +99,14 @@ realLiteralExpCS  returns [RealLiteralExpCS realLiteralExpCS]
 BOOLEAN_LITERAL 
 	: 'true' 
 	| 'false'
+	;
+
+COLLECTION_TYPE_LITERAL
+	: 'Bag'
+	| 'Collection' 
+	| 'OrderedSet'  
+	| 'Sequence'
+	| 'Set'
 	;
 
 INTEGER_LITERAL

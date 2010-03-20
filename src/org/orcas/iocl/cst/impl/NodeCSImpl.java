@@ -9,10 +9,16 @@ public class NodeCSImpl extends CommonTree implements NodeCS {
 
     public NodeCSImpl(Token token) {
         super(token);
+
+        _token = token;
     }
 
     public Object getAst() {
         return _ast;
+    }
+
+    public Token getToken() {
+        return _token;
     }
 
     public void setAst(Object ast) {
@@ -20,5 +26,6 @@ public class NodeCSImpl extends CommonTree implements NodeCS {
     }
 
     private Object _ast;
+    private Token _token;
 
 }

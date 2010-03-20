@@ -7,7 +7,7 @@ import org.antlr.runtime.Token;
 import org.orcas.iocl.cst.CollectionLiteralPartCS;
 import org.orcas.iocl.cst.CollectionLiteralPartsCS;
 
-public class CollectionLiteralPartsCSImpl extends CollectionLiteralExpCSImpl
+public class CollectionLiteralPartsCSImpl extends OCLExpressionCSImpl
     implements CollectionLiteralPartsCS {
 
     public CollectionLiteralPartsCSImpl(Token token) {

@@ -40,6 +40,12 @@ public class TestPrimitiveLiteralExp extends TestCase {
         exp = "'marcellus'";
         ioclExp = IOCLParserUtil.parse(exp);
 
+        exp = "'\u4147 ok'  ";
+        ioclExp = IOCLParserUtil.parse(exp);
+
+        exp = "' t  e\t\nst '      ";
+        ioclExp = IOCLParserUtil.parse(exp);
+
         assertTrue(ioclExp instanceof StringLiteralExpCS);
     }
 

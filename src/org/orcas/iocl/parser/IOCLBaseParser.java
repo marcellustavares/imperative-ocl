@@ -11,7 +11,9 @@ import org.orcas.iocl.cst.CollectionLiteralPartsCS;
 import org.orcas.iocl.cst.CollectionTypeIdentifierCS;
 import org.orcas.iocl.cst.IntegerLiteralExpCS;
 import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.OperationCallExpCS;
 import org.orcas.iocl.cst.RealLiteralExpCS;
+import org.orcas.iocl.cst.SimpleNameCS;
 import org.orcas.iocl.cst.StringLiteralExpCS;
 import org.orcas.iocl.cst.impl.BooleanLiteralExpCSImpl;
 import org.orcas.iocl.cst.impl.CollectionLiteralExpCSImpl;
@@ -19,7 +21,9 @@ import org.orcas.iocl.cst.impl.CollectionLiteralPartCSImpl;
 import org.orcas.iocl.cst.impl.CollectionLiteralPartsCSImpl;
 import org.orcas.iocl.cst.impl.CollectionTypeIdentifierCSImpl;
 import org.orcas.iocl.cst.impl.IntegerLiteralExpCSImpl;
+import org.orcas.iocl.cst.impl.OperationCallExpCSImpl;
 import org.orcas.iocl.cst.impl.RealLiteralExpCSImpl;
+import org.orcas.iocl.cst.impl.SimpleNameCSImpl;
 import org.orcas.iocl.cst.impl.StringLiteralExpCSImpl;
 
 public abstract class IOCLBaseParser extends Parser {
@@ -89,6 +93,48 @@ public abstract class IOCLBaseParser extends Parser {
         return identifierCS;
     }
 
+    public SimpleNameCS createSimpleNameCS(Token token, String value) {
+        SimpleNameCS simpleNameCS = new SimpleNameCSImpl(token);
+
+        simpleNameCS.setValue(value);
+
+        return simpleNameCS;
+    }
+
+    public OperationCallExpCS createOperationCallExpCS(
+        OCLExpressionCS source, SimpleNameCS simpleNameCS) {
+
+        OperationCallExpCS operationCallExpCS = new OperationCallExpCSImpl(
+            simpleNameCS.getToken());
+
+        operationCallExpCS.setSource(source);
+        operationCallExpCS.setSimpleNameCS(simpleNameCS);
+
+        return operationCallExpCS;
+    }
+
+    public OperationCallExpCS createOperationCallExpCS(
+        OCLExpressionCS source, SimpleNameCS simpleNameCS,
+        OCLExpressionCS arg) {
+
+        OperationCallExpCS opCallExp = new OperationCallExpCSImpl(
+            simpleNameCS.getToken());
+
+        if (operationCallExpCS == null) {
+            opCallExp.setSource(source);
+        }
+        else {
+            opCallExp.setSource(operationCallExpCS);
+        }
+
+        opCallExp.setSimpleNameCS(simpleNameCS);
+        opCallExp.addArgument(arg);
+
+        operationCallExpCS = opCallExp;
+
+        return operationCallExpCS;
+    }
+
     public RealLiteralExpCS createRealLiteralExpCS(
         Token token, String realSymbol) {
 
@@ -117,5 +163,6 @@ public abstract class IOCLBaseParser extends Parser {
     }
 
     protected CollectionLiteralPartsCSImpl parts;
+    protected OperationCallExpCS operationCallExpCS;
 
 }

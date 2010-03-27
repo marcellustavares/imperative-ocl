@@ -1,3 +1,5 @@
+package org.orcas.iocl.parser;
+
 import junit.framework.TestSuite;
 
 public class OCLExpressionTest {

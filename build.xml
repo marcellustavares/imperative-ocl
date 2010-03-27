@@ -20,7 +20,7 @@
 
 	<target name="test">
 		<java
-			classname="OCLExpressionTest"
+			classname="org.orcas.iocl.parser.OCLExpressionTest"
 			classpathref="project.classpath"
 			fork="true"
 			newenvironment="true"

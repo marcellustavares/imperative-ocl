@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-04-17 19:19:08
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-04-17 19:55:56
 
 package org.orcas.iocl.parser;
 
@@ -37,7 +37,7 @@ import org.antlr.runtime.tree.*;
 
 public class IOCLParser extends IOCLBaseParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COLLECTION_TYPE_LITERAL", "STRING_LITERAL", "BOOLEAN_LITERAL", "INTEGER_LITERAL", "REAL_LITERAL", "BINARY_OPERATOR", "IDENTIFIER", "EXPONENT", "ESC_SEQ", "WS", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC", "'and'", "'or'", "'xor'", "'+'", "'-'", "'*'", "'/'", "'not'", "'{'", "'}'", "','", "'->'", "'.'", "'('", "')'", "'self'", "'Integer'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COLLECTION_TYPE_LITERAL", "STRING_LITERAL", "BOOLEAN_LITERAL", "INTEGER_LITERAL", "REAL_LITERAL", "BINARY_OPERATOR", "IDENTIFIER", "EXPONENT", "ESC_SEQ", "WS", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC", "'and'", "'or'", "'xor'", "'<>'", "'='", "'+'", "'-'", "'*'", "'/'", "'not'", "'{'", "'}'", "','", "'->'", "'.'", "'('", "')'", "'self'", "'Integer'"
     };
     public static final int EXPONENT=11;
     public static final int T__29=29;
@@ -64,6 +64,8 @@ public class IOCLParser extends IOCLBaseParser {
     public static final int ESC_SEQ=12;
     public static final int STRING_LITERAL=5;
     public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
     public static final int T__18=18;
     public static final int REAL_LITERAL=8;
     public static final int T__17=17;
@@ -387,9 +389,9 @@ public class IOCLParser extends IOCLBaseParser {
                 }
                 }
                 break;
-            case 20:
-            case 21:
-            case 24:
+            case 22:
+            case 23:
+            case 26:
                 {
                 int LA2_6 = input.LA(2);
 
@@ -528,193 +530,25 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "equalityExpCS"
-    // IOCL.g:58:1: equalityExpCS returns [OCLExpressionCS oclExpressionCS] : rele= relationalExpCS ;
+    // IOCL.g:58:1: equalityExpCS returns [OCLExpressionCS oclExpressionCS] : (rele1= relationalExpCS (op= ( '<>' | '=' ) rele2= relationalExpCS )+ | rele= relationalExpCS );
     public final IOCLParser.equalityExpCS_return equalityExpCS() throws RecognitionException {
         IOCLParser.equalityExpCS_return retval = new IOCLParser.equalityExpCS_return();
         retval.start = input.LT(1);
 
         NodeCS root_0 = null;
 
-        IOCLParser.relationalExpCS_return rele = null;
-
-
-
-        try {
-            // IOCL.g:59:2: (rele= relationalExpCS )
-            // IOCL.g:59:4: rele= relationalExpCS
-            {
-            root_0 = (NodeCS)adaptor.nil();
-
-            pushFollow(FOLLOW_relationalExpCS_in_equalityExpCS179);
-            rele=relationalExpCS();
-
-            state._fsp--;
-            if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, rele.getTree());
-            if ( state.backtracking==0 ) {
-               retval.oclExpressionCS = (rele!=null?rele.oclExpressionCS:null); 
-            }
-
-            }
-
-            retval.stop = input.LT(-1);
-
-            if ( state.backtracking==0 ) {
-
-            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-        finally {
-        }
-        return retval;
-    }
-    // $ANTLR end "equalityExpCS"
-
-    public static class relationalExpCS_return extends ParserRuleReturnScope {
-        public OCLExpressionCS oclExpressionCS;
-        NodeCS tree;
-        public Object getTree() { return tree; }
-    };
-
-    // $ANTLR start "relationalExpCS"
-    // IOCL.g:62:1: relationalExpCS returns [OCLExpressionCS oclExpressionCS] : ie= ifExpCSPrec ;
-    public final IOCLParser.relationalExpCS_return relationalExpCS() throws RecognitionException {
-        IOCLParser.relationalExpCS_return retval = new IOCLParser.relationalExpCS_return();
-        retval.start = input.LT(1);
-
-        NodeCS root_0 = null;
-
-        IOCLParser.ifExpCSPrec_return ie = null;
-
-
-
-        try {
-            // IOCL.g:63:2: (ie= ifExpCSPrec )
-            // IOCL.g:63:4: ie= ifExpCSPrec
-            {
-            root_0 = (NodeCS)adaptor.nil();
-
-            pushFollow(FOLLOW_ifExpCSPrec_in_relationalExpCS202);
-            ie=ifExpCSPrec();
-
-            state._fsp--;
-            if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, ie.getTree());
-            if ( state.backtracking==0 ) {
-               retval.oclExpressionCS = (ie!=null?ie.oclExpressionCS:null); 
-            }
-
-            }
-
-            retval.stop = input.LT(-1);
-
-            if ( state.backtracking==0 ) {
-
-            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-        finally {
-        }
-        return retval;
-    }
-    // $ANTLR end "relationalExpCS"
-
-    public static class ifExpCSPrec_return extends ParserRuleReturnScope {
-        public OCLExpressionCS oclExpressionCS;
-        NodeCS tree;
-        public Object getTree() { return tree; }
-    };
-
-    // $ANTLR start "ifExpCSPrec"
-    // IOCL.g:66:1: ifExpCSPrec returns [OCLExpressionCS oclExpressionCS] : ae= additiveExpCS ;
-    public final IOCLParser.ifExpCSPrec_return ifExpCSPrec() throws RecognitionException {
-        IOCLParser.ifExpCSPrec_return retval = new IOCLParser.ifExpCSPrec_return();
-        retval.start = input.LT(1);
-
-        NodeCS root_0 = null;
-
-        IOCLParser.additiveExpCS_return ae = null;
-
-
-
-        try {
-            // IOCL.g:67:2: (ae= additiveExpCS )
-            // IOCL.g:67:4: ae= additiveExpCS
-            {
-            root_0 = (NodeCS)adaptor.nil();
-
-            pushFollow(FOLLOW_additiveExpCS_in_ifExpCSPrec223);
-            ae=additiveExpCS();
-
-            state._fsp--;
-            if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, ae.getTree());
-            if ( state.backtracking==0 ) {
-               retval.oclExpressionCS = (ae!=null?ae.oclExpressionCS:null); 
-            }
-
-            }
-
-            retval.stop = input.LT(-1);
-
-            if ( state.backtracking==0 ) {
-
-            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-        finally {
-        }
-        return retval;
-    }
-    // $ANTLR end "ifExpCSPrec"
-
-    public static class additiveExpCS_return extends ParserRuleReturnScope {
-        public OCLExpressionCS oclExpressionCS;
-        NodeCS tree;
-        public Object getTree() { return tree; }
-    };
-
-    // $ANTLR start "additiveExpCS"
-    // IOCL.g:70:1: additiveExpCS returns [OCLExpressionCS oclExpressionCS] : (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ | me= multiplicativeExpCS );
-    public final IOCLParser.additiveExpCS_return additiveExpCS() throws RecognitionException {
-        IOCLParser.additiveExpCS_return retval = new IOCLParser.additiveExpCS_return();
-        retval.start = input.LT(1);
-
-        NodeCS root_0 = null;
-
         Token op=null;
-        IOCLParser.multiplicativeExpCS_return me1 = null;
+        IOCLParser.relationalExpCS_return rele1 = null;
 
-        IOCLParser.multiplicativeExpCS_return me2 = null;
+        IOCLParser.relationalExpCS_return rele2 = null;
 
-        IOCLParser.multiplicativeExpCS_return me = null;
+        IOCLParser.relationalExpCS_return rele = null;
 
 
         NodeCS op_tree=null;
 
         try {
-            // IOCL.g:71:2: (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ | me= multiplicativeExpCS )
+            // IOCL.g:59:2: (rele1= relationalExpCS (op= ( '<>' | '=' ) rele2= relationalExpCS )+ | rele= relationalExpCS )
             int alt4=2;
             switch ( input.LA(1) ) {
             case COLLECTION_TYPE_LITERAL:
@@ -812,9 +646,9 @@ public class IOCLParser extends IOCLBaseParser {
                 }
                 }
                 break;
-            case 20:
-            case 21:
-            case 24:
+            case 22:
+            case 23:
+            case 26:
                 {
                 int LA4_6 = input.LA(2);
 
@@ -843,20 +677,17 @@ public class IOCLParser extends IOCLBaseParser {
 
             switch (alt4) {
                 case 1 :
-                    // IOCL.g:71:4: me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
+                    // IOCL.g:59:4: rele1= relationalExpCS (op= ( '<>' | '=' ) rele2= relationalExpCS )+
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS245);
-                    me1=multiplicativeExpCS();
+                    pushFollow(FOLLOW_relationalExpCS_in_equalityExpCS179);
+                    rele1=relationalExpCS();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, me1.getTree());
-                    if ( state.backtracking==0 ) {
-                       retval.oclExpressionCS = (me1!=null?me1.oclExpressionCS:null); 
-                    }
-                    // IOCL.g:71:75: (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, rele1.getTree());
+                    // IOCL.g:59:28: (op= ( '<>' | '=' ) rele2= relationalExpCS )+
                     int cnt3=0;
                     loop3:
                     do {
@@ -870,7 +701,7 @@ public class IOCLParser extends IOCLBaseParser {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // IOCL.g:71:76: op= ( '+' | '-' ) me2= multiplicativeExpCS
+                    	    // IOCL.g:59:30: op= ( '<>' | '=' ) rele2= relationalExpCS
                     	    {
                     	    op=(Token)input.LT(1);
                     	    if ( (input.LA(1)>=20 && input.LA(1)<=21) ) {
@@ -884,14 +715,14 @@ public class IOCLParser extends IOCLBaseParser {
                     	        throw mse;
                     	    }
 
-                    	    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS264);
-                    	    me2=multiplicativeExpCS();
+                    	    pushFollow(FOLLOW_relationalExpCS_in_equalityExpCS197);
+                    	    rele2=relationalExpCS();
 
                     	    state._fsp--;
                     	    if (state.failed) return retval;
-                    	    if ( state.backtracking==0 ) adaptor.addChild(root_0, me2.getTree());
+                    	    if ( state.backtracking==0 ) adaptor.addChild(root_0, rele2.getTree());
                     	    if ( state.backtracking==0 ) {
-                    	       retval.oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS(op, SimpleTypeEnum.STRING, (op!=null?op.getText():null)), me2.oclExpressionCS); 
+                    	       retval.oclExpressionCS = createOperationCallExpCS(rele1.oclExpressionCS, createSimpleNameCS(op, SimpleTypeEnum.STRING, (op!=null?op.getText():null)), rele2.oclExpressionCS); 
                     	    }
 
                     	    }
@@ -911,18 +742,18 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:72:4: me= multiplicativeExpCS
+                    // IOCL.g:60:4: rele= relationalExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS278);
-                    me=multiplicativeExpCS();
+                    pushFollow(FOLLOW_relationalExpCS_in_equalityExpCS211);
+                    rele=relationalExpCS();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, me.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, rele.getTree());
                     if ( state.backtracking==0 ) {
-                       retval.oclExpressionCS = (me!=null?me.oclExpressionCS:null); 
+                       retval.oclExpressionCS = (rele!=null?rele.oclExpressionCS:null); 
                     }
 
                     }
@@ -947,34 +778,146 @@ public class IOCLParser extends IOCLBaseParser {
         }
         return retval;
     }
-    // $ANTLR end "additiveExpCS"
+    // $ANTLR end "equalityExpCS"
 
-    public static class multiplicativeExpCS_return extends ParserRuleReturnScope {
+    public static class relationalExpCS_return extends ParserRuleReturnScope {
         public OCLExpressionCS oclExpressionCS;
         NodeCS tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "multiplicativeExpCS"
-    // IOCL.g:75:1: multiplicativeExpCS returns [OCLExpressionCS oclExpressionCS] : (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ | ue= unaryExpCS );
-    public final IOCLParser.multiplicativeExpCS_return multiplicativeExpCS() throws RecognitionException {
-        IOCLParser.multiplicativeExpCS_return retval = new IOCLParser.multiplicativeExpCS_return();
+    // $ANTLR start "relationalExpCS"
+    // IOCL.g:63:1: relationalExpCS returns [OCLExpressionCS oclExpressionCS] : ie= ifExpCSPrec ;
+    public final IOCLParser.relationalExpCS_return relationalExpCS() throws RecognitionException {
+        IOCLParser.relationalExpCS_return retval = new IOCLParser.relationalExpCS_return();
+        retval.start = input.LT(1);
+
+        NodeCS root_0 = null;
+
+        IOCLParser.ifExpCSPrec_return ie = null;
+
+
+
+        try {
+            // IOCL.g:64:2: (ie= ifExpCSPrec )
+            // IOCL.g:64:4: ie= ifExpCSPrec
+            {
+            root_0 = (NodeCS)adaptor.nil();
+
+            pushFollow(FOLLOW_ifExpCSPrec_in_relationalExpCS234);
+            ie=ifExpCSPrec();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, ie.getTree());
+            if ( state.backtracking==0 ) {
+               retval.oclExpressionCS = (ie!=null?ie.oclExpressionCS:null); 
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "relationalExpCS"
+
+    public static class ifExpCSPrec_return extends ParserRuleReturnScope {
+        public OCLExpressionCS oclExpressionCS;
+        NodeCS tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "ifExpCSPrec"
+    // IOCL.g:67:1: ifExpCSPrec returns [OCLExpressionCS oclExpressionCS] : ae= additiveExpCS ;
+    public final IOCLParser.ifExpCSPrec_return ifExpCSPrec() throws RecognitionException {
+        IOCLParser.ifExpCSPrec_return retval = new IOCLParser.ifExpCSPrec_return();
+        retval.start = input.LT(1);
+
+        NodeCS root_0 = null;
+
+        IOCLParser.additiveExpCS_return ae = null;
+
+
+
+        try {
+            // IOCL.g:68:2: (ae= additiveExpCS )
+            // IOCL.g:68:4: ae= additiveExpCS
+            {
+            root_0 = (NodeCS)adaptor.nil();
+
+            pushFollow(FOLLOW_additiveExpCS_in_ifExpCSPrec255);
+            ae=additiveExpCS();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, ae.getTree());
+            if ( state.backtracking==0 ) {
+               retval.oclExpressionCS = (ae!=null?ae.oclExpressionCS:null); 
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "ifExpCSPrec"
+
+    public static class additiveExpCS_return extends ParserRuleReturnScope {
+        public OCLExpressionCS oclExpressionCS;
+        NodeCS tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "additiveExpCS"
+    // IOCL.g:71:1: additiveExpCS returns [OCLExpressionCS oclExpressionCS] : (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ | me= multiplicativeExpCS );
+    public final IOCLParser.additiveExpCS_return additiveExpCS() throws RecognitionException {
+        IOCLParser.additiveExpCS_return retval = new IOCLParser.additiveExpCS_return();
         retval.start = input.LT(1);
 
         NodeCS root_0 = null;
 
         Token op=null;
-        IOCLParser.unaryExpCS_return ue1 = null;
+        IOCLParser.multiplicativeExpCS_return me1 = null;
 
-        IOCLParser.unaryExpCS_return ue2 = null;
+        IOCLParser.multiplicativeExpCS_return me2 = null;
 
-        IOCLParser.unaryExpCS_return ue = null;
+        IOCLParser.multiplicativeExpCS_return me = null;
 
 
         NodeCS op_tree=null;
 
         try {
-            // IOCL.g:76:2: (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ | ue= unaryExpCS )
+            // IOCL.g:72:2: (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ | me= multiplicativeExpCS )
             int alt6=2;
             switch ( input.LA(1) ) {
             case COLLECTION_TYPE_LITERAL:
@@ -1072,9 +1015,9 @@ public class IOCLParser extends IOCLBaseParser {
                 }
                 }
                 break;
-            case 20:
-            case 21:
-            case 24:
+            case 22:
+            case 23:
+            case 26:
                 {
                 int LA6_6 = input.LA(2);
 
@@ -1103,20 +1046,20 @@ public class IOCLParser extends IOCLBaseParser {
 
             switch (alt6) {
                 case 1 :
-                    // IOCL.g:76:4: ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+
+                    // IOCL.g:72:4: me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS299);
-                    ue1=unaryExpCS();
+                    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS277);
+                    me1=multiplicativeExpCS();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, ue1.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, me1.getTree());
                     if ( state.backtracking==0 ) {
-                       retval.oclExpressionCS = (ue1!=null?ue1.oclExpressionCS:null); 
+                       retval.oclExpressionCS = (me1!=null?me1.oclExpressionCS:null); 
                     }
-                    // IOCL.g:76:66: (op= ( '*' | '/' ) ue2= unaryExpCS )+
+                    // IOCL.g:72:75: (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -1130,7 +1073,7 @@ public class IOCLParser extends IOCLBaseParser {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // IOCL.g:76:68: op= ( '*' | '/' ) ue2= unaryExpCS
+                    	    // IOCL.g:72:76: op= ( '+' | '-' ) me2= multiplicativeExpCS
                     	    {
                     	    op=(Token)input.LT(1);
                     	    if ( (input.LA(1)>=22 && input.LA(1)<=23) ) {
@@ -1144,14 +1087,14 @@ public class IOCLParser extends IOCLBaseParser {
                     	        throw mse;
                     	    }
 
-                    	    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS319);
-                    	    ue2=unaryExpCS();
+                    	    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS296);
+                    	    me2=multiplicativeExpCS();
 
                     	    state._fsp--;
                     	    if (state.failed) return retval;
-                    	    if ( state.backtracking==0 ) adaptor.addChild(root_0, ue2.getTree());
+                    	    if ( state.backtracking==0 ) adaptor.addChild(root_0, me2.getTree());
                     	    if ( state.backtracking==0 ) {
-                    	       retval.oclExpressionCS = createOperationCallExpCS(ue1.oclExpressionCS, createSimpleNameCS(op, SimpleTypeEnum.STRING, (op!=null?op.getText():null)), ue2.oclExpressionCS); 
+                    	       retval.oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS(op, SimpleTypeEnum.STRING, (op!=null?op.getText():null)), me2.oclExpressionCS); 
                     	    }
 
                     	    }
@@ -1171,11 +1114,271 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:77:4: ue= unaryExpCS
+                    // IOCL.g:73:4: me= multiplicativeExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS333);
+                    pushFollow(FOLLOW_multiplicativeExpCS_in_additiveExpCS310);
+                    me=multiplicativeExpCS();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, me.getTree());
+                    if ( state.backtracking==0 ) {
+                       retval.oclExpressionCS = (me!=null?me.oclExpressionCS:null); 
+                    }
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (NodeCS)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (NodeCS)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "additiveExpCS"
+
+    public static class multiplicativeExpCS_return extends ParserRuleReturnScope {
+        public OCLExpressionCS oclExpressionCS;
+        NodeCS tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "multiplicativeExpCS"
+    // IOCL.g:76:1: multiplicativeExpCS returns [OCLExpressionCS oclExpressionCS] : (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ | ue= unaryExpCS );
+    public final IOCLParser.multiplicativeExpCS_return multiplicativeExpCS() throws RecognitionException {
+        IOCLParser.multiplicativeExpCS_return retval = new IOCLParser.multiplicativeExpCS_return();
+        retval.start = input.LT(1);
+
+        NodeCS root_0 = null;
+
+        Token op=null;
+        IOCLParser.unaryExpCS_return ue1 = null;
+
+        IOCLParser.unaryExpCS_return ue2 = null;
+
+        IOCLParser.unaryExpCS_return ue = null;
+
+
+        NodeCS op_tree=null;
+
+        try {
+            // IOCL.g:77:2: (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ | ue= unaryExpCS )
+            int alt8=2;
+            switch ( input.LA(1) ) {
+            case COLLECTION_TYPE_LITERAL:
+                {
+                int LA8_1 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case INTEGER_LITERAL:
+                {
+                int LA8_2 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 2, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case REAL_LITERAL:
+                {
+                int LA8_3 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 3, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case STRING_LITERAL:
+                {
+                int LA8_4 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 4, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case BOOLEAN_LITERAL:
+                {
+                int LA8_5 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 5, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case 22:
+            case 23:
+            case 26:
+                {
+                int LA8_6 = input.LA(2);
+
+                if ( (synpred13_IOCL()) ) {
+                    alt8=1;
+                }
+                else if ( (true) ) {
+                    alt8=2;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return retval;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 8, 6, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return retval;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 8, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt8) {
+                case 1 :
+                    // IOCL.g:77:4: ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+
+                    {
+                    root_0 = (NodeCS)adaptor.nil();
+
+                    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS331);
+                    ue1=unaryExpCS();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, ue1.getTree());
+                    if ( state.backtracking==0 ) {
+                       retval.oclExpressionCS = (ue1!=null?ue1.oclExpressionCS:null); 
+                    }
+                    // IOCL.g:77:66: (op= ( '*' | '/' ) ue2= unaryExpCS )+
+                    int cnt7=0;
+                    loop7:
+                    do {
+                        int alt7=2;
+                        int LA7_0 = input.LA(1);
+
+                        if ( ((LA7_0>=24 && LA7_0<=25)) ) {
+                            alt7=1;
+                        }
+
+
+                        switch (alt7) {
+                    	case 1 :
+                    	    // IOCL.g:77:68: op= ( '*' | '/' ) ue2= unaryExpCS
+                    	    {
+                    	    op=(Token)input.LT(1);
+                    	    if ( (input.LA(1)>=24 && input.LA(1)<=25) ) {
+                    	        input.consume();
+                    	        if ( state.backtracking==0 ) adaptor.addChild(root_0, (NodeCS)adaptor.create(op));
+                    	        state.errorRecovery=false;state.failed=false;
+                    	    }
+                    	    else {
+                    	        if (state.backtracking>0) {state.failed=true; return retval;}
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        throw mse;
+                    	    }
+
+                    	    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS351);
+                    	    ue2=unaryExpCS();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return retval;
+                    	    if ( state.backtracking==0 ) adaptor.addChild(root_0, ue2.getTree());
+                    	    if ( state.backtracking==0 ) {
+                    	       retval.oclExpressionCS = createOperationCallExpCS(ue1.oclExpressionCS, createSimpleNameCS(op, SimpleTypeEnum.STRING, (op!=null?op.getText():null)), ue2.oclExpressionCS); 
+                    	    }
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt7 >= 1 ) break loop7;
+                    	    if (state.backtracking>0) {state.failed=true; return retval;}
+                                EarlyExitException eee =
+                                    new EarlyExitException(7, input);
+                                throw eee;
+                        }
+                        cnt7++;
+                    } while (true);
+
+
+                    }
+                    break;
+                case 2 :
+                    // IOCL.g:78:4: ue= unaryExpCS
+                    {
+                    root_0 = (NodeCS)adaptor.nil();
+
+                    pushFollow(FOLLOW_unaryExpCS_in_multiplicativeExpCS365);
                     ue=unaryExpCS();
 
                     state._fsp--;
@@ -1216,7 +1419,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "unaryExpCS"
-    // IOCL.g:80:1: unaryExpCS returns [OCLExpressionCS oclExpressionCS] : (dae= dotArrowExpCS | op= ( '+' | '-' | 'not' ) ue= unaryExpCS );
+    // IOCL.g:81:1: unaryExpCS returns [OCLExpressionCS oclExpressionCS] : (dae= dotArrowExpCS | op= ( '+' | '-' | 'not' ) ue= unaryExpCS );
     public final IOCLParser.unaryExpCS_return unaryExpCS() throws RecognitionException {
         IOCLParser.unaryExpCS_return retval = new IOCLParser.unaryExpCS_return();
         retval.start = input.LT(1);
@@ -1232,30 +1435,30 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS op_tree=null;
 
         try {
-            // IOCL.g:81:2: (dae= dotArrowExpCS | op= ( '+' | '-' | 'not' ) ue= unaryExpCS )
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // IOCL.g:82:2: (dae= dotArrowExpCS | op= ( '+' | '-' | 'not' ) ue= unaryExpCS )
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( ((LA7_0>=COLLECTION_TYPE_LITERAL && LA7_0<=REAL_LITERAL)) ) {
-                alt7=1;
+            if ( ((LA9_0>=COLLECTION_TYPE_LITERAL && LA9_0<=REAL_LITERAL)) ) {
+                alt9=1;
             }
-            else if ( ((LA7_0>=20 && LA7_0<=21)||LA7_0==24) ) {
-                alt7=2;
+            else if ( ((LA9_0>=22 && LA9_0<=23)||LA9_0==26) ) {
+                alt9=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
             }
-            switch (alt7) {
+            switch (alt9) {
                 case 1 :
-                    // IOCL.g:81:4: dae= dotArrowExpCS
+                    // IOCL.g:82:4: dae= dotArrowExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_dotArrowExpCS_in_unaryExpCS354);
+                    pushFollow(FOLLOW_dotArrowExpCS_in_unaryExpCS386);
                     dae=dotArrowExpCS();
 
                     state._fsp--;
@@ -1268,12 +1471,12 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:82:4: op= ( '+' | '-' | 'not' ) ue= unaryExpCS
+                    // IOCL.g:83:4: op= ( '+' | '-' | 'not' ) ue= unaryExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
                     op=(Token)input.LT(1);
-                    if ( (input.LA(1)>=20 && input.LA(1)<=21)||input.LA(1)==24 ) {
+                    if ( (input.LA(1)>=22 && input.LA(1)<=23)||input.LA(1)==26 ) {
                         input.consume();
                         if ( state.backtracking==0 ) adaptor.addChild(root_0, (NodeCS)adaptor.create(op));
                         state.errorRecovery=false;state.failed=false;
@@ -1284,7 +1487,7 @@ public class IOCLParser extends IOCLBaseParser {
                         throw mse;
                     }
 
-                    pushFollow(FOLLOW_unaryExpCS_in_unaryExpCS377);
+                    pushFollow(FOLLOW_unaryExpCS_in_unaryExpCS409);
                     ue=unaryExpCS();
 
                     state._fsp--;
@@ -1325,7 +1528,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "dotArrowExpCS"
-    // IOCL.g:85:1: dotArrowExpCS returns [OCLExpressionCS oclExpressionCS] : (ocle= oclExpCS | ocle= oclExpCS pce= propertyCallExp );
+    // IOCL.g:86:1: dotArrowExpCS returns [OCLExpressionCS oclExpressionCS] : (ocle= oclExpCS | ocle= oclExpCS pce= propertyCallExp );
     public final IOCLParser.dotArrowExpCS_return dotArrowExpCS() throws RecognitionException {
         IOCLParser.dotArrowExpCS_return retval = new IOCLParser.dotArrowExpCS_return();
         retval.start = input.LT(1);
@@ -1339,23 +1542,23 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:86:2: (ocle= oclExpCS | ocle= oclExpCS pce= propertyCallExp )
-            int alt8=2;
+            // IOCL.g:87:2: (ocle= oclExpCS | ocle= oclExpCS pce= propertyCallExp )
+            int alt10=2;
             switch ( input.LA(1) ) {
             case COLLECTION_TYPE_LITERAL:
                 {
-                int LA8_1 = input.LA(2);
+                int LA10_1 = input.LA(2);
 
-                if ( (synpred14_IOCL()) ) {
-                    alt8=1;
+                if ( (synpred17_IOCL()) ) {
+                    alt10=1;
                 }
                 else if ( (true) ) {
-                    alt8=2;
+                    alt10=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 1, input);
+                        new NoViableAltException("", 10, 1, input);
 
                     throw nvae;
                 }
@@ -1363,18 +1566,18 @@ public class IOCLParser extends IOCLBaseParser {
                 break;
             case INTEGER_LITERAL:
                 {
-                int LA8_2 = input.LA(2);
+                int LA10_2 = input.LA(2);
 
-                if ( (synpred14_IOCL()) ) {
-                    alt8=1;
+                if ( (synpred17_IOCL()) ) {
+                    alt10=1;
                 }
                 else if ( (true) ) {
-                    alt8=2;
+                    alt10=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 2, input);
+                        new NoViableAltException("", 10, 2, input);
 
                     throw nvae;
                 }
@@ -1382,18 +1585,18 @@ public class IOCLParser extends IOCLBaseParser {
                 break;
             case REAL_LITERAL:
                 {
-                int LA8_3 = input.LA(2);
+                int LA10_3 = input.LA(2);
 
-                if ( (synpred14_IOCL()) ) {
-                    alt8=1;
+                if ( (synpred17_IOCL()) ) {
+                    alt10=1;
                 }
                 else if ( (true) ) {
-                    alt8=2;
+                    alt10=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 3, input);
+                        new NoViableAltException("", 10, 3, input);
 
                     throw nvae;
                 }
@@ -1401,18 +1604,18 @@ public class IOCLParser extends IOCLBaseParser {
                 break;
             case STRING_LITERAL:
                 {
-                int LA8_4 = input.LA(2);
+                int LA10_4 = input.LA(2);
 
-                if ( (synpred14_IOCL()) ) {
-                    alt8=1;
+                if ( (synpred17_IOCL()) ) {
+                    alt10=1;
                 }
                 else if ( (true) ) {
-                    alt8=2;
+                    alt10=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 4, input);
+                        new NoViableAltException("", 10, 4, input);
 
                     throw nvae;
                 }
@@ -1420,18 +1623,18 @@ public class IOCLParser extends IOCLBaseParser {
                 break;
             case BOOLEAN_LITERAL:
                 {
-                int LA8_5 = input.LA(2);
+                int LA10_5 = input.LA(2);
 
-                if ( (synpred14_IOCL()) ) {
-                    alt8=1;
+                if ( (synpred17_IOCL()) ) {
+                    alt10=1;
                 }
                 else if ( (true) ) {
-                    alt8=2;
+                    alt10=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 5, input);
+                        new NoViableAltException("", 10, 5, input);
 
                     throw nvae;
                 }
@@ -1440,18 +1643,18 @@ public class IOCLParser extends IOCLBaseParser {
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt8) {
+            switch (alt10) {
                 case 1 :
-                    // IOCL.g:86:4: ocle= oclExpCS
+                    // IOCL.g:87:4: ocle= oclExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_oclExpCS_in_dotArrowExpCS398);
+                    pushFollow(FOLLOW_oclExpCS_in_dotArrowExpCS430);
                     ocle=oclExpCS();
 
                     state._fsp--;
@@ -1464,17 +1667,17 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:87:4: ocle= oclExpCS pce= propertyCallExp
+                    // IOCL.g:88:4: ocle= oclExpCS pce= propertyCallExp
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_oclExpCS_in_dotArrowExpCS409);
+                    pushFollow(FOLLOW_oclExpCS_in_dotArrowExpCS441);
                     ocle=oclExpCS();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, ocle.getTree());
-                    pushFollow(FOLLOW_propertyCallExp_in_dotArrowExpCS415);
+                    pushFollow(FOLLOW_propertyCallExp_in_dotArrowExpCS447);
                     pce=propertyCallExp();
 
                     state._fsp--;
@@ -1515,7 +1718,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "oclExpCS"
-    // IOCL.g:90:1: oclExpCS returns [OCLExpressionCS oclExpressionCS] : le= literalExpCS ;
+    // IOCL.g:91:1: oclExpCS returns [OCLExpressionCS oclExpressionCS] : le= literalExpCS ;
     public final IOCLParser.oclExpCS_return oclExpCS() throws RecognitionException {
         IOCLParser.oclExpCS_return retval = new IOCLParser.oclExpCS_return();
         retval.start = input.LT(1);
@@ -1527,12 +1730,12 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:91:2: (le= literalExpCS )
-            // IOCL.g:91:4: le= literalExpCS
+            // IOCL.g:92:2: (le= literalExpCS )
+            // IOCL.g:92:4: le= literalExpCS
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_literalExpCS_in_oclExpCS436);
+            pushFollow(FOLLOW_literalExpCS_in_oclExpCS468);
             le=literalExpCS();
 
             state._fsp--;
@@ -1571,7 +1774,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "literalExpCS"
-    // IOCL.g:94:1: literalExpCS returns [OCLExpressionCS oclExpressionCS] : (cle= collectionLiteralExpCS | ple= primitiveLiteralExpCS );
+    // IOCL.g:95:1: literalExpCS returns [OCLExpressionCS oclExpressionCS] : (cle= collectionLiteralExpCS | ple= primitiveLiteralExpCS );
     public final IOCLParser.literalExpCS_return literalExpCS() throws RecognitionException {
         IOCLParser.literalExpCS_return retval = new IOCLParser.literalExpCS_return();
         retval.start = input.LT(1);
@@ -1585,30 +1788,30 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:95:2: (cle= collectionLiteralExpCS | ple= primitiveLiteralExpCS )
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // IOCL.g:96:2: (cle= collectionLiteralExpCS | ple= primitiveLiteralExpCS )
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA9_0==COLLECTION_TYPE_LITERAL) ) {
-                alt9=1;
+            if ( (LA11_0==COLLECTION_TYPE_LITERAL) ) {
+                alt11=1;
             }
-            else if ( ((LA9_0>=STRING_LITERAL && LA9_0<=REAL_LITERAL)) ) {
-                alt9=2;
+            else if ( ((LA11_0>=STRING_LITERAL && LA11_0<=REAL_LITERAL)) ) {
+                alt11=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
-            switch (alt9) {
+            switch (alt11) {
                 case 1 :
-                    // IOCL.g:95:4: cle= collectionLiteralExpCS
+                    // IOCL.g:96:4: cle= collectionLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_collectionLiteralExpCS_in_literalExpCS457);
+                    pushFollow(FOLLOW_collectionLiteralExpCS_in_literalExpCS489);
                     cle=collectionLiteralExpCS();
 
                     state._fsp--;
@@ -1621,11 +1824,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:96:4: ple= primitiveLiteralExpCS
+                    // IOCL.g:97:4: ple= primitiveLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_primitiveLiteralExpCS_in_literalExpCS468);
+                    pushFollow(FOLLOW_primitiveLiteralExpCS_in_literalExpCS500);
                     ple=primitiveLiteralExpCS();
 
                     state._fsp--;
@@ -1666,7 +1869,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "collectionLiteralExpCS"
-    // IOCL.g:99:1: collectionLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}' ;
+    // IOCL.g:100:1: collectionLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}' ;
     public final IOCLParser.collectionLiteralExpCS_return collectionLiteralExpCS() throws RecognitionException {
         IOCLParser.collectionLiteralExpCS_return retval = new IOCLParser.collectionLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -1684,34 +1887,34 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS char_literal2_tree=null;
 
         try {
-            // IOCL.g:100:2: (cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}' )
-            // IOCL.g:100:4: cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}'
+            // IOCL.g:101:2: (cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}' )
+            // IOCL.g:101:4: cti= collectionTypeIdentifierCS '{' (clpts= collectionLiteralPartsCS )? '}'
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_collectionTypeIdentifierCS_in_collectionLiteralExpCS489);
+            pushFollow(FOLLOW_collectionTypeIdentifierCS_in_collectionLiteralExpCS521);
             cti=collectionTypeIdentifierCS();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, cti.getTree());
-            char_literal1=(Token)match(input,25,FOLLOW_25_in_collectionLiteralExpCS491); if (state.failed) return retval;
+            char_literal1=(Token)match(input,27,FOLLOW_27_in_collectionLiteralExpCS523); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             char_literal1_tree = (NodeCS)adaptor.create(char_literal1);
             adaptor.addChild(root_0, char_literal1_tree);
             }
-            // IOCL.g:100:47: (clpts= collectionLiteralPartsCS )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // IOCL.g:101:47: (clpts= collectionLiteralPartsCS )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( ((LA10_0>=COLLECTION_TYPE_LITERAL && LA10_0<=REAL_LITERAL)||(LA10_0>=20 && LA10_0<=21)||LA10_0==24) ) {
-                alt10=1;
+            if ( ((LA12_0>=COLLECTION_TYPE_LITERAL && LA12_0<=REAL_LITERAL)||(LA12_0>=22 && LA12_0<=23)||LA12_0==26) ) {
+                alt12=1;
             }
-            switch (alt10) {
+            switch (alt12) {
                 case 1 :
                     // IOCL.g:0:0: clpts= collectionLiteralPartsCS
                     {
-                    pushFollow(FOLLOW_collectionLiteralPartsCS_in_collectionLiteralExpCS497);
+                    pushFollow(FOLLOW_collectionLiteralPartsCS_in_collectionLiteralExpCS529);
                     clpts=collectionLiteralPartsCS();
 
                     state._fsp--;
@@ -1723,7 +1926,7 @@ public class IOCLParser extends IOCLBaseParser {
 
             }
 
-            char_literal2=(Token)match(input,26,FOLLOW_26_in_collectionLiteralExpCS501); if (state.failed) return retval;
+            char_literal2=(Token)match(input,28,FOLLOW_28_in_collectionLiteralExpCS533); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             char_literal2_tree = (NodeCS)adaptor.create(char_literal2);
             adaptor.addChild(root_0, char_literal2_tree);
@@ -1761,7 +1964,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "collectionTypeIdentifierCS"
-    // IOCL.g:103:1: collectionTypeIdentifierCS returns [OCLExpressionCS oclExpressionCS] : COLLECTION_TYPE_LITERAL ;
+    // IOCL.g:104:1: collectionTypeIdentifierCS returns [OCLExpressionCS oclExpressionCS] : COLLECTION_TYPE_LITERAL ;
     public final IOCLParser.collectionTypeIdentifierCS_return collectionTypeIdentifierCS() throws RecognitionException {
         IOCLParser.collectionTypeIdentifierCS_return retval = new IOCLParser.collectionTypeIdentifierCS_return();
         retval.start = input.LT(1);
@@ -1773,12 +1976,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS COLLECTION_TYPE_LITERAL3_tree=null;
 
         try {
-            // IOCL.g:104:2: ( COLLECTION_TYPE_LITERAL )
-            // IOCL.g:104:4: COLLECTION_TYPE_LITERAL
+            // IOCL.g:105:2: ( COLLECTION_TYPE_LITERAL )
+            // IOCL.g:105:4: COLLECTION_TYPE_LITERAL
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            COLLECTION_TYPE_LITERAL3=(Token)match(input,COLLECTION_TYPE_LITERAL,FOLLOW_COLLECTION_TYPE_LITERAL_in_collectionTypeIdentifierCS519); if (state.failed) return retval;
+            COLLECTION_TYPE_LITERAL3=(Token)match(input,COLLECTION_TYPE_LITERAL,FOLLOW_COLLECTION_TYPE_LITERAL_in_collectionTypeIdentifierCS551); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             COLLECTION_TYPE_LITERAL3_tree = (NodeCS)adaptor.create(COLLECTION_TYPE_LITERAL3);
             adaptor.addChild(root_0, COLLECTION_TYPE_LITERAL3_tree);
@@ -1816,7 +2019,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "collectionLiteralPartsCS"
-    // IOCL.g:107:1: collectionLiteralPartsCS returns [OCLExpressionCS oclExpressionCS] : clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )? ;
+    // IOCL.g:108:1: collectionLiteralPartsCS returns [OCLExpressionCS oclExpressionCS] : clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )? ;
     public final IOCLParser.collectionLiteralPartsCS_return collectionLiteralPartsCS() throws RecognitionException {
         IOCLParser.collectionLiteralPartsCS_return retval = new IOCLParser.collectionLiteralPartsCS_return();
         retval.start = input.LT(1);
@@ -1832,12 +2035,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS char_literal4_tree=null;
 
         try {
-            // IOCL.g:108:2: (clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )? )
-            // IOCL.g:108:4: clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )?
+            // IOCL.g:109:2: (clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )? )
+            // IOCL.g:109:4: clpe= collectionLiteralPartCS ( ',' collectionLiteralPartsCS )?
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_collectionLiteralPartCS_in_collectionLiteralPartsCS540);
+            pushFollow(FOLLOW_collectionLiteralPartCS_in_collectionLiteralPartsCS572);
             clpe=collectionLiteralPartCS();
 
             state._fsp--;
@@ -1846,23 +2049,23 @@ public class IOCLParser extends IOCLBaseParser {
             if ( state.backtracking==0 ) {
                retval.oclExpressionCS = createCollectionLiteralPartsCS((clpe!=null?clpe.oclExpressionCS:null)); 
             }
-            // IOCL.g:108:113: ( ',' collectionLiteralPartsCS )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // IOCL.g:109:113: ( ',' collectionLiteralPartsCS )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA11_0==27) ) {
-                alt11=1;
+            if ( (LA13_0==29) ) {
+                alt13=1;
             }
-            switch (alt11) {
+            switch (alt13) {
                 case 1 :
-                    // IOCL.g:108:114: ',' collectionLiteralPartsCS
+                    // IOCL.g:109:114: ',' collectionLiteralPartsCS
                     {
-                    char_literal4=(Token)match(input,27,FOLLOW_27_in_collectionLiteralPartsCS545); if (state.failed) return retval;
+                    char_literal4=(Token)match(input,29,FOLLOW_29_in_collectionLiteralPartsCS577); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal4_tree = (NodeCS)adaptor.create(char_literal4);
                     adaptor.addChild(root_0, char_literal4_tree);
                     }
-                    pushFollow(FOLLOW_collectionLiteralPartsCS_in_collectionLiteralPartsCS547);
+                    pushFollow(FOLLOW_collectionLiteralPartsCS_in_collectionLiteralPartsCS579);
                     collectionLiteralPartsCS5=collectionLiteralPartsCS();
 
                     state._fsp--;
@@ -1904,7 +2107,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "collectionLiteralPartCS"
-    // IOCL.g:111:1: collectionLiteralPartCS returns [OCLExpressionCS oclExpressionCS] : ocle= oclExpressionCS ;
+    // IOCL.g:112:1: collectionLiteralPartCS returns [OCLExpressionCS oclExpressionCS] : ocle= oclExpressionCS ;
     public final IOCLParser.collectionLiteralPartCS_return collectionLiteralPartCS() throws RecognitionException {
         IOCLParser.collectionLiteralPartCS_return retval = new IOCLParser.collectionLiteralPartCS_return();
         retval.start = input.LT(1);
@@ -1916,12 +2119,12 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:113:2: (ocle= oclExpressionCS )
-            // IOCL.g:113:4: ocle= oclExpressionCS
+            // IOCL.g:114:2: (ocle= oclExpressionCS )
+            // IOCL.g:114:4: ocle= oclExpressionCS
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_oclExpressionCS_in_collectionLiteralPartCS573);
+            pushFollow(FOLLOW_oclExpressionCS_in_collectionLiteralPartCS605);
             ocle=oclExpressionCS();
 
             state._fsp--;
@@ -1960,7 +2163,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "primitiveLiteralExpCS"
-    // IOCL.g:116:1: primitiveLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : (nle= numericLiteralExpCS | sle= stringLiteralExpCS | ble= booleanLiteralExpCS );
+    // IOCL.g:117:1: primitiveLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : (nle= numericLiteralExpCS | sle= stringLiteralExpCS | ble= booleanLiteralExpCS );
     public final IOCLParser.primitiveLiteralExpCS_return primitiveLiteralExpCS() throws RecognitionException {
         IOCLParser.primitiveLiteralExpCS_return retval = new IOCLParser.primitiveLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -1976,40 +2179,40 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:117:2: (nle= numericLiteralExpCS | sle= stringLiteralExpCS | ble= booleanLiteralExpCS )
-            int alt12=3;
+            // IOCL.g:118:2: (nle= numericLiteralExpCS | sle= stringLiteralExpCS | ble= booleanLiteralExpCS )
+            int alt14=3;
             switch ( input.LA(1) ) {
             case INTEGER_LITERAL:
             case REAL_LITERAL:
                 {
-                alt12=1;
+                alt14=1;
                 }
                 break;
             case STRING_LITERAL:
                 {
-                alt12=2;
+                alt14=2;
                 }
                 break;
             case BOOLEAN_LITERAL:
                 {
-                alt12=3;
+                alt14=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt12) {
+            switch (alt14) {
                 case 1 :
-                    // IOCL.g:117:4: nle= numericLiteralExpCS
+                    // IOCL.g:118:4: nle= numericLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS596);
+                    pushFollow(FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS628);
                     nle=numericLiteralExpCS();
 
                     state._fsp--;
@@ -2022,11 +2225,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:118:4: sle= stringLiteralExpCS
+                    // IOCL.g:119:4: sle= stringLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS607);
+                    pushFollow(FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS639);
                     sle=stringLiteralExpCS();
 
                     state._fsp--;
@@ -2039,11 +2242,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:119:4: ble= booleanLiteralExpCS
+                    // IOCL.g:120:4: ble= booleanLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS618);
+                    pushFollow(FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS650);
                     ble=booleanLiteralExpCS();
 
                     state._fsp--;
@@ -2084,7 +2287,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "numericLiteralExpCS"
-    // IOCL.g:122:1: numericLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : (ile= integerLiteralExpCS | rle= realLiteralExpCS );
+    // IOCL.g:123:1: numericLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : (ile= integerLiteralExpCS | rle= realLiteralExpCS );
     public final IOCLParser.numericLiteralExpCS_return numericLiteralExpCS() throws RecognitionException {
         IOCLParser.numericLiteralExpCS_return retval = new IOCLParser.numericLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -2098,30 +2301,30 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:123:2: (ile= integerLiteralExpCS | rle= realLiteralExpCS )
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // IOCL.g:124:2: (ile= integerLiteralExpCS | rle= realLiteralExpCS )
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA13_0==INTEGER_LITERAL) ) {
-                alt13=1;
+            if ( (LA15_0==INTEGER_LITERAL) ) {
+                alt15=1;
             }
-            else if ( (LA13_0==REAL_LITERAL) ) {
-                alt13=2;
+            else if ( (LA15_0==REAL_LITERAL) ) {
+                alt15=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt15) {
                 case 1 :
-                    // IOCL.g:123:4: ile= integerLiteralExpCS
+                    // IOCL.g:124:4: ile= integerLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS639);
+                    pushFollow(FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS671);
                     ile=integerLiteralExpCS();
 
                     state._fsp--;
@@ -2134,11 +2337,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:124:4: rle= realLiteralExpCS
+                    // IOCL.g:125:4: rle= realLiteralExpCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_realLiteralExpCS_in_numericLiteralExpCS650);
+                    pushFollow(FOLLOW_realLiteralExpCS_in_numericLiteralExpCS682);
                     rle=realLiteralExpCS();
 
                     state._fsp--;
@@ -2179,7 +2382,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "stringLiteralExpCS"
-    // IOCL.g:127:1: stringLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : STRING_LITERAL ;
+    // IOCL.g:128:1: stringLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : STRING_LITERAL ;
     public final IOCLParser.stringLiteralExpCS_return stringLiteralExpCS() throws RecognitionException {
         IOCLParser.stringLiteralExpCS_return retval = new IOCLParser.stringLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -2191,12 +2394,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS STRING_LITERAL6_tree=null;
 
         try {
-            // IOCL.g:128:2: ( STRING_LITERAL )
-            // IOCL.g:128:4: STRING_LITERAL
+            // IOCL.g:129:2: ( STRING_LITERAL )
+            // IOCL.g:129:4: STRING_LITERAL
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            STRING_LITERAL6=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_stringLiteralExpCS671); if (state.failed) return retval;
+            STRING_LITERAL6=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_stringLiteralExpCS703); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             STRING_LITERAL6_tree = (NodeCS)adaptor.create(STRING_LITERAL6);
             adaptor.addChild(root_0, STRING_LITERAL6_tree);
@@ -2234,7 +2437,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "booleanLiteralExpCS"
-    // IOCL.g:131:1: booleanLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : BOOLEAN_LITERAL ;
+    // IOCL.g:132:1: booleanLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : BOOLEAN_LITERAL ;
     public final IOCLParser.booleanLiteralExpCS_return booleanLiteralExpCS() throws RecognitionException {
         IOCLParser.booleanLiteralExpCS_return retval = new IOCLParser.booleanLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -2246,12 +2449,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS BOOLEAN_LITERAL7_tree=null;
 
         try {
-            // IOCL.g:132:2: ( BOOLEAN_LITERAL )
-            // IOCL.g:132:4: BOOLEAN_LITERAL
+            // IOCL.g:133:2: ( BOOLEAN_LITERAL )
+            // IOCL.g:133:4: BOOLEAN_LITERAL
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            BOOLEAN_LITERAL7=(Token)match(input,BOOLEAN_LITERAL,FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS688); if (state.failed) return retval;
+            BOOLEAN_LITERAL7=(Token)match(input,BOOLEAN_LITERAL,FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS720); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             BOOLEAN_LITERAL7_tree = (NodeCS)adaptor.create(BOOLEAN_LITERAL7);
             adaptor.addChild(root_0, BOOLEAN_LITERAL7_tree);
@@ -2289,7 +2492,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "integerLiteralExpCS"
-    // IOCL.g:135:1: integerLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : INTEGER_LITERAL ;
+    // IOCL.g:136:1: integerLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : INTEGER_LITERAL ;
     public final IOCLParser.integerLiteralExpCS_return integerLiteralExpCS() throws RecognitionException {
         IOCLParser.integerLiteralExpCS_return retval = new IOCLParser.integerLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -2301,12 +2504,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS INTEGER_LITERAL8_tree=null;
 
         try {
-            // IOCL.g:136:2: ( INTEGER_LITERAL )
-            // IOCL.g:136:4: INTEGER_LITERAL
+            // IOCL.g:137:2: ( INTEGER_LITERAL )
+            // IOCL.g:137:4: INTEGER_LITERAL
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            INTEGER_LITERAL8=(Token)match(input,INTEGER_LITERAL,FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS705); if (state.failed) return retval;
+            INTEGER_LITERAL8=(Token)match(input,INTEGER_LITERAL,FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS737); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTEGER_LITERAL8_tree = (NodeCS)adaptor.create(INTEGER_LITERAL8);
             adaptor.addChild(root_0, INTEGER_LITERAL8_tree);
@@ -2344,7 +2547,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "realLiteralExpCS"
-    // IOCL.g:139:1: realLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : REAL_LITERAL ;
+    // IOCL.g:140:1: realLiteralExpCS returns [OCLExpressionCS oclExpressionCS] : REAL_LITERAL ;
     public final IOCLParser.realLiteralExpCS_return realLiteralExpCS() throws RecognitionException {
         IOCLParser.realLiteralExpCS_return retval = new IOCLParser.realLiteralExpCS_return();
         retval.start = input.LT(1);
@@ -2356,12 +2559,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS REAL_LITERAL9_tree=null;
 
         try {
-            // IOCL.g:140:2: ( REAL_LITERAL )
-            // IOCL.g:140:4: REAL_LITERAL
+            // IOCL.g:141:2: ( REAL_LITERAL )
+            // IOCL.g:141:4: REAL_LITERAL
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            REAL_LITERAL9=(Token)match(input,REAL_LITERAL,FOLLOW_REAL_LITERAL_in_realLiteralExpCS723); if (state.failed) return retval;
+            REAL_LITERAL9=(Token)match(input,REAL_LITERAL,FOLLOW_REAL_LITERAL_in_realLiteralExpCS755); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             REAL_LITERAL9_tree = (NodeCS)adaptor.create(REAL_LITERAL9);
             adaptor.addChild(root_0, REAL_LITERAL9_tree);
@@ -2399,7 +2602,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "propertyCallExp"
-    // IOCL.g:143:1: propertyCallExp returns [OCLExpressionCS oclExpressionCS] : ( '->' modelPropertyCallExp | '.' mpce= modelPropertyCallExp );
+    // IOCL.g:144:1: propertyCallExp returns [OCLExpressionCS oclExpressionCS] : ( '->' modelPropertyCallExp | '.' mpce= modelPropertyCallExp );
     public final IOCLParser.propertyCallExp_return propertyCallExp() throws RecognitionException {
         IOCLParser.propertyCallExp_return retval = new IOCLParser.propertyCallExp_return();
         retval.start = input.LT(1);
@@ -2417,35 +2620,35 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS char_literal12_tree=null;
 
         try {
-            // IOCL.g:144:2: ( '->' modelPropertyCallExp | '.' mpce= modelPropertyCallExp )
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // IOCL.g:145:2: ( '->' modelPropertyCallExp | '.' mpce= modelPropertyCallExp )
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA14_0==28) ) {
-                alt14=1;
+            if ( (LA16_0==30) ) {
+                alt16=1;
             }
-            else if ( (LA14_0==29) ) {
-                alt14=2;
+            else if ( (LA16_0==31) ) {
+                alt16=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt14) {
+            switch (alt16) {
                 case 1 :
-                    // IOCL.g:144:4: '->' modelPropertyCallExp
+                    // IOCL.g:145:4: '->' modelPropertyCallExp
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    string_literal10=(Token)match(input,28,FOLLOW_28_in_propertyCallExp740); if (state.failed) return retval;
+                    string_literal10=(Token)match(input,30,FOLLOW_30_in_propertyCallExp772); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     string_literal10_tree = (NodeCS)adaptor.create(string_literal10);
                     adaptor.addChild(root_0, string_literal10_tree);
                     }
-                    pushFollow(FOLLOW_modelPropertyCallExp_in_propertyCallExp742);
+                    pushFollow(FOLLOW_modelPropertyCallExp_in_propertyCallExp774);
                     modelPropertyCallExp11=modelPropertyCallExp();
 
                     state._fsp--;
@@ -2455,16 +2658,16 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:145:4: '.' mpce= modelPropertyCallExp
+                    // IOCL.g:146:4: '.' mpce= modelPropertyCallExp
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    char_literal12=(Token)match(input,29,FOLLOW_29_in_propertyCallExp747); if (state.failed) return retval;
+                    char_literal12=(Token)match(input,31,FOLLOW_31_in_propertyCallExp779); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal12_tree = (NodeCS)adaptor.create(char_literal12);
                     adaptor.addChild(root_0, char_literal12_tree);
                     }
-                    pushFollow(FOLLOW_modelPropertyCallExp_in_propertyCallExp753);
+                    pushFollow(FOLLOW_modelPropertyCallExp_in_propertyCallExp785);
                     mpce=modelPropertyCallExp();
 
                     state._fsp--;
@@ -2505,7 +2708,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "modelPropertyCallExp"
-    // IOCL.g:148:1: modelPropertyCallExp returns [OCLExpressionCS oclExpressionCS] : oce= operationCallExpCS ;
+    // IOCL.g:149:1: modelPropertyCallExp returns [OCLExpressionCS oclExpressionCS] : oce= operationCallExpCS ;
     public final IOCLParser.modelPropertyCallExp_return modelPropertyCallExp() throws RecognitionException {
         IOCLParser.modelPropertyCallExp_return retval = new IOCLParser.modelPropertyCallExp_return();
         retval.start = input.LT(1);
@@ -2517,12 +2720,12 @@ public class IOCLParser extends IOCLBaseParser {
 
 
         try {
-            // IOCL.g:149:2: (oce= operationCallExpCS )
-            // IOCL.g:149:4: oce= operationCallExpCS
+            // IOCL.g:150:2: (oce= operationCallExpCS )
+            // IOCL.g:150:4: oce= operationCallExpCS
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_operationCallExpCS_in_modelPropertyCallExp774);
+            pushFollow(FOLLOW_operationCallExpCS_in_modelPropertyCallExp806);
             oce=operationCallExpCS();
 
             state._fsp--;
@@ -2561,7 +2764,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "operationCallExpCS"
-    // IOCL.g:152:1: operationCallExpCS returns [OCLExpressionCS oclExpressionCS] : bn= binaryName '(' (args= argumentsCS )? ')' ;
+    // IOCL.g:153:1: operationCallExpCS returns [OCLExpressionCS oclExpressionCS] : bn= binaryName '(' (args= argumentsCS )? ')' ;
     public final IOCLParser.operationCallExpCS_return operationCallExpCS() throws RecognitionException {
         IOCLParser.operationCallExpCS_return retval = new IOCLParser.operationCallExpCS_return();
         retval.start = input.LT(1);
@@ -2579,34 +2782,34 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS char_literal14_tree=null;
 
         try {
-            // IOCL.g:153:2: (bn= binaryName '(' (args= argumentsCS )? ')' )
-            // IOCL.g:153:5: bn= binaryName '(' (args= argumentsCS )? ')'
+            // IOCL.g:154:2: (bn= binaryName '(' (args= argumentsCS )? ')' )
+            // IOCL.g:154:5: bn= binaryName '(' (args= argumentsCS )? ')'
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_binaryName_in_operationCallExpCS796);
+            pushFollow(FOLLOW_binaryName_in_operationCallExpCS828);
             bn=binaryName();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, bn.getTree());
-            char_literal13=(Token)match(input,30,FOLLOW_30_in_operationCallExpCS798); if (state.failed) return retval;
+            char_literal13=(Token)match(input,32,FOLLOW_32_in_operationCallExpCS830); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             char_literal13_tree = (NodeCS)adaptor.create(char_literal13);
             adaptor.addChild(root_0, char_literal13_tree);
             }
-            // IOCL.g:153:25: (args= argumentsCS )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // IOCL.g:154:25: (args= argumentsCS )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( ((LA15_0>=COLLECTION_TYPE_LITERAL && LA15_0<=REAL_LITERAL)||(LA15_0>=20 && LA15_0<=21)||LA15_0==24) ) {
-                alt15=1;
+            if ( ((LA17_0>=COLLECTION_TYPE_LITERAL && LA17_0<=REAL_LITERAL)||(LA17_0>=22 && LA17_0<=23)||LA17_0==26) ) {
+                alt17=1;
             }
-            switch (alt15) {
+            switch (alt17) {
                 case 1 :
-                    // IOCL.g:153:27: args= argumentsCS
+                    // IOCL.g:154:27: args= argumentsCS
                     {
-                    pushFollow(FOLLOW_argumentsCS_in_operationCallExpCS806);
+                    pushFollow(FOLLOW_argumentsCS_in_operationCallExpCS838);
                     args=argumentsCS();
 
                     state._fsp--;
@@ -2618,7 +2821,7 @@ public class IOCLParser extends IOCLBaseParser {
 
             }
 
-            char_literal14=(Token)match(input,31,FOLLOW_31_in_operationCallExpCS810); if (state.failed) return retval;
+            char_literal14=(Token)match(input,33,FOLLOW_33_in_operationCallExpCS842); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             char_literal14_tree = (NodeCS)adaptor.create(char_literal14);
             adaptor.addChild(root_0, char_literal14_tree);
@@ -2656,7 +2859,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "binaryName"
-    // IOCL.g:156:1: binaryName returns [OCLExpressionCS oclExpressionCS] : (sn= simpleNameCS | BINARY_OPERATOR );
+    // IOCL.g:157:1: binaryName returns [OCLExpressionCS oclExpressionCS] : (sn= simpleNameCS | BINARY_OPERATOR );
     public final IOCLParser.binaryName_return binaryName() throws RecognitionException {
         IOCLParser.binaryName_return retval = new IOCLParser.binaryName_return();
         retval.start = input.LT(1);
@@ -2670,30 +2873,30 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS BINARY_OPERATOR15_tree=null;
 
         try {
-            // IOCL.g:157:2: (sn= simpleNameCS | BINARY_OPERATOR )
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // IOCL.g:158:2: (sn= simpleNameCS | BINARY_OPERATOR )
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA16_0==IDENTIFIER||(LA16_0>=32 && LA16_0<=33)) ) {
-                alt16=1;
+            if ( (LA18_0==IDENTIFIER||(LA18_0>=34 && LA18_0<=35)) ) {
+                alt18=1;
             }
-            else if ( (LA16_0==BINARY_OPERATOR) ) {
-                alt16=2;
+            else if ( (LA18_0==BINARY_OPERATOR) ) {
+                alt18=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt16) {
+            switch (alt18) {
                 case 1 :
-                    // IOCL.g:157:4: sn= simpleNameCS
+                    // IOCL.g:158:4: sn= simpleNameCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_simpleNameCS_in_binaryName831);
+                    pushFollow(FOLLOW_simpleNameCS_in_binaryName863);
                     sn=simpleNameCS();
 
                     state._fsp--;
@@ -2706,11 +2909,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:158:4: BINARY_OPERATOR
+                    // IOCL.g:159:4: BINARY_OPERATOR
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    BINARY_OPERATOR15=(Token)match(input,BINARY_OPERATOR,FOLLOW_BINARY_OPERATOR_in_binaryName838); if (state.failed) return retval;
+                    BINARY_OPERATOR15=(Token)match(input,BINARY_OPERATOR,FOLLOW_BINARY_OPERATOR_in_binaryName870); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     BINARY_OPERATOR15_tree = (NodeCS)adaptor.create(BINARY_OPERATOR15);
                     adaptor.addChild(root_0, BINARY_OPERATOR15_tree);
@@ -2747,7 +2950,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "simpleNameCS"
-    // IOCL.g:161:1: simpleNameCS returns [OCLExpressionCS oclExpressionCS] : ( primitiveTypeCS | 'self' | IDENTIFIER );
+    // IOCL.g:162:1: simpleNameCS returns [OCLExpressionCS oclExpressionCS] : ( primitiveTypeCS | 'self' | IDENTIFIER );
     public final IOCLParser.simpleNameCS_return simpleNameCS() throws RecognitionException {
         IOCLParser.simpleNameCS_return retval = new IOCLParser.simpleNameCS_return();
         retval.start = input.LT(1);
@@ -2763,39 +2966,39 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS IDENTIFIER18_tree=null;
 
         try {
-            // IOCL.g:162:2: ( primitiveTypeCS | 'self' | IDENTIFIER )
-            int alt17=3;
+            // IOCL.g:163:2: ( primitiveTypeCS | 'self' | IDENTIFIER )
+            int alt19=3;
             switch ( input.LA(1) ) {
-            case 33:
+            case 35:
                 {
-                alt17=1;
+                alt19=1;
                 }
                 break;
-            case 32:
+            case 34:
                 {
-                alt17=2;
+                alt19=2;
                 }
                 break;
             case IDENTIFIER:
                 {
-                alt17=3;
+                alt19=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt19) {
                 case 1 :
-                    // IOCL.g:162:4: primitiveTypeCS
+                    // IOCL.g:163:4: primitiveTypeCS
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    pushFollow(FOLLOW_primitiveTypeCS_in_simpleNameCS853);
+                    pushFollow(FOLLOW_primitiveTypeCS_in_simpleNameCS885);
                     primitiveTypeCS16=primitiveTypeCS();
 
                     state._fsp--;
@@ -2805,11 +3008,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:163:4: 'self'
+                    // IOCL.g:164:4: 'self'
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    string_literal17=(Token)match(input,32,FOLLOW_32_in_simpleNameCS858); if (state.failed) return retval;
+                    string_literal17=(Token)match(input,34,FOLLOW_34_in_simpleNameCS890); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     string_literal17_tree = (NodeCS)adaptor.create(string_literal17);
                     adaptor.addChild(root_0, string_literal17_tree);
@@ -2818,11 +3021,11 @@ public class IOCLParser extends IOCLBaseParser {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:164:4: IDENTIFIER
+                    // IOCL.g:165:4: IDENTIFIER
                     {
                     root_0 = (NodeCS)adaptor.nil();
 
-                    IDENTIFIER18=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_simpleNameCS863); if (state.failed) return retval;
+                    IDENTIFIER18=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_simpleNameCS895); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER18_tree = (NodeCS)adaptor.create(IDENTIFIER18);
                     adaptor.addChild(root_0, IDENTIFIER18_tree);
@@ -2861,7 +3064,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "primitiveTypeCS"
-    // IOCL.g:167:1: primitiveTypeCS : 'Integer' ;
+    // IOCL.g:168:1: primitiveTypeCS : 'Integer' ;
     public final IOCLParser.primitiveTypeCS_return primitiveTypeCS() throws RecognitionException {
         IOCLParser.primitiveTypeCS_return retval = new IOCLParser.primitiveTypeCS_return();
         retval.start = input.LT(1);
@@ -2873,12 +3076,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS string_literal19_tree=null;
 
         try {
-            // IOCL.g:168:2: ( 'Integer' )
-            // IOCL.g:168:4: 'Integer'
+            // IOCL.g:169:2: ( 'Integer' )
+            // IOCL.g:169:4: 'Integer'
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            string_literal19=(Token)match(input,33,FOLLOW_33_in_primitiveTypeCS876); if (state.failed) return retval;
+            string_literal19=(Token)match(input,35,FOLLOW_35_in_primitiveTypeCS908); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             string_literal19_tree = (NodeCS)adaptor.create(string_literal19);
             adaptor.addChild(root_0, string_literal19_tree);
@@ -2913,7 +3116,7 @@ public class IOCLParser extends IOCLBaseParser {
     };
 
     // $ANTLR start "argumentsCS"
-    // IOCL.g:171:1: argumentsCS returns [ArgumentsCS argumentsCS] : ocle= oclExpressionCS ( ',' argumentsCS )? ;
+    // IOCL.g:172:1: argumentsCS returns [ArgumentsCS argumentsCS] : ocle= oclExpressionCS ( ',' argumentsCS )? ;
     public final IOCLParser.argumentsCS_return argumentsCS() throws RecognitionException {
         IOCLParser.argumentsCS_return retval = new IOCLParser.argumentsCS_return();
         retval.start = input.LT(1);
@@ -2929,12 +3132,12 @@ public class IOCLParser extends IOCLBaseParser {
         NodeCS char_literal20_tree=null;
 
         try {
-            // IOCL.g:172:2: (ocle= oclExpressionCS ( ',' argumentsCS )? )
-            // IOCL.g:172:4: ocle= oclExpressionCS ( ',' argumentsCS )?
+            // IOCL.g:173:2: (ocle= oclExpressionCS ( ',' argumentsCS )? )
+            // IOCL.g:173:4: ocle= oclExpressionCS ( ',' argumentsCS )?
             {
             root_0 = (NodeCS)adaptor.nil();
 
-            pushFollow(FOLLOW_oclExpressionCS_in_argumentsCS896);
+            pushFollow(FOLLOW_oclExpressionCS_in_argumentsCS928);
             ocle=oclExpressionCS();
 
             state._fsp--;
@@ -2943,23 +3146,23 @@ public class IOCLParser extends IOCLBaseParser {
             if ( state.backtracking==0 ) {
                retval.argumentsCS = createArgumentsCS((ocle!=null?ocle.oclExpressionCS:null)); 
             }
-            // IOCL.g:172:88: ( ',' argumentsCS )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // IOCL.g:173:88: ( ',' argumentsCS )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA18_0==27) ) {
-                alt18=1;
+            if ( (LA20_0==29) ) {
+                alt20=1;
             }
-            switch (alt18) {
+            switch (alt20) {
                 case 1 :
-                    // IOCL.g:172:90: ',' argumentsCS
+                    // IOCL.g:173:90: ',' argumentsCS
                     {
-                    char_literal20=(Token)match(input,27,FOLLOW_27_in_argumentsCS902); if (state.failed) return retval;
+                    char_literal20=(Token)match(input,29,FOLLOW_29_in_argumentsCS934); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal20_tree = (NodeCS)adaptor.create(char_literal20);
                     adaptor.addChild(root_0, char_literal20_tree);
                     }
-                    pushFollow(FOLLOW_argumentsCS_in_argumentsCS904);
+                    pushFollow(FOLLOW_argumentsCS_in_argumentsCS936);
                     argumentsCS21=argumentsCS();
 
                     state._fsp--;
@@ -3011,18 +3214,18 @@ public class IOCLParser extends IOCLBaseParser {
         state._fsp--;
         if (state.failed) return ;
         // IOCL.g:54:24: (op= ( 'and' | 'or' | 'xor' ) ee2= equalityExpCS )+
-        int cnt19=0;
-        loop19:
+        int cnt21=0;
+        loop21:
         do {
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( ((LA19_0>=17 && LA19_0<=19)) ) {
-                alt19=1;
+            if ( ((LA21_0>=17 && LA21_0<=19)) ) {
+                alt21=1;
             }
 
 
-            switch (alt19) {
+            switch (alt21) {
         	case 1 :
         	    // IOCL.g:54:26: op= ( 'and' | 'or' | 'xor' ) ee2= equalityExpCS
         	    {
@@ -3047,140 +3250,6 @@ public class IOCLParser extends IOCLBaseParser {
         	    break;
 
         	default :
-        	    if ( cnt19 >= 1 ) break loop19;
-        	    if (state.backtracking>0) {state.failed=true; return ;}
-                    EarlyExitException eee =
-                        new EarlyExitException(19, input);
-                    throw eee;
-            }
-            cnt19++;
-        } while (true);
-
-
-        }
-    }
-    // $ANTLR end synpred4_IOCL
-
-    // $ANTLR start synpred7_IOCL
-    public final void synpred7_IOCL_fragment() throws RecognitionException {   
-        Token op=null;
-        IOCLParser.multiplicativeExpCS_return me1 = null;
-
-        IOCLParser.multiplicativeExpCS_return me2 = null;
-
-
-        // IOCL.g:71:4: (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ )
-        // IOCL.g:71:4: me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
-        {
-        pushFollow(FOLLOW_multiplicativeExpCS_in_synpred7_IOCL245);
-        me1=multiplicativeExpCS();
-
-        state._fsp--;
-        if (state.failed) return ;
-        // IOCL.g:71:75: (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
-        int cnt20=0;
-        loop20:
-        do {
-            int alt20=2;
-            int LA20_0 = input.LA(1);
-
-            if ( ((LA20_0>=20 && LA20_0<=21)) ) {
-                alt20=1;
-            }
-
-
-            switch (alt20) {
-        	case 1 :
-        	    // IOCL.g:71:76: op= ( '+' | '-' ) me2= multiplicativeExpCS
-        	    {
-        	    op=(Token)input.LT(1);
-        	    if ( (input.LA(1)>=20 && input.LA(1)<=21) ) {
-        	        input.consume();
-        	        state.errorRecovery=false;state.failed=false;
-        	    }
-        	    else {
-        	        if (state.backtracking>0) {state.failed=true; return ;}
-        	        MismatchedSetException mse = new MismatchedSetException(null,input);
-        	        throw mse;
-        	    }
-
-        	    pushFollow(FOLLOW_multiplicativeExpCS_in_synpred7_IOCL264);
-        	    me2=multiplicativeExpCS();
-
-        	    state._fsp--;
-        	    if (state.failed) return ;
-
-        	    }
-        	    break;
-
-        	default :
-        	    if ( cnt20 >= 1 ) break loop20;
-        	    if (state.backtracking>0) {state.failed=true; return ;}
-                    EarlyExitException eee =
-                        new EarlyExitException(20, input);
-                    throw eee;
-            }
-            cnt20++;
-        } while (true);
-
-
-        }
-    }
-    // $ANTLR end synpred7_IOCL
-
-    // $ANTLR start synpred10_IOCL
-    public final void synpred10_IOCL_fragment() throws RecognitionException {   
-        Token op=null;
-        IOCLParser.unaryExpCS_return ue1 = null;
-
-        IOCLParser.unaryExpCS_return ue2 = null;
-
-
-        // IOCL.g:76:4: (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ )
-        // IOCL.g:76:4: ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+
-        {
-        pushFollow(FOLLOW_unaryExpCS_in_synpred10_IOCL299);
-        ue1=unaryExpCS();
-
-        state._fsp--;
-        if (state.failed) return ;
-        // IOCL.g:76:66: (op= ( '*' | '/' ) ue2= unaryExpCS )+
-        int cnt21=0;
-        loop21:
-        do {
-            int alt21=2;
-            int LA21_0 = input.LA(1);
-
-            if ( ((LA21_0>=22 && LA21_0<=23)) ) {
-                alt21=1;
-            }
-
-
-            switch (alt21) {
-        	case 1 :
-        	    // IOCL.g:76:68: op= ( '*' | '/' ) ue2= unaryExpCS
-        	    {
-        	    op=(Token)input.LT(1);
-        	    if ( (input.LA(1)>=22 && input.LA(1)<=23) ) {
-        	        input.consume();
-        	        state.errorRecovery=false;state.failed=false;
-        	    }
-        	    else {
-        	        if (state.backtracking>0) {state.failed=true; return ;}
-        	        MismatchedSetException mse = new MismatchedSetException(null,input);
-        	        throw mse;
-        	    }
-
-        	    pushFollow(FOLLOW_unaryExpCS_in_synpred10_IOCL319);
-        	    ue2=unaryExpCS();
-
-        	    state._fsp--;
-        	    if (state.failed) return ;
-
-        	    }
-        	    break;
-
-        	default :
         	    if ( cnt21 >= 1 ) break loop21;
         	    if (state.backtracking>0) {state.failed=true; return ;}
                     EarlyExitException eee =
@@ -3193,17 +3262,218 @@ public class IOCLParser extends IOCLBaseParser {
 
         }
     }
+    // $ANTLR end synpred4_IOCL
+
+    // $ANTLR start synpred7_IOCL
+    public final void synpred7_IOCL_fragment() throws RecognitionException {   
+        Token op=null;
+        IOCLParser.relationalExpCS_return rele1 = null;
+
+        IOCLParser.relationalExpCS_return rele2 = null;
+
+
+        // IOCL.g:59:4: (rele1= relationalExpCS (op= ( '<>' | '=' ) rele2= relationalExpCS )+ )
+        // IOCL.g:59:4: rele1= relationalExpCS (op= ( '<>' | '=' ) rele2= relationalExpCS )+
+        {
+        pushFollow(FOLLOW_relationalExpCS_in_synpred7_IOCL179);
+        rele1=relationalExpCS();
+
+        state._fsp--;
+        if (state.failed) return ;
+        // IOCL.g:59:28: (op= ( '<>' | '=' ) rele2= relationalExpCS )+
+        int cnt22=0;
+        loop22:
+        do {
+            int alt22=2;
+            int LA22_0 = input.LA(1);
+
+            if ( ((LA22_0>=20 && LA22_0<=21)) ) {
+                alt22=1;
+            }
+
+
+            switch (alt22) {
+        	case 1 :
+        	    // IOCL.g:59:30: op= ( '<>' | '=' ) rele2= relationalExpCS
+        	    {
+        	    op=(Token)input.LT(1);
+        	    if ( (input.LA(1)>=20 && input.LA(1)<=21) ) {
+        	        input.consume();
+        	        state.errorRecovery=false;state.failed=false;
+        	    }
+        	    else {
+        	        if (state.backtracking>0) {state.failed=true; return ;}
+        	        MismatchedSetException mse = new MismatchedSetException(null,input);
+        	        throw mse;
+        	    }
+
+        	    pushFollow(FOLLOW_relationalExpCS_in_synpred7_IOCL197);
+        	    rele2=relationalExpCS();
+
+        	    state._fsp--;
+        	    if (state.failed) return ;
+
+        	    }
+        	    break;
+
+        	default :
+        	    if ( cnt22 >= 1 ) break loop22;
+        	    if (state.backtracking>0) {state.failed=true; return ;}
+                    EarlyExitException eee =
+                        new EarlyExitException(22, input);
+                    throw eee;
+            }
+            cnt22++;
+        } while (true);
+
+
+        }
+    }
+    // $ANTLR end synpred7_IOCL
+
+    // $ANTLR start synpred10_IOCL
+    public final void synpred10_IOCL_fragment() throws RecognitionException {   
+        Token op=null;
+        IOCLParser.multiplicativeExpCS_return me1 = null;
+
+        IOCLParser.multiplicativeExpCS_return me2 = null;
+
+
+        // IOCL.g:72:4: (me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+ )
+        // IOCL.g:72:4: me1= multiplicativeExpCS (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
+        {
+        pushFollow(FOLLOW_multiplicativeExpCS_in_synpred10_IOCL277);
+        me1=multiplicativeExpCS();
+
+        state._fsp--;
+        if (state.failed) return ;
+        // IOCL.g:72:75: (op= ( '+' | '-' ) me2= multiplicativeExpCS )+
+        int cnt23=0;
+        loop23:
+        do {
+            int alt23=2;
+            int LA23_0 = input.LA(1);
+
+            if ( ((LA23_0>=22 && LA23_0<=23)) ) {
+                alt23=1;
+            }
+
+
+            switch (alt23) {
+        	case 1 :
+        	    // IOCL.g:72:76: op= ( '+' | '-' ) me2= multiplicativeExpCS
+        	    {
+        	    op=(Token)input.LT(1);
+        	    if ( (input.LA(1)>=22 && input.LA(1)<=23) ) {
+        	        input.consume();
+        	        state.errorRecovery=false;state.failed=false;
+        	    }
+        	    else {
+        	        if (state.backtracking>0) {state.failed=true; return ;}
+        	        MismatchedSetException mse = new MismatchedSetException(null,input);
+        	        throw mse;
+        	    }
+
+        	    pushFollow(FOLLOW_multiplicativeExpCS_in_synpred10_IOCL296);
+        	    me2=multiplicativeExpCS();
+
+        	    state._fsp--;
+        	    if (state.failed) return ;
+
+        	    }
+        	    break;
+
+        	default :
+        	    if ( cnt23 >= 1 ) break loop23;
+        	    if (state.backtracking>0) {state.failed=true; return ;}
+                    EarlyExitException eee =
+                        new EarlyExitException(23, input);
+                    throw eee;
+            }
+            cnt23++;
+        } while (true);
+
+
+        }
+    }
     // $ANTLR end synpred10_IOCL
 
-    // $ANTLR start synpred14_IOCL
-    public final void synpred14_IOCL_fragment() throws RecognitionException {   
+    // $ANTLR start synpred13_IOCL
+    public final void synpred13_IOCL_fragment() throws RecognitionException {   
+        Token op=null;
+        IOCLParser.unaryExpCS_return ue1 = null;
+
+        IOCLParser.unaryExpCS_return ue2 = null;
+
+
+        // IOCL.g:77:4: (ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+ )
+        // IOCL.g:77:4: ue1= unaryExpCS (op= ( '*' | '/' ) ue2= unaryExpCS )+
+        {
+        pushFollow(FOLLOW_unaryExpCS_in_synpred13_IOCL331);
+        ue1=unaryExpCS();
+
+        state._fsp--;
+        if (state.failed) return ;
+        // IOCL.g:77:66: (op= ( '*' | '/' ) ue2= unaryExpCS )+
+        int cnt24=0;
+        loop24:
+        do {
+            int alt24=2;
+            int LA24_0 = input.LA(1);
+
+            if ( ((LA24_0>=24 && LA24_0<=25)) ) {
+                alt24=1;
+            }
+
+
+            switch (alt24) {
+        	case 1 :
+        	    // IOCL.g:77:68: op= ( '*' | '/' ) ue2= unaryExpCS
+        	    {
+        	    op=(Token)input.LT(1);
+        	    if ( (input.LA(1)>=24 && input.LA(1)<=25) ) {
+        	        input.consume();
+        	        state.errorRecovery=false;state.failed=false;
+        	    }
+        	    else {
+        	        if (state.backtracking>0) {state.failed=true; return ;}
+        	        MismatchedSetException mse = new MismatchedSetException(null,input);
+        	        throw mse;
+        	    }
+
+        	    pushFollow(FOLLOW_unaryExpCS_in_synpred13_IOCL351);
+        	    ue2=unaryExpCS();
+
+        	    state._fsp--;
+        	    if (state.failed) return ;
+
+        	    }
+        	    break;
+
+        	default :
+        	    if ( cnt24 >= 1 ) break loop24;
+        	    if (state.backtracking>0) {state.failed=true; return ;}
+                    EarlyExitException eee =
+                        new EarlyExitException(24, input);
+                    throw eee;
+            }
+            cnt24++;
+        } while (true);
+
+
+        }
+    }
+    // $ANTLR end synpred13_IOCL
+
+    // $ANTLR start synpred17_IOCL
+    public final void synpred17_IOCL_fragment() throws RecognitionException {   
         IOCLParser.oclExpCS_return ocle = null;
 
 
-        // IOCL.g:86:4: (ocle= oclExpCS )
-        // IOCL.g:86:4: ocle= oclExpCS
+        // IOCL.g:87:4: (ocle= oclExpCS )
+        // IOCL.g:87:4: ocle= oclExpCS
         {
-        pushFollow(FOLLOW_oclExpCS_in_synpred14_IOCL398);
+        pushFollow(FOLLOW_oclExpCS_in_synpred17_IOCL430);
         ocle=oclExpCS();
 
         state._fsp--;
@@ -3211,7 +3481,7 @@ public class IOCLParser extends IOCLBaseParser {
 
         }
     }
-    // $ANTLR end synpred14_IOCL
+    // $ANTLR end synpred17_IOCL
 
     // Delegated rules
 
@@ -3220,6 +3490,20 @@ public class IOCLParser extends IOCLBaseParser {
         int start = input.mark();
         try {
             synpred7_IOCL_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred13_IOCL() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred13_IOCL_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -3257,11 +3541,11 @@ public class IOCLParser extends IOCLBaseParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred14_IOCL() {
+    public final boolean synpred17_IOCL() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred14_IOCL_fragment(); // can never throw exception
+            synpred17_IOCL_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -3279,74 +3563,80 @@ public class IOCLParser extends IOCLBaseParser {
     public static final BitSet FOLLOW_impliesExpCS_in_oclExpressionCS79 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_logicalExpCS_in_impliesExpCS102 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_equalityExpCS_in_logicalExpCS124 = new BitSet(new long[]{0x00000000000E0000L});
-    public static final BitSet FOLLOW_set_in_logicalExpCS132 = new BitSet(new long[]{0x00000000013001F0L});
+    public static final BitSet FOLLOW_set_in_logicalExpCS132 = new BitSet(new long[]{0x0000000004C001F0L});
     public static final BitSet FOLLOW_equalityExpCS_in_logicalExpCS144 = new BitSet(new long[]{0x00000000000E0002L});
     public static final BitSet FOLLOW_equalityExpCS_in_logicalExpCS158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_relationalExpCS_in_equalityExpCS179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifExpCSPrec_in_relationalExpCS202 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_additiveExpCS_in_ifExpCSPrec223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS245 = new BitSet(new long[]{0x0000000000300000L});
-    public static final BitSet FOLLOW_set_in_additiveExpCS254 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS264 = new BitSet(new long[]{0x0000000000300002L});
-    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS299 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_set_in_multiplicativeExpCS309 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS319 = new BitSet(new long[]{0x0000000000C00002L});
-    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dotArrowExpCS_in_unaryExpCS354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_unaryExpCS365 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_unaryExpCS_in_unaryExpCS377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oclExpCS_in_dotArrowExpCS398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oclExpCS_in_dotArrowExpCS409 = new BitSet(new long[]{0x0000000030000000L});
-    public static final BitSet FOLLOW_propertyCallExp_in_dotArrowExpCS415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_literalExpCS_in_oclExpCS436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_collectionLiteralExpCS_in_literalExpCS457 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveLiteralExpCS_in_literalExpCS468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_collectionTypeIdentifierCS_in_collectionLiteralExpCS489 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_collectionLiteralExpCS491 = new BitSet(new long[]{0x00000000053001F0L});
-    public static final BitSet FOLLOW_collectionLiteralPartsCS_in_collectionLiteralExpCS497 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_collectionLiteralExpCS501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLLECTION_TYPE_LITERAL_in_collectionTypeIdentifierCS519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_collectionLiteralPartCS_in_collectionLiteralPartsCS540 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_collectionLiteralPartsCS545 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_collectionLiteralPartsCS_in_collectionLiteralPartsCS547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oclExpressionCS_in_collectionLiteralPartCS573 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS618 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_realLiteralExpCS_in_numericLiteralExpCS650 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_LITERAL_in_stringLiteralExpCS671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REAL_LITERAL_in_realLiteralExpCS723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_propertyCallExp740 = new BitSet(new long[]{0x0000000300000600L});
-    public static final BitSet FOLLOW_modelPropertyCallExp_in_propertyCallExp742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_propertyCallExp747 = new BitSet(new long[]{0x0000000300000600L});
-    public static final BitSet FOLLOW_modelPropertyCallExp_in_propertyCallExp753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_operationCallExpCS_in_modelPropertyCallExp774 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_binaryName_in_operationCallExpCS796 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_operationCallExpCS798 = new BitSet(new long[]{0x00000000813001F0L});
-    public static final BitSet FOLLOW_argumentsCS_in_operationCallExpCS806 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_31_in_operationCallExpCS810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleNameCS_in_binaryName831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BINARY_OPERATOR_in_binaryName838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveTypeCS_in_simpleNameCS853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_simpleNameCS858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_simpleNameCS863 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_primitiveTypeCS876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oclExpressionCS_in_argumentsCS896 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_argumentsCS902 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_argumentsCS_in_argumentsCS904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_relationalExpCS_in_equalityExpCS179 = new BitSet(new long[]{0x0000000000300000L});
+    public static final BitSet FOLLOW_set_in_equalityExpCS187 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_relationalExpCS_in_equalityExpCS197 = new BitSet(new long[]{0x0000000000300002L});
+    public static final BitSet FOLLOW_relationalExpCS_in_equalityExpCS211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifExpCSPrec_in_relationalExpCS234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_additiveExpCS_in_ifExpCSPrec255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS277 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_set_in_additiveExpCS286 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS296 = new BitSet(new long[]{0x0000000000C00002L});
+    public static final BitSet FOLLOW_multiplicativeExpCS_in_additiveExpCS310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS331 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_set_in_multiplicativeExpCS341 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS351 = new BitSet(new long[]{0x0000000003000002L});
+    public static final BitSet FOLLOW_unaryExpCS_in_multiplicativeExpCS365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dotArrowExpCS_in_unaryExpCS386 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_unaryExpCS397 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_unaryExpCS_in_unaryExpCS409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExpCS_in_dotArrowExpCS430 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExpCS_in_dotArrowExpCS441 = new BitSet(new long[]{0x00000000C0000000L});
+    public static final BitSet FOLLOW_propertyCallExp_in_dotArrowExpCS447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_literalExpCS_in_oclExpCS468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_collectionLiteralExpCS_in_literalExpCS489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveLiteralExpCS_in_literalExpCS500 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_collectionTypeIdentifierCS_in_collectionLiteralExpCS521 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_collectionLiteralExpCS523 = new BitSet(new long[]{0x0000000014C001F0L});
+    public static final BitSet FOLLOW_collectionLiteralPartsCS_in_collectionLiteralExpCS529 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_collectionLiteralExpCS533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLLECTION_TYPE_LITERAL_in_collectionTypeIdentifierCS551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_collectionLiteralPartCS_in_collectionLiteralPartsCS572 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_collectionLiteralPartsCS577 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_collectionLiteralPartsCS_in_collectionLiteralPartsCS579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExpressionCS_in_collectionLiteralPartCS605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numericLiteralExpCS_in_primitiveLiteralExpCS628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stringLiteralExpCS_in_primitiveLiteralExpCS639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_booleanLiteralExpCS_in_primitiveLiteralExpCS650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integerLiteralExpCS_in_numericLiteralExpCS671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_realLiteralExpCS_in_numericLiteralExpCS682 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_LITERAL_in_stringLiteralExpCS703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_LITERAL_in_booleanLiteralExpCS720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTEGER_LITERAL_in_integerLiteralExpCS737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REAL_LITERAL_in_realLiteralExpCS755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_propertyCallExp772 = new BitSet(new long[]{0x0000000C00000600L});
+    public static final BitSet FOLLOW_modelPropertyCallExp_in_propertyCallExp774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_propertyCallExp779 = new BitSet(new long[]{0x0000000C00000600L});
+    public static final BitSet FOLLOW_modelPropertyCallExp_in_propertyCallExp785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_operationCallExpCS_in_modelPropertyCallExp806 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_binaryName_in_operationCallExpCS828 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_operationCallExpCS830 = new BitSet(new long[]{0x0000000204C001F0L});
+    public static final BitSet FOLLOW_argumentsCS_in_operationCallExpCS838 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_operationCallExpCS842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleNameCS_in_binaryName863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BINARY_OPERATOR_in_binaryName870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveTypeCS_in_simpleNameCS885 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_simpleNameCS890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_simpleNameCS895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_primitiveTypeCS908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExpressionCS_in_argumentsCS928 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_argumentsCS934 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_argumentsCS_in_argumentsCS936 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_equalityExpCS_in_synpred4_IOCL124 = new BitSet(new long[]{0x00000000000E0000L});
-    public static final BitSet FOLLOW_set_in_synpred4_IOCL132 = new BitSet(new long[]{0x00000000013001F0L});
+    public static final BitSet FOLLOW_set_in_synpred4_IOCL132 = new BitSet(new long[]{0x0000000004C001F0L});
     public static final BitSet FOLLOW_equalityExpCS_in_synpred4_IOCL144 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_multiplicativeExpCS_in_synpred7_IOCL245 = new BitSet(new long[]{0x0000000000300000L});
-    public static final BitSet FOLLOW_set_in_synpred7_IOCL254 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_multiplicativeExpCS_in_synpred7_IOCL264 = new BitSet(new long[]{0x0000000000300002L});
-    public static final BitSet FOLLOW_unaryExpCS_in_synpred10_IOCL299 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_set_in_synpred10_IOCL309 = new BitSet(new long[]{0x00000000013001F0L});
-    public static final BitSet FOLLOW_unaryExpCS_in_synpred10_IOCL319 = new BitSet(new long[]{0x0000000000C00002L});
-    public static final BitSet FOLLOW_oclExpCS_in_synpred14_IOCL398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_relationalExpCS_in_synpred7_IOCL179 = new BitSet(new long[]{0x0000000000300000L});
+    public static final BitSet FOLLOW_set_in_synpred7_IOCL187 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_relationalExpCS_in_synpred7_IOCL197 = new BitSet(new long[]{0x0000000000300002L});
+    public static final BitSet FOLLOW_multiplicativeExpCS_in_synpred10_IOCL277 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_set_in_synpred10_IOCL286 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_multiplicativeExpCS_in_synpred10_IOCL296 = new BitSet(new long[]{0x0000000000C00002L});
+    public static final BitSet FOLLOW_unaryExpCS_in_synpred13_IOCL331 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_set_in_synpred13_IOCL341 = new BitSet(new long[]{0x0000000004C001F0L});
+    public static final BitSet FOLLOW_unaryExpCS_in_synpred13_IOCL351 = new BitSet(new long[]{0x0000000003000002L});
+    public static final BitSet FOLLOW_oclExpCS_in_synpred17_IOCL430 = new BitSet(new long[]{0x0000000000000002L});
 
 }

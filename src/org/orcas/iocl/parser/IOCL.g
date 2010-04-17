@@ -56,7 +56,8 @@ logicalExpCS returns [OCLExpressionCS oclExpressionCS]
 	;
 
 equalityExpCS returns [OCLExpressionCS oclExpressionCS]
-	: rele = relationalExpCS { $oclExpressionCS = $rele.oclExpressionCS; }
+	: rele1 = relationalExpCS ( op = ('<>'|'=') rele2 = relationalExpCS { $oclExpressionCS = createOperationCallExpCS(rele1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), rele2.oclExpressionCS); } )+
+	| rele = relationalExpCS { $oclExpressionCS = $rele.oclExpressionCS; }
 	;	
 
 relationalExpCS returns [OCLExpressionCS oclExpressionCS] 

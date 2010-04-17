@@ -10,6 +10,7 @@ public class OCLExpressionTest {
 
         suite.addTestSuite(TestArithmeticExp.class);
         suite.addTestSuite(TestCollectionLiteralExp.class);
+        suite.addTestSuite(TestEqualityExp.class);
         suite.addTestSuite(TestLogicalExp.class);
         suite.addTestSuite(TestPrimitiveLiteralExp.class);
 

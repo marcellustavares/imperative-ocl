@@ -61,13 +61,10 @@ equalityExpCS returns [OCLExpressionCS oclExpressionCS]
 	;	
 
 relationalExpCS returns [OCLExpressionCS oclExpressionCS] 
-	: ie = ifExpCSPrec { $oclExpressionCS = $ie.oclExpressionCS; }
+	: ae1 = additiveExpCS ( op = ('<='|'<'|'>'|'>=') ae2 = additiveExpCS { $oclExpressionCS = createOperationCallExpCS(ae1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ae2.oclExpressionCS); } )+
+	| ae = additiveExpCS { $oclExpressionCS = $ae.oclExpressionCS; }
 	;
 
-ifExpCSPrec returns [OCLExpressionCS oclExpressionCS]
-	: ae = additiveExpCS { $oclExpressionCS = $ae.oclExpressionCS; }
-	;
-	
 additiveExpCS returns [OCLExpressionCS oclExpressionCS]
 	: me1 = multiplicativeExpCS { $oclExpressionCS = $me1.oclExpressionCS; } (op = ('+'|'-') me2 = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me2.oclExpressionCS); } )+
 	| me = multiplicativeExpCS { $oclExpressionCS = $me.oclExpressionCS; }

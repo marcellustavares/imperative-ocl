@@ -11,7 +11,7 @@ import org.orcas.iocl.cst.OperationCallExpCS;
 import org.orcas.iocl.cst.SimpleNameCS;
 import org.orcas.iocl.exception.IOCLException;
 
-public class TestOperationCallExp extends TestCase {
+public class TestArithmeticExp extends TestCase {
 
     public void testUnaryExp() throws IOCLException{
         String[] exps = new String[] {" -1", "- 1.2 ", "+3", " + 33 "};

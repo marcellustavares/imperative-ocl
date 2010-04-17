@@ -10,7 +10,7 @@ public class OCLExpressionTest {
 
         suite.addTestSuite(TestPrimitiveLiteralExp.class);
         suite.addTestSuite(TestCollectionLiteralExp.class);
-        suite.addTestSuite(TestOperationCallExp.class);
+        suite.addTestSuite(TestArithmeticExp.class);
 
         junit.textui.TestRunner.run(suite);
     }

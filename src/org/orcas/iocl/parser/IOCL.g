@@ -51,7 +51,8 @@ impliesExpCS returns [OCLExpressionCS oclExpressionCS]
 	; 
 
 logicalExpCS returns [OCLExpressionCS oclExpressionCS]
-	: ee = equalityExpCS { $oclExpressionCS = $ee.oclExpressionCS; }
+	: ee1 = equalityExpCS ( op = ('and'|'or'|'xor') ee2 = equalityExpCS { $oclExpressionCS = createOperationCallExpCS(ee1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ee2.oclExpressionCS); } )+
+	| ee = equalityExpCS { $oclExpressionCS = $ee.oclExpressionCS; }
 	;
 
 equalityExpCS returns [OCLExpressionCS oclExpressionCS]
@@ -67,7 +68,7 @@ ifExpCSPrec returns [OCLExpressionCS oclExpressionCS]
 	;
 	
 additiveExpCS returns [OCLExpressionCS oclExpressionCS]
-	: me1 = multiplicativeExpCS { $oclExpressionCS = $me1.oclExpressionCS; } (op = ('+'|'-') me2 = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me2.oclExpressionCS); })+
+	: me1 = multiplicativeExpCS { $oclExpressionCS = $me1.oclExpressionCS; } (op = ('+'|'-') me2 = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me2.oclExpressionCS); } )+
 	| me = multiplicativeExpCS { $oclExpressionCS = $me.oclExpressionCS; }
 	;
 

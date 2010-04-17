@@ -13,6 +13,7 @@ public class OCLExpressionTest {
         suite.addTestSuite(TestEqualityExp.class);
         suite.addTestSuite(TestLogicalExp.class);
         suite.addTestSuite(TestPrimitiveLiteralExp.class);
+        suite.addTestSuite(TestRelationalExp.class);
 
         junit.textui.TestRunner.run(suite);
     }

@@ -16,7 +16,8 @@ package org.orcas.iocl.parser;
 
 import org.antlr.runtime.Token;
 
-import org.orcas.iocl.cst.BooleanLiteralExpCS;
+import org.orcas.iocl.cst.ArgumentsCS;
+import org.orcas.iocl.cst.BooleanLiteralExpCS; 
 import org.orcas.iocl.cst.CollectionLiteralExpCS;
 import org.orcas.iocl.cst.CollectionLiteralPartCS;
 import org.orcas.iocl.cst.CollectionLiteralPartsCS;
@@ -33,104 +34,150 @@ import org.orcas.iocl.cst.PrimitiveLiteralExpCS;
 import org.orcas.iocl.cst.PropertyCallExpCS;
 import org.orcas.iocl.cst.RealLiteralExpCS;
 import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.cst.SimpleTypeEnum;
 import org.orcas.iocl.cst.StringLiteralExpCS;
-}
-
-@members{
 }
 
 ioclExpressionCS returns [IOCLExpressionCS ioclExpressionCS]
 	: ocle = oclExpressionCS { $ioclExpressionCS = $ocle.oclExpressionCS; }
 	;
 
-oclExpressionCS returns [OCLExpressionCS oclExpressionCS] 
-	: pce = propertyCallExpCS { $oclExpressionCS =  $pce.propertyCallExpCS; }
-	| le = literalExpCS { $oclExpressionCS = $le.literalExpCS; }
+oclExpressionCS returns [OCLExpressionCS oclExpressionCS]
+	: ie = impliesExpCS { $oclExpressionCS = $ie.oclExpressionCS; } 
 	;
 
-literalExpCS  returns [LiteralExpCS literalExpCS]
-	: cle = collectionLiteralExpCS { $literalExpCS = $cle.collectionLiteralExpCS; }
-	| ple = primitiveLiteralExpCS { $literalExpCS = $ple.primitiveLiteralExpCS; }
+impliesExpCS returns [OCLExpressionCS oclExpressionCS] 
+	: le = logicalExpCS { $oclExpressionCS = $le.oclExpressionCS; }
+	; 
+
+logicalExpCS returns [OCLExpressionCS oclExpressionCS]
+	: ee = equalityExpCS { $oclExpressionCS = $ee.oclExpressionCS; }
 	;
 
-collectionLiteralExpCS returns [CollectionLiteralExpCS collectionLiteralExpCS]
-	: cti = collectionTypeIdentifierCS '{' clpts = collectionLiteralPartsCS?  '}' { $collectionLiteralExpCS = createCollectionLiteralExpCS($cti.collectionTypeIdentifierCS, $clpts.collectionLiteralPartsCS); } 
-	;
-
-collectionTypeIdentifierCS returns [CollectionTypeIdentifierCS collectionTypeIdentifierCS]
-	: COLLECTION_TYPE_LITERAL { $collectionTypeIdentifierCS = createCollectionTypeIdentifierCS($COLLECTION_TYPE_LITERAL, $COLLECTION_TYPE_LITERAL.text); }
-	;
-
-collectionLiteralPartsCS returns [CollectionLiteralPartsCS collectionLiteralPartsCS]
-	: clpe = collectionLiteralPartCS { $collectionLiteralPartsCS = createCollectionLiteralPartsCS($clpe.collectionLiteralPartCS); } (',' collectionLiteralPartsCS)?
-	;		 
-
-collectionLiteralPartCS returns [CollectionLiteralPartCS collectionLiteralPartCS]
-	//: collectionRangeCS
-	: ocle = oclExpressionCS { $collectionLiteralPartCS = createCollectionLiteralPartCS($ocle.oclExpressionCS); }
-	;
-
-collectionRangeCS
-	: oclExpressionCS '..' oclExpressionCS
-	;
-
-primitiveLiteralExpCS returns [PrimitiveLiteralExpCS primitiveLiteralExpCS] 	
-	: nle = numericLiteralExpCS { $primitiveLiteralExpCS = $nle.numericLiteralExpCS; }
-	| sle = stringLiteralExpCS { $primitiveLiteralExpCS = $sle.stringLiteralExpCS; }
-	| ble = booleanLiteralExpCS { $primitiveLiteralExpCS = $ble.booleanLiteralExpCS; }
-	;
-
-propertyCallExpCS  returns [PropertyCallExpCS propertyCallExpCS]
-	: mpce = modelPropertyCallExpCS {$propertyCallExpCS = $mpce.modelPropertyCallExpCS; }
-	;
-
-modelPropertyCallExpCS returns [ModelPropertyCallExpCS modelPropertyCallExpCS]
-	: ocle = operationCallExpCS {$modelPropertyCallExpCS = ocle.operationCallExpCS; }
-	;
-	
-operationCallExpCS returns [OperationCallExpCS operationCallExpCS]
-	: ae = additiveExpCS {$operationCallExpCS = ae.operationCallExpCS; }
-	;
-
-additiveExpCS returns [OperationCallExpCS operationCallExpCS]
-	: nlel =  numericLiteralExpCS ( op = ( '+' | '-' ) nler = numericLiteralExpCS {$operationCallExpCS = createOperationCallExpCS(nlel.numericLiteralExpCS, createSimpleNameCS($op, $op.text), nler.numericLiteralExpCS ); } )+
-    	| mel = multiplicativeExpCS  { $operationCallExpCS = $mel.operationCallExpCS; } ( op = ('+' | '-') nler = numericLiteralExpCS { $operationCallExpCS = createOperationCallExpCS(mel.operationCallExpCS, createSimpleNameCS($op, $op.text), nler.numericLiteralExpCS); }  )*
-    	| mel = multiplicativeExpCS  { $operationCallExpCS = $mel.operationCallExpCS; } ( op = ('+' | '-') mer = multiplicativeExpCS { $operationCallExpCS = createOperationCallExpCS(mel.operationCallExpCS, createSimpleNameCS($op, $op.text), mer.operationCallExpCS); }  )*
-	;
-
-multiplicativeExpCS returns [OperationCallExpCS operationCallExpCS]
-	: nlel =  numericLiteralExpCS ( op = ( '*' | '/' ) nler = numericLiteralExpCS {$operationCallExpCS = createOperationCallExpCS(nlel.numericLiteralExpCS, createSimpleNameCS($op, $op.text), nler.numericLiteralExpCS ); } )+
-	| nlel =  numericLiteralExpCS ( op = ( '*' | '/' ) uer = unaryExpCS {$operationCallExpCS = createOperationCallExpCS(nlel.numericLiteralExpCS, createSimpleNameCS($op, $op.text), uer.operationCallExpCS ); } )+
-	| uel =  unaryExpCS { $operationCallExpCS = $uel.operationCallExpCS;} ( op = ( '*' | '/' ) nler = numericLiteralExpCS {$operationCallExpCS = createOperationCallExpCS(uel.operationCallExpCS, createSimpleNameCS($op, $op.text), nler.numericLiteralExpCS ); } )*
-	| uel =  unaryExpCS { $operationCallExpCS = $uel.operationCallExpCS;} ( op = ( '*' | '/' ) uer = unaryExpCS {$operationCallExpCS = createOperationCallExpCS(uel.operationCallExpCS, createSimpleNameCS($op, $op.text), uer.operationCallExpCS ); } )*
-	;
-    
-unaryExpCS returns [OperationCallExpCS operationCallExpCS]
-    :   op = ( '+' | '-' ) nle = numericLiteralExpCS { $operationCallExpCS = createOperationCallExpCS($nle.numericLiteralExpCS, createSimpleNameCS($op, $op.text) ); }
-    ;
-
-numericLiteralExpCS  returns [NumericLiteralExpCS numericLiteralExpCS]
-	: ile = integerLiteralExpCS { $numericLiteralExpCS = $ile.integerLiteralExpCS; }
-	| rle = realLiteralExpCS { $numericLiteralExpCS = $rle.realLiteralExpCS; }
-	;
-    
-stringLiteralExpCS  returns [StringLiteralExpCS stringLiteralExpCS]
-	: STRING_LITERAL { $stringLiteralExpCS = createStringLiteralExpCS($STRING_LITERAL, $STRING_LITERAL.text); }
-	;
-
-booleanLiteralExpCS  returns [BooleanLiteralExpCS booleanLiteralExpCS]
-	: BOOLEAN_LITERAL { $booleanLiteralExpCS = createBooleanLiteralExpCS($BOOLEAN_LITERAL, $BOOLEAN_LITERAL.text); }
-	;
-
-integerLiteralExpCS  returns [IntegerLiteralExpCS integerLiteralExpCS]
-	: INTEGER_LITERAL { $integerLiteralExpCS = createIntegerLiteralExpCS($INTEGER_LITERAL, $INTEGER_LITERAL.text); }
+equalityExpCS returns [OCLExpressionCS oclExpressionCS]
+	: rele = relationalExpCS { $oclExpressionCS = $rele.oclExpressionCS; }
 	;	
 
-realLiteralExpCS  returns [RealLiteralExpCS realLiteralExpCS]
-	: REAL_LITERAL { $realLiteralExpCS = createRealLiteralExpCS($REAL_LITERAL, $REAL_LITERAL.text); }
+relationalExpCS returns [OCLExpressionCS oclExpressionCS] 
+	: ie = ifExpCSPrec { $oclExpressionCS = $ie.oclExpressionCS; }
 	;
 
-BOOLEAN_LITERAL 
+ifExpCSPrec returns [OCLExpressionCS oclExpressionCS]
+	: ae = additiveExpCS { $oclExpressionCS = $ae.oclExpressionCS; }
+	;
+	
+additiveExpCS returns [OCLExpressionCS oclExpressionCS]
+	: me1 = multiplicativeExpCS { $oclExpressionCS = $me1.oclExpressionCS; } (op = ('+'|'-') me2 = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me2.oclExpressionCS); })+
+	| me = multiplicativeExpCS { $oclExpressionCS = $me.oclExpressionCS; }
+	;
+
+multiplicativeExpCS returns [OCLExpressionCS oclExpressionCS]
+	: ue1 = unaryExpCS { $oclExpressionCS = $ue1.oclExpressionCS; } ( op = ('*'|'/') ue2 = unaryExpCS { $oclExpressionCS = createOperationCallExpCS(ue1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ue2.oclExpressionCS); } )+
+	| ue = unaryExpCS { $oclExpressionCS = $ue.oclExpressionCS; }
+	;
+
+unaryExpCS returns [OCLExpressionCS oclExpressionCS]
+	: dae = dotArrowExpCS { $oclExpressionCS = $dae.oclExpressionCS; }
+	| op = ('+'|'-'|'not') ue = unaryExpCS { $oclExpressionCS = createOperationCallExpCS($ue.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text) ); }
+	;
+
+dotArrowExpCS returns [OCLExpressionCS oclExpressionCS]
+	: ocle = oclExpCS { $oclExpressionCS = $ocle.oclExpressionCS; }
+	| ocle = oclExpCS pce = propertyCallExp { $oclExpressionCS = setOperationCallExpCSSource($ocle.oclExpressionCS, $pce.oclExpressionCS); }
+	;
+
+oclExpCS returns [OCLExpressionCS oclExpressionCS]
+	: le = literalExpCS { $oclExpressionCS = $le.oclExpressionCS; }
+	;
+
+literalExpCS returns [OCLExpressionCS oclExpressionCS]
+	: cle = collectionLiteralExpCS { $oclExpressionCS = $cle.oclExpressionCS; }
+	| ple = primitiveLiteralExpCS { $oclExpressionCS = $ple.oclExpressionCS; }
+	;
+
+collectionLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: cti = collectionTypeIdentifierCS '{' clpts = collectionLiteralPartsCS?  '}' { $oclExpressionCS = createCollectionLiteralExpCS($cti.oclExpressionCS, $clpts.oclExpressionCS); } 
+	;
+
+collectionTypeIdentifierCS returns [OCLExpressionCS oclExpressionCS]
+	: COLLECTION_TYPE_LITERAL { $oclExpressionCS = createCollectionTypeIdentifierCS($COLLECTION_TYPE_LITERAL, $COLLECTION_TYPE_LITERAL.text); }
+	;
+
+collectionLiteralPartsCS returns [OCLExpressionCS oclExpressionCS]
+	: clpe = collectionLiteralPartCS { $oclExpressionCS = createCollectionLiteralPartsCS($clpe.oclExpressionCS); } (',' collectionLiteralPartsCS)?
+	;		 
+
+collectionLiteralPartCS returns [OCLExpressionCS oclExpressionCS]
+	//: collectionRangeCS
+	: ocle = oclExpressionCS { $oclExpressionCS = createCollectionLiteralPartCS($ocle.oclExpressionCS); }
+	;
+
+primitiveLiteralExpCS returns [OCLExpressionCS oclExpressionCS] 	
+	: nle = numericLiteralExpCS { $oclExpressionCS = $nle.oclExpressionCS; }
+	| sle = stringLiteralExpCS { $oclExpressionCS = $sle.oclExpressionCS; }
+	| ble = booleanLiteralExpCS { $oclExpressionCS = $ble.oclExpressionCS; }
+	;
+
+numericLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: ile = integerLiteralExpCS { $oclExpressionCS = $ile.oclExpressionCS; }
+	| rle = realLiteralExpCS { $oclExpressionCS = $rle.oclExpressionCS; }
+	;
+    
+stringLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: STRING_LITERAL { $oclExpressionCS = createStringLiteralExpCS($STRING_LITERAL, $STRING_LITERAL.text); }
+	;
+
+booleanLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: BOOLEAN_LITERAL { $oclExpressionCS = createBooleanLiteralExpCS($BOOLEAN_LITERAL, $BOOLEAN_LITERAL.text); }
+	;
+
+integerLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: INTEGER_LITERAL { $oclExpressionCS = createIntegerLiteralExpCS($INTEGER_LITERAL, $INTEGER_LITERAL.text); }
+	;	
+
+realLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
+	: REAL_LITERAL { $oclExpressionCS = createRealLiteralExpCS($REAL_LITERAL, $REAL_LITERAL.text); }
+	;
+
+propertyCallExp returns [OCLExpressionCS oclExpressionCS]
+	: '->' modelPropertyCallExp
+	| '.' mpce = modelPropertyCallExp { $oclExpressionCS = $mpce.oclExpressionCS; }
+	;
+
+modelPropertyCallExp returns [OCLExpressionCS oclExpressionCS]
+	: oce = operationCallExpCS { $oclExpressionCS = $oce.oclExpressionCS; }
+	;
+
+operationCallExpCS returns [OCLExpressionCS oclExpressionCS]
+	:  bn = binaryName '(' ( args = argumentsCS)? ')' {$oclExpressionCS = createOperationCallExpCS($bn.oclExpressionCS, $args.argumentsCS); }
+	;
+
+binaryName returns [OCLExpressionCS oclExpressionCS]
+	: sn = simpleNameCS { $oclExpressionCS = $sn.oclExpressionCS; }
+	| BINARY_OPERATOR
+	;
+
+simpleNameCS returns [OCLExpressionCS oclExpressionCS]
+	: primitiveTypeCS
+	| 'self'
+	| IDENTIFIER { $oclExpressionCS = createSimpleNameCS($IDENTIFIER, SimpleTypeEnum.IDENTIFIER, $IDENTIFIER.text); }
+	;
+
+primitiveTypeCS
+	: 'Integer' 
+	;
+
+argumentsCS returns [ArgumentsCS argumentsCS]
+	: ocle = oclExpressionCS { $argumentsCS = createArgumentsCS($ocle.oclExpressionCS); } ( ',' argumentsCS )?
+	;
+
+// Literals
+
+BINARY_OPERATOR
+	:
+	;
+
+BOOLEAN_LITERAL
 	: 'true' 
 	| 'false'
 	;
@@ -157,7 +204,7 @@ STRING_LITERAL
 	: '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
 	;
 
-ID  
+IDENTIFIER  
 	: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     	;	   
 

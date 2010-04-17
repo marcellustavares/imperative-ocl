@@ -4,6 +4,7 @@ import org.antlr.runtime.Parser;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
+import org.orcas.iocl.cst.ArgumentsCS;
 import org.orcas.iocl.cst.BooleanLiteralExpCS;
 import org.orcas.iocl.cst.CollectionLiteralExpCS;
 import org.orcas.iocl.cst.CollectionLiteralPartCS;
@@ -14,7 +15,9 @@ import org.orcas.iocl.cst.OCLExpressionCS;
 import org.orcas.iocl.cst.OperationCallExpCS;
 import org.orcas.iocl.cst.RealLiteralExpCS;
 import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.cst.SimpleTypeEnum;
 import org.orcas.iocl.cst.StringLiteralExpCS;
+import org.orcas.iocl.cst.impl.ArgumentsCSImpl;
 import org.orcas.iocl.cst.impl.BooleanLiteralExpCSImpl;
 import org.orcas.iocl.cst.impl.CollectionLiteralExpCSImpl;
 import org.orcas.iocl.cst.impl.CollectionLiteralPartCSImpl;
@@ -36,6 +39,16 @@ public abstract class IOCLBaseParser extends Parser {
         super(input, state);
     }
 
+    public ArgumentsCS createArgumentsCS(OCLExpressionCS argument) {
+        if (arguments == null) {
+            arguments = new ArgumentsCSImpl();
+        }
+
+        arguments.addArgument(argument);
+
+        return arguments;
+    }
+
     public BooleanLiteralExpCS createBooleanLiteralExpCS(
         Token token, String booleanSymbol) {
 
@@ -46,14 +59,16 @@ public abstract class IOCLBaseParser extends Parser {
     }
 
     public CollectionLiteralExpCS createCollectionLiteralExpCS(
-        CollectionTypeIdentifierCS collectionTypeIdentifierCS,
-        CollectionLiteralPartsCS collectionLiteralPartsCS) {
+        OCLExpressionCS collectionTypeIdentifierCS,
+        OCLExpressionCS collectionLiteralPartsCS) {
 
         CollectionLiteralExpCS exp = new CollectionLiteralExpCSImpl(
             collectionTypeIdentifierCS.getToken());
 
-        exp.setCollectionKind(collectionTypeIdentifierCS);
-        exp.setCollectionParts(collectionLiteralPartsCS);
+        exp.setCollectionKind(
+            (CollectionTypeIdentifierCS) collectionTypeIdentifierCS);
+        exp.setCollectionParts(
+            (CollectionLiteralPartsCS) collectionLiteralPartsCS);
 
         return exp;
     }
@@ -70,14 +85,14 @@ public abstract class IOCLBaseParser extends Parser {
     }
 
     public CollectionLiteralPartsCS createCollectionLiteralPartsCS(
-            CollectionLiteralPartCS collectionLiteralPartCS) {
+            OCLExpressionCS collectionLiteralPartCS) {
 
         if (parts == null) {
             parts = new CollectionLiteralPartsCSImpl(
                 collectionLiteralPartCS.getToken());
         }
 
-        parts.addPart(collectionLiteralPartCS);
+        parts.addPart((CollectionLiteralPartCS) collectionLiteralPartCS);
 
         return parts;
     }
@@ -93,22 +108,25 @@ public abstract class IOCLBaseParser extends Parser {
         return identifierCS;
     }
 
-    public SimpleNameCS createSimpleNameCS(Token token, String value) {
+    public SimpleNameCS createSimpleNameCS(
+        Token token, SimpleTypeEnum type, String value) {
+
         SimpleNameCS simpleNameCS = new SimpleNameCSImpl(token);
 
+        simpleNameCS.setSimpleNameType(type);
         simpleNameCS.setValue(value);
 
         return simpleNameCS;
     }
 
     public OperationCallExpCS createOperationCallExpCS(
-        OCLExpressionCS source, SimpleNameCS simpleNameCS) {
+        OCLExpressionCS source, OCLExpressionCS simpleNameCS) {
 
         OperationCallExpCS operationCallExpCS = new OperationCallExpCSImpl(
             simpleNameCS.getToken());
 
         operationCallExpCS.setSource(source);
-        operationCallExpCS.setSimpleNameCS(simpleNameCS);
+        operationCallExpCS.setSimpleNameCS((SimpleNameCS) simpleNameCS);
 
         return operationCallExpCS;
     }
@@ -133,6 +151,18 @@ public abstract class IOCLBaseParser extends Parser {
         operationCallExpCS = opCallExp;
 
         return operationCallExpCS;
+    }
+
+    public OperationCallExpCS createOperationCallExpCS(
+        OCLExpressionCS simpleNameCS, ArgumentsCS argumentsCS) {
+
+        OperationCallExpCS opCallExp = new OperationCallExpCSImpl(
+            simpleNameCS.getToken());
+
+        opCallExp.setSimpleNameCS((SimpleNameCS) simpleNameCS);
+        opCallExp.setArguments(arguments.getArguments());
+
+        return opCallExp;
     }
 
     public RealLiteralExpCS createRealLiteralExpCS(
@@ -162,6 +192,17 @@ public abstract class IOCLBaseParser extends Parser {
         return exp;
     }
 
+    public OperationCallExpCS setOperationCallExpCSSource(
+        OCLExpressionCS source, OCLExpressionCS operationCallExpCS) {
+
+        OperationCallExpCS opCall = (OperationCallExpCS) operationCallExpCS;
+
+        opCall.setSource(source);
+
+        return opCall;
+    }
+
+    protected ArgumentsCS arguments;
     protected CollectionLiteralPartsCSImpl parts;
     protected OperationCallExpCS operationCallExpCS;
 

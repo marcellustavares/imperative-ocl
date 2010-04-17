@@ -3,16 +3,10 @@ package org.orcas.iocl.cst.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.runtime.Token;
+import org.orcas.iocl.cst.ArgumentsCS;
 import org.orcas.iocl.cst.OCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
 
-public class OperationCallExpCSImpl extends ModelPropertyCallExpCSImpl
-    implements OperationCallExpCS {
-
-    public OperationCallExpCSImpl(Token token) {
-        super(token);
-    }
+public class ArgumentsCSImpl implements ArgumentsCS {
 
     public void addArgument(OCLExpressionCS argument) {
         _arguments.add(argument);
@@ -20,10 +14,6 @@ public class OperationCallExpCSImpl extends ModelPropertyCallExpCSImpl
 
     public List<OCLExpressionCS> getArguments() {
         return _arguments;
-    }
-
-    public void setArguments(List<OCLExpressionCS> arguments) {
-        _arguments = arguments;
     }
 
     private List<OCLExpressionCS> _arguments = new ArrayList<OCLExpressionCS>();

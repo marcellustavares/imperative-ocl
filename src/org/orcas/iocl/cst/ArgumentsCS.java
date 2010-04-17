@@ -2,12 +2,10 @@ package org.orcas.iocl.cst;
 
 import java.util.List;
 
-public interface OperationCallExpCS extends ModelPropertyCallExpCS {
+public interface ArgumentsCS {
 
     public void addArgument(OCLExpressionCS argument);
 
     public List<OCLExpressionCS> getArguments();
-
-    public void setArguments(List<OCLExpressionCS> arguments);
 
 }

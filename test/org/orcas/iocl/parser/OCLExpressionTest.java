@@ -8,9 +8,10 @@ public class OCLExpressionTest {
 
         TestSuite suite = new TestSuite();
 
-        suite.addTestSuite(TestPrimitiveLiteralExp.class);
-        suite.addTestSuite(TestCollectionLiteralExp.class);
         suite.addTestSuite(TestArithmeticExp.class);
+        suite.addTestSuite(TestCollectionLiteralExp.class);
+        suite.addTestSuite(TestLogicalExp.class);
+        suite.addTestSuite(TestPrimitiveLiteralExp.class);
 
         junit.textui.TestRunner.run(suite);
     }

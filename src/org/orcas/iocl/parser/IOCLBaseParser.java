@@ -40,10 +40,6 @@ public abstract class IOCLBaseParser extends Parser {
     }
 
     public ArgumentsCS createArgumentsCS(OCLExpressionCS argument) {
-        if (arguments == null) {
-            arguments = new ArgumentsCSImpl();
-        }
-
         arguments.addArgument(argument);
 
         return arguments;
@@ -131,6 +127,34 @@ public abstract class IOCLBaseParser extends Parser {
         return operationCallExpCS;
     }
 
+    public OperationCallExpCS createNumericOperationCallExpCS(
+        Token token, String numericOperaration, ArgumentsCS arguments) {
+
+        OperationCallExpCS operationCallExpCS = new OperationCallExpCSImpl(
+            token);
+
+        int index = numericOperaration.indexOf('.');
+        String integerSymbol = numericOperaration.substring(0, index);
+
+        IntegerLiteralExpCS integerLiteralExpCS = createIntegerLiteralExpCS(
+            token, integerSymbol);
+
+        operationCallExpCS.setSource(integerLiteralExpCS);
+
+        String simpleName = numericOperaration.substring(index + 1);
+
+        SimpleNameCS simpleNameCS = createSimpleNameCS(
+            token, SimpleTypeEnum.IDENTIFIER, simpleName);
+
+        operationCallExpCS.setSimpleNameCS(simpleNameCS);
+
+        if (arguments != null) {
+            operationCallExpCS.setArguments(arguments.getArguments());
+        }
+
+        return operationCallExpCS;
+    }
+
     public OperationCallExpCS createOperationCallExpCS(
         OCLExpressionCS source, SimpleNameCS simpleNameCS,
         OCLExpressionCS arg) {
@@ -202,7 +226,7 @@ public abstract class IOCLBaseParser extends Parser {
         return opCall;
     }
 
-    protected ArgumentsCS arguments;
+    protected ArgumentsCS arguments = new ArgumentsCSImpl();
     protected CollectionLiteralPartsCSImpl parts;
     protected OperationCallExpCS operationCallExpCS;
 

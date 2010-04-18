@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-04-17 20:34:26
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 IOCL.g 2010-04-17 21:39:02
 
 package org.orcas.iocl.parser;
 
@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class IOCLLexer extends Lexer {
-    public static final int EXPONENT=11;
+    public static final int T__40=40;
+    public static final int EXPONENT=12;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -19,33 +20,33 @@ public class IOCLLexer extends Lexer {
     public static final int T__23=23;
     public static final int T__22=22;
     public static final int T__21=21;
-    public static final int UNICODE_ESC=15;
+    public static final int UNICODE_ESC=16;
+    public static final int NUMERIC_OPERATION=4;
     public static final int T__20=20;
-    public static final int OCTAL_ESC=16;
-    public static final int HEX_DIGIT=14;
-    public static final int BINARY_OPERATOR=9;
+    public static final int OCTAL_ESC=17;
+    public static final int HEX_DIGIT=15;
+    public static final int BINARY_OPERATOR=10;
     public static final int EOF=-1;
-    public static final int BOOLEAN_LITERAL=6;
+    public static final int BOOLEAN_LITERAL=7;
     public static final int T__30=30;
     public static final int T__19=19;
     public static final int T__31=31;
     public static final int T__32=32;
     public static final int T__33=33;
-    public static final int STRING_LITERAL=5;
-    public static final int ESC_SEQ=12;
-    public static final int WS=13;
+    public static final int STRING_LITERAL=6;
+    public static final int ESC_SEQ=13;
+    public static final int WS=14;
     public static final int T__34=34;
     public static final int T__18=18;
     public static final int T__35=35;
-    public static final int T__17=17;
     public static final int T__36=36;
-    public static final int REAL_LITERAL=8;
+    public static final int REAL_LITERAL=9;
     public static final int T__37=37;
-    public static final int COLLECTION_TYPE_LITERAL=4;
+    public static final int COLLECTION_TYPE_LITERAL=5;
     public static final int T__38=38;
     public static final int T__39=39;
-    public static final int INTEGER_LITERAL=7;
-    public static final int IDENTIFIER=10;
+    public static final int INTEGER_LITERAL=8;
+    public static final int IDENTIFIER=11;
 
     // delegates
     // delegators
@@ -60,36 +61,15 @@ public class IOCLLexer extends Lexer {
     }
     public String getGrammarFileName() { return "IOCL.g"; }
 
-    // $ANTLR start "T__17"
-    public final void mT__17() throws RecognitionException {
-        try {
-            int _type = T__17;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:7:7: ( 'and' )
-            // IOCL.g:7:9: 'and'
-            {
-            match("and"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__17"
-
     // $ANTLR start "T__18"
     public final void mT__18() throws RecognitionException {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:8:7: ( 'or' )
-            // IOCL.g:8:9: 'or'
+            // IOCL.g:7:7: ( 'and' )
+            // IOCL.g:7:9: 'and'
             {
-            match("or"); 
+            match("and"); 
 
 
             }
@@ -107,10 +87,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:9:7: ( 'xor' )
-            // IOCL.g:9:9: 'xor'
+            // IOCL.g:8:7: ( 'or' )
+            // IOCL.g:8:9: 'or'
             {
-            match("xor"); 
+            match("or"); 
 
 
             }
@@ -128,10 +108,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:10:7: ( '<>' )
-            // IOCL.g:10:9: '<>'
+            // IOCL.g:9:7: ( 'xor' )
+            // IOCL.g:9:9: 'xor'
             {
-            match("<>"); 
+            match("xor"); 
 
 
             }
@@ -149,10 +129,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:11:7: ( '=' )
-            // IOCL.g:11:9: '='
+            // IOCL.g:10:7: ( '<>' )
+            // IOCL.g:10:9: '<>'
             {
-            match('='); 
+            match("<>"); 
+
 
             }
 
@@ -169,11 +150,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:12:7: ( '<=' )
-            // IOCL.g:12:9: '<='
+            // IOCL.g:11:7: ( '=' )
+            // IOCL.g:11:9: '='
             {
-            match("<="); 
-
+            match('='); 
 
             }
 
@@ -190,10 +170,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:13:7: ( '<' )
-            // IOCL.g:13:9: '<'
+            // IOCL.g:12:7: ( '<=' )
+            // IOCL.g:12:9: '<='
             {
-            match('<'); 
+            match("<="); 
+
 
             }
 
@@ -210,10 +191,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:14:7: ( '>' )
-            // IOCL.g:14:9: '>'
+            // IOCL.g:13:7: ( '<' )
+            // IOCL.g:13:9: '<'
             {
-            match('>'); 
+            match('<'); 
 
             }
 
@@ -230,11 +211,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:15:7: ( '>=' )
-            // IOCL.g:15:9: '>='
+            // IOCL.g:14:7: ( '>' )
+            // IOCL.g:14:9: '>'
             {
-            match(">="); 
-
+            match('>'); 
 
             }
 
@@ -251,10 +231,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:16:7: ( '+' )
-            // IOCL.g:16:9: '+'
+            // IOCL.g:15:7: ( '>=' )
+            // IOCL.g:15:9: '>='
             {
-            match('+'); 
+            match(">="); 
+
 
             }
 
@@ -271,10 +252,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:17:7: ( '-' )
-            // IOCL.g:17:9: '-'
+            // IOCL.g:16:7: ( '+' )
+            // IOCL.g:16:9: '+'
             {
-            match('-'); 
+            match('+'); 
 
             }
 
@@ -291,10 +272,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:18:7: ( '*' )
-            // IOCL.g:18:9: '*'
+            // IOCL.g:17:7: ( '-' )
+            // IOCL.g:17:9: '-'
             {
-            match('*'); 
+            match('-'); 
 
             }
 
@@ -311,10 +292,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:19:7: ( '/' )
-            // IOCL.g:19:9: '/'
+            // IOCL.g:18:7: ( '*' )
+            // IOCL.g:18:9: '*'
             {
-            match('/'); 
+            match('*'); 
 
             }
 
@@ -331,11 +312,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:20:7: ( 'not' )
-            // IOCL.g:20:9: 'not'
+            // IOCL.g:19:7: ( '/' )
+            // IOCL.g:19:9: '/'
             {
-            match("not"); 
-
+            match('/'); 
 
             }
 
@@ -352,10 +332,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:21:7: ( '{' )
-            // IOCL.g:21:9: '{'
+            // IOCL.g:20:7: ( 'not' )
+            // IOCL.g:20:9: 'not'
             {
-            match('{'); 
+            match("not"); 
+
 
             }
 
@@ -372,10 +353,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:22:7: ( '}' )
-            // IOCL.g:22:9: '}'
+            // IOCL.g:21:7: ( '(' )
+            // IOCL.g:21:9: '('
             {
-            match('}'); 
+            match('('); 
 
             }
 
@@ -392,10 +373,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:23:7: ( ',' )
-            // IOCL.g:23:9: ','
+            // IOCL.g:22:7: ( ')' )
+            // IOCL.g:22:9: ')'
             {
-            match(','); 
+            match(')'); 
 
             }
 
@@ -412,11 +393,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:24:7: ( '->' )
-            // IOCL.g:24:9: '->'
+            // IOCL.g:23:7: ( '{' )
+            // IOCL.g:23:9: '{'
             {
-            match("->"); 
-
+            match('{'); 
 
             }
 
@@ -433,10 +413,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:25:7: ( '.' )
-            // IOCL.g:25:9: '.'
+            // IOCL.g:24:7: ( '}' )
+            // IOCL.g:24:9: '}'
             {
-            match('.'); 
+            match('}'); 
 
             }
 
@@ -453,10 +433,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:26:7: ( '(' )
-            // IOCL.g:26:9: '('
+            // IOCL.g:25:7: ( ',' )
+            // IOCL.g:25:9: ','
             {
-            match('('); 
+            match(','); 
 
             }
 
@@ -473,10 +453,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:27:7: ( ')' )
-            // IOCL.g:27:9: ')'
+            // IOCL.g:26:7: ( '->' )
+            // IOCL.g:26:9: '->'
             {
-            match(')'); 
+            match("->"); 
+
 
             }
 
@@ -493,11 +474,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:28:7: ( 'self' )
-            // IOCL.g:28:9: 'self'
+            // IOCL.g:27:7: ( '.' )
+            // IOCL.g:27:9: '.'
             {
-            match("self"); 
-
+            match('.'); 
 
             }
 
@@ -514,6 +494,27 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // IOCL.g:28:7: ( 'self' )
+            // IOCL.g:28:9: 'self'
+            {
+            match("self"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__39"
+
+    // $ANTLR start "T__40"
+    public final void mT__40() throws RecognitionException {
+        try {
+            int _type = T__40;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // IOCL.g:29:7: ( 'Integer' )
             // IOCL.g:29:9: 'Integer'
             {
@@ -528,15 +529,15 @@ public class IOCLLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__39"
+    // $ANTLR end "T__40"
 
     // $ANTLR start "BINARY_OPERATOR"
     public final void mBINARY_OPERATOR() throws RecognitionException {
         try {
             int _type = BINARY_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:176:2: ()
-            // IOCL.g:177:2: 
+            // IOCL.g:177:2: ()
+            // IOCL.g:178:2: 
             {
             }
 
@@ -553,7 +554,7 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:180:2: ( 'true' | 'false' )
+            // IOCL.g:181:2: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -571,7 +572,7 @@ public class IOCLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // IOCL.g:180:4: 'true'
+                    // IOCL.g:181:4: 'true'
                     {
                     match("true"); 
 
@@ -579,7 +580,7 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:181:4: 'false'
+                    // IOCL.g:182:4: 'false'
                     {
                     match("false"); 
 
@@ -601,7 +602,7 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = COLLECTION_TYPE_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:185:2: ( 'Bag' | 'Collection' | 'OrderedSet' | 'Sequence' | 'Set' )
+            // IOCL.g:186:2: ( 'Bag' | 'Collection' | 'OrderedSet' | 'Sequence' | 'Set' )
             int alt2=5;
             switch ( input.LA(1) ) {
             case 'B':
@@ -656,7 +657,7 @@ public class IOCLLexer extends Lexer {
 
             switch (alt2) {
                 case 1 :
-                    // IOCL.g:185:4: 'Bag'
+                    // IOCL.g:186:4: 'Bag'
                     {
                     match("Bag"); 
 
@@ -664,7 +665,7 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:186:4: 'Collection'
+                    // IOCL.g:187:4: 'Collection'
                     {
                     match("Collection"); 
 
@@ -672,7 +673,7 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:187:4: 'OrderedSet'
+                    // IOCL.g:188:4: 'OrderedSet'
                     {
                     match("OrderedSet"); 
 
@@ -680,7 +681,7 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // IOCL.g:188:4: 'Sequence'
+                    // IOCL.g:189:4: 'Sequence'
                     {
                     match("Sequence"); 
 
@@ -688,7 +689,7 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // IOCL.g:189:4: 'Set'
+                    // IOCL.g:190:4: 'Set'
                     {
                     match("Set"); 
 
@@ -710,10 +711,10 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = INTEGER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:193:2: ( ( '0' .. '9' )+ )
-            // IOCL.g:193:4: ( '0' .. '9' )+
+            // IOCL.g:194:2: ( ( '0' .. '9' )+ )
+            // IOCL.g:194:4: ( '0' .. '9' )+
             {
-            // IOCL.g:193:4: ( '0' .. '9' )+
+            // IOCL.g:194:4: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -727,7 +728,7 @@ public class IOCLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // IOCL.g:193:4: '0' .. '9'
+            	    // IOCL.g:194:4: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -759,14 +760,14 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = REAL_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:197:2: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // IOCL.g:198:2: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt10=3;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // IOCL.g:197:4: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+                    // IOCL.g:198:4: ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
-                    // IOCL.g:197:4: ( '0' .. '9' )+
+                    // IOCL.g:198:4: ( '0' .. '9' )+
                     int cnt4=0;
                     loop4:
                     do {
@@ -780,7 +781,7 @@ public class IOCLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // IOCL.g:197:5: '0' .. '9'
+                    	    // IOCL.g:198:5: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -797,7 +798,8 @@ public class IOCLLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // IOCL.g:197:20: ( '0' .. '9' )*
+                    // IOCL.g:198:20: ( '0' .. '9' )+
+                    int cnt5=0;
                     loop5:
                     do {
                         int alt5=2;
@@ -810,7 +812,7 @@ public class IOCLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // IOCL.g:197:21: '0' .. '9'
+                    	    // IOCL.g:198:21: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -818,11 +820,15 @@ public class IOCLLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop5;
+                    	    if ( cnt5 >= 1 ) break loop5;
+                                EarlyExitException eee =
+                                    new EarlyExitException(5, input);
+                                throw eee;
                         }
+                        cnt5++;
                     } while (true);
 
-                    // IOCL.g:197:32: ( EXPONENT )?
+                    // IOCL.g:198:32: ( EXPONENT )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -831,7 +837,7 @@ public class IOCLLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // IOCL.g:197:32: EXPONENT
+                            // IOCL.g:198:32: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -844,10 +850,10 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:198:4: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // IOCL.g:199:4: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
-                    // IOCL.g:198:8: ( '0' .. '9' )+
+                    // IOCL.g:199:8: ( '0' .. '9' )+
                     int cnt7=0;
                     loop7:
                     do {
@@ -861,7 +867,7 @@ public class IOCLLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // IOCL.g:198:9: '0' .. '9'
+                    	    // IOCL.g:199:9: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -877,7 +883,7 @@ public class IOCLLexer extends Lexer {
                         cnt7++;
                     } while (true);
 
-                    // IOCL.g:198:20: ( EXPONENT )?
+                    // IOCL.g:199:20: ( EXPONENT )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
@@ -886,7 +892,7 @@ public class IOCLLexer extends Lexer {
                     }
                     switch (alt8) {
                         case 1 :
-                            // IOCL.g:198:20: EXPONENT
+                            // IOCL.g:199:20: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -899,9 +905,9 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:199:4: ( '0' .. '9' )+ EXPONENT
+                    // IOCL.g:200:4: ( '0' .. '9' )+ EXPONENT
                     {
-                    // IOCL.g:199:4: ( '0' .. '9' )+
+                    // IOCL.g:200:4: ( '0' .. '9' )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -915,7 +921,7 @@ public class IOCLLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // IOCL.g:199:5: '0' .. '9'
+                    	    // IOCL.g:200:5: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -950,11 +956,11 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:203:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\'' )
-            // IOCL.g:203:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\''
+            // IOCL.g:204:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\'' )
+            // IOCL.g:204:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\''
             {
             match('\''); 
-            // IOCL.g:203:9: ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )*
+            // IOCL.g:204:9: ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )*
             loop11:
             do {
                 int alt11=3;
@@ -970,14 +976,14 @@ public class IOCLLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // IOCL.g:203:11: ESC_SEQ
+            	    // IOCL.g:204:11: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // IOCL.g:203:21: ~ ( '\\\\' | '\\'' )
+            	    // IOCL.g:204:21: ~ ( '\\\\' | '\\'' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1014,8 +1020,8 @@ public class IOCLLexer extends Lexer {
         try {
             int _type = IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:207:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // IOCL.g:207:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // IOCL.g:208:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // IOCL.g:208:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1026,7 +1032,7 @@ public class IOCLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // IOCL.g:207:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // IOCL.g:208:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop12:
             do {
                 int alt12=2;
@@ -1070,13 +1076,35 @@ public class IOCLLexer extends Lexer {
     }
     // $ANTLR end "IDENTIFIER"
 
+    // $ANTLR start "NUMERIC_OPERATION"
+    public final void mNUMERIC_OPERATION() throws RecognitionException {
+        try {
+            int _type = NUMERIC_OPERATION;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // IOCL.g:212:2: ( INTEGER_LITERAL '.' IDENTIFIER )
+            // IOCL.g:212:4: INTEGER_LITERAL '.' IDENTIFIER
+            {
+            mINTEGER_LITERAL(); 
+            match('.'); 
+            mIDENTIFIER(); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "NUMERIC_OPERATION"
+
     // $ANTLR start "WS"
     public final void mWS() throws RecognitionException {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // IOCL.g:211:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // IOCL.g:211:4: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // IOCL.g:216:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // IOCL.g:216:4: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -1102,8 +1130,8 @@ public class IOCLLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // IOCL.g:220:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // IOCL.g:220:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // IOCL.g:225:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // IOCL.g:225:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1114,7 +1142,7 @@ public class IOCLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // IOCL.g:220:14: ( '+' | '-' )?
+            // IOCL.g:225:14: ( '+' | '-' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1140,7 +1168,7 @@ public class IOCLLexer extends Lexer {
 
             }
 
-            // IOCL.g:220:25: ( '0' .. '9' )+
+            // IOCL.g:225:25: ( '0' .. '9' )+
             int cnt14=0;
             loop14:
             do {
@@ -1154,7 +1182,7 @@ public class IOCLLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // IOCL.g:220:26: '0' .. '9'
+            	    // IOCL.g:225:26: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1182,8 +1210,8 @@ public class IOCLLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // IOCL.g:225:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // IOCL.g:225:4: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            // IOCL.g:230:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // IOCL.g:230:4: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
                 input.consume();
@@ -1206,7 +1234,7 @@ public class IOCLLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // IOCL.g:229:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // IOCL.g:234:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt15=3;
             int LA15_0 = input.LA(1);
 
@@ -1257,7 +1285,7 @@ public class IOCLLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // IOCL.g:229:4: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // IOCL.g:234:4: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
                     if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1273,14 +1301,14 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:230:4: UNICODE_ESC
+                    // IOCL.g:235:4: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
                     }
                     break;
                 case 3 :
-                    // IOCL.g:231:4: OCTAL_ESC
+                    // IOCL.g:236:4: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -1297,7 +1325,7 @@ public class IOCLLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // IOCL.g:236:2: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // IOCL.g:241:2: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt16=3;
             int LA16_0 = input.LA(1);
 
@@ -1308,9 +1336,9 @@ public class IOCLLexer extends Lexer {
                     int LA16_2 = input.LA(3);
 
                     if ( ((LA16_2>='0' && LA16_2<='7')) ) {
-                        int LA16_5 = input.LA(4);
+                        int LA16_4 = input.LA(4);
 
-                        if ( ((LA16_5>='0' && LA16_5<='7')) ) {
+                        if ( ((LA16_4>='0' && LA16_4<='7')) ) {
                             alt16=1;
                         }
                         else {
@@ -1343,25 +1371,25 @@ public class IOCLLexer extends Lexer {
             }
             switch (alt16) {
                 case 1 :
-                    // IOCL.g:236:4: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // IOCL.g:241:4: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // IOCL.g:236:9: ( '0' .. '3' )
-                    // IOCL.g:236:10: '0' .. '3'
+                    // IOCL.g:241:9: ( '0' .. '3' )
+                    // IOCL.g:241:10: '0' .. '3'
                     {
                     matchRange('0','3'); 
 
                     }
 
-                    // IOCL.g:236:20: ( '0' .. '7' )
-                    // IOCL.g:236:21: '0' .. '7'
+                    // IOCL.g:241:20: ( '0' .. '7' )
+                    // IOCL.g:241:21: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
                     }
 
-                    // IOCL.g:236:31: ( '0' .. '7' )
-                    // IOCL.g:236:32: '0' .. '7'
+                    // IOCL.g:241:31: ( '0' .. '7' )
+                    // IOCL.g:241:32: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1371,18 +1399,18 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // IOCL.g:237:4: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // IOCL.g:242:4: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // IOCL.g:237:9: ( '0' .. '7' )
-                    // IOCL.g:237:10: '0' .. '7'
+                    // IOCL.g:242:9: ( '0' .. '7' )
+                    // IOCL.g:242:10: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
                     }
 
-                    // IOCL.g:237:20: ( '0' .. '7' )
-                    // IOCL.g:237:21: '0' .. '7'
+                    // IOCL.g:242:20: ( '0' .. '7' )
+                    // IOCL.g:242:21: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1392,11 +1420,11 @@ public class IOCLLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // IOCL.g:238:4: '\\\\' ( '0' .. '7' )
+                    // IOCL.g:243:4: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // IOCL.g:238:9: ( '0' .. '7' )
-                    // IOCL.g:238:10: '0' .. '7'
+                    // IOCL.g:243:9: ( '0' .. '7' )
+                    // IOCL.g:243:10: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -1416,8 +1444,8 @@ public class IOCLLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // IOCL.g:243:2: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // IOCL.g:243:4: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // IOCL.g:248:2: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // IOCL.g:248:4: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
             match('u'); 
@@ -1435,168 +1463,168 @@ public class IOCLLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // IOCL.g:1:8: ( T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | BINARY_OPERATOR | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | IDENTIFIER | WS )
-        int alt17=31;
+        // IOCL.g:1:8: ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | BINARY_OPERATOR | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | IDENTIFIER | NUMERIC_OPERATION | WS )
+        int alt17=32;
         alt17 = dfa17.predict(input);
         switch (alt17) {
             case 1 :
-                // IOCL.g:1:10: T__17
-                {
-                mT__17(); 
-
-                }
-                break;
-            case 2 :
-                // IOCL.g:1:16: T__18
+                // IOCL.g:1:10: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
-            case 3 :
-                // IOCL.g:1:22: T__19
+            case 2 :
+                // IOCL.g:1:16: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
-            case 4 :
-                // IOCL.g:1:28: T__20
+            case 3 :
+                // IOCL.g:1:22: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
-            case 5 :
-                // IOCL.g:1:34: T__21
+            case 4 :
+                // IOCL.g:1:28: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
-            case 6 :
-                // IOCL.g:1:40: T__22
+            case 5 :
+                // IOCL.g:1:34: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
-            case 7 :
-                // IOCL.g:1:46: T__23
+            case 6 :
+                // IOCL.g:1:40: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
-            case 8 :
-                // IOCL.g:1:52: T__24
+            case 7 :
+                // IOCL.g:1:46: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
-            case 9 :
-                // IOCL.g:1:58: T__25
+            case 8 :
+                // IOCL.g:1:52: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
-            case 10 :
-                // IOCL.g:1:64: T__26
+            case 9 :
+                // IOCL.g:1:58: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
-            case 11 :
-                // IOCL.g:1:70: T__27
+            case 10 :
+                // IOCL.g:1:64: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
-            case 12 :
-                // IOCL.g:1:76: T__28
+            case 11 :
+                // IOCL.g:1:70: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
-            case 13 :
-                // IOCL.g:1:82: T__29
+            case 12 :
+                // IOCL.g:1:76: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
-            case 14 :
-                // IOCL.g:1:88: T__30
+            case 13 :
+                // IOCL.g:1:82: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
-            case 15 :
-                // IOCL.g:1:94: T__31
+            case 14 :
+                // IOCL.g:1:88: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
-            case 16 :
-                // IOCL.g:1:100: T__32
+            case 15 :
+                // IOCL.g:1:94: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
-            case 17 :
-                // IOCL.g:1:106: T__33
+            case 16 :
+                // IOCL.g:1:100: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
-            case 18 :
-                // IOCL.g:1:112: T__34
+            case 17 :
+                // IOCL.g:1:106: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
-            case 19 :
-                // IOCL.g:1:118: T__35
+            case 18 :
+                // IOCL.g:1:112: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
-            case 20 :
-                // IOCL.g:1:124: T__36
+            case 19 :
+                // IOCL.g:1:118: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
-            case 21 :
-                // IOCL.g:1:130: T__37
+            case 20 :
+                // IOCL.g:1:124: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
-            case 22 :
-                // IOCL.g:1:136: T__38
+            case 21 :
+                // IOCL.g:1:130: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
-            case 23 :
-                // IOCL.g:1:142: T__39
+            case 22 :
+                // IOCL.g:1:136: T__39
                 {
                 mT__39(); 
+
+                }
+                break;
+            case 23 :
+                // IOCL.g:1:142: T__40
+                {
+                mT__40(); 
 
                 }
                 break;
@@ -1650,7 +1678,14 @@ public class IOCLLexer extends Lexer {
                 }
                 break;
             case 31 :
-                // IOCL.g:1:259: WS
+                // IOCL.g:1:259: NUMERIC_OPERATION
+                {
+                mNUMERIC_OPERATION(); 
+
+                }
+                break;
+            case 32 :
+                // IOCL.g:1:277: WS
                 {
                 mWS(); 
 
@@ -1714,49 +1749,49 @@ public class IOCLLexer extends Lexer {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "196:1: REAL_LITERAL : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+            return "197:1: REAL_LITERAL : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
         }
     }
     static final String DFA17_eotS =
-        "\1\24\3\35\1\44\1\uffff\1\46\1\uffff\1\50\2\uffff\1\35\3\uffff\1"+
-        "\52\2\uffff\2\35\1\uffff\6\35\1\64\3\uffff\1\35\1\66\1\35\7\uffff"+
-        "\1\35\2\uffff\10\35\1\uffff\1\102\1\uffff\1\103\1\104\4\35\1\111"+
-        "\3\35\1\111\3\uffff\1\115\1\35\1\117\1\35\1\uffff\3\35\1\uffff\1"+
-        "\35\1\uffff\1\117\7\35\1\134\3\35\1\uffff\2\35\1\111\2\35\2\111";
+        "\1\24\3\35\1\44\1\uffff\1\46\1\uffff\1\50\2\uffff\1\35\5\uffff\1"+
+        "\53\2\35\1\uffff\6\35\1\64\3\uffff\1\35\1\67\1\35\7\uffff\1\35\2"+
+        "\uffff\10\35\2\uffff\1\104\1\uffff\1\105\1\106\4\35\1\113\3\35\1"+
+        "\113\4\uffff\1\117\1\35\1\121\1\35\1\uffff\3\35\1\uffff\1\35\1\uffff"+
+        "\1\121\7\35\1\136\3\35\1\uffff\2\35\1\113\2\35\2\113";
     static final String DFA17_eofS =
-        "\144\uffff";
+        "\146\uffff";
     static final String DFA17_minS =
         "\1\11\1\156\1\162\1\157\1\75\1\uffff\1\75\1\uffff\1\76\2\uffff\1"+
-        "\157\3\uffff\1\60\2\uffff\1\145\1\156\1\uffff\1\162\2\141\1\157"+
-        "\1\162\1\145\1\56\3\uffff\1\144\1\60\1\162\7\uffff\1\164\2\uffff"+
-        "\1\154\1\164\1\165\1\154\1\147\1\154\1\144\1\161\1\uffff\1\60\1"+
-        "\uffff\2\60\1\146\2\145\1\163\1\60\1\154\1\145\1\165\1\60\3\uffff"+
-        "\1\60\1\147\1\60\1\145\1\uffff\1\145\1\162\1\145\1\uffff\1\145\1"+
-        "\uffff\1\60\1\143\1\145\1\156\1\162\1\164\1\144\1\143\1\60\1\151"+
-        "\1\123\1\145\1\uffff\1\157\1\145\1\60\1\156\1\164\2\60";
+        "\157\5\uffff\1\60\1\145\1\156\1\uffff\1\162\2\141\1\157\1\162\1"+
+        "\145\1\56\3\uffff\1\144\1\60\1\162\7\uffff\1\164\2\uffff\1\154\1"+
+        "\164\1\165\1\154\1\147\1\154\1\144\1\161\1\uffff\2\60\1\uffff\2"+
+        "\60\1\146\2\145\1\163\1\60\1\154\1\145\1\165\1\60\4\uffff\1\60\1"+
+        "\147\1\60\1\145\1\uffff\1\145\1\162\1\145\1\uffff\1\145\1\uffff"+
+        "\1\60\1\143\1\145\1\156\1\162\1\164\1\144\1\143\1\60\1\151\1\123"+
+        "\1\145\1\uffff\1\157\1\145\1\60\1\156\1\164\2\60";
     static final String DFA17_maxS =
         "\1\175\1\156\1\162\1\157\1\76\1\uffff\1\75\1\uffff\1\76\2\uffff"+
-        "\1\157\3\uffff\1\71\2\uffff\1\145\1\156\1\uffff\1\162\2\141\1\157"+
-        "\1\162\2\145\3\uffff\1\144\1\172\1\162\7\uffff\1\164\2\uffff\1\154"+
-        "\1\164\1\165\1\154\1\147\1\154\1\144\1\164\1\uffff\1\172\1\uffff"+
-        "\2\172\1\146\2\145\1\163\1\172\1\154\1\145\1\165\1\172\3\uffff\1"+
-        "\172\1\147\1\172\1\145\1\uffff\1\145\1\162\1\145\1\uffff\1\145\1"+
-        "\uffff\1\172\1\143\1\145\1\156\1\162\1\164\1\144\1\143\1\172\1\151"+
-        "\1\123\1\145\1\uffff\1\157\1\145\1\172\1\156\1\164\2\172";
+        "\1\157\5\uffff\1\71\1\145\1\156\1\uffff\1\162\2\141\1\157\1\162"+
+        "\2\145\3\uffff\1\144\1\172\1\162\7\uffff\1\164\2\uffff\1\154\1\164"+
+        "\1\165\1\154\1\147\1\154\1\144\1\164\1\uffff\2\172\1\uffff\2\172"+
+        "\1\146\2\145\1\163\1\172\1\154\1\145\1\165\1\172\4\uffff\1\172\1"+
+        "\147\1\172\1\145\1\uffff\1\145\1\162\1\145\1\uffff\1\145\1\uffff"+
+        "\1\172\1\143\1\145\1\156\1\162\1\164\1\144\1\143\1\172\1\151\1\123"+
+        "\1\145\1\uffff\1\157\1\145\1\172\1\156\1\164\2\172";
     static final String DFA17_acceptS =
         "\5\uffff\1\5\1\uffff\1\12\1\uffff\1\14\1\15\1\uffff\1\17\1\20\1"+
-        "\21\1\uffff\1\24\1\25\2\uffff\1\30\7\uffff\1\35\1\36\1\37\3\uffff"+
-        "\1\4\1\6\1\7\1\11\1\10\1\22\1\13\1\uffff\1\23\1\34\10\uffff\1\33"+
-        "\1\uffff\1\2\13\uffff\1\1\1\3\1\16\4\uffff\1\32\3\uffff\1\26\1\uffff"+
+        "\21\1\22\1\23\3\uffff\1\30\7\uffff\1\35\1\36\1\40\3\uffff\1\4\1"+
+        "\6\1\7\1\11\1\10\1\24\1\13\1\uffff\1\34\1\25\10\uffff\1\33\2\uffff"+
+        "\1\2\13\uffff\1\37\1\1\1\3\1\16\4\uffff\1\32\3\uffff\1\26\1\uffff"+
         "\1\31\14\uffff\1\27\7\uffff";
     static final String DFA17_specialS =
-        "\144\uffff}>";
+        "\146\uffff}>";
     static final String[] DFA17_transitionS = {
-            "\2\36\2\uffff\1\36\22\uffff\1\36\6\uffff\1\34\1\20\1\21\1\11"+
-            "\1\7\1\16\1\10\1\17\1\12\12\33\2\uffff\1\4\1\5\1\6\2\uffff\1"+
+            "\2\36\2\uffff\1\36\22\uffff\1\36\6\uffff\1\34\1\14\1\15\1\11"+
+            "\1\7\1\20\1\10\1\21\1\12\12\33\2\uffff\1\4\1\5\1\6\2\uffff\1"+
             "\35\1\27\1\30\5\35\1\23\5\35\1\31\3\35\1\32\7\35\4\uffff\1\35"+
             "\1\uffff\1\1\4\35\1\26\7\35\1\13\1\2\3\35\1\22\1\25\3\35\1\3"+
-            "\2\35\1\14\1\uffff\1\15",
+            "\2\35\1\16\1\uffff\1\17",
             "\1\37",
             "\1\40",
             "\1\41",
@@ -1771,9 +1806,9 @@ public class IOCLLexer extends Lexer {
             "",
             "",
             "",
-            "\12\53",
             "",
             "",
+            "\12\52",
             "\1\54",
             "\1\55",
             "",
@@ -1783,77 +1818,79 @@ public class IOCLLexer extends Lexer {
             "\1\61",
             "\1\62",
             "\1\63",
-            "\1\53\1\uffff\12\33\13\uffff\1\53\37\uffff\1\53",
+            "\1\65\1\uffff\12\33\13\uffff\1\52\37\uffff\1\52",
             "",
             "",
             "",
-            "\1\65",
+            "\1\66",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\67",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\70",
             "",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\71",
+            "",
+            "",
             "\1\72",
             "\1\73",
             "\1\74",
             "\1\75",
             "\1\76",
             "\1\77",
-            "\1\100\2\uffff\1\101",
+            "\1\100",
+            "\1\101\2\uffff\1\102",
+            "",
+            "\12\52\7\uffff\32\103\4\uffff\1\103\1\uffff\32\103",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\105",
-            "\1\106",
             "\1\107",
             "\1\110",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\111",
             "\1\112",
-            "\1\113",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\1\114",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "",
-            "",
-            "",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\115",
             "\1\116",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
-            "\1\120",
             "",
-            "\1\121",
-            "\1\122",
-            "\1\123",
             "",
-            "\1\124",
+            "",
             "",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\120",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\122",
+            "",
+            "\1\123",
+            "\1\124",
             "\1\125",
+            "",
             "\1\126",
+            "",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\1\127",
             "\1\130",
             "\1\131",
             "\1\132",
             "\1\133",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\134",
             "\1\135",
-            "\1\136",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\1\137",
-            "",
             "\1\140",
             "\1\141",
-            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "",
             "\1\142",
             "\1\143",
+            "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
+            "\1\144",
+            "\1\145",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35",
             "\12\35\7\uffff\32\35\4\uffff\1\35\1\uffff\32\35"
     };
@@ -1888,7 +1925,7 @@ public class IOCLLexer extends Lexer {
             this.transition = DFA17_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | BINARY_OPERATOR | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | IDENTIFIER | WS );";
+            return "1:1: Tokens : ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | BINARY_OPERATOR | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | IDENTIFIER | NUMERIC_OPERATION | WS );";
         }
     }
  

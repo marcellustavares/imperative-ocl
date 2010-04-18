@@ -76,13 +76,14 @@ multiplicativeExpCS returns [OCLExpressionCS oclExpressionCS]
 	;
 
 unaryExpCS returns [OCLExpressionCS oclExpressionCS]
-	: dae = dotArrowExpCS { $oclExpressionCS = $dae.oclExpressionCS; }
-	| op = ('+'|'-'|'not') ue = unaryExpCS { $oclExpressionCS = createOperationCallExpCS($ue.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text) ); }
+	: op = ('+'|'-'|'not') ue = unaryExpCS { $oclExpressionCS = createOperationCallExpCS($ue.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text) ); }
+	| dae = dotArrowExpCS { $oclExpressionCS = $dae.oclExpressionCS; }
 	;
 
 dotArrowExpCS returns [OCLExpressionCS oclExpressionCS]
-	: ocle = oclExpCS { $oclExpressionCS = $ocle.oclExpressionCS; }
+	: NUMERIC_OPERATION  '(' ( args = argumentsCS)? ')' { $oclExpressionCS = createNumericOperationCallExpCS($NUMERIC_OPERATION, $NUMERIC_OPERATION.text, (args != null) ? args.argumentsCS : null ); } 
 	| ocle = oclExpCS pce = propertyCallExp { $oclExpressionCS = setOperationCallExpCSSource($ocle.oclExpressionCS, $pce.oclExpressionCS); }
+	| ocle = oclExpCS { $oclExpressionCS = $ocle.oclExpressionCS; }
 	;
 
 oclExpCS returns [OCLExpressionCS oclExpressionCS]
@@ -194,7 +195,7 @@ INTEGER_LITERAL
 	; 
 
 REAL_LITERAL
-	: ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+	: ('0'..'9')+ '.' ('0'..'9')+ EXPONENT?
 	| '.' ('0'..'9')+ EXPONENT?
 	| ('0'..'9')+ EXPONENT
 	;
@@ -205,7 +206,11 @@ STRING_LITERAL
 
 IDENTIFIER  
 	: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
-    	;	   
+    	;
+
+NUMERIC_OPERATION
+	: INTEGER_LITERAL '.' IDENTIFIER
+	;	   
 
 WS  
 	: ( ' '

@@ -43,44 +43,22 @@ public class TestLogicalExp extends TestCase {
 
         OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
 
-        // (false and false or false) xor true
+        // false and (false or false xor true)
 
         OCLExpressionCS source = opCallExp.getSource();
 
-        assertTrue(source instanceof OperationCallExpCS);
+        assertTrue(source instanceof BooleanLiteralExpCS);
 
         SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
 
         String operation = simpleName.getValue();
 
-        assertEquals("xor", operation);
-
-        // (false and false) or false
-
-        OperationCallExpCS nestedSource = (OperationCallExpCS) source;
-
-        assertTrue(nestedSource.getSource() instanceof OperationCallExpCS);
-
-        simpleName = nestedSource.getSimpleNameCS();
-
-        operation = simpleName.getValue();
-
-        assertEquals("or", operation);
-
-        // false and false
-
-        nestedSource = (OperationCallExpCS) nestedSource.getSource();
-
-        assertTrue(nestedSource.getSource() instanceof BooleanLiteralExpCS);
-
-        simpleName = nestedSource.getSimpleNameCS();
-
-        operation = simpleName.getValue();
-
         assertEquals("and", operation);
 
-        assertTrue(
-            nestedSource.getArguments().get(0) instanceof BooleanLiteralExpCS);
+        OCLExpressionCS arg = opCallExp.getArguments().get(0);
+
+        assertTrue(arg instanceof OperationCallExpCS);
+
     }
 
     protected IOCLExpressionCS ioclExp;

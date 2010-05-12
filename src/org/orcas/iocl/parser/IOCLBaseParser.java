@@ -162,19 +162,11 @@ public abstract class IOCLBaseParser extends Parser {
         OperationCallExpCS opCallExp = new OperationCallExpCSImpl(
             simpleNameCS.getToken());
 
-        if (operationCallExpCS == null) {
-            opCallExp.setSource(source);
-        }
-        else {
-            opCallExp.setSource(operationCallExpCS);
-        }
-
+        opCallExp.setSource(source);
         opCallExp.setSimpleNameCS(simpleNameCS);
         opCallExp.addArgument(arg);
 
-        operationCallExpCS = opCallExp;
-
-        return operationCallExpCS;
+        return opCallExp;
     }
 
     public OperationCallExpCS createOperationCallExpCS(
@@ -228,6 +220,5 @@ public abstract class IOCLBaseParser extends Parser {
 
     protected ArgumentsCS arguments = new ArgumentsCSImpl();
     protected CollectionLiteralPartsCSImpl parts;
-    protected OperationCallExpCS operationCallExpCS;
 
 }

@@ -43,35 +43,31 @@ ioclExpressionCS returns [IOCLExpressionCS ioclExpressionCS]
 	;
 
 oclExpressionCS returns [OCLExpressionCS oclExpressionCS]
-	: ie = impliesExpCS { $oclExpressionCS = $ie.oclExpressionCS; } 
+	: le = logicalExpCS { $oclExpressionCS = $le.oclExpressionCS; }
 	;
 
-impliesExpCS returns [OCLExpressionCS oclExpressionCS] 
-	: le = logicalExpCS { $oclExpressionCS = $le.oclExpressionCS; }
-	; 
-
 logicalExpCS returns [OCLExpressionCS oclExpressionCS]
-	: ee1 = equalityExpCS ( op = ('and'|'or'|'xor') ee2 = equalityExpCS { $oclExpressionCS = createOperationCallExpCS(ee1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ee2.oclExpressionCS); } )+
+	: ee = equalityExpCS op = ('and'|'or'|'xor') le = logicalExpCS { $oclExpressionCS = createOperationCallExpCS(ee.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), le.oclExpressionCS); }
 	| ee = equalityExpCS { $oclExpressionCS = $ee.oclExpressionCS; }
 	;
 
 equalityExpCS returns [OCLExpressionCS oclExpressionCS]
-	: rele1 = relationalExpCS ( op = ('<>'|'=') rele2 = relationalExpCS { $oclExpressionCS = createOperationCallExpCS(rele1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), rele2.oclExpressionCS); } )+
+	: rele = relationalExpCS op = ('<>'|'=') ee = equalityExpCS { $oclExpressionCS = createOperationCallExpCS(rele.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ee.oclExpressionCS); }
 	| rele = relationalExpCS { $oclExpressionCS = $rele.oclExpressionCS; }
 	;	
 
 relationalExpCS returns [OCLExpressionCS oclExpressionCS] 
-	: ae1 = additiveExpCS ( op = ('<='|'<'|'>'|'>=') ae2 = additiveExpCS { $oclExpressionCS = createOperationCallExpCS(ae1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ae2.oclExpressionCS); } )+
+	: ae = additiveExpCS op = ('<='|'<'|'>'|'>=') rele = relationalExpCS { $oclExpressionCS = createOperationCallExpCS(ae.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), rele.oclExpressionCS); }
 	| ae = additiveExpCS { $oclExpressionCS = $ae.oclExpressionCS; }
 	;
 
 additiveExpCS returns [OCLExpressionCS oclExpressionCS]
-	: me1 = multiplicativeExpCS { $oclExpressionCS = $me1.oclExpressionCS; } (op = ('+'|'-') me2 = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(me1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me2.oclExpressionCS); } )+
+	: me = multiplicativeExpCS op = ('+'|'-') ae = additiveExpCS { $oclExpressionCS = createOperationCallExpCS(me.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ae.oclExpressionCS); }
 	| me = multiplicativeExpCS { $oclExpressionCS = $me.oclExpressionCS; }
 	;
 
 multiplicativeExpCS returns [OCLExpressionCS oclExpressionCS]
-	: ue1 = unaryExpCS { $oclExpressionCS = $ue1.oclExpressionCS; } ( op = ('*'|'/') ue2 = unaryExpCS { $oclExpressionCS = createOperationCallExpCS(ue1.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), ue2.oclExpressionCS); } )+
+	: ue = unaryExpCS op = ('*'|'/') me = multiplicativeExpCS { $oclExpressionCS = createOperationCallExpCS(ue.oclExpressionCS, createSimpleNameCS($op, SimpleTypeEnum.STRING, $op.text), me.oclExpressionCS); }
 	| ue = unaryExpCS { $oclExpressionCS = $ue.oclExpressionCS; }
 	;
 
@@ -88,6 +84,7 @@ dotArrowExpCS returns [OCLExpressionCS oclExpressionCS]
 
 oclExpCS returns [OCLExpressionCS oclExpressionCS]
 	: le = literalExpCS { $oclExpressionCS = $le.oclExpressionCS; }
+	//| '(' ocle = oclExpressionCS ')' { $oclExpressionCS = $ocle.oclExpressionCS; }
 	;
 
 literalExpCS returns [OCLExpressionCS oclExpressionCS]

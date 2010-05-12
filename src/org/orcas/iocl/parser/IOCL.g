@@ -137,8 +137,7 @@ realLiteralExpCS returns [OCLExpressionCS oclExpressionCS]
 	;
 
 propertyCallExp returns [OCLExpressionCS oclExpressionCS]
-	: '->' modelPropertyCallExp
-	| '.' mpce = modelPropertyCallExp { $oclExpressionCS = $mpce.oclExpressionCS; }
+	: ('.'| '->') mpce = modelPropertyCallExp { $oclExpressionCS = $mpce.oclExpressionCS; }
 	;
 
 modelPropertyCallExp returns [OCLExpressionCS oclExpressionCS]

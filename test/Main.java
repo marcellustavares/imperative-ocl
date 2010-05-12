@@ -7,7 +7,7 @@ import org.orcas.iocl.parser.IOCLParserUtil;
 public class Main {
 
     public static void main(String[] args) throws IOCLException {
-        String exp = "2*2*3*3*4";
+        String exp = "Sequence{}->size()";
 
         IOCLExpressionCS ioclExp = IOCLParserUtil.parse(exp);
 

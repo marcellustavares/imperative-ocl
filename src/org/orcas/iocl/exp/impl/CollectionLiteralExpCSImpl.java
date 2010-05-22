@@ -1,9 +1,9 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.CollectionLiteralExpCS;
-import org.orcas.iocl.cst.CollectionLiteralPartsCS;
-import org.orcas.iocl.cst.CollectionTypeIdentifierCS;
+import org.orcas.iocl.exp.CollectionLiteralExpCS;
+import org.orcas.iocl.exp.CollectionLiteralPartsCS;
+import org.orcas.iocl.exp.CollectionTypeIdentifierCS;
 
 public class CollectionLiteralExpCSImpl extends LiteralExpCSImpl
     implements CollectionLiteralExpCS {

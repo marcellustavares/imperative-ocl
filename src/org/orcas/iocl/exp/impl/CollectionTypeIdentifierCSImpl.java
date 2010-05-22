@@ -1,7 +1,7 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.CollectionTypeIdentifierCS;
+import org.orcas.iocl.exp.CollectionTypeIdentifierCS;
 import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.Validator;
 

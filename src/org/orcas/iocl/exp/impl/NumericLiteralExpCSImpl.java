@@ -1,7 +1,7 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.NumericLiteralExpCS;
+import org.orcas.iocl.exp.NumericLiteralExpCS;
 
 public class NumericLiteralExpCSImpl extends PrimitiveLiteralExpCSImpl
     implements NumericLiteralExpCS {

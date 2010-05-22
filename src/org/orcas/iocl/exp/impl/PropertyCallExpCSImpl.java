@@ -1,9 +1,9 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.OclExpressionCS;
-import org.orcas.iocl.cst.PropertyCallExpCS;
-import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.exp.OclExpressionCS;
+import org.orcas.iocl.exp.PropertyCallExpCS;
+import org.orcas.iocl.exp.SimpleNameCS;
 
 public class PropertyCallExpCSImpl extends OCLExpressionCSImpl
     implements PropertyCallExpCS {

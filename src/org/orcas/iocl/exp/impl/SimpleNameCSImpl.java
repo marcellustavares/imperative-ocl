@@ -1,8 +1,8 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.SimpleNameCS;
-import org.orcas.iocl.cst.SimpleTypeEnum;
+import org.orcas.iocl.exp.SimpleNameCS;
+import org.orcas.iocl.exp.SimpleTypeEnum;
 
 public class SimpleNameCSImpl extends OCLExpressionCSImpl
     implements SimpleNameCS {

@@ -1,8 +1,8 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.CollectionLiteralPartCS;
-import org.orcas.iocl.cst.OclExpressionCS;
+import org.orcas.iocl.exp.CollectionLiteralPartCS;
+import org.orcas.iocl.exp.OclExpressionCS;
 
 public class CollectionLiteralPartCSImpl extends OCLExpressionCSImpl
     implements CollectionLiteralPartCS {

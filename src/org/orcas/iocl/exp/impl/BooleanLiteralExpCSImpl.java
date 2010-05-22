@@ -1,7 +1,7 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.BooleanLiteralExpCS;
+import org.orcas.iocl.exp.BooleanLiteralExpCS;
 
 public class BooleanLiteralExpCSImpl extends PrimitiveLiteralExpCSImpl
     implements BooleanLiteralExpCS {

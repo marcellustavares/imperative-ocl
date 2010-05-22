@@ -1,8 +1,8 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import org.antlr.runtime.Token;
 
-import org.orcas.iocl.cst.StringLiteralExpCS;
+import org.orcas.iocl.exp.StringLiteralExpCS;
 import org.orcas.iocl.util.StringUtil;
 
 public class StringLiteralExpCSImpl extends PrimitiveLiteralExpCSImpl

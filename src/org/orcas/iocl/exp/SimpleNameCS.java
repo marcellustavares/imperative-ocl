@@ -1,4 +1,4 @@
-package org.orcas.iocl.cst;
+package org.orcas.iocl.exp;
 
 public interface SimpleNameCS extends OclExpressionCS{
 

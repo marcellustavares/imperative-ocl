@@ -1,10 +1,10 @@
-package org.orcas.iocl.cst.impl;
+package org.orcas.iocl.exp.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.orcas.iocl.cst.ArgumentsCS;
-import org.orcas.iocl.cst.OclExpressionCS;
+import org.orcas.iocl.exp.ArgumentsCS;
+import org.orcas.iocl.exp.OclExpressionCS;
 
 public class ArgumentsCSImpl implements ArgumentsCS {
 

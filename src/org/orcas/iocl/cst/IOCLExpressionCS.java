@@ -1,5 +1,5 @@
 package org.orcas.iocl.cst;
 
-public interface IOCLExpressionCS extends NodeCS {
+public interface IoclExpressionCS extends OclExpressionCS {
 
 }

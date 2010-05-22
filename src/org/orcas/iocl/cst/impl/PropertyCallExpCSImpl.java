@@ -1,7 +1,7 @@
 package org.orcas.iocl.cst.impl;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.OclExpressionCS;
 import org.orcas.iocl.cst.PropertyCallExpCS;
 import org.orcas.iocl.cst.SimpleNameCS;
 
@@ -16,7 +16,7 @@ public class PropertyCallExpCSImpl extends OCLExpressionCSImpl
         return _simpleNameCS;
     }
 
-    public OCLExpressionCS getSource() {
+    public OclExpressionCS getSource() {
         return _source;
     }
 
@@ -24,11 +24,11 @@ public class PropertyCallExpCSImpl extends OCLExpressionCSImpl
         _simpleNameCS = simpleNameCS;
     }
 
-    public void setSource(OCLExpressionCS source) {
+    public void setSource(OclExpressionCS source) {
         _source = source;
     }
 
     private SimpleNameCS _simpleNameCS;
-    private OCLExpressionCS _source;
+    private OclExpressionCS _source;
 
 }

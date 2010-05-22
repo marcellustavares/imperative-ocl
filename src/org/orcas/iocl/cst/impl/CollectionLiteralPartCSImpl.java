@@ -2,7 +2,7 @@ package org.orcas.iocl.cst.impl;
 
 import org.antlr.runtime.Token;
 import org.orcas.iocl.cst.CollectionLiteralPartCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.OclExpressionCS;
 
 public class CollectionLiteralPartCSImpl extends OCLExpressionCSImpl
     implements CollectionLiteralPartCS {
@@ -11,14 +11,14 @@ public class CollectionLiteralPartCSImpl extends OCLExpressionCSImpl
         super(token);
     }
 
-    public OCLExpressionCS getOCLExpresionCS() {
+    public OclExpressionCS getOCLExpresionCS() {
         return _ocleExpressionCS;
     }
 
-    public void setOCLExpresionCS(OCLExpressionCS oclExpressionCS) {
+    public void setOCLExpresionCS(OclExpressionCS oclExpressionCS) {
         _ocleExpressionCS = oclExpressionCS;
     }
 
-    private OCLExpressionCS _ocleExpressionCS;
+    private OclExpressionCS _ocleExpressionCS;
 
 }

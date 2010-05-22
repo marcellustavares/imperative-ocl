@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ArgumentsCS {
 
-    public void addArgument(OCLExpressionCS argument);
+    public void addArgument(OclExpressionCS argument);
 
-    public List<OCLExpressionCS> getArguments();
+    public List<OclExpressionCS> getArguments();
 
 }

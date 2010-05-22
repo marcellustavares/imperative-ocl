@@ -1,13 +1,13 @@
 package org.orcas.iocl.cst;
 
-public interface PropertyCallExpCS extends OCLExpressionCS {
+public interface PropertyCallExpCS extends OclExpressionCS {
 
     public SimpleNameCS getSimpleNameCS();
 
-    public OCLExpressionCS getSource();
+    public OclExpressionCS getSource();
 
     public void setSimpleNameCS(SimpleNameCS simpleNameCS);
 
-    public void setSource(OCLExpressionCS source);
+    public void setSource(OclExpressionCS source);
 
 }

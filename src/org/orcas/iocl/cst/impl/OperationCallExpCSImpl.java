@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.runtime.Token;
-import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.OclExpressionCS;
 import org.orcas.iocl.cst.OperationCallExpCS;
 
 public class OperationCallExpCSImpl extends ModelPropertyCallExpCSImpl
@@ -14,18 +14,18 @@ public class OperationCallExpCSImpl extends ModelPropertyCallExpCSImpl
         super(token);
     }
 
-    public void addArgument(OCLExpressionCS argument) {
+    public void addArgument(OclExpressionCS argument) {
         _arguments.add(argument);
     }
 
-    public List<OCLExpressionCS> getArguments() {
+    public List<OclExpressionCS> getArguments() {
         return _arguments;
     }
 
-    public void setArguments(List<OCLExpressionCS> arguments) {
+    public void setArguments(List<OclExpressionCS> arguments) {
         _arguments = arguments;
     }
 
-    private List<OCLExpressionCS> _arguments = new ArrayList<OCLExpressionCS>();
+    private List<OclExpressionCS> _arguments = new ArrayList<OclExpressionCS>();
 
 }

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.orcas.iocl.cst.ArgumentsCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
+import org.orcas.iocl.cst.OclExpressionCS;
 
 public class ArgumentsCSImpl implements ArgumentsCS {
 
-    public void addArgument(OCLExpressionCS argument) {
+    public void addArgument(OclExpressionCS argument) {
         _arguments.add(argument);
     }
 
-    public List<OCLExpressionCS> getArguments() {
+    public List<OclExpressionCS> getArguments() {
         return _arguments;
     }
 
-    private List<OCLExpressionCS> _arguments = new ArrayList<OCLExpressionCS>();
+    private List<OclExpressionCS> _arguments = new ArrayList<OclExpressionCS>();
 
 }

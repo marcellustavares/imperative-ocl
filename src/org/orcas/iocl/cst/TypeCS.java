@@ -1,5 +1,5 @@
 package org.orcas.iocl.cst;
 
-public interface TypeCS extends OCLExpressionCS {
+public interface TypeCS extends OclExpressionCS {
 
 }

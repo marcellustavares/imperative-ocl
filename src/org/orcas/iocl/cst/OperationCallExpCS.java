@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface OperationCallExpCS extends ModelPropertyCallExpCS {
 
-    public void addArgument(OCLExpressionCS argument);
+    public void addArgument(OclExpressionCS argument);
 
-    public List<OCLExpressionCS> getArguments();
+    public List<OclExpressionCS> getArguments();
 
-    public void setArguments(List<OCLExpressionCS> arguments);
+    public void setArguments(List<OclExpressionCS> arguments);
 
 }

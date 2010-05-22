@@ -1,9 +1,9 @@
 package org.orcas.iocl.cst;
 
-public interface CollectionLiteralPartCS extends OCLExpressionCS {
+public interface CollectionLiteralPartCS extends OclExpressionCS {
 
-    public OCLExpressionCS getOCLExpresionCS();
+    public OclExpressionCS getOCLExpresionCS();
 
-    public void setOCLExpresionCS(OCLExpressionCS oclExpressionCS);
+    public void setOCLExpresionCS(OclExpressionCS oclExpressionCS);
 
 }

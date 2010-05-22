@@ -1,6 +1,6 @@
 package org.orcas.iocl.cst;
 
-public interface SimpleNameCS extends OCLExpressionCS{
+public interface SimpleNameCS extends OclExpressionCS{
 
     public SimpleTypeEnum getSimpleNameType();
 

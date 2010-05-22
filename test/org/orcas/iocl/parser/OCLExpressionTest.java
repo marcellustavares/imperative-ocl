@@ -2,7 +2,7 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestSuite;
 
-public class OCLExpressionTest {
+public class OclExpressionTest {
 
     public static void main(String[] args) throws Exception {
 

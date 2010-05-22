@@ -3,7 +3,7 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.SimpleTypeEnum;
 
-public class SimpleNameImpl extends OCLExpressionImpl
+public class SimpleNameImpl extends OclExpressionImpl
     implements SimpleName {
 
     public SimpleTypeEnum getSimpleNameType() {

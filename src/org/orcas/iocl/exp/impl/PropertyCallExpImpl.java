@@ -4,7 +4,7 @@ import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.PropertyCallExp;
 import org.orcas.iocl.exp.SimpleName;
 
-public class PropertyCallExpImpl extends OCLExpressionImpl
+public class PropertyCallExpImpl extends OclExpressionImpl
     implements PropertyCallExp {
 
     public SimpleName getSimpleName() {

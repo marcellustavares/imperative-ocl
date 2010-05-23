@@ -2,56 +2,57 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.cst.BooleanLiteralExpCS;
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.IntegerLiteralExpCS;
-import org.orcas.iocl.cst.RealLiteralExpCS;
-import org.orcas.iocl.cst.StringLiteralExpCS;
+import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
-import org.orcas.iocl.parser.IOCLParserUtil;
+import org.orcas.iocl.exp.BooleanLiteralExp;
+import org.orcas.iocl.exp.IntegerLiteralExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.RealLiteralExp;
+import org.orcas.iocl.exp.StringLiteralExp;
 
 public class TestPrimitiveLiteralExp extends TestCase {
 
     public void testBooleanLiteralExp() throws IOCLException {
         exp = "true";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        assertTrue(ioclExp instanceof BooleanLiteralExpCS);
+        assertTrue(oclExp instanceof BooleanLiteralExp);
 
         exp = "false";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        assertTrue(ioclExp instanceof BooleanLiteralExpCS);
+        assertTrue(oclExp instanceof BooleanLiteralExp);
     }
 
     public void testIntegerLiteralExp() throws IOCLException {
         exp = "2";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        assertTrue(ioclExp instanceof IntegerLiteralExpCS);
+        assertTrue(oclExp instanceof IntegerLiteralExp);
     }
 
     public void testRealLiteralExp() throws IOCLException {
         exp = "2.2";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        assertTrue(ioclExp instanceof RealLiteralExpCS);
+        assertTrue(oclExp instanceof RealLiteralExp);
     }
 
     public void testStringLiteralExp() throws IOCLException {
         exp = "'marcellus'";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
         exp = "'\u4147 ok'  ";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
         exp = "' t  e\t\nst '      ";
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        assertTrue(ioclExp instanceof StringLiteralExpCS);
+        assertTrue(oclExp instanceof StringLiteralExp);
     }
 
     protected String exp;
-    protected IOCLExpressionCS ioclExp;
+    protected Iocl iocl = Iocl.getInstance();
+    protected OclExpression oclExp;
 
 }

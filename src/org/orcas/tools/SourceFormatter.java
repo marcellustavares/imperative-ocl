@@ -136,7 +136,7 @@ public class SourceFormatter {
 
         ds.setBasedir(basedir);
         ds.setExcludes(new String[] {
-            "**\\bin\\**", "**\\IOCLLexer.java", "**\\IOCLParser.java",
+            "**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
             "**\\SourceFormatter.java"});
 
         ds.setIncludes(new String[] {"**\\*.java"});

@@ -4,22 +4,22 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.NumericLiteralExpCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
-import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
+import org.orcas.iocl.exp.NumericLiteralExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.SimpleName;
 
 public class TestArithmeticExp extends TestCase {
 
     public void testUnaryExp() throws IOCLException{
-        String[] exps = new String[] {" -1", "- 1.2 ", "+3", " + 33 "};
+        String[] exps = new String[] {" -1", "- 1.2 "};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            checkUnaryExp(ioclExp);
+            checkUnaryExp(oclExp);
         }
     }
 
@@ -28,9 +28,9 @@ public class TestArithmeticExp extends TestCase {
             "1*1", "2 / 3", "1.2 /    4", "2.6   *4.3"};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            checkMultiplicativeExp(ioclExp);
+            checkMultiplicativeExp(oclExp);
         }
     }
 
@@ -39,65 +39,65 @@ public class TestArithmeticExp extends TestCase {
             "1+1", "2 - 3", "1.2 +    4", "2.6   -4.3"};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            checkAdditiveExp(ioclExp);
+            checkAdditiveExp(oclExp);
         }
     }
 
     public void testArithmeticExp() throws IOCLException{
-        String[] exps = new String[] {"-1+2", "+1+2", "+1-2", "-1-1"};
+        String[] exps = new String[] {"-1+2", "-1-1"};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
             // operationCallExp (+|-) numericLiteralExp
 
-            checkAdditiveExp(ioclExp);
+            checkAdditiveExp(oclExp);
 
-            // (-|+) numericLiteralExp
+            // (- numericLiteralExp)
 
-            OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+            OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OCLExpressionCS source = opCallExp.getSource();
+            OclExpression source = opCallExp.getSource();
 
             checkUnaryExp(source);
         }
 
-        exps = new String[] {"-1*2", "+1*2", "+1/2", "-1/1"};
+        exps = new String[] {"-1*2", "-1/1"};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
             // operationCallExp (*|/) numericLiteralExp
 
-            checkMultiplicativeExp(ioclExp);
+            checkMultiplicativeExp(oclExp);
 
             // (-|+) numericLiteralExp
 
-            OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+            OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OCLExpressionCS source = opCallExp.getSource();
+            OclExpression source = opCallExp.getSource();
 
             checkUnaryExp(source);
         }
     }
 
-    protected void checkAdditiveExp(IOCLExpressionCS ioclExp) {
-        assertTrue(ioclExp instanceof OperationCallExpCS);
+    protected void checkAdditiveExp(OclExpression ioclExp) {
+        assertTrue(ioclExp instanceof OperationCallExp);
 
-        OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+        OperationCallExp opCallExp = (OperationCallExp) ioclExp;
 
-        OCLExpressionCS lhs = opCallExp.getSource();
+        OclExpression lhs = opCallExp.getSource();
 
-        if (lhs instanceof OperationCallExpCS) {
+        if (lhs instanceof OperationCallExp) {
             checkMultiplicativeExp(lhs);
         }
         else {
-            assertTrue(lhs instanceof NumericLiteralExpCS);
+            assertTrue(lhs instanceof NumericLiteralExp);
         }
 
-        SimpleNameCS sipleName = opCallExp.getSimpleNameCS();
+        SimpleName sipleName = opCallExp.getSimpleName();
 
         String operation = sipleName.getValue();
 
@@ -105,35 +105,35 @@ public class TestArithmeticExp extends TestCase {
 
         assertTrue(opCheck);
 
-        List<OCLExpressionCS> args = opCallExp.getArguments();
+        List<OclExpression> args = opCallExp.getArguments();
 
         assertTrue(args.size() == 1);
 
-        OCLExpressionCS rhs = args.get(0);
+        OclExpression rhs = args.get(0);
 
-        if (rhs instanceof OperationCallExpCS) {
+        if (rhs instanceof OperationCallExp) {
             checkMultiplicativeExp(rhs);
         }
         else {
-            assertTrue(rhs instanceof NumericLiteralExpCS);
+            assertTrue(rhs instanceof NumericLiteralExp);
         }
     }
 
-    protected void checkMultiplicativeExp(IOCLExpressionCS ioclExp) {
-        assertTrue(ioclExp instanceof OperationCallExpCS);
+    protected void checkMultiplicativeExp(OclExpression oclExp) {
+        assertTrue(oclExp instanceof OperationCallExp);
 
-        OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+        OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-        OCLExpressionCS lhs = opCallExp.getSource();
+        OclExpression lhs = opCallExp.getSource();
 
-        if (lhs instanceof OperationCallExpCS) {
+        if (lhs instanceof OperationCallExp) {
             checkUnaryExp(lhs);
         }
         else {
-            assertTrue(lhs instanceof NumericLiteralExpCS);
+            assertTrue(lhs instanceof NumericLiteralExp);
         }
 
-        SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+        SimpleName simpleName = opCallExp.getSimpleName();
 
         String operation = simpleName.getValue();
 
@@ -145,38 +145,40 @@ public class TestArithmeticExp extends TestCase {
 
         assertTrue(opCheck);
 
-        List<OCLExpressionCS> args = opCallExp.getArguments();
+        List<OclExpression> args = opCallExp.getArguments();
 
         assertTrue(args.size() == 1);
 
-        OCLExpressionCS rhs = args.get(0);
+        OclExpression rhs = args.get(0);
 
-        if (rhs instanceof OperationCallExpCS) {
+        if (rhs instanceof OperationCallExp) {
             checkUnaryExp(rhs);
         }
         else {
-            assertTrue(rhs instanceof NumericLiteralExpCS);
+            assertTrue(rhs instanceof NumericLiteralExp);
         }
     }
 
-    protected void checkUnaryExp(IOCLExpressionCS ioclExp) {
-        assertTrue(ioclExp instanceof OperationCallExpCS);
+    protected void checkUnaryExp(OclExpression oclExp) {
+        assertTrue(oclExp instanceof OperationCallExp);
 
-        OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+        OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-        OCLExpressionCS source = opCallExp.getSource();
+        OclExpression source = opCallExp.getSource();
 
-        assertTrue(source instanceof NumericLiteralExpCS);
+        assertTrue(source instanceof NumericLiteralExp);
 
-        SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+        SimpleName simpleName = opCallExp.getSimpleName();
 
         String operation = simpleName.getValue();
 
-        boolean opCheck = (operation.equals("-") || operation.equals("+"));
+        boolean opCheck = operation.equals("-");
 
         assertTrue(opCheck);
     }
 
-    protected IOCLExpressionCS ioclExp;
+    protected String exp;
+    protected Iocl iocl = Iocl.getInstance();
+    protected OclExpression oclExp;
 
 }

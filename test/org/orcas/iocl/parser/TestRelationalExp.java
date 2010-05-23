@@ -2,12 +2,13 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.NumericLiteralExpCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
-import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.Iocl;
+
 import org.orcas.iocl.exception.IOCLException;
+import org.orcas.iocl.exp.NumericLiteralExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.SimpleName;
 
 public class TestRelationalExp extends TestCase {
 
@@ -15,15 +16,15 @@ public class TestRelationalExp extends TestCase {
         String[] exps = new String[] {"1 < 2", "1.2 >= 0 "};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+            OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OCLExpressionCS source = opCallExp.getSource();
+            OclExpression source = opCallExp.getSource();
 
-            assertTrue(source instanceof NumericLiteralExpCS);
+            assertTrue(source instanceof NumericLiteralExp);
 
-            SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+            SimpleName simpleName = opCallExp.getSimpleName();
 
             String operation = simpleName.getValue();
 
@@ -33,6 +34,8 @@ public class TestRelationalExp extends TestCase {
         }
     }
 
-    protected IOCLExpressionCS ioclExp;
+    protected String exp;
+    protected Iocl iocl = Iocl.getInstance();
+    protected OclExpression oclExp;
 
 }

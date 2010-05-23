@@ -3,6 +3,7 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.CollectionLiteralExp;
 import org.orcas.iocl.exp.CollectionLiteralParts;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
+import org.orcas.iocl.exp.OclExpression;
 
 public class CollectionLiteralExpImpl extends LiteralExpImpl
     implements CollectionLiteralExp {
@@ -11,7 +12,7 @@ public class CollectionLiteralExpImpl extends LiteralExpImpl
         return _collectionTypeIdentifier;
     }
 
-    public CollectionLiteralParts getCollectionParts() {
+    public CollectionLiteralParts getCollectionLiteralParts() {
         return _collectionLiteralParts;
     }
 
@@ -21,14 +22,14 @@ public class CollectionLiteralExpImpl extends LiteralExpImpl
         _collectionTypeIdentifier = collectionTypeIdentifier;
     }
 
-    public void setCollectionParts(
-            CollectionLiteralParts collectionLiteralParts) {
+    public void setCollectionLiteralParts(
+        OclExpression collectionLiteralParts) {
 
-        _collectionLiteralParts = collectionLiteralParts;
+        _collectionLiteralParts =
+            (CollectionLiteralParts) collectionLiteralParts;
     }
 
     private CollectionTypeIdentifier _collectionTypeIdentifier;
-
     private CollectionLiteralParts _collectionLiteralParts;
 
 }

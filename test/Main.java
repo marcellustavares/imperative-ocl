@@ -1,22 +1,17 @@
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
-import org.orcas.iocl.exception.IOCLException;
-import org.orcas.iocl.parser.IOCLParserUtil;
-
+import org.orcas.iocl.Iocl;
+import org.orcas.iocl.exp.OclExpression;
 
 public class Main {
 
-    public static void main(String[] args) throws IOCLException {
-        String exp = "Sequence{}->size()";
+    public static void main(String[] args) throws Exception {
+        String exp = "1*(2-1)";
 
-        IOCLExpressionCS ioclExp = IOCLParserUtil.parse(exp);
 
-        OperationCallExpCS oc = (OperationCallExpCS) ioclExp;
+        Iocl iocl = Iocl.getInstance();
 
-        int i = -2 * +2;
+        OclExpression oclExpression = iocl.parse(exp);
 
-        System.out.println(oc.getSource());
-        System.out.println(oc.getSimpleNameCS().getValue());
+        System.out.println(oclExpression);
     }
 
 }

@@ -2,12 +2,12 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.cst.BooleanLiteralExpCS;
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
-import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
+import org.orcas.iocl.exp.BooleanLiteralExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.SimpleName;
 
 public class TestLogicalExp extends TestCase {
 
@@ -16,15 +16,15 @@ public class TestLogicalExp extends TestCase {
             "true and false", "true or true ", " false xor false"};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+            OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OCLExpressionCS source = opCallExp.getSource();
+            OclExpression source = opCallExp.getSource();
 
-            assertTrue(source instanceof BooleanLiteralExpCS);
+            assertTrue(source instanceof BooleanLiteralExp);
 
-            SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+            SimpleName simpleName = opCallExp.getSimpleName();
 
             String operation = simpleName.getValue();
 
@@ -39,28 +39,30 @@ public class TestLogicalExp extends TestCase {
     public void testNestedLogicalExp() throws IOCLException {
         String exp = "false and false or false xor true";
 
-        ioclExp = IOCLParserUtil.parse(exp);
+        oclExp = iocl.parse(exp);
 
-        OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+        OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-        // false and (false or false xor true)
+        // (((false and false) or false) xor true)
 
-        OCLExpressionCS source = opCallExp.getSource();
+        OclExpression source = opCallExp.getSource();
 
-        assertTrue(source instanceof BooleanLiteralExpCS);
+        assertTrue(source instanceof OperationCallExp);
 
-        SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+        SimpleName simpleName = opCallExp.getSimpleName();
 
         String operation = simpleName.getValue();
 
-        assertEquals("and", operation);
+        assertEquals("xor", operation);
 
-        OCLExpressionCS arg = opCallExp.getArguments().get(0);
+        OclExpression arg = opCallExp.getArguments().get(0);
 
-        assertTrue(arg instanceof OperationCallExpCS);
+        assertTrue(arg instanceof BooleanLiteralExp);
 
     }
 
-    protected IOCLExpressionCS ioclExp;
+    protected String exp;
+    protected Iocl iocl = Iocl.getInstance();
+    protected OclExpression oclExp;
 
 }

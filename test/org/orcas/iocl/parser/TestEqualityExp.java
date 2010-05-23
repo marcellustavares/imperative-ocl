@@ -2,12 +2,12 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.cst.BooleanLiteralExpCS;
-import org.orcas.iocl.cst.IOCLExpressionCS;
-import org.orcas.iocl.cst.OCLExpressionCS;
-import org.orcas.iocl.cst.OperationCallExpCS;
-import org.orcas.iocl.cst.SimpleNameCS;
+import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
+import org.orcas.iocl.exp.BooleanLiteralExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.SimpleName;
 
 public class TestEqualityExp extends TestCase {
 
@@ -15,15 +15,15 @@ public class TestEqualityExp extends TestCase {
         String[] exps = new String[] {"true = false", "false <> true "};
 
         for (String exp : exps) {
-            ioclExp = IOCLParserUtil.parse(exp);
+            oclExp = iocl.parse(exp);
 
-            OperationCallExpCS opCallExp = (OperationCallExpCS) ioclExp;
+            OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OCLExpressionCS source = opCallExp.getSource();
+            OclExpression source = opCallExp.getSource();
 
-            assertTrue(source instanceof BooleanLiteralExpCS);
+            assertTrue(source instanceof BooleanLiteralExp);
 
-            SimpleNameCS simpleName = opCallExp.getSimpleNameCS();
+            SimpleName simpleName = opCallExp.getSimpleName();
 
             String operation = simpleName.getValue();
 
@@ -33,6 +33,8 @@ public class TestEqualityExp extends TestCase {
         }
     }
 
-    protected IOCLExpressionCS ioclExp;
+    protected String exp;
+    protected Iocl iocl = Iocl.getInstance();
+    protected OclExpression oclExp;
 
 }

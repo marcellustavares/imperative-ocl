@@ -1,28 +1,40 @@
 package org.orcas.iocl.parser;
 
 import org.antlr.runtime.tree.Tree;
+import org.orcas.iocl.exp.BlockExp;
 import org.orcas.iocl.exp.BooleanLiteralExp;
 import org.orcas.iocl.exp.CollectionLiteralExp;
 import org.orcas.iocl.exp.CollectionLiteralPart;
 import org.orcas.iocl.exp.CollectionLiteralParts;
+import org.orcas.iocl.exp.CollectionType;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.PrimitiveType;
 import org.orcas.iocl.exp.RealLiteralExp;
 import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.SimpleTypeEnum;
 import org.orcas.iocl.exp.StringLiteralExp;
+import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.exp.VariableInitExp;
+import org.orcas.iocl.exp.impl.BlockExpImpl;
 import org.orcas.iocl.exp.impl.BooleanLiteralExpImpl;
+import org.orcas.iocl.exp.impl.BreakExpImpl;
 import org.orcas.iocl.exp.impl.CollectionLiteralExpImpl;
 import org.orcas.iocl.exp.impl.CollectionLiteralPartImpl;
 import org.orcas.iocl.exp.impl.CollectionLiteralPartsImpl;
 import org.orcas.iocl.exp.impl.CollectionTypeIdentifierImpl;
+import org.orcas.iocl.exp.impl.CollectionTypeImpl;
+import org.orcas.iocl.exp.impl.ContinueExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
 import org.orcas.iocl.exp.impl.OperationCallExpImpl;
+import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
 import org.orcas.iocl.exp.impl.RealLiteralExpImpl;
+import org.orcas.iocl.exp.impl.ReturnExpImpl;
 import org.orcas.iocl.exp.impl.SimpleNameImpl;
 import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
+import org.orcas.iocl.exp.impl.VariableInitExpImpl;
 import org.orcas.iocl.parser.antlr.IoclParser;
 
 public class IoclTreeWalker {
@@ -112,6 +124,11 @@ public class IoclTreeWalker {
 
                 break;
 
+            case IoclParser.PRIMITIVE_TYPE_LITERAL:
+                oclExpression = createPrimitiveType(tree.getText());
+
+                break;
+
             case IoclParser.INTEGER_LITERAL:
                 oclExpression = createIntegerLiteralExp(
                     tree.getText());
@@ -139,6 +156,55 @@ public class IoclTreeWalker {
             case IoclParser.STRING_LITERAL:
                 oclExpression = createStringLiteralExp(
                     tree.getText());
+
+                break;
+
+            case IoclParser.TYPE_SPECIFICATION:
+                oclExpression = createType(walk(tree.getChild(0)));
+
+                break;
+
+            case IoclParser.DO:
+                BlockExp blockExp = new BlockExpImpl();
+
+                for (int i = 0; i < tree.getChildCount(); i++) {
+                    blockExp.addExpression(walk(tree.getChild(i)));
+                }
+
+                oclExpression = blockExp;
+
+                break;
+
+            case IoclParser.VAR:
+                simpleName = createSimpleName(
+                    SimpleTypeEnum.IDENTIFIER, tree.getChild(0).getText());
+
+                VariableInitExp variableInitExp =
+                    createVariableInitExp(simpleName);
+
+                if (tree.getChildCount() > 2) {
+                    variableInitExp.setType(walk(tree.getChild(1)));
+                    variableInitExp.setOclExpression(walk(tree.getChild(2)));
+                }
+                else {
+                    variableInitExp.setOclExpression(walk(tree.getChild(1)));
+                }
+
+                oclExpression = variableInitExp;
+
+                break;
+
+            case IoclParser.BREAK:
+                oclExpression = new BreakExpImpl();
+
+                break;
+            case IoclParser.CONTINUE:
+                oclExpression = new ContinueExpImpl();
+
+                break;
+
+            case IoclParser.RETURN:
+                oclExpression = new ReturnExpImpl();
 
                 break;
         }
@@ -184,6 +250,14 @@ public class IoclTreeWalker {
         identifier.setCollectionType(type);
 
         return identifier;
+    }
+
+    protected PrimitiveType createPrimitiveType(String type) {
+        PrimitiveType primitiveType = new PrimitiveTypeImpl();
+
+        primitiveType.setSimpleNameType(SimpleTypeEnum.get(type));
+
+        return primitiveType;
     }
 
     protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
@@ -248,6 +322,32 @@ public class IoclTreeWalker {
         simpleName.setValue(value);
 
         return simpleName;
+    }
+
+    protected Type createType(OclExpression oclExpression) {
+        Type type = null;
+
+        if (oclExpression instanceof CollectionTypeIdentifier) {
+            CollectionType collectionType = new CollectionTypeImpl();
+
+            collectionType.setCollectionTypeIdentifier(
+                (CollectionTypeIdentifier) oclExpression);
+
+            type = collectionType;
+        }
+        else {
+            type = (Type) oclExpression;
+        }
+
+        return type;
+    }
+
+    protected VariableInitExp createVariableInitExp(SimpleName simpleName) {
+        VariableInitExp variableInitExp = new VariableInitExpImpl();
+
+        variableInitExp.setSimpleName(simpleName);
+
+        return variableInitExp;
     }
 
 }

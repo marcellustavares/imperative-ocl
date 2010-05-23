@@ -9,21 +9,35 @@ output=AST;
 tokens {
 AND = 'and';
 ARROW = '->';
+BREAK = 'break';
+CLOSE_CURLY_BRACE = '}';
+CLOSE_PARENTHESIS = ')';
 COLLECTION_LITERAL;
 COLLECTION_LITERAL_PARTS;
+COLON = ':';
+CONTINUE = 'continue';
+DO = 'do';
 DIV = '/';
 DOT = '.';
 EQUAL = '=';
 GT = '>';
 GTE = '>=';
+IS = ':=';
 LT = '<';
 LTE = '<=';
 MINUS = '-';
 NOT = 'not';
 NOT_EQUAL = '<>';
+OPEN_CURLY_BRACE = '{';
+OPEN_PARENTHESIS = '(';
 MULT = '*';
 OR = 'or';
 PLUS = '+';
+RETURN = 'return';
+SELF = 'self';
+SEMICOLON = ';';
+TYPE_SPECIFICATION; 
+VAR = 'var';
 XOR = 'xor';
 }
 
@@ -37,6 +51,7 @@ package org.orcas.iocl.parser.antlr;
 
 oclExpressionCS
 	: logicalExpCS
+	| imperativeExp
 	;
 
 logicalExpCS
@@ -136,17 +151,48 @@ operationCallExpCS
 	;
 
 simpleNameCS
-	: primitiveTypeCS
-	| 'self'
+	: PRIMITIVE_TYPE_LITERAL
+	| SELF
 	| IDENTIFIER
-	;
-
-primitiveTypeCS
-	: 'Integer' 
 	;
 
 argumentsCS
 	: oclExpressionCS (','! oclExpressionCS)*
+	;
+
+// Imperative Expressions
+
+imperativeExp
+	: blockExp
+	| breakExp
+	| continueExp
+	| returnExp
+	| variableInitExp
+	;
+
+blockExp
+	: DO OPEN_CURLY_BRACE (oclExpressionCS SEMICOLON)* CLOSE_CURLY_BRACE -> ^(DO oclExpressionCS*)
+	;
+
+breakExp
+	: BREAK SEMICOLON!
+	;
+
+continueExp
+	: CONTINUE SEMICOLON!
+	;
+
+returnExp
+	: RETURN SEMICOLON!
+	;
+
+variableInitExp
+	: VAR IDENTIFIER (COLON typeSpecification)? IS oclExpressionCS SEMICOLON? -> ^(VAR IDENTIFIER typeSpecification? oclExpressionCS)
+	;
+
+typeSpecification
+	: PRIMITIVE_TYPE_LITERAL -> ^(TYPE_SPECIFICATION PRIMITIVE_TYPE_LITERAL)
+	| COLLECTION_TYPE_LITERAL -> ^(TYPE_SPECIFICATION COLLECTION_TYPE_LITERAL)
 	;
 	
 BOOLEAN_LITERAL
@@ -160,6 +206,14 @@ COLLECTION_TYPE_LITERAL
 	| 'OrderedSet'  
 	| 'Sequence'
 	| 'Set'
+	;
+
+PRIMITIVE_TYPE_LITERAL
+	: 'Integer' 
+	| 'String'
+	| 'Real'
+	| 'Boolean'
+	| 'OclAny'
 	;
 
 INTEGER_LITERAL

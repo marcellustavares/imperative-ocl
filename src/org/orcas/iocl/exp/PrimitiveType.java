@@ -1,5 +1,5 @@
 package org.orcas.iocl.exp;
 
-public interface PrimitiveType {
+public interface PrimitiveType extends SimpleName, Type {
 
 }

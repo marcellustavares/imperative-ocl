@@ -36,6 +36,13 @@ public class SourceFormatter {
 
             String newContent = _formatContent(packagePath, content);
             
+            String copyright = _read(
+        		new File("./src/org/orcas/tools/copyright.txt"));
+            
+            if (!newContent.contains(copyright)){
+            	newContent = copyright.concat("\n\n" + newContent);
+            }
+            
             if (newContent.indexOf("if(") != -1) {
 				newContent = newContent.replace("if(", "if (");
 			}
@@ -66,8 +73,11 @@ public class SourceFormatter {
         }
     }
 
-    private static String _formatContent(String fileName, String content) throws IOException{
-        BufferedReader bufferedReader = new BufferedReader(new StringReader(content));
+    private static String _formatContent(
+		String fileName, String content) throws IOException{
+
+    	BufferedReader bufferedReader = new BufferedReader(
+			new StringReader(content));
         String line = null;
         StringBuilder sb = new StringBuilder();
 

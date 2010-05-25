@@ -25,32 +25,32 @@ import org.orcas.iocl.exp.VariableInitExp;
 public class VariableInitExpImpl extends ImperativeExpImpl
     implements VariableInitExp {
 
-    public SimpleName getSimpleName() {
-        return _simpleName;
+    public SimpleName getVarName() {
+        return _varName;
     }
 
-    public OclExpression getOclExpression() {
-        return _oclExpression;
+    public OclExpression getVarValue() {
+        return _varValue;
     }
 
     public Type getType() {
         return _type;
     }
 
-    public void setSimpleName(SimpleName simpleName) {
-        _simpleName = simpleName;
+    public void setVarName(SimpleName varName) {
+        _varName = varName;
     }
 
-    public void setOclExpression(OclExpression ocExpression) {
-        _oclExpression = ocExpression;
+    public void setVarValue(OclExpression varValue) {
+        _varValue = varValue;
     }
 
     public void setType(OclExpression type) {
         _type = (Type) type;
     }
 
-    public SimpleName _simpleName;
+    public SimpleName _varName;
     public Type _type;
-    public OclExpression _oclExpression;
+    public OclExpression _varValue;
 
 }

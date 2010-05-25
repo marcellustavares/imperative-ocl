@@ -26,11 +26,14 @@ public class OclExpressionTest {
         TestSuite suite = new TestSuite();
 
         suite.addTestSuite(TestArithmeticExp.class);
+        suite.addTestSuite(TestAssignExp.class);
         suite.addTestSuite(TestCollectionLiteralExp.class);
         suite.addTestSuite(TestEqualityExp.class);
         suite.addTestSuite(TestLogicalExp.class);
         suite.addTestSuite(TestPrimitiveLiteralExp.class);
         suite.addTestSuite(TestRelationalExp.class);
+        suite.addTestSuite(TestReturnExp.class);
+        suite.addTestSuite(TestVariableInitExp.class);
 
         junit.textui.TestRunner.run(suite);
     }

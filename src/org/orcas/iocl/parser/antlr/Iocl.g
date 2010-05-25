@@ -25,6 +25,7 @@ output=AST;
 
 tokens {
 AND = 'and';
+APPEND = '+=';
 ARROW = '->';
 BREAK = 'break';
 CLOSE_CURLY_BRACE = '}';
@@ -185,6 +186,7 @@ imperativeExp
 	| continueExp
 	| returnExp
 	| variableInitExp
+	| assigntExp
 	;
 
 blockExp
@@ -200,11 +202,15 @@ continueExp
 	;
 
 returnExp
-	: RETURN SEMICOLON!
+	: RETURN oclExpressionCS? SEMICOLON -> ^(RETURN oclExpressionCS?)
 	;
 
 variableInitExp
-	: VAR IDENTIFIER (COLON typeSpecification)? IS oclExpressionCS SEMICOLON? -> ^(VAR IDENTIFIER typeSpecification? oclExpressionCS)
+	: VAR IDENTIFIER (COLON typeSpecification)? IS oclExpressionCS SEMICOLON -> ^(VAR IDENTIFIER typeSpecification? oclExpressionCS)
+	;
+
+assigntExp
+	: IDENTIFIER (IS | APPEND)^ oclExpressionCS
 	;
 
 typeSpecification

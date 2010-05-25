@@ -19,15 +19,15 @@ package org.orcas.iocl.exp;
 
 public interface VariableInitExp extends OclExpression {
 
-    public SimpleName getSimpleName();
+    public SimpleName getVarName();
 
-    public OclExpression getOclExpression();
+    public OclExpression getVarValue();
 
     public Type getType();
 
-    public void setSimpleName(SimpleName simpleName);
+    public void setVarName(SimpleName varName);
 
-    public void setOclExpression(OclExpression ocExpression);
+    public void setVarValue(OclExpression varValue);
 
     public void setType(OclExpression type);
 

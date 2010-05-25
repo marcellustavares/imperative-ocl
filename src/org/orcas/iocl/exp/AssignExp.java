@@ -15,21 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp.impl;
+package org.orcas.iocl.exp;
 
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.ReturnExp;
+public interface AssignExp extends OclExpression {
 
-public class ReturnExpImpl extends ImperativeExpImpl implements ReturnExp {
+    public SimpleName getLeft();
 
-    public OclExpression getOclExpression() {
-        return _oclExpression;
-    }
+    public OclExpression getValue();
 
-    public void setOclExpression(OclExpression oclExpression) {
-        _oclExpression = oclExpression;
-    }
+    public boolean isReset();
 
-    private OclExpression _oclExpression;
+    public void setLeft(SimpleName left);
+
+    public void setReset(boolean reset);
+
+    public void setValue(OclExpression value);
 
 }

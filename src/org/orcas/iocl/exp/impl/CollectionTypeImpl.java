@@ -19,6 +19,7 @@ package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.CollectionType;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
+import org.orcas.iocl.exp.Type;
 
 public class CollectionTypeImpl extends TypeImpl
     implements CollectionType {
@@ -27,12 +28,21 @@ public class CollectionTypeImpl extends TypeImpl
         return _collectionTypeIdentifier;
     }
 
+    public Type getType() {
+        return _type;
+    }
+
     public void setCollectionTypeIdentifier(
         CollectionTypeIdentifier collectionTypeIdentifier) {
 
         _collectionTypeIdentifier = collectionTypeIdentifier;
     }
 
-    public CollectionTypeIdentifier _collectionTypeIdentifier;
+    public void setType(Type type) {
+        _type = type;
+    }
+
+    private CollectionTypeIdentifier _collectionTypeIdentifier;
+    private Type _type;
 
 }

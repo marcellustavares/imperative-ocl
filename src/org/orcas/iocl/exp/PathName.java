@@ -17,15 +17,12 @@
 
 package org.orcas.iocl.exp;
 
-public interface CollectionType extends Type {
+import java.util.List;
 
-    public CollectionTypeIdentifier getCollectionTypeIdentifier();
+public interface PathName extends Type {
 
-    public Type getType();
+    public void addName(String name);
 
-    public void setCollectionTypeIdentifier(
-        CollectionTypeIdentifier collectionTypeIdentifier);
-
-    public void setType(Type type);
+    public List<String> getQualifiedName();
 
 }

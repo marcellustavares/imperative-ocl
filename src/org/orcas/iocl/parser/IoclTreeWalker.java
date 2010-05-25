@@ -29,6 +29,7 @@ import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.PathName;
 import org.orcas.iocl.exp.PrimitiveType;
 import org.orcas.iocl.exp.RaiseExp;
 import org.orcas.iocl.exp.RealLiteralExp;
@@ -50,6 +51,7 @@ import org.orcas.iocl.exp.impl.CollectionTypeImpl;
 import org.orcas.iocl.exp.impl.ContinueExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
 import org.orcas.iocl.exp.impl.OperationCallExpImpl;
+import org.orcas.iocl.exp.impl.PathNameImpl;
 import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
 import org.orcas.iocl.exp.impl.RaiseExpImpl;
 import org.orcas.iocl.exp.impl.RealLiteralExpImpl;
@@ -181,8 +183,15 @@ public class IoclTreeWalker {
 
                 break;
 
-            case IoclParser.TYPE_SPECIFICATION:
-                oclExpression = createType(walk(tree.getChild(0)));
+            case IoclParser.COLLECTION_TYPE:
+                CollectionType collectionType =
+                	createCollectionType(walk(tree.getChild(0)));
+
+                Type type = (Type) walk(tree.getChild(1));
+
+                collectionType.setType(type);
+
+                oclExpression = collectionType;
 
                 break;
 
@@ -198,14 +207,11 @@ public class IoclTreeWalker {
                 break;
 
             case IoclParser.VAR:
-                simpleName = createSimpleName(
-                    SimpleTypeEnum.IDENTIFIER, tree.getChild(0).getText());
-
                 VariableInitExp variableInitExp =
-                    createVariableInitExp(simpleName);
+                    createVariableInitExp(tree.getChild(0).getText());
 
                 if (tree.getChildCount() > 2) {
-                    variableInitExp.setType(walk(tree.getChild(1)));
+                    variableInitExp.setType((Type)walk(tree.getChild(1)));
                     variableInitExp.setVarValue(walk(tree.getChild(2)));
                 }
                 else {
@@ -254,6 +260,17 @@ public class IoclTreeWalker {
                 oclExpression = createRaiseExp(walk(tree.getChild(0)));
 
                 break;
+
+            case IoclParser.SCOPE:
+                PathName pathName = new PathNameImpl();
+
+                for (int i = 0; i < tree.getChildCount(); i++) {
+                    pathName.addName(tree.getChild(i).getText());
+                }
+
+                oclExpression = pathName;
+
+                break;
         }
 
         return oclExpression;
@@ -294,6 +311,17 @@ public class IoclTreeWalker {
         part.setOCLExpresion(oclExpressionCS);
 
         return part;
+    }
+
+    protected CollectionType createCollectionType(
+        OclExpression collectionTypeIdentifier) {
+
+        CollectionType collectionType = new CollectionTypeImpl();
+
+        collectionType.setCollectionTypeIdentifier(
+            (CollectionTypeIdentifier) collectionTypeIdentifier);
+
+        return collectionType;
     }
 
     protected CollectionTypeIdentifier createCollectionTypeIdentifier(
@@ -359,7 +387,15 @@ public class IoclTreeWalker {
     protected RaiseExp createRaiseExp(OclExpression oclExpression) {
         RaiseExp raiseExp = new RaiseExpImpl();
 
-        raiseExp.setException(oclExpression);
+        if (oclExpression instanceof Type) {
+            raiseExp.setException((Type) oclExpression);
+        }
+        else {
+            StringLiteralExp stringLiteralExp =
+                (StringLiteralExp) oclExpression;
+
+            raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
+        }
 
         return raiseExp;
     }
@@ -387,28 +423,10 @@ public class IoclTreeWalker {
         return simpleName;
     }
 
-    protected Type createType(OclExpression oclExpression) {
-        Type type = null;
-
-        if (oclExpression instanceof CollectionTypeIdentifier) {
-            CollectionType collectionType = new CollectionTypeImpl();
-
-            collectionType.setCollectionTypeIdentifier(
-                (CollectionTypeIdentifier) oclExpression);
-
-            type = collectionType;
-        }
-        else {
-            type = (Type) oclExpression;
-        }
-
-        return type;
-    }
-
-    protected VariableInitExp createVariableInitExp(SimpleName simpleName) {
+    protected VariableInitExp createVariableInitExp(String varName) {
         VariableInitExp variableInitExp = new VariableInitExpImpl();
 
-        variableInitExp.setVarName(simpleName);
+        variableInitExp.setVarName(varName);
 
         return variableInitExp;
     }

@@ -18,14 +18,13 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.Type;
 import org.orcas.iocl.exp.VariableInitExp;
 
 public class VariableInitExpImpl extends ImperativeExpImpl
     implements VariableInitExp {
 
-    public SimpleName getVarName() {
+    public String getVarName() {
         return _varName;
     }
 
@@ -37,7 +36,7 @@ public class VariableInitExpImpl extends ImperativeExpImpl
         return _type;
     }
 
-    public void setVarName(SimpleName varName) {
+    public void setVarName(String varName) {
         _varName = varName;
     }
 
@@ -45,11 +44,11 @@ public class VariableInitExpImpl extends ImperativeExpImpl
         _varValue = varValue;
     }
 
-    public void setType(OclExpression type) {
-        _type = (Type) type;
+    public void setType(Type type) {
+        _type = type;
     }
 
-    public SimpleName _varName;
+    public String _varName;
     public Type _type;
     public OclExpression _varValue;
 

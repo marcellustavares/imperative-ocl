@@ -32,6 +32,7 @@ CLOSE_CURLY_BRACE = '}';
 CLOSE_PARENTHESIS = ')';
 COLLECTION_LITERAL;
 COLLECTION_LITERAL_PARTS;
+COLLECTION_TYPE;
 COLON = ':';
 CONTINUE = 'continue';
 DO = 'do';
@@ -53,9 +54,9 @@ OR = 'or';
 PLUS = '+';
 RAISE = 'raise';
 RETURN = 'return';
+SCOPE = '::';
 SELF = 'self';
 SEMICOLON = ';';
-TYPE_SPECIFICATION; 
 VAR = 'var';
 XOR = 'xor';
 }
@@ -169,14 +170,32 @@ operationCallExpCS
 	: simpleNameCS '(' argumentsCS? ')' -> simpleNameCS argumentsCS?
 	;
 
+argumentsCS
+	: oclExpressionCS (','! oclExpressionCS)*
+	;
+
 simpleNameCS
-	: PRIMITIVE_TYPE_LITERAL
+	: primitiveType
 	| SELF
 	| IDENTIFIER
 	;
 
-argumentsCS
-	: oclExpressionCS (','! oclExpressionCS)*
+primitiveType
+	: PRIMITIVE_TYPE_LITERAL
+	;
+
+collectionType
+	: collectionTypeIdentifierCS OPEN_PARENTHESIS type CLOSE_PARENTHESIS -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
+	;
+
+type
+	: primitiveType
+	| collectionType
+	| pathName
+	;
+
+pathName
+	: IDENTIFIER (SCOPE IDENTIFIER)* -> ^(SCOPE IDENTIFIER IDENTIFIER*)
 	;
 
 // Imperative Expressions
@@ -187,7 +206,7 @@ imperativeExp
 	| continueExp
 	| returnExp
 	| variableInitExp
-	| assigntExp
+	| assignExp
 	| raiseExp
 	;
 
@@ -208,22 +227,17 @@ returnExp
 	;
 
 variableInitExp
-	: VAR IDENTIFIER (COLON typeSpecification)? IS oclExpressionCS SEMICOLON -> ^(VAR IDENTIFIER typeSpecification? oclExpressionCS)
+	: VAR IDENTIFIER (COLON type)? IS oclExpressionCS SEMICOLON -> ^(VAR IDENTIFIER type? oclExpressionCS)
 	;
 
-assigntExp
+assignExp
 	: IDENTIFIER (IS | APPEND)^ oclExpressionCS SEMICOLON!
 	;
 
 raiseExp
-	: RAISE^ STRING_LITERAL SEMICOLON!
+	: RAISE^ (type | STRING_LITERAL) SEMICOLON!
 	;
 
-typeSpecification
-	: PRIMITIVE_TYPE_LITERAL -> ^(TYPE_SPECIFICATION PRIMITIVE_TYPE_LITERAL)
-	| COLLECTION_TYPE_LITERAL -> ^(TYPE_SPECIFICATION COLLECTION_TYPE_LITERAL)
-	;
-	
 BOOLEAN_LITERAL
 	: 'true' 
 	| 'false'

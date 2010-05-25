@@ -23,6 +23,7 @@ import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.PathName;
 import org.orcas.iocl.exp.PrimitiveType;
 import org.orcas.iocl.exp.SimpleTypeEnum;
 import org.orcas.iocl.exp.StringLiteralExp;
@@ -39,7 +40,7 @@ public class TestVariableInitExp extends TestCase {
 
         VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-        assertEquals(variableInitExp.getVarName().getValue(), "tmp");
+        assertEquals(variableInitExp.getVarName(), "tmp");
 
         assertTrue(variableInitExp.getType() == null);
 
@@ -55,7 +56,7 @@ public class TestVariableInitExp extends TestCase {
 
         VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-        assertEquals(variableInitExp.getVarName().getValue(), "tmp");
+        assertEquals(variableInitExp.getVarName(), "tmp");
 
         assertTrue(variableInitExp.getType() instanceof PrimitiveType);
 
@@ -69,6 +70,18 @@ public class TestVariableInitExp extends TestCase {
             (StringLiteralExp) variableInitExp.getVarValue();
 
         assertEquals(varValue.getStringSymbol(), "Marcellus");
+
+        exp = "var tmp:javax::portlet::Portlet := 'Marcellus';";
+
+        oclExp = iocl.parse(exp);
+
+        variableInitExp = (VariableInitExp) oclExp;
+
+        assertTrue(variableInitExp.getType() instanceof PathName);
+
+        PathName pathName = (PathName) variableInitExp.getType();
+
+        assertTrue(pathName.getQualifiedName().size() == 3);
     }
 
     protected String exp;

@@ -17,20 +17,29 @@
 
 package org.orcas.iocl.exp.impl;
 
-import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.RaiseExp;
-import org.orcas.iocl.exp.StringLiteralExp;
+import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.util.StringPool;
 
 public class RaiseExpImpl extends ImperativeExpImpl implements RaiseExp {
 
-    public OclExpression getException() {
+    public Type getException() {
         return _exception;
     }
 
-    public void setException(OclExpression exception) {
-        _exception = (StringLiteralExp) exception;
+    public String getExceptionMessage() {
+        return _exceptionMessage;
     }
 
-    public OclExpression _exception;
+    public void setException(Type exception) {
+        _exception = exception;
+    }
+
+    public void setExceptionMessage(String exceptionMessage) {
+        _exceptionMessage = exceptionMessage;
+    }
+
+    private Type _exception;
+    private String _exceptionMessage = StringPool.BLANK;
 
 }

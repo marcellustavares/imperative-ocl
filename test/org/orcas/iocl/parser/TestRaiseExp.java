@@ -22,12 +22,12 @@ import junit.framework.TestCase;
 import org.orcas.iocl.Iocl;
 import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.PathName;
 import org.orcas.iocl.exp.RaiseExp;
-import org.orcas.iocl.exp.StringLiteralExp;
 
 public class TestRaiseExp extends TestCase {
 
-    public void testAssignResetExp() throws IOCLException {
+    public void testRaiseExceptionMessageExp() throws IOCLException {
         exp = "raise 'custom exception message';";
 
         oclExp = iocl.parse(exp);
@@ -36,14 +36,24 @@ public class TestRaiseExp extends TestCase {
 
         RaiseExp raiseExp = (RaiseExp) oclExp;
 
-        assertTrue(raiseExp.getException() instanceof StringLiteralExp);
+        assertEquals(
+            raiseExp.getExceptionMessage(), "custom exception message");
+    }
 
-        StringLiteralExp stringLiteralExp =
-            (StringLiteralExp) raiseExp.getException();
+    public void testRaiseTypeExp() throws IOCLException {
+        exp = "raise java::lang::Exception;";
 
-        String exceptionMessage = stringLiteralExp.getStringSymbol();
+        oclExp = iocl.parse(exp);
 
-        assertEquals(exceptionMessage, "custom exception message");
+        assertTrue(oclExp instanceof RaiseExp);
+
+        RaiseExp raiseExp = (RaiseExp) oclExp;
+
+        assertTrue(raiseExp.getException() instanceof PathName);
+
+        PathName pathName = (PathName) raiseExp.getException();
+
+        assertTrue(pathName.getQualifiedName().size() == 3);
     }
 
     protected String exp;

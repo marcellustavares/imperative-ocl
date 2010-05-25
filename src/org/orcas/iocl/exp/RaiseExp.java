@@ -19,8 +19,12 @@ package org.orcas.iocl.exp;
 
 public interface RaiseExp extends OclExpression {
 
-    public OclExpression getException();
+    public Type getException();
 
-    public void setException(OclExpression exception);
+    public String getExceptionMessage();
+
+    public void setException(Type exception);
+
+    public void setExceptionMessage(String exceptionMessage);
 
 }

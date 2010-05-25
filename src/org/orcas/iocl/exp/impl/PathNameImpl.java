@@ -15,17 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp;
+package org.orcas.iocl.exp.impl;
 
-public interface CollectionType extends Type {
+import java.util.ArrayList;
+import java.util.List;
 
-    public CollectionTypeIdentifier getCollectionTypeIdentifier();
+import org.orcas.iocl.exp.PathName;
 
-    public Type getType();
+public class PathNameImpl extends TypeImpl implements PathName {
 
-    public void setCollectionTypeIdentifier(
-        CollectionTypeIdentifier collectionTypeIdentifier);
+    public void addName(String name) {
+        _qualifiedName.add(name);
+    }
 
-    public void setType(Type type);
+    public List<String> getQualifiedName() {
+        return _qualifiedName;
+    }
+
+    public List<String> _qualifiedName = new ArrayList<String>();
 
 }

@@ -51,6 +51,7 @@ OPEN_PARENTHESIS = '(';
 MULT = '*';
 OR = 'or';
 PLUS = '+';
+RAISE = 'raise';
 RETURN = 'return';
 SELF = 'self';
 SEMICOLON = ';';
@@ -187,6 +188,7 @@ imperativeExp
 	| returnExp
 	| variableInitExp
 	| assigntExp
+	| raiseExp
 	;
 
 blockExp
@@ -210,7 +212,11 @@ variableInitExp
 	;
 
 assigntExp
-	: IDENTIFIER (IS | APPEND)^ oclExpressionCS
+	: IDENTIFIER (IS | APPEND)^ oclExpressionCS SEMICOLON!
+	;
+
+raiseExp
+	: RAISE^ STRING_LITERAL SEMICOLON!
 	;
 
 typeSpecification

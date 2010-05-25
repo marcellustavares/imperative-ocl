@@ -17,35 +17,20 @@
 
 package org.orcas.iocl.exp.impl;
 
-import org.orcas.iocl.exp.AssignExp;
 import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.exp.RaiseExp;
+import org.orcas.iocl.exp.StringLiteralExp;
 
-public class AssignExpImpl extends ImperativeExpImpl implements AssignExp {
+public class RaiseExpImpl extends ImperativeExpImpl implements RaiseExp {
 
-    public SimpleName getLeft() {
-        return _left;
-    }
-    public OclExpression getValue() {
-        return _value;
-    }
-    public boolean isReset() {
-        return _reset;
-    }
-    public void setLeft(SimpleName left) {
-        _left = left;
+    public OclExpression getException() {
+        return _exception;
     }
 
-    public void setReset(boolean reset) {
-        _reset = reset;
+    public void setException(OclExpression exception) {
+        _exception = (StringLiteralExp) exception;
     }
 
-    public void setValue(OclExpression value) {
-        _value = value;
-    }
-
-    public boolean _reset;
-    public SimpleName _left;
-    public OclExpression _value;
+    public OclExpression _exception;
 
 }

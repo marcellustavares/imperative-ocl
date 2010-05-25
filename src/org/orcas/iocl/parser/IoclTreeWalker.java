@@ -30,6 +30,7 @@ import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.PrimitiveType;
+import org.orcas.iocl.exp.RaiseExp;
 import org.orcas.iocl.exp.RealLiteralExp;
 import org.orcas.iocl.exp.ReturnExp;
 import org.orcas.iocl.exp.SimpleName;
@@ -50,6 +51,7 @@ import org.orcas.iocl.exp.impl.ContinueExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
 import org.orcas.iocl.exp.impl.OperationCallExpImpl;
 import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
+import org.orcas.iocl.exp.impl.RaiseExpImpl;
 import org.orcas.iocl.exp.impl.RealLiteralExpImpl;
 import org.orcas.iocl.exp.impl.ReturnExpImpl;
 import org.orcas.iocl.exp.impl.SimpleNameImpl;
@@ -247,6 +249,11 @@ public class IoclTreeWalker {
                 oclExpression = assignExp;
 
                 break;
+
+            case IoclParser.RAISE:
+                oclExpression = createRaiseExp(walk(tree.getChild(0)));
+
+                break;
         }
 
         return oclExpression;
@@ -347,6 +354,14 @@ public class IoclTreeWalker {
         operationCallExp.setSource(source);
 
         return operationCallExp;
+    }
+
+    protected RaiseExp createRaiseExp(OclExpression oclExpression) {
+        RaiseExp raiseExp = new RaiseExpImpl();
+
+        raiseExp.setException(oclExpression);
+
+        return raiseExp;
     }
 
     protected RealLiteralExp createRealLiteralExp(String realSymbol) {

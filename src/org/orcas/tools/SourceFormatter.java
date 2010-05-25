@@ -18,6 +18,9 @@ public class SourceFormatter {
     public static void main(String[] args) throws Exception {
         String basedir = "./";
 
+        String copyright = _read(
+    		new File("./src/org/orcas/tools/copyright.txt"));
+
         String[] files = _getJavaFiles();
 
         for (int i = 0; i < files.length; i++) {
@@ -36,10 +39,7 @@ public class SourceFormatter {
 
             String newContent = _formatContent(packagePath, content);
             
-            String copyright = _read(
-        		new File("./src/org/orcas/tools/copyright.txt"));
-            
-            if (!newContent.contains(copyright)){
+            if (!newContent.contains(copyright)) {
             	newContent = copyright.concat("\n\n" + newContent);
             }
             

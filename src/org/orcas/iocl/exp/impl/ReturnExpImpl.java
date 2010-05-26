@@ -22,14 +22,14 @@ import org.orcas.iocl.exp.ReturnExp;
 
 public class ReturnExpImpl extends ImperativeExpImpl implements ReturnExp {
 
-    public OclExpression getOclExpression() {
-        return _oclExpression;
-    }
+	public OclExpression getOclExpression() {
+		return _oclExpression;
+	}
 
-    public void setOclExpression(OclExpression oclExpression) {
-        _oclExpression = oclExpression;
-    }
+	public void setOclExpression(OclExpression oclExpression) {
+		_oclExpression = oclExpression;
+	}
 
-    private OclExpression _oclExpression;
+	private OclExpression _oclExpression;
 
 }

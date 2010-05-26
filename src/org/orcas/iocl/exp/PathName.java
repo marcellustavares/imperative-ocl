@@ -21,8 +21,8 @@ import java.util.List;
 
 public interface PathName extends Type {
 
-    public void addName(String name);
+	public void addName(String name);
 
-    public List<String> getQualifiedName();
+	public List<String> getQualifiedName();
 
 }

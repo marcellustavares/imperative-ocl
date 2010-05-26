@@ -23,29 +23,29 @@ import org.orcas.iocl.exp.SimpleName;
 
 public class AssignExpImpl extends ImperativeExpImpl implements AssignExp {
 
-    public SimpleName getLeft() {
-        return _left;
-    }
-    public OclExpression getValue() {
-        return _value;
-    }
-    public boolean isReset() {
-        return _reset;
-    }
-    public void setLeft(SimpleName left) {
-        _left = left;
-    }
+	public SimpleName getLeft() {
+		return _left;
+	}
+	public OclExpression getValue() {
+		return _value;
+	}
+	public boolean isReset() {
+		return _reset;
+	}
+	public void setLeft(SimpleName left) {
+		_left = left;
+	}
 
-    public void setReset(boolean reset) {
-        _reset = reset;
-    }
+	public void setReset(boolean reset) {
+		_reset = reset;
+	}
 
-    public void setValue(OclExpression value) {
-        _value = value;
-    }
+	public void setValue(OclExpression value) {
+		_value = value;
+	}
 
-    private boolean _reset;
-    private SimpleName _left;
-    private OclExpression _value;
+	private boolean _reset;
+	private SimpleName _left;
+	private OclExpression _value;
 
 }

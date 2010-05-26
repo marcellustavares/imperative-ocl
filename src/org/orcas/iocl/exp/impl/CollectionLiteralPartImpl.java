@@ -21,16 +21,16 @@ import org.orcas.iocl.exp.CollectionLiteralPart;
 import org.orcas.iocl.exp.OclExpression;
 
 public class CollectionLiteralPartImpl extends OclExpressionImpl
-    implements CollectionLiteralPart {
+	implements CollectionLiteralPart {
 
-    public OclExpression getOCLExpresion() {
-        return _ocleExpression;
-    }
+	public OclExpression getOCLExpresion() {
+		return _ocleExpression;
+	}
 
-    public void setOCLExpresion(OclExpression oclExpression) {
-        _ocleExpression = oclExpression;
-    }
+	public void setOCLExpresion(OclExpression oclExpression) {
+		_ocleExpression = oclExpression;
+	}
 
-    private OclExpression _ocleExpression;
+	private OclExpression _ocleExpression;
 
 }

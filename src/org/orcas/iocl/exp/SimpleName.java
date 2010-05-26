@@ -19,12 +19,12 @@ package org.orcas.iocl.exp;
 
 public interface SimpleName extends OclExpression{
 
-    public SimpleTypeEnum getSimpleType();
+	public SimpleTypeEnum getSimpleType();
 
-    public String getValue();
+	public String getValue();
 
-    public void setValue(String value);
+	public void setValue(String value);
 
-    public void setSimpleType(SimpleTypeEnum type);
+	public void setSimpleType(SimpleTypeEnum type);
 
 }

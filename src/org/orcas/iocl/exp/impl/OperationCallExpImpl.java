@@ -24,20 +24,20 @@ import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 
 public class OperationCallExpImpl extends ModelPropertyCallExpImpl
-    implements OperationCallExp {
+	implements OperationCallExp {
 
-    public void addArgument(OclExpression argument) {
-        _arguments.add(argument);
-    }
+	public void addArgument(OclExpression argument) {
+		_arguments.add(argument);
+	}
 
-    public List<OclExpression> getArguments() {
-        return _arguments;
-    }
+	public List<OclExpression> getArguments() {
+		return _arguments;
+	}
 
-    public void setArguments(List<OclExpression> arguments) {
-        _arguments = arguments;
-    }
+	public void setArguments(List<OclExpression> arguments) {
+		_arguments = arguments;
+	}
 
-    private List<OclExpression> _arguments = new ArrayList<OclExpression>();
+	private List<OclExpression> _arguments = new ArrayList<OclExpression>();
 
 }

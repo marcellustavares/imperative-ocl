@@ -21,25 +21,25 @@ import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.SimpleTypeEnum;
 
 public class SimpleNameImpl extends OclExpressionImpl
-    implements SimpleName {
+	implements SimpleName {
 
-    public SimpleTypeEnum getSimpleType() {
-        return _type;
-    }
+	public SimpleTypeEnum getSimpleType() {
+		return _type;
+	}
 
-    public String getValue() {
-        return _value;
-    }
+	public String getValue() {
+		return _value;
+	}
 
-    public void setValue(String value) {
-        _value = value;
-    }
+	public void setValue(String value) {
+		_value = value;
+	}
 
-    public void setSimpleType(SimpleTypeEnum type) {
-        _type = type;
-    }
+	public void setSimpleType(SimpleTypeEnum type) {
+		_type = type;
+	}
 
-    private String _value;
-    private SimpleTypeEnum _type;
+	private String _value;
+	private SimpleTypeEnum _type;
 
 }

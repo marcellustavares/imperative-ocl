@@ -25,14 +25,14 @@ import org.orcas.iocl.exp.OclExpression;
 
 public class ArgumentsImpl implements Arguments {
 
-    public void addArgument(OclExpression argument) {
-        _arguments.add(argument);
-    }
+	public void addArgument(OclExpression argument) {
+		_arguments.add(argument);
+	}
 
-    public List<OclExpression> getArguments() {
-        return _arguments;
-    }
+	public List<OclExpression> getArguments() {
+		return _arguments;
+	}
 
-    private List<OclExpression> _arguments = new ArrayList<OclExpression>();
+	private List<OclExpression> _arguments = new ArrayList<OclExpression>();
 
 }

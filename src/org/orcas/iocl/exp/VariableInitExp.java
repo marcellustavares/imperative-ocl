@@ -19,16 +19,16 @@ package org.orcas.iocl.exp;
 
 public interface VariableInitExp extends ImperativeExp {
 
-    public String getVarName();
+	public String getVarName();
 
-    public OclExpression getVarValue();
+	public OclExpression getVarValue();
 
-    public Type getType();
+	public Type getType();
 
-    public void setVarName(String varName);
+	public void setVarName(String varName);
 
-    public void setVarValue(OclExpression varValue);
+	public void setVarValue(OclExpression varValue);
 
-    public void setType(Type type);
+	public void setType(Type type);
 
 }

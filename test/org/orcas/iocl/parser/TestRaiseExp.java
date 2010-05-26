@@ -27,37 +27,37 @@ import org.orcas.iocl.exp.RaiseExp;
 
 public class TestRaiseExp extends TestCase {
 
-    public void testRaiseExceptionMessageExp() throws IOCLException {
-        exp = "raise 'custom exception message';";
+	public void testRaiseExceptionMessageExp() throws IOCLException {
+		exp = "raise 'custom exception message';";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof RaiseExp);
+		assertTrue(oclExp instanceof RaiseExp);
 
-        RaiseExp raiseExp = (RaiseExp) oclExp;
+		RaiseExp raiseExp = (RaiseExp) oclExp;
 
-        assertEquals(
-            raiseExp.getExceptionMessage(), "custom exception message");
-    }
+		assertEquals(
+			raiseExp.getExceptionMessage(), "custom exception message");
+	}
 
-    public void testRaiseTypeExp() throws IOCLException {
-        exp = "raise java::lang::Exception;";
+	public void testRaiseTypeExp() throws IOCLException {
+		exp = "raise java::lang::Exception;";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof RaiseExp);
+		assertTrue(oclExp instanceof RaiseExp);
 
-        RaiseExp raiseExp = (RaiseExp) oclExp;
+		RaiseExp raiseExp = (RaiseExp) oclExp;
 
-        assertTrue(raiseExp.getException() instanceof PathName);
+		assertTrue(raiseExp.getException() instanceof PathName);
 
-        PathName pathName = (PathName) raiseExp.getException();
+		PathName pathName = (PathName) raiseExp.getException();
 
-        assertTrue(pathName.getQualifiedName().size() == 3);
-    }
+		assertTrue(pathName.getQualifiedName().size() == 3);
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

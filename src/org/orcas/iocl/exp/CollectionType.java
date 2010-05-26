@@ -19,13 +19,13 @@ package org.orcas.iocl.exp;
 
 public interface CollectionType extends Type {
 
-    public CollectionTypeIdentifier getCollectionTypeIdentifier();
+	public CollectionTypeIdentifier getCollectionTypeIdentifier();
 
-    public Type getType();
+	public Type getType();
 
-    public void setCollectionTypeIdentifier(
-        CollectionTypeIdentifier collectionTypeIdentifier);
+	public void setCollectionTypeIdentifier(
+		CollectionTypeIdentifier collectionTypeIdentifier);
 
-    public void setType(Type type);
+	public void setType(Type type);
 
 }

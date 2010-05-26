@@ -24,17 +24,17 @@ import org.orcas.iocl.exp.CollectionLiteralPart;
 import org.orcas.iocl.exp.CollectionLiteralParts;
 
 public class CollectionLiteralPartsImpl extends OclExpressionImpl
-    implements CollectionLiteralParts {
+	implements CollectionLiteralParts {
 
-    public void addPart(CollectionLiteralPart collectionLiteralPart) {
-        _parts.add(collectionLiteralPart);
-    }
+	public void addPart(CollectionLiteralPart collectionLiteralPart) {
+		_parts.add(collectionLiteralPart);
+	}
 
-    public List<CollectionLiteralPart> getParts() {
-        return _parts;
-    }
+	public List<CollectionLiteralPart> getParts() {
+		return _parts;
+	}
 
-    private List<CollectionLiteralPart> _parts =
-        new ArrayList<CollectionLiteralPart>();
+	private List<CollectionLiteralPart> _parts =
+		new ArrayList<CollectionLiteralPart>();
 
 }

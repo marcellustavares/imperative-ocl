@@ -29,30 +29,30 @@ import org.orcas.iocl.exp.SimpleName;
 
 public class TestRelationalExp extends TestCase {
 
-    public void testEqualityExp() throws IOCLException{
-        String[] exps = new String[] {"1 < 2", "1.2 >= 0 "};
+	public void testEqualityExp() throws IOCLException{
+		String[] exps = new String[] {"1 < 2", "1.2 >= 0 "};
 
-        for (String exp : exps) {
-            oclExp = iocl.parse(exp);
+		for (String exp : exps) {
+			oclExp = iocl.parse(exp);
 
-            OperationCallExp opCallExp = (OperationCallExp) oclExp;
+			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OclExpression source = opCallExp.getSource();
+			OclExpression source = opCallExp.getSource();
 
-            assertTrue(source instanceof NumericLiteralExp);
+			assertTrue(source instanceof NumericLiteralExp);
 
-            SimpleName simpleName = opCallExp.getSimpleName();
+			SimpleName simpleName = opCallExp.getSimpleName();
 
-            String operation = simpleName.getValue();
+			String operation = simpleName.getValue();
 
-            boolean opCheck = (operation.equals("<") || operation.equals(">="));
+			boolean opCheck = (operation.equals("<") || operation.equals(">="));
 
-            assertTrue(opCheck);
-        }
-    }
+			assertTrue(opCheck);
+		}
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

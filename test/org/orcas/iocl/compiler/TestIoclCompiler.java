@@ -28,115 +28,115 @@ import org.orcas.util.FileUtil;
 
 public class TestIoclCompiler {
 
-    public static void main(String[] args) throws Exception {
-        String basedir = "./input/";
+	public static void main(String[] args) throws Exception {
+		String basedir = "./input/";
 
-        String[] files = _getTestFiles();
+		String[] files = _getTestFiles();
 
-        for (int i = 0; i < files.length; i++) {
-            File file = new File(basedir + files[i]);
+		for (int i = 0; i < files.length; i++) {
+			File file = new File(basedir + files[i]);
 
-            String className = file.getName();
+			String className = file.getName();
 
-            className = className.substring(0, className.length() - 6);
+			className = className.substring(0, className.length() - 6);
 
-            String content = FileUtil.read(file);
+			String content = FileUtil.read(file);
 
-            List<String> bodyList = _scan(content);
+			List<String> bodyList = _scan(content);
 
-            String newContent = _translate(content, bodyList);
+			String newContent = _translate(content, bodyList);
 
-            File outputFile = new File(basedir + className + ".java");
+			File outputFile = new File(basedir + className + ".java");
 
-            FileUtil.write(outputFile, newContent);
-        }
-    }
+			FileUtil.write(outputFile, newContent);
+		}
+	}
 
-    private static List<String> _scan(String content) throws Exception {
-        List<String> bodyList = new ArrayList<String>();
+	private static List<String> _scan(String content) throws Exception {
+		List<String> bodyList = new ArrayList<String>();
 
-        BufferedReader bufferedReader = new BufferedReader(
-            new StringReader(content));
+		BufferedReader bufferedReader = new BufferedReader(
+			new StringReader(content));
 
-        String line = null;
-        StringBuilder bodySB = null;
+		String line = null;
+		StringBuilder bodySB = null;
 
-        while ((line = bufferedReader.readLine()) != null) {
-            if (line.indexOf("<![") != -1) {
-                bodySB = new StringBuilder();
+		while ((line = bufferedReader.readLine()) != null) {
+			if (line.indexOf("<![") != -1) {
+				bodySB = new StringBuilder();
 
-                continue;
-            }
+				continue;
+			}
 
-            if (bodySB != null) {
-                if (line.indexOf("]>") != -1) {
-                    bodyList.add(bodySB.toString());
-                }
-                else {
-                    bodySB.append(line);
-                }
+			if (bodySB != null) {
+				if (line.indexOf("]>") != -1) {
+					bodyList.add(bodySB.toString());
+				}
+				else {
+					bodySB.append(line);
+				}
 
-            }
-        }
+			}
+		}
 
-        bufferedReader.close();
+		bufferedReader.close();
 
-        return bodyList;
-    }
+		return bodyList;
+	}
 
-    private static String _translate(
-        String content, List<String> bodyList) throws Exception {
+	private static String _translate(
+		String content, List<String> bodyList) throws Exception {
 
-        BufferedReader bufferedReader = new BufferedReader(
-            new StringReader(content));
+		BufferedReader bufferedReader = new BufferedReader(
+			new StringReader(content));
 
-        StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 
-        int bodyIndex = 0;
-        String line = null;
-        String bodyExp = null;
+		int bodyIndex = 0;
+		String line = null;
+		String bodyExp = null;
 
-        while ((line = bufferedReader.readLine()) != null) {
-            if (line.indexOf("<![") != -1) {
-                sb.append(line.replace("<![", "{"));
-                sb.append("\n");
+		while ((line = bufferedReader.readLine()) != null) {
+			if (line.indexOf("<![") != -1) {
+				sb.append(line.replace("<![", "{"));
+				sb.append("\n");
 
-                bodyExp = bodyList.get(bodyIndex++);
-            }
+				bodyExp = bodyList.get(bodyIndex++);
+			}
 
-            if (line.indexOf("]>") != -1) {
-                sb.append("#" + bodyExp+ "\n");
+			if (line.indexOf("]>") != -1) {
+				sb.append("#" + bodyExp+ "\n");
 
-                sb.append(line.replace("]>", "}"));
-                sb.append("\n");
+				sb.append(line.replace("]>", "}"));
+				sb.append("\n");
 
-                bodyExp = null;
+				bodyExp = null;
 
-                continue;
-            }
+				continue;
+			}
 
-            if (bodyExp == null) {
-                sb.append(line);
-                sb.append("\n");
-            }
-        }
+			if (bodyExp == null) {
+				sb.append(line);
+				sb.append("\n");
+			}
+		}
 
-        bufferedReader.close();
+		bufferedReader.close();
 
-        return sb.toString();
-    }
+		return sb.toString();
+	}
 
-    private static String[] _getTestFiles() {
-        String basedir = "./input";
+	private static String[] _getTestFiles() {
+		String basedir = "./input";
 
-        DirectoryScanner ds = new DirectoryScanner();
+		DirectoryScanner ds = new DirectoryScanner();
 
-        ds.setBasedir(basedir);
-        ds.setIncludes(new String[] {"**\\*.jiocl"});
+		ds.setBasedir(basedir);
+		ds.setIncludes(new String[] {"**\\*.jiocl"});
 
-        ds.scan();
+		ds.scan();
 
-        return ds.getIncludedFiles();
-    }
+		return ds.getIncludedFiles();
+	}
 
 }

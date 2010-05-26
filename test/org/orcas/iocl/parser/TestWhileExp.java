@@ -27,23 +27,23 @@ import org.orcas.iocl.exp.WhileExp;
 
 public class TestWhileExp extends TestCase {
 
-    public void testWhileExp() throws IOCLException {
-        exp = "while (x < 10) { " +
-              " x := x + 1;" +
-              "} ";
+	public void testWhileExp() throws IOCLException {
+		exp = "while (x < 10) { " +
+			  " x := x + 1;" +
+			  "} ";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof WhileExp);
+		assertTrue(oclExp instanceof WhileExp);
 
-        WhileExp whileExp = (WhileExp) oclExp;
+		WhileExp whileExp = (WhileExp) oclExp;
 
-        assertTrue(whileExp.getCondition() instanceof OperationCallExp);
-        assertEquals(whileExp.getExpressions().size(), 1);
-    }
+		assertTrue(whileExp.getCondition() instanceof OperationCallExp);
+		assertEquals(whileExp.getExpressions().size(), 1);
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

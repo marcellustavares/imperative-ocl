@@ -22,34 +22,34 @@ import org.orcas.iocl.exp.Type;
 import org.orcas.iocl.exp.VariableInitExp;
 
 public class VariableInitExpImpl extends ImperativeExpImpl
-    implements VariableInitExp {
+	implements VariableInitExp {
 
-    public String getVarName() {
-        return _varName;
-    }
+	public String getVarName() {
+		return _varName;
+	}
 
-    public OclExpression getVarValue() {
-        return _varValue;
-    }
+	public OclExpression getVarValue() {
+		return _varValue;
+	}
 
-    public Type getType() {
-        return _type;
-    }
+	public Type getType() {
+		return _type;
+	}
 
-    public void setVarName(String varName) {
-        _varName = varName;
-    }
+	public void setVarName(String varName) {
+		_varName = varName;
+	}
 
-    public void setVarValue(OclExpression varValue) {
-        _varValue = varValue;
-    }
+	public void setVarValue(OclExpression varValue) {
+		_varValue = varValue;
+	}
 
-    public void setType(Type type) {
-        _type = type;
-    }
+	public void setType(Type type) {
+		_type = type;
+	}
 
-    private String _varName;
-    private Type _type;
-    private OclExpression _varValue;
+	private String _varName;
+	private Type _type;
+	private OclExpression _varValue;
 
 }

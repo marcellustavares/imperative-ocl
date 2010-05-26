@@ -19,12 +19,12 @@ package org.orcas.iocl.exp;
 
 public interface PropertyCallExp extends OclExpression {
 
-    public SimpleName getSimpleName();
+	public SimpleName getSimpleName();
 
-    public OclExpression getSource();
+	public OclExpression getSource();
 
-    public void setSimpleName(SimpleName simpleName);
+	public void setSimpleName(SimpleName simpleName);
 
-    public void setSource(OclExpression source);
+	public void setSource(OclExpression source);
 
 }

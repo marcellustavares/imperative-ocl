@@ -26,27 +26,27 @@ import java.io.Writer;
 
 public class FileUtil {
 
-    public static String read(File file) throws IOException {
-        FileInputStream fis = new FileInputStream(file);
+	public static String read(File file) throws IOException {
+		FileInputStream fis = new FileInputStream(file);
 
-        byte[] bytes = new byte[fis.available()];
+		byte[] bytes = new byte[fis.available()];
 
-        fis.read(bytes);
+		fis.read(bytes);
 
-        fis.close();
+		fis.close();
 
-        String s = new String(bytes);
+		String s = new String(bytes);
 
-        return s.replaceAll("\r\n", "\n");
-    }
+		return s.replaceAll("\r\n", "\n");
+	}
 
-    public static void write(File file, String content) throws IOException {
-        Writer writer = new OutputStreamWriter(
-            new FileOutputStream(file, false));
+	public static void write(File file, String content) throws IOException {
+		Writer writer = new OutputStreamWriter(
+			new FileOutputStream(file, false));
 
-        writer.write(content);
+		writer.write(content);
 
-        writer.close();
-    }
+		writer.close();
+	}
 
 }

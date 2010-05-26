@@ -23,23 +23,23 @@ import org.orcas.iocl.util.StringPool;
 
 public class RaiseExpImpl extends ImperativeExpImpl implements RaiseExp {
 
-    public Type getException() {
-        return _exception;
-    }
+	public Type getException() {
+		return _exception;
+	}
 
-    public String getExceptionMessage() {
-        return _exceptionMessage;
-    }
+	public String getExceptionMessage() {
+		return _exceptionMessage;
+	}
 
-    public void setException(Type exception) {
-        _exception = exception;
-    }
+	public void setException(Type exception) {
+		_exception = exception;
+	}
 
-    public void setExceptionMessage(String exceptionMessage) {
-        _exceptionMessage = exceptionMessage;
-    }
+	public void setExceptionMessage(String exceptionMessage) {
+		_exceptionMessage = exceptionMessage;
+	}
 
-    private Type _exception;
-    private String _exceptionMessage = StringPool.BLANK;
+	private Type _exception;
+	private String _exceptionMessage = StringPool.BLANK;
 
 }

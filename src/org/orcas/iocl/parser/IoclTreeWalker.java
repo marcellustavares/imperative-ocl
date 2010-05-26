@@ -65,396 +65,396 @@ import org.orcas.iocl.parser.antlr.IoclParser;
 
 public class IoclTreeWalker {
 
-    public OclExpression walk(Tree tree) {
-        OclExpression oclExpression = null;
+	public OclExpression walk(Tree tree) {
+		OclExpression oclExpression = null;
 
-        switch (tree.getType()) {
-            case IoclParser.AND:
-            case IoclParser.DIV:
-            case IoclParser.EQUAL:
-            case IoclParser.GT:
-            case IoclParser.GTE:
-            case IoclParser.LT:
-            case IoclParser.LTE:
-            case IoclParser.MINUS:
-            case IoclParser.NOT:
-            case IoclParser.NOT_EQUAL:
-            case IoclParser.MULT:
-            case IoclParser.OR:
-            case IoclParser.PLUS:
-            case IoclParser.XOR:
-                SimpleName simpleName = createSimpleName(
-                    SimpleTypeEnum.STRING, tree.getText());
+		switch (tree.getType()) {
+			case IoclParser.AND:
+			case IoclParser.DIV:
+			case IoclParser.EQUAL:
+			case IoclParser.GT:
+			case IoclParser.GTE:
+			case IoclParser.LT:
+			case IoclParser.LTE:
+			case IoclParser.MINUS:
+			case IoclParser.NOT:
+			case IoclParser.NOT_EQUAL:
+			case IoclParser.MULT:
+			case IoclParser.OR:
+			case IoclParser.PLUS:
+			case IoclParser.XOR:
+				SimpleName simpleName = createSimpleName(
+					SimpleTypeEnum.STRING, tree.getText());
 
-                OperationCallExp opCallExp = createOperationCallExp(
-                    simpleName, walk(tree.getChild(0)));
+				OperationCallExp opCallExp = createOperationCallExp(
+					simpleName, walk(tree.getChild(0)));
 
-                if (tree.getChildCount() > 1) {
-                    opCallExp.addArgument(walk(tree.getChild(1)));
-                }
+				if (tree.getChildCount() > 1) {
+					opCallExp.addArgument(walk(tree.getChild(1)));
+				}
 
-                oclExpression = opCallExp;
+				oclExpression = opCallExp;
 
-                break;
+				break;
 
-            case IoclParser.DOT:
-            case IoclParser.ARROW:
-                simpleName = createSimpleName(
-                    SimpleTypeEnum.IDENTIFIER, tree.getChild(1).getText());
+			case IoclParser.DOT:
+			case IoclParser.ARROW:
+				simpleName = createSimpleName(
+					SimpleTypeEnum.IDENTIFIER, tree.getChild(1).getText());
 
-                opCallExp = createOperationCallExp(
-                    simpleName, walk(tree.getChild(0)));
+				opCallExp = createOperationCallExp(
+					simpleName, walk(tree.getChild(0)));
 
-                for (int i = 2; i < tree.getChildCount(); i++) {
-                    opCallExp.addArgument(walk(tree.getChild(i)));
-                }
+				for (int i = 2; i < tree.getChildCount(); i++) {
+					opCallExp.addArgument(walk(tree.getChild(i)));
+				}
 
-                oclExpression = opCallExp;
+				oclExpression = opCallExp;
 
-                break;
+				break;
 
-            case IoclParser.BOOLEAN_LITERAL:
-                oclExpression = createBooleanLiteralExp(
-                    tree.getText());
+			case IoclParser.BOOLEAN_LITERAL:
+				oclExpression = createBooleanLiteralExp(
+					tree.getText());
 
-                break;
+				break;
 
-          case IoclParser.COLLECTION_LITERAL:
-                CollectionLiteralExp collectionLiteralExp =
-                    createCollectionLiteralExp(walk(tree.getChild(0)));
+		  case IoclParser.COLLECTION_LITERAL:
+				CollectionLiteralExp collectionLiteralExp =
+					createCollectionLiteralExp(walk(tree.getChild(0)));
 
-                if (tree.getChildCount() > 1) {
-                    collectionLiteralExp.setCollectionLiteralParts(
-                        walk(tree.getChild(1)));
-                }
+				if (tree.getChildCount() > 1) {
+					collectionLiteralExp.setCollectionLiteralParts(
+						walk(tree.getChild(1)));
+				}
 
-                oclExpression = collectionLiteralExp;
+				oclExpression = collectionLiteralExp;
 
-                break;
+				break;
 
-            case IoclParser.COLLECTION_LITERAL_PARTS:
-                CollectionLiteralParts collectionLiteralParts =
-                    new CollectionLiteralPartsImpl();
+			case IoclParser.COLLECTION_LITERAL_PARTS:
+				CollectionLiteralParts collectionLiteralParts =
+					new CollectionLiteralPartsImpl();
 
-                for (int i = 0; i < tree.getChildCount(); i++) {
-                    collectionLiteralParts.addPart(
-                        createCollectionLiteralPart(walk(tree.getChild(i))));
-                }
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					collectionLiteralParts.addPart(
+						createCollectionLiteralPart(walk(tree.getChild(i))));
+				}
 
-                oclExpression = collectionLiteralParts;
+				oclExpression = collectionLiteralParts;
 
-                break;
+				break;
 
-            case IoclParser.COLLECTION_TYPE_LITERAL:
-                oclExpression = createCollectionTypeIdentifier(tree.getText());
+			case IoclParser.COLLECTION_TYPE_LITERAL:
+				oclExpression = createCollectionTypeIdentifier(tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.PRIMITIVE_TYPE_LITERAL:
-                oclExpression = createPrimitiveType(tree.getText());
+			case IoclParser.PRIMITIVE_TYPE_LITERAL:
+				oclExpression = createPrimitiveType(tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.IDENTIFIER:
-                oclExpression = createSimpleName(
-                    SimpleTypeEnum.IDENTIFIER, tree.getText());
+			case IoclParser.IDENTIFIER:
+				oclExpression = createSimpleName(
+					SimpleTypeEnum.IDENTIFIER, tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.INTEGER_LITERAL:
-                oclExpression = createIntegerLiteralExp(
-                    tree.getText());
+			case IoclParser.INTEGER_LITERAL:
+				oclExpression = createIntegerLiteralExp(
+					tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.NUMERIC_OPERATION:
-                OperationCallExp operationCallExp =
-                    createNumericOperationCallExp(tree.getText());
+			case IoclParser.NUMERIC_OPERATION:
+				OperationCallExp operationCallExp =
+					createNumericOperationCallExp(tree.getText());
 
-                for (int i = 0; i < tree.getChildCount(); i++) {
-                    operationCallExp.addArgument(walk(tree.getChild(i)));
-                }
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					operationCallExp.addArgument(walk(tree.getChild(i)));
+				}
 
-                oclExpression = operationCallExp;
+				oclExpression = operationCallExp;
 
-                break;
+				break;
 
-            case IoclParser.REAL_LITERAL:
-                oclExpression = createRealLiteralExp(
-                    tree.getText());
+			case IoclParser.REAL_LITERAL:
+				oclExpression = createRealLiteralExp(
+					tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.STRING_LITERAL:
-                oclExpression = createStringLiteralExp(
-                    tree.getText());
+			case IoclParser.STRING_LITERAL:
+				oclExpression = createStringLiteralExp(
+					tree.getText());
 
-                break;
+				break;
 
-            case IoclParser.COLLECTION_TYPE:
-                CollectionType collectionType =
-                	createCollectionType(walk(tree.getChild(0)));
+			case IoclParser.COLLECTION_TYPE:
+				CollectionType collectionType =
+					createCollectionType(walk(tree.getChild(0)));
 
-                Type type = (Type) walk(tree.getChild(1));
+				Type type = (Type) walk(tree.getChild(1));
 
-                collectionType.setType(type);
+				collectionType.setType(type);
 
-                oclExpression = collectionType;
+				oclExpression = collectionType;
 
-                break;
+				break;
 
-            case IoclParser.DO:
-                BlockExp blockExp = new BlockExpImpl();
+			case IoclParser.DO:
+				BlockExp blockExp = new BlockExpImpl();
 
-                for (int i = 0; i < tree.getChildCount(); i++) {
-                    blockExp.addExpression(walk(tree.getChild(i)));
-                }
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					blockExp.addExpression(walk(tree.getChild(i)));
+				}
 
-                oclExpression = blockExp;
+				oclExpression = blockExp;
 
-                break;
+				break;
 
-            case IoclParser.VAR:
-                VariableInitExp variableInitExp =
-                    createVariableInitExp(tree.getChild(0).getText());
+			case IoclParser.VAR:
+				VariableInitExp variableInitExp =
+					createVariableInitExp(tree.getChild(0).getText());
 
-                if (tree.getChildCount() > 2) {
-                    variableInitExp.setType((Type)walk(tree.getChild(1)));
-                    variableInitExp.setVarValue(walk(tree.getChild(2)));
-                }
-                else {
-                    variableInitExp.setVarValue(walk(tree.getChild(1)));
-                }
+				if (tree.getChildCount() > 2) {
+					variableInitExp.setType((Type)walk(tree.getChild(1)));
+					variableInitExp.setVarValue(walk(tree.getChild(2)));
+				}
+				else {
+					variableInitExp.setVarValue(walk(tree.getChild(1)));
+				}
 
-                oclExpression = variableInitExp;
+				oclExpression = variableInitExp;
 
-                break;
+				break;
 
-            case IoclParser.BREAK:
-                oclExpression = new BreakExpImpl();
+			case IoclParser.BREAK:
+				oclExpression = new BreakExpImpl();
 
-                break;
-            case IoclParser.CONTINUE:
-                oclExpression = new ContinueExpImpl();
+				break;
+			case IoclParser.CONTINUE:
+				oclExpression = new ContinueExpImpl();
 
-                break;
+				break;
 
-            case IoclParser.RETURN:
-                ReturnExp returnExp = new ReturnExpImpl();
+			case IoclParser.RETURN:
+				ReturnExp returnExp = new ReturnExpImpl();
 
-                if (tree.getChildCount() > 0) {
-                    returnExp.setOclExpression(walk(tree.getChild(0)));
-                }
+				if (tree.getChildCount() > 0) {
+					returnExp.setOclExpression(walk(tree.getChild(0)));
+				}
 
-                oclExpression = returnExp;
+				oclExpression = returnExp;
 
-                break;
+				break;
 
-            case IoclParser.APPEND:
-            case IoclParser.IS:
-                simpleName = createSimpleName(
-                    SimpleTypeEnum.IDENTIFIER, tree.getChild(0).getText());
+			case IoclParser.APPEND:
+			case IoclParser.IS:
+				simpleName = createSimpleName(
+					SimpleTypeEnum.IDENTIFIER, tree.getChild(0).getText());
 
-                AssignExp assignExp = createAssignExp(simpleName);
+				AssignExp assignExp = createAssignExp(simpleName);
 
-                assignExp.setReset(tree.getType() == IoclParser.IS);
-                assignExp.setValue(walk(tree.getChild(1)));
+				assignExp.setReset(tree.getType() == IoclParser.IS);
+				assignExp.setValue(walk(tree.getChild(1)));
 
-                oclExpression = assignExp;
+				oclExpression = assignExp;
 
-                break;
+				break;
 
-            case IoclParser.RAISE:
-                oclExpression = createRaiseExp(walk(tree.getChild(0)));
+			case IoclParser.RAISE:
+				oclExpression = createRaiseExp(walk(tree.getChild(0)));
 
-                break;
+				break;
 
-            case IoclParser.SCOPE:
-                PathName pathName = new PathNameImpl();
+			case IoclParser.SCOPE:
+				PathName pathName = new PathNameImpl();
 
-                for (int i = 0; i < tree.getChildCount(); i++) {
-                    pathName.addName(tree.getChild(i).getText());
-                }
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					pathName.addName(tree.getChild(i).getText());
+				}
 
-                oclExpression = pathName;
+				oclExpression = pathName;
 
-                break;
-            case IoclParser.WHILE:
-                WhileExp whileExp = createWhileExp(walk(tree.getChild(0)));
+				break;
+			case IoclParser.WHILE:
+				WhileExp whileExp = createWhileExp(walk(tree.getChild(0)));
 
-                for (int i = 1; i < tree.getChildCount(); i++) {
-                    whileExp.addExpression(walk(tree.getChild(i)));
-                }
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					whileExp.addExpression(walk(tree.getChild(i)));
+				}
 
-                oclExpression = whileExp;
+				oclExpression = whileExp;
 
-                break;
-        }
+				break;
+		}
 
-        return oclExpression;
-    }
+		return oclExpression;
+	}
 
-    protected AssignExp createAssignExp(SimpleName simpleName) {
-        AssignExp assignExp = new AssignExpImpl();
+	protected AssignExp createAssignExp(SimpleName simpleName) {
+		AssignExp assignExp = new AssignExpImpl();
 
-        assignExp.setLeft(simpleName);
+		assignExp.setLeft(simpleName);
 
-        return assignExp;
-    }
+		return assignExp;
+	}
 
-    protected BooleanLiteralExp createBooleanLiteralExp(String booleanSymbol) {
-        BooleanLiteralExp booleanLiteralExp = new BooleanLiteralExpImpl();
-        booleanLiteralExp.setBooleanSymbol(Boolean.parseBoolean(booleanSymbol));
+	protected BooleanLiteralExp createBooleanLiteralExp(String booleanSymbol) {
+		BooleanLiteralExp booleanLiteralExp = new BooleanLiteralExpImpl();
+		booleanLiteralExp.setBooleanSymbol(Boolean.parseBoolean(booleanSymbol));
 
-        return booleanLiteralExp;
-    }
+		return booleanLiteralExp;
+	}
 
-    protected CollectionLiteralExp createCollectionLiteralExp(
-        OclExpression collectionTypeIdentifierCS) {
+	protected CollectionLiteralExp createCollectionLiteralExp(
+		OclExpression collectionTypeIdentifierCS) {
 
-        CollectionLiteralExp collectionLiteralExp =
-            new CollectionLiteralExpImpl();
+		CollectionLiteralExp collectionLiteralExp =
+			new CollectionLiteralExpImpl();
 
-        collectionLiteralExp.setCollectionKind(
-            (CollectionTypeIdentifier) collectionTypeIdentifierCS);
+		collectionLiteralExp.setCollectionKind(
+			(CollectionTypeIdentifier) collectionTypeIdentifierCS);
 
-        return collectionLiteralExp;
-    }
+		return collectionLiteralExp;
+	}
 
-    protected CollectionLiteralPart createCollectionLiteralPart(
-        OclExpression oclExpressionCS) {
+	protected CollectionLiteralPart createCollectionLiteralPart(
+		OclExpression oclExpressionCS) {
 
-        CollectionLiteralPartImpl part = new CollectionLiteralPartImpl();
+		CollectionLiteralPartImpl part = new CollectionLiteralPartImpl();
 
-        part.setOCLExpresion(oclExpressionCS);
+		part.setOCLExpresion(oclExpressionCS);
 
-        return part;
-    }
+		return part;
+	}
 
-    protected CollectionType createCollectionType(
-        OclExpression collectionTypeIdentifier) {
+	protected CollectionType createCollectionType(
+		OclExpression collectionTypeIdentifier) {
 
-        CollectionType collectionType = new CollectionTypeImpl();
+		CollectionType collectionType = new CollectionTypeImpl();
 
-        collectionType.setCollectionTypeIdentifier(
-            (CollectionTypeIdentifier) collectionTypeIdentifier);
+		collectionType.setCollectionTypeIdentifier(
+			(CollectionTypeIdentifier) collectionTypeIdentifier);
 
-        return collectionType;
-    }
+		return collectionType;
+	}
 
-    protected CollectionTypeIdentifier createCollectionTypeIdentifier(
-        String type) {
+	protected CollectionTypeIdentifier createCollectionTypeIdentifier(
+		String type) {
 
-        CollectionTypeIdentifier identifier =
-            new CollectionTypeIdentifierImpl();
+		CollectionTypeIdentifier identifier =
+			new CollectionTypeIdentifierImpl();
 
-        identifier.setCollectionType(type);
+		identifier.setCollectionType(type);
 
-        return identifier;
-    }
+		return identifier;
+	}
 
-    protected PrimitiveType createPrimitiveType(String type) {
-        PrimitiveType primitiveType = new PrimitiveTypeImpl();
+	protected PrimitiveType createPrimitiveType(String type) {
+		PrimitiveType primitiveType = new PrimitiveTypeImpl();
 
-        primitiveType.setSimpleType(SimpleTypeEnum.get(type));
+		primitiveType.setSimpleType(SimpleTypeEnum.get(type));
 
-        return primitiveType;
-    }
+		return primitiveType;
+	}
 
-    protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
-        IntegerLiteralExp integerLiteralExp = new IntegerLiteralExpImpl();
-        integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
+	protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
+		IntegerLiteralExp integerLiteralExp = new IntegerLiteralExpImpl();
+		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
 
-        return integerLiteralExp;
-    }
+		return integerLiteralExp;
+	}
 
-    protected OperationCallExp createNumericOperationCallExp(
-        String numericOperaration) {
+	protected OperationCallExp createNumericOperationCallExp(
+		String numericOperaration) {
 
-        OperationCallExp operationCallExpCS = new OperationCallExpImpl();
+		OperationCallExp operationCallExpCS = new OperationCallExpImpl();
 
-        int index = numericOperaration.indexOf('.');
-        String integerSymbol = numericOperaration.substring(0, index);
+		int index = numericOperaration.indexOf('.');
+		String integerSymbol = numericOperaration.substring(0, index);
 
-        IntegerLiteralExp integerLiteralExpCS = createIntegerLiteralExp(
-            integerSymbol);
+		IntegerLiteralExp integerLiteralExpCS = createIntegerLiteralExp(
+			integerSymbol);
 
-        operationCallExpCS.setSource(integerLiteralExpCS);
+		operationCallExpCS.setSource(integerLiteralExpCS);
 
-        String simpleName = numericOperaration.substring(index + 1);
+		String simpleName = numericOperaration.substring(index + 1);
 
-        SimpleName simpleNameCS = createSimpleName(
-            SimpleTypeEnum.IDENTIFIER, simpleName);
+		SimpleName simpleNameCS = createSimpleName(
+			SimpleTypeEnum.IDENTIFIER, simpleName);
 
-        operationCallExpCS.setSimpleName(simpleNameCS);
+		operationCallExpCS.setSimpleName(simpleNameCS);
 
-        return operationCallExpCS;
-    }
+		return operationCallExpCS;
+	}
 
-    protected OperationCallExp createOperationCallExp(
-        SimpleName simpleName, OclExpression source) {
+	protected OperationCallExp createOperationCallExp(
+		SimpleName simpleName, OclExpression source) {
 
-        OperationCallExp operationCallExp = new OperationCallExpImpl();
+		OperationCallExp operationCallExp = new OperationCallExpImpl();
 
-        operationCallExp.setSimpleName(simpleName);
-        operationCallExp.setSource(source);
+		operationCallExp.setSimpleName(simpleName);
+		operationCallExp.setSource(source);
 
-        return operationCallExp;
-    }
+		return operationCallExp;
+	}
 
-    protected RaiseExp createRaiseExp(OclExpression oclExpression) {
-        RaiseExp raiseExp = new RaiseExpImpl();
+	protected RaiseExp createRaiseExp(OclExpression oclExpression) {
+		RaiseExp raiseExp = new RaiseExpImpl();
 
-        if (oclExpression instanceof Type) {
-            raiseExp.setException((Type) oclExpression);
-        }
-        else {
-            StringLiteralExp stringLiteralExp =
-                (StringLiteralExp) oclExpression;
+		if (oclExpression instanceof Type) {
+			raiseExp.setException((Type) oclExpression);
+		}
+		else {
+			StringLiteralExp stringLiteralExp =
+				(StringLiteralExp) oclExpression;
 
-            raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
-        }
+			raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
+		}
 
-        return raiseExp;
-    }
+		return raiseExp;
+	}
 
-    protected RealLiteralExp createRealLiteralExp(String realSymbol) {
-        RealLiteralExp realLiteralExp = new RealLiteralExpImpl();
-        realLiteralExp.setRealSymbol(Double.parseDouble(realSymbol));
+	protected RealLiteralExp createRealLiteralExp(String realSymbol) {
+		RealLiteralExp realLiteralExp = new RealLiteralExpImpl();
+		realLiteralExp.setRealSymbol(Double.parseDouble(realSymbol));
 
-        return realLiteralExp;
-    }
+		return realLiteralExp;
+	}
 
-    protected StringLiteralExp createStringLiteralExp(String stringSymbol) {
-        StringLiteralExp stringLiteralExp = new StringLiteralExpImpl();
-        stringLiteralExp.setStringSymbol(stringSymbol);
+	protected StringLiteralExp createStringLiteralExp(String stringSymbol) {
+		StringLiteralExp stringLiteralExp = new StringLiteralExpImpl();
+		stringLiteralExp.setStringSymbol(stringSymbol);
 
-        return stringLiteralExp;
-    }
+		return stringLiteralExp;
+	}
 
-    protected SimpleName createSimpleName(SimpleTypeEnum type, String value) {
-        SimpleName simpleName = new SimpleNameImpl();
+	protected SimpleName createSimpleName(SimpleTypeEnum type, String value) {
+		SimpleName simpleName = new SimpleNameImpl();
 
-        simpleName.setSimpleType(type);
-        simpleName.setValue(value);
+		simpleName.setSimpleType(type);
+		simpleName.setValue(value);
 
-        return simpleName;
-    }
+		return simpleName;
+	}
 
-    protected VariableInitExp createVariableInitExp(String varName) {
-        VariableInitExp variableInitExp = new VariableInitExpImpl();
+	protected VariableInitExp createVariableInitExp(String varName) {
+		VariableInitExp variableInitExp = new VariableInitExpImpl();
 
-        variableInitExp.setVarName(varName);
+		variableInitExp.setVarName(varName);
 
-        return variableInitExp;
-    }
+		return variableInitExp;
+	}
 
-    protected WhileExp createWhileExp(OclExpression condition) {
-        WhileExp whileExp = new WhileExpImpl();
+	protected WhileExp createWhileExp(OclExpression condition) {
+		WhileExp whileExp = new WhileExpImpl();
 
-        whileExp.setCondition(condition);
+		whileExp.setCondition(condition);
 
-        return whileExp;
-    }
+		return whileExp;
+	}
 
 }

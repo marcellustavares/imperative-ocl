@@ -19,8 +19,8 @@ package org.orcas.iocl.exp;
 
 public interface BooleanLiteralExp extends PrimitiveLiteralExp {
 
-    public Boolean getBooleanSymbol();
+	public Boolean getBooleanSymbol();
 
-    public void setBooleanSymbol(Boolean booleanSymbol);
+	public void setBooleanSymbol(Boolean booleanSymbol);
 
 }

@@ -21,12 +21,12 @@ import java.util.List;
 
 public interface WhileExp extends ImperativeExp {
 
-    public void addExpression(OclExpression oclExpression);
+	public void addExpression(OclExpression oclExpression);
 
-    public OclExpression getCondition();
+	public OclExpression getCondition();
 
-    public List<OclExpression> getExpressions();
+	public List<OclExpression> getExpressions();
 
-    public void setCondition(OclExpression condition);
+	public void setCondition(OclExpression condition);
 
 }

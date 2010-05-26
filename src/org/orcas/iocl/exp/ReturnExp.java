@@ -19,8 +19,8 @@ package org.orcas.iocl.exp;
 
 public interface ReturnExp extends ImperativeExp {
 
-    public OclExpression getOclExpression();
+	public OclExpression getOclExpression();
 
-    public void setOclExpression(OclExpression oclExpression);
+	public void setOclExpression(OclExpression oclExpression);
 
 }

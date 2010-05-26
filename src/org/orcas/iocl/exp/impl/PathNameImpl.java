@@ -24,14 +24,14 @@ import org.orcas.iocl.exp.PathName;
 
 public class PathNameImpl extends TypeImpl implements PathName {
 
-    public void addName(String name) {
-        _qualifiedName.add(name);
-    }
+	public void addName(String name) {
+		_qualifiedName.add(name);
+	}
 
-    public List<String> getQualifiedName() {
-        return _qualifiedName;
-    }
+	public List<String> getQualifiedName() {
+		return _qualifiedName;
+	}
 
-    private List<String> _qualifiedName = new ArrayList<String>();
+	private List<String> _qualifiedName = new ArrayList<String>();
 
 }

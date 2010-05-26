@@ -27,26 +27,26 @@ import org.orcas.iocl.exp.ReturnExp;
 
 public class TestReturnExp extends TestCase {
 
-    public void testReturnExp() throws IOCLException {
-        exp = "return;";
+	public void testReturnExp() throws IOCLException {
+		exp = "return;";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof ReturnExp);
+		assertTrue(oclExp instanceof ReturnExp);
 
-        exp = "return 1+2;";
+		exp = "return 1+2;";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof ReturnExp);
+		assertTrue(oclExp instanceof ReturnExp);
 
-        ReturnExp returnExp = (ReturnExp) oclExp;
+		ReturnExp returnExp = (ReturnExp) oclExp;
 
-        assertTrue(returnExp.getOclExpression() instanceof OperationCallExp);
-    }
+		assertTrue(returnExp.getOclExpression() instanceof OperationCallExp);
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

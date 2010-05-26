@@ -21,8 +21,8 @@ import java.util.List;
 
 public interface CollectionLiteralParts extends OclExpression {
 
-    public void addPart(CollectionLiteralPart collectionLiteralPart);
+	public void addPart(CollectionLiteralPart collectionLiteralPart);
 
-    public List<CollectionLiteralPart> getParts();
+	public List<CollectionLiteralPart> getParts();
 
 }

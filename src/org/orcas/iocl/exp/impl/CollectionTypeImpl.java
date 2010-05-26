@@ -22,27 +22,27 @@ import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.Type;
 
 public class CollectionTypeImpl extends TypeImpl
-    implements CollectionType {
+	implements CollectionType {
 
-    public CollectionTypeIdentifier getCollectionTypeIdentifier() {
-        return _collectionTypeIdentifier;
-    }
+	public CollectionTypeIdentifier getCollectionTypeIdentifier() {
+		return _collectionTypeIdentifier;
+	}
 
-    public Type getType() {
-        return _type;
-    }
+	public Type getType() {
+		return _type;
+	}
 
-    public void setCollectionTypeIdentifier(
-        CollectionTypeIdentifier collectionTypeIdentifier) {
+	public void setCollectionTypeIdentifier(
+		CollectionTypeIdentifier collectionTypeIdentifier) {
 
-        _collectionTypeIdentifier = collectionTypeIdentifier;
-    }
+		_collectionTypeIdentifier = collectionTypeIdentifier;
+	}
 
-    public void setType(Type type) {
-        _type = type;
-    }
+	public void setType(Type type) {
+		_type = type;
+	}
 
-    private CollectionTypeIdentifier _collectionTypeIdentifier;
-    private Type _type;
+	private CollectionTypeIdentifier _collectionTypeIdentifier;
+	private Type _type;
 
 }

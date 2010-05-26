@@ -30,52 +30,52 @@ import org.orcas.iocl.exp.StringLiteralExp;
 
 public class TestAssignExp extends TestCase {
 
-    public void testAssignResetExp() throws IOCLException {
-        exp = "tmp := 1+2;";
+	public void testAssignResetExp() throws IOCLException {
+		exp = "tmp := 1+2;";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof AssignExp);
+		assertTrue(oclExp instanceof AssignExp);
 
-        AssignExp assignExp = (AssignExp) oclExp;
+		AssignExp assignExp = (AssignExp) oclExp;
 
-        assertTrue(assignExp.isReset());
+		assertTrue(assignExp.isReset());
 
-        assertTrue(assignExp.getLeft() instanceof SimpleName);
+		assertTrue(assignExp.getLeft() instanceof SimpleName);
 
-        SimpleName simpleName = (SimpleName) assignExp.getLeft();
+		SimpleName simpleName = (SimpleName) assignExp.getLeft();
 
-        assertEquals(simpleName.getSimpleType(), SimpleTypeEnum.IDENTIFIER);
+		assertEquals(simpleName.getSimpleType(), SimpleTypeEnum.IDENTIFIER);
 
-        assertEquals(simpleName.getValue(), "tmp");
+		assertEquals(simpleName.getValue(), "tmp");
 
-        assertTrue(assignExp.getValue() instanceof OperationCallExp);
-    }
+		assertTrue(assignExp.getValue() instanceof OperationCallExp);
+	}
 
-    public void testAssignNotResetExp() throws IOCLException {
-        exp = "tmp += 'test';";
+	public void testAssignNotResetExp() throws IOCLException {
+		exp = "tmp += 'test';";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof AssignExp);
+		assertTrue(oclExp instanceof AssignExp);
 
-        AssignExp assignExp = (AssignExp) oclExp;
+		AssignExp assignExp = (AssignExp) oclExp;
 
-        assertTrue(assignExp.isReset() == false);
+		assertTrue(assignExp.isReset() == false);
 
-        assertTrue(assignExp.getLeft() instanceof SimpleName);
+		assertTrue(assignExp.getLeft() instanceof SimpleName);
 
-        SimpleName simpleName = (SimpleName) assignExp.getLeft();
+		SimpleName simpleName = (SimpleName) assignExp.getLeft();
 
-        assertEquals(simpleName.getSimpleType(), SimpleTypeEnum.IDENTIFIER);
+		assertEquals(simpleName.getSimpleType(), SimpleTypeEnum.IDENTIFIER);
 
-        assertEquals(simpleName.getValue(), "tmp");
+		assertEquals(simpleName.getValue(), "tmp");
 
-        assertTrue(assignExp.getValue() instanceof StringLiteralExp);
-    }
+		assertTrue(assignExp.getValue() instanceof StringLiteralExp);
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

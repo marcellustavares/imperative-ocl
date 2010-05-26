@@ -23,30 +23,30 @@ import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.OclExpression;
 
 public class CollectionLiteralExpImpl extends LiteralExpImpl
-    implements CollectionLiteralExp {
+	implements CollectionLiteralExp {
 
-    public CollectionTypeIdentifier getCollectionKind() {
-        return _collectionTypeIdentifier;
-    }
+	public CollectionTypeIdentifier getCollectionKind() {
+		return _collectionTypeIdentifier;
+	}
 
-    public CollectionLiteralParts getCollectionLiteralParts() {
-        return _collectionLiteralParts;
-    }
+	public CollectionLiteralParts getCollectionLiteralParts() {
+		return _collectionLiteralParts;
+	}
 
-    public void setCollectionKind(
-            CollectionTypeIdentifier collectionTypeIdentifier) {
+	public void setCollectionKind(
+			CollectionTypeIdentifier collectionTypeIdentifier) {
 
-        _collectionTypeIdentifier = collectionTypeIdentifier;
-    }
+		_collectionTypeIdentifier = collectionTypeIdentifier;
+	}
 
-    public void setCollectionLiteralParts(
-        OclExpression collectionLiteralParts) {
+	public void setCollectionLiteralParts(
+		OclExpression collectionLiteralParts) {
 
-        _collectionLiteralParts =
-            (CollectionLiteralParts) collectionLiteralParts;
-    }
+		_collectionLiteralParts =
+			(CollectionLiteralParts) collectionLiteralParts;
+	}
 
-    private CollectionTypeIdentifier _collectionTypeIdentifier;
-    private CollectionLiteralParts _collectionLiteralParts;
+	private CollectionTypeIdentifier _collectionTypeIdentifier;
+	private CollectionLiteralParts _collectionLiteralParts;
 
 }

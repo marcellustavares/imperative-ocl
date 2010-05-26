@@ -21,8 +21,8 @@ import java.util.List;
 
 public interface Arguments {
 
-    public void addArgument(OclExpression argument);
+	public void addArgument(OclExpression argument);
 
-    public List<OclExpression> getArguments();
+	public List<OclExpression> getArguments();
 
 }

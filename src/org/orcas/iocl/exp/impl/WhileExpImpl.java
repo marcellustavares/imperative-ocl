@@ -25,23 +25,23 @@ import org.orcas.iocl.exp.WhileExp;
 
 public class WhileExpImpl extends ImperativeExpImpl implements WhileExp {
 
-    public void addExpression(OclExpression oclExpression) {
-        _expressions.add(oclExpression);
-    }
+	public void addExpression(OclExpression oclExpression) {
+		_expressions.add(oclExpression);
+	}
 
-    public OclExpression getCondition() {
-        return _condition;
-    }
+	public OclExpression getCondition() {
+		return _condition;
+	}
 
-    public List<OclExpression> getExpressions() {
-        return _expressions;
-    }
+	public List<OclExpression> getExpressions() {
+		return _expressions;
+	}
 
-    public void setCondition(OclExpression condition) {
-        _condition = condition;
-    }
+	public void setCondition(OclExpression condition) {
+		_condition = condition;
+	}
 
-    private OclExpression _condition;
-    private List<OclExpression> _expressions = new ArrayList<OclExpression>();
+	private OclExpression _condition;
+	private List<OclExpression> _expressions = new ArrayList<OclExpression>();
 
 }

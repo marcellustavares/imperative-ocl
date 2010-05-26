@@ -28,58 +28,58 @@ import org.orcas.iocl.exp.SimpleName;
 
 public class TestLogicalExp extends TestCase {
 
-    public void testLogicalExp() throws IOCLException{
-        String[] exps = new String[] {
-            "true and false", "true or true ", " false xor false"};
+	public void testLogicalExp() throws IOCLException{
+		String[] exps = new String[] {
+			"true and false", "true or true ", " false xor false"};
 
-        for (String exp : exps) {
-            oclExp = iocl.parse(exp);
+		for (String exp : exps) {
+			oclExp = iocl.parse(exp);
 
-            OperationCallExp opCallExp = (OperationCallExp) oclExp;
+			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-            OclExpression source = opCallExp.getSource();
+			OclExpression source = opCallExp.getSource();
 
-            assertTrue(source instanceof BooleanLiteralExp);
+			assertTrue(source instanceof BooleanLiteralExp);
 
-            SimpleName simpleName = opCallExp.getSimpleName();
+			SimpleName simpleName = opCallExp.getSimpleName();
 
-            String operation = simpleName.getValue();
+			String operation = simpleName.getValue();
 
-            boolean opCheck = (
-                operation.equals("and") || operation.equals("or") ||
-                operation.equals("xor"));
+			boolean opCheck = (
+				operation.equals("and") || operation.equals("or") ||
+				operation.equals("xor"));
 
-            assertTrue(opCheck);
-        }
-    }
+			assertTrue(opCheck);
+		}
+	}
 
-    public void testNestedLogicalExp() throws IOCLException {
-        String exp = "false and false or false xor true";
+	public void testNestedLogicalExp() throws IOCLException {
+		String exp = "false and false or false xor true";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        OperationCallExp opCallExp = (OperationCallExp) oclExp;
+		OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
-        // (((false and false) or false) xor true)
+		// (((false and false) or false) xor true)
 
-        OclExpression source = opCallExp.getSource();
+		OclExpression source = opCallExp.getSource();
 
-        assertTrue(source instanceof OperationCallExp);
+		assertTrue(source instanceof OperationCallExp);
 
-        SimpleName simpleName = opCallExp.getSimpleName();
+		SimpleName simpleName = opCallExp.getSimpleName();
 
-        String operation = simpleName.getValue();
+		String operation = simpleName.getValue();
 
-        assertEquals("xor", operation);
+		assertEquals("xor", operation);
 
-        OclExpression arg = opCallExp.getArguments().get(0);
+		OclExpression arg = opCallExp.getArguments().get(0);
 
-        assertTrue(arg instanceof BooleanLiteralExp);
+		assertTrue(arg instanceof BooleanLiteralExp);
 
-    }
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

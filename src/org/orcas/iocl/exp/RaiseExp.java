@@ -19,12 +19,12 @@ package org.orcas.iocl.exp;
 
 public interface RaiseExp extends ImperativeExp {
 
-    public Type getException();
+	public Type getException();
 
-    public String getExceptionMessage();
+	public String getExceptionMessage();
 
-    public void setException(Type exception);
+	public void setException(Type exception);
 
-    public void setExceptionMessage(String exceptionMessage);
+	public void setExceptionMessage(String exceptionMessage);
 
 }

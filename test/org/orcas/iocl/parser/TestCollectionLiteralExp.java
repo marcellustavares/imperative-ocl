@@ -28,64 +28,64 @@ import org.orcas.iocl.exp.OclExpression;
 
 public class TestCollectionLiteralExp extends TestCase {
 
-    public void testBagExpression() throws IOCLException {
-        exp = "Bag{1, 2}";
+	public void testBagExpression() throws IOCLException {
+		exp = "Bag{1, 2}";
 
-        basicCheck(exp, CollectionTypeIdentifier.BAG, 2);
-    }
+		basicCheck(exp, CollectionTypeIdentifier.BAG, 2);
+	}
 
-    public void testCollectionExpression() throws IOCLException {
-        exp = "Collection{}";
+	public void testCollectionExpression() throws IOCLException {
+		exp = "Collection{}";
 
-        basicCheck(exp, CollectionTypeIdentifier.COLLECTION, 0);
-    }
+		basicCheck(exp, CollectionTypeIdentifier.COLLECTION, 0);
+	}
 
-    public void testOrderedSetExpression() throws IOCLException {
-        exp = "OrderedSet{1, 2}";
+	public void testOrderedSetExpression() throws IOCLException {
+		exp = "OrderedSet{1, 2}";
 
-        basicCheck(exp, CollectionTypeIdentifier.ORDERED_SET, 2);
-    }
+		basicCheck(exp, CollectionTypeIdentifier.ORDERED_SET, 2);
+	}
 
-    public void testSequenceExpression() throws IOCLException {
-        exp = "Sequence {1.2, 3.5, 4, true}";
+	public void testSequenceExpression() throws IOCLException {
+		exp = "Sequence {1.2, 3.5, 4, true}";
 
-        basicCheck(exp, CollectionTypeIdentifier.SEQUENCE, 4);
-    }
+		basicCheck(exp, CollectionTypeIdentifier.SEQUENCE, 4);
+	}
 
-    public void testSetExpression() throws IOCLException {
-        exp = "Set{false, 'marcellus'}";
+	public void testSetExpression() throws IOCLException {
+		exp = "Set{false, 'marcellus'}";
 
-        basicCheck(exp, CollectionTypeIdentifier.SET, 2);
-    }
+		basicCheck(exp, CollectionTypeIdentifier.SET, 2);
+	}
 
-    protected void basicCheck(String exp, int expectedType, int expectedSize)
-        throws IOCLException {
+	protected void basicCheck(String exp, int expectedType, int expectedSize)
+		throws IOCLException {
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof CollectionLiteralExp);
+		assertTrue(oclExp instanceof CollectionLiteralExp);
 
-        collectionLiteralExp = (CollectionLiteralExp) oclExp;
+		collectionLiteralExp = (CollectionLiteralExp) oclExp;
 
-        CollectionTypeIdentifier type =
-            collectionLiteralExp.getCollectionKind();
+		CollectionTypeIdentifier type =
+			collectionLiteralExp.getCollectionKind();
 
-        assertEquals(type.getCollectionType(), expectedType);
+		assertEquals(type.getCollectionType(), expectedType);
 
-        if (expectedSize == 0) {
-            assertNull(collectionLiteralExp.getCollectionLiteralParts());
-        }
-        else {
-            CollectionLiteralParts collectionLiteralParts =
-                collectionLiteralExp.getCollectionLiteralParts();
-            assertEquals(
-                collectionLiteralParts.getParts().size(), expectedSize);
-        }
-    }
+		if (expectedSize == 0) {
+			assertNull(collectionLiteralExp.getCollectionLiteralParts());
+		}
+		else {
+			CollectionLiteralParts collectionLiteralParts =
+				collectionLiteralExp.getCollectionLiteralParts();
+			assertEquals(
+				collectionLiteralParts.getParts().size(), expectedSize);
+		}
+	}
 
-    protected String exp;
-    protected CollectionLiteralExp collectionLiteralExp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected CollectionLiteralExp collectionLiteralExp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

@@ -28,36 +28,36 @@ import org.orcas.iocl.parser.IoclTreeWalker;
 
 public class Iocl {
 
-    public static Iocl getInstance() {
-        return _instance;
-    }
+	public static Iocl getInstance() {
+		return _instance;
+	}
 
-    public OclExpression parse(String exp) {
-        try {
-            ANTLRStringStream input = new ANTLRStringStream(exp);
+	public OclExpression parse(String exp) {
+		try {
+			ANTLRStringStream input = new ANTLRStringStream(exp);
 
-            IoclLexer lexer = new IoclLexer(input);
-            IoclParser parser = new IoclParser(new CommonTokenStream(lexer));
+			IoclLexer lexer = new IoclLexer(input);
+			IoclParser parser = new IoclParser(new CommonTokenStream(lexer));
 
-            IoclParser.oclExpressionCS_return r = parser.oclExpressionCS();
-            Tree tree = (Tree) r.getTree();
+			IoclParser.oclExpressionCS_return r = parser.oclExpressionCS();
+			Tree tree = (Tree) r.getTree();
 
-            showIoclAst(tree);
+			showIoclAst(tree);
 
-            return _walker.walk(tree);
-        }
-        catch (RecognitionException re) {
-            re.printStackTrace();
-        }
+			return _walker.walk(tree);
+		}
+		catch (RecognitionException re) {
+			re.printStackTrace();
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    protected void showIoclAst(Tree tree) {
-        System.out.println(tree.toStringTree());
-    }
+	protected void showIoclAst(Tree tree) {
+		System.out.println(tree.toStringTree());
+	}
 
-    private static Iocl _instance = new Iocl();
-    private IoclTreeWalker _walker = new IoclTreeWalker();
+	private static Iocl _instance = new Iocl();
+	private IoclTreeWalker _walker = new IoclTreeWalker();
 
 }

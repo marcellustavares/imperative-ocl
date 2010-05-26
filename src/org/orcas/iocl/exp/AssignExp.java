@@ -19,16 +19,16 @@ package org.orcas.iocl.exp;
 
 public interface AssignExp extends ImperativeExp {
 
-    public SimpleName getLeft();
+	public SimpleName getLeft();
 
-    public OclExpression getValue();
+	public OclExpression getValue();
 
-    public boolean isReset();
+	public boolean isReset();
 
-    public void setLeft(SimpleName left);
+	public void setLeft(SimpleName left);
 
-    public void setReset(boolean reset);
+	public void setReset(boolean reset);
 
-    public void setValue(OclExpression value);
+	public void setValue(OclExpression value);
 
 }

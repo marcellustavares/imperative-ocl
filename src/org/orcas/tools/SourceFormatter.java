@@ -12,35 +12,35 @@ import org.orcas.util.FileUtil;
 
 public class SourceFormatter {
 
-    public static void main(String[] args) throws Exception {
-        String basedir = "./";
+	public static void main(String[] args) throws Exception {
+		String basedir = "./";
 
-        String copyright = FileUtil.read(
-    		new File("./src/org/orcas/tools/copyright.txt"));
+		String copyright = FileUtil.read(
+			new File("./src/org/orcas/tools/copyright.txt"));
 
-        String[] files = _getJavaFiles();
+		String[] files = _getJavaFiles();
 
-        for (int i = 0; i < files.length; i++) {
-            File file = new File(basedir + files[i]);
+		for (int i = 0; i < files.length; i++) {
+			File file = new File(basedir + files[i]);
 
-            String content = FileUtil.read(file);
+			String content = FileUtil.read(file);
 
-            String className = file.getName();
-            
-            className = className.substring(0, className.length() - 5);
+			String className = file.getName();
 
-            String packagePath = files[i];
+			className = className.substring(0, className.length() - 5);
 
-            packagePath = packagePath.replace("src" + File.separator, "");
-            packagePath = packagePath.replace('/', '.');
+			String packagePath = files[i];
 
-            String newContent = _formatContent(packagePath, content);
-            
-            if (!newContent.contains(copyright)) {
-            	newContent = copyright.concat("\n\n" + newContent);
-            }
-            
-            if (newContent.indexOf("if(") != -1) {
+			packagePath = packagePath.replace("src" + File.separator, "");
+			packagePath = packagePath.replace('/', '.');
+
+			String newContent = _formatContent(packagePath, content);
+			
+			if (!newContent.contains(copyright)) {
+				newContent = copyright.concat("\n\n" + newContent);
+			}
+			
+			if (newContent.indexOf("if(") != -1) {
 				newContent = newContent.replace("if(", "if (");
 			}
 
@@ -62,95 +62,94 @@ public class SourceFormatter {
 				System.out.println("}: " + files[i]);
 			}
 
-            if (!content.equals(newContent)) {
-                FileUtil.write(file, newContent);
+			if (!content.equals(newContent)) {
+				FileUtil.write(file, newContent);
 
-                System.out.println(file);
-            }
-        }
-    }
+				System.out.println(file);
+			}
+		}
+	}
 
-    private static String _formatContent(
+	private static String _formatContent(
 		String fileName, String content) throws IOException{
 
-    	BufferedReader bufferedReader = new BufferedReader(
+		BufferedReader bufferedReader = new BufferedReader(
 			new StringReader(content));
-        String line = null;
-        StringBuilder sb = new StringBuilder();
+		String line = null;
+		StringBuilder sb = new StringBuilder();
 
-        int lineCount = 0;
-        while ((line = bufferedReader.readLine()) != null) {
+		int lineCount = 0;
+		while ((line = bufferedReader.readLine()) != null) {
 
-            lineCount++;
+			lineCount++;
 
-            if (line.trim().length() == 0) {
-                line = StringPool.BLANK;
-            }
+			if (line.trim().length() == 0) {
+				line = StringPool.BLANK;
+			}
 
-            line = StringUtil.trimTrailing(line);
-            
-            sb.append(line);
-            sb.append("\n");
+			line = StringUtil.trimTrailing(line);
+			
+			sb.append(line);
+			sb.append("\n");
 
-            StringBuilder lineSB = new StringBuilder();
+			StringBuilder lineSB = new StringBuilder();
 
-            int spacesPerTab = 4;
+			int spacesPerTab = 4;
 
-            for (char c : line.toCharArray()) {
-                if (c == '\t') {
-                    for (int i = 0; i < spacesPerTab; i++) {
-                        lineSB.append(' ');
-                    }
+			for (char c : line.toCharArray()) {
+				if (c == '\t') {
+					for (int i = 0; i < spacesPerTab; i++) {
+						lineSB.append(' ');
+					}
 
-                    spacesPerTab = 4;
-                }
-                else {
-                    lineSB.append(c);
+					spacesPerTab = 4;
+				}
+				else {
+					lineSB.append(c);
 
-                    spacesPerTab--;
+					spacesPerTab--;
 
-                    if (spacesPerTab <= 0) {
-                        spacesPerTab = 4;
-                    }
-                }
-            }
+					if (spacesPerTab <= 0) {
+						spacesPerTab = 4;
+					}
+				}
+			}
 
-            line = lineSB.toString();
+			line = lineSB.toString();
 
-            if ((line.length() > 80) && !line.startsWith("import ") &&
-                !line.startsWith("package ")) {
+			if ((line.length() > 80) && !line.startsWith("import ") &&
+				!line.startsWith("package ")) {
 
-                System.out.println("> 80: " + fileName + " " + lineCount);
-            }
-        }
+				System.out.println("> 80: " + fileName + " " + lineCount);
+			}
+		}
 
-        bufferedReader.close();
+		bufferedReader.close();
 
-        String newContent = sb.toString();
+		String newContent = sb.toString();
 
-        if (newContent.endsWith("\n")) {
-            newContent = newContent.substring(0, newContent.length() -1);
-        }
+		if (newContent.endsWith("\n")) {
+			newContent = newContent.substring(0, newContent.length() -1);
+		}
 
+		return newContent;
+	}
+	
+	private static String[] _getJavaFiles() {
+		String basedir = "./";
 
-        return newContent;
-    }
-    
-    private static String[] _getJavaFiles() {
-        String basedir = "./";
+		DirectoryScanner ds = new DirectoryScanner();
 
-        DirectoryScanner ds = new DirectoryScanner();
+		ds.setBasedir(basedir);
+		ds.setExcludes(new String[] {
+			"**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
+			"**\\SourceFormatter.java", "**\\input\\**"});
 
-        ds.setBasedir(basedir);
-        ds.setExcludes(new String[] {
-            "**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
-            "**\\SourceFormatter.java", "**\\input\\**"});
+		ds.setIncludes(new String[] {"**\\*.java"});
 
-        ds.setIncludes(new String[] {"**\\*.java"});
+		ds.scan();
 
-        ds.scan();
-
-        return ds.getIncludedFiles();
-    }
+		return ds.getIncludedFiles();
+	}
 
 }

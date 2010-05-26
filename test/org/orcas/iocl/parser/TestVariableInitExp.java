@@ -31,61 +31,61 @@ import org.orcas.iocl.exp.VariableInitExp;
 
 public class TestVariableInitExp extends TestCase {
 
-    public void testVariableInitExp() throws IOCLException {
-        exp = "var tmp := 1+2;";
+	public void testVariableInitExp() throws IOCLException {
+		exp = "var tmp := 1+2;";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof VariableInitExp);
+		assertTrue(oclExp instanceof VariableInitExp);
 
-        VariableInitExp variableInitExp = (VariableInitExp) oclExp;
+		VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-        assertEquals(variableInitExp.getVarName(), "tmp");
+		assertEquals(variableInitExp.getVarName(), "tmp");
 
-        assertTrue(variableInitExp.getType() == null);
+		assertTrue(variableInitExp.getType() == null);
 
-        assertTrue(variableInitExp.getVarValue() instanceof OperationCallExp);
-    }
+		assertTrue(variableInitExp.getVarValue() instanceof OperationCallExp);
+	}
 
-    public void testVariableInitTypedExp() throws IOCLException {
-        exp = "var tmp:String := 'Marcellus';";
+	public void testVariableInitTypedExp() throws IOCLException {
+		exp = "var tmp:String := 'Marcellus';";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        assertTrue(oclExp instanceof VariableInitExp);
+		assertTrue(oclExp instanceof VariableInitExp);
 
-        VariableInitExp variableInitExp = (VariableInitExp) oclExp;
+		VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-        assertEquals(variableInitExp.getVarName(), "tmp");
+		assertEquals(variableInitExp.getVarName(), "tmp");
 
-        assertTrue(variableInitExp.getType() instanceof PrimitiveType);
+		assertTrue(variableInitExp.getType() instanceof PrimitiveType);
 
-        PrimitiveType primitiveType = (PrimitiveType) variableInitExp.getType();
+		PrimitiveType primitiveType = (PrimitiveType) variableInitExp.getType();
 
-        assertEquals(primitiveType.getSimpleType(), SimpleTypeEnum.STRING);
+		assertEquals(primitiveType.getSimpleType(), SimpleTypeEnum.STRING);
 
-        assertTrue(variableInitExp.getVarValue() instanceof StringLiteralExp);
+		assertTrue(variableInitExp.getVarValue() instanceof StringLiteralExp);
 
-        StringLiteralExp varValue =
-            (StringLiteralExp) variableInitExp.getVarValue();
+		StringLiteralExp varValue =
+			(StringLiteralExp) variableInitExp.getVarValue();
 
-        assertEquals(varValue.getStringSymbol(), "Marcellus");
+		assertEquals(varValue.getStringSymbol(), "Marcellus");
 
-        exp = "var tmp:javax::portlet::Portlet := 'Marcellus';";
+		exp = "var tmp:javax::portlet::Portlet := 'Marcellus';";
 
-        oclExp = iocl.parse(exp);
+		oclExp = iocl.parse(exp);
 
-        variableInitExp = (VariableInitExp) oclExp;
+		variableInitExp = (VariableInitExp) oclExp;
 
-        assertTrue(variableInitExp.getType() instanceof PathName);
+		assertTrue(variableInitExp.getType() instanceof PathName);
 
-        PathName pathName = (PathName) variableInitExp.getType();
+		PathName pathName = (PathName) variableInitExp.getType();
 
-        assertTrue(pathName.getQualifiedName().size() == 3);
-    }
+		assertTrue(pathName.getQualifiedName().size() == 3);
+	}
 
-    protected String exp;
-    protected Iocl iocl = Iocl.getInstance();
-    protected OclExpression oclExp;
+	protected String exp;
+	protected Iocl iocl = Iocl.getInstance();
+	protected OclExpression oclExp;
 
 }

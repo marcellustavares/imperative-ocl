@@ -2,23 +2,20 @@ package org.orcas.tools;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.StringReader;
-import java.io.Writer;
 
 import org.apache.tools.ant.DirectoryScanner;
 import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.StringUtil;
+import org.orcas.util.FileUtil;
 
 public class SourceFormatter {
 
     public static void main(String[] args) throws Exception {
         String basedir = "./";
 
-        String copyright = _read(
+        String copyright = FileUtil.read(
     		new File("./src/org/orcas/tools/copyright.txt"));
 
         String[] files = _getJavaFiles();
@@ -26,7 +23,7 @@ public class SourceFormatter {
         for (int i = 0; i < files.length; i++) {
             File file = new File(basedir + files[i]);
 
-            String content = _read(file);
+            String content = FileUtil.read(file);
 
             String className = file.getName();
             
@@ -66,7 +63,7 @@ public class SourceFormatter {
 			}
 
             if (!content.equals(newContent)) {
-                _write(file, newContent);
+                FileUtil.write(file, newContent);
 
                 System.out.println(file);
             }
@@ -91,6 +88,9 @@ public class SourceFormatter {
             }
 
             line = StringUtil.trimTrailing(line);
+            
+            sb.append(line);
+            sb.append("\n");
 
             StringBuilder lineSB = new StringBuilder();
 
@@ -122,9 +122,6 @@ public class SourceFormatter {
 
                 System.out.println("> 80: " + fileName + " " + lineCount);
             }
-
-            sb.append(line);
-            sb.append("\n");
         }
 
         bufferedReader.close();
@@ -147,36 +144,13 @@ public class SourceFormatter {
         ds.setBasedir(basedir);
         ds.setExcludes(new String[] {
             "**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
-            "**\\SourceFormatter.java"});
+            "**\\SourceFormatter.java", "**\\input\\**"});
 
         ds.setIncludes(new String[] {"**\\*.java"});
 
         ds.scan();
 
         return ds.getIncludedFiles();
-    }
-
-    private static String _read(File file) throws IOException  {
-        FileInputStream fis = new FileInputStream(file);
-
-        byte[] bytes = new byte[fis.available()];
-
-        fis.read(bytes);
-
-        fis.close();
-
-        String s = new String(bytes);
-
-        return s.replaceAll("\r\n", "\n");
-    }
-
-    private static void _write(File file, String content) throws IOException {
-        Writer writer = new OutputStreamWriter(
-            new FileOutputStream(file, false));
-
-        writer.write(content);
-
-        writer.close();
     }
 
 }

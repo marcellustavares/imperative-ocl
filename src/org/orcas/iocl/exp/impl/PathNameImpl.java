@@ -32,6 +32,6 @@ public class PathNameImpl extends TypeImpl implements PathName {
         return _qualifiedName;
     }
 
-    public List<String> _qualifiedName = new ArrayList<String>();
+    private List<String> _qualifiedName = new ArrayList<String>();
 
 }

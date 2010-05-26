@@ -48,8 +48,8 @@ public class VariableInitExpImpl extends ImperativeExpImpl
         _type = type;
     }
 
-    public String _varName;
-    public Type _type;
-    public OclExpression _varValue;
+    private String _varName;
+    private Type _type;
+    private OclExpression _varValue;
 
 }

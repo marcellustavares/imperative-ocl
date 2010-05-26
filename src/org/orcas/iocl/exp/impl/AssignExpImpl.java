@@ -44,8 +44,8 @@ public class AssignExpImpl extends ImperativeExpImpl implements AssignExp {
         _value = value;
     }
 
-    public boolean _reset;
-    public SimpleName _left;
-    public OclExpression _value;
+    private boolean _reset;
+    private SimpleName _left;
+    private OclExpression _value;
 
 }

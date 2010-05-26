@@ -33,6 +33,6 @@ public class BlockExpImpl extends ImperativeExpImpl implements BlockExp {
         return _expressions;
     }
 
-    public List<OclExpression> _expressions = new ArrayList<OclExpression>();
+    private List<OclExpression> _expressions = new ArrayList<OclExpression>();
 
 }

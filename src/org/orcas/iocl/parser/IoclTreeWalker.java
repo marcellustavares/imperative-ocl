@@ -39,6 +39,7 @@ import org.orcas.iocl.exp.SimpleTypeEnum;
 import org.orcas.iocl.exp.StringLiteralExp;
 import org.orcas.iocl.exp.Type;
 import org.orcas.iocl.exp.VariableInitExp;
+import org.orcas.iocl.exp.WhileExp;
 import org.orcas.iocl.exp.impl.AssignExpImpl;
 import org.orcas.iocl.exp.impl.BlockExpImpl;
 import org.orcas.iocl.exp.impl.BooleanLiteralExpImpl;
@@ -59,6 +60,7 @@ import org.orcas.iocl.exp.impl.ReturnExpImpl;
 import org.orcas.iocl.exp.impl.SimpleNameImpl;
 import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
 import org.orcas.iocl.exp.impl.VariableInitExpImpl;
+import org.orcas.iocl.exp.impl.WhileExpImpl;
 import org.orcas.iocl.parser.antlr.IoclParser;
 
 public class IoclTreeWalker {
@@ -150,6 +152,12 @@ public class IoclTreeWalker {
 
             case IoclParser.PRIMITIVE_TYPE_LITERAL:
                 oclExpression = createPrimitiveType(tree.getText());
+
+                break;
+
+            case IoclParser.IDENTIFIER:
+                oclExpression = createSimpleName(
+                    SimpleTypeEnum.IDENTIFIER, tree.getText());
 
                 break;
 
@@ -269,6 +277,16 @@ public class IoclTreeWalker {
                 }
 
                 oclExpression = pathName;
+
+                break;
+            case IoclParser.WHILE:
+                WhileExp whileExp = createWhileExp(walk(tree.getChild(0)));
+
+                for (int i = 1; i < tree.getChildCount(); i++) {
+                    whileExp.addExpression(walk(tree.getChild(i)));
+                }
+
+                oclExpression = whileExp;
 
                 break;
         }
@@ -429,6 +447,14 @@ public class IoclTreeWalker {
         variableInitExp.setVarName(varName);
 
         return variableInitExp;
+    }
+
+    protected WhileExp createWhileExp(OclExpression condition) {
+        WhileExp whileExp = new WhileExpImpl();
+
+        whileExp.setCondition(condition);
+
+        return whileExp;
     }
 
 }

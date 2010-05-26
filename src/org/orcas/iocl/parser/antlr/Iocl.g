@@ -58,6 +58,7 @@ SCOPE = '::';
 SELF = 'self';
 SEMICOLON = ';';
 VAR = 'var';
+WHILE = 'while';
 XOR = 'xor';
 }
 
@@ -106,9 +107,14 @@ dotArrowExpCS
 	;
 
 oclExpCS
-	: literalExpCS
+	: variableExp
+	| literalExpCS
 	| '(' oclExpressionCS ')' -> oclExpressionCS 
 	;		
+
+variableExp
+	: simpleNameCS
+	;
 
 literalExpCS
 	: collectionLiteralExpCS 
@@ -208,6 +214,7 @@ imperativeExp
 	| variableInitExp
 	| assignExp
 	| raiseExp
+	| whileExp
 	;
 
 blockExp
@@ -231,11 +238,16 @@ variableInitExp
 	;
 
 assignExp
-	: IDENTIFIER (IS | APPEND)^ oclExpressionCS SEMICOLON!
+	: variableExp (IS | APPEND)^ oclExpressionCS SEMICOLON!
 	;
 
 raiseExp
 	: RAISE^ (type | STRING_LITERAL) SEMICOLON!
+	;
+
+whileExp
+	: WHILE OPEN_PARENTHESIS oclExpressionCS CLOSE_PARENTHESIS 
+		OPEN_CURLY_BRACE oclExpressionCS* CLOSE_CURLY_BRACE -> ^(WHILE oclExpressionCS oclExpressionCS*)
 	;
 
 BOOLEAN_LITERAL

@@ -35,6 +35,7 @@ public class OclExpressionTest {
         suite.addTestSuite(TestRelationalExp.class);
         suite.addTestSuite(TestReturnExp.class);
         suite.addTestSuite(TestVariableInitExp.class);
+        suite.addTestSuite(TestWhileExp.class);
 
         junit.textui.TestRunner.run(suite);
     }

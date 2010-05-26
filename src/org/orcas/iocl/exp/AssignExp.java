@@ -17,7 +17,7 @@
 
 package org.orcas.iocl.exp;
 
-public interface AssignExp extends OclExpression {
+public interface AssignExp extends ImperativeExp {
 
     public SimpleName getLeft();
 

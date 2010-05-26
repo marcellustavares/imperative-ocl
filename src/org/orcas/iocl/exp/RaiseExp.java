@@ -17,7 +17,7 @@
 
 package org.orcas.iocl.exp;
 
-public interface RaiseExp extends OclExpression {
+public interface RaiseExp extends ImperativeExp {
 
     public Type getException();
 

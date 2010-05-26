@@ -17,7 +17,7 @@
 
 package org.orcas.iocl.exp;
 
-public interface VariableInitExp extends OclExpression {
+public interface VariableInitExp extends ImperativeExp {
 
     public String getVarName();
 

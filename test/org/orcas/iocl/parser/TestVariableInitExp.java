@@ -20,7 +20,6 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.Iocl;
-import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.PathName;
@@ -31,7 +30,7 @@ import org.orcas.iocl.exp.VariableInitExp;
 
 public class TestVariableInitExp extends TestCase {
 
-	public void testVariableInitExp() throws IOCLException {
+	public void testVariableInitExp() {
 		exp = "var tmp := 1+2;";
 
 		oclExp = iocl.parse(exp);
@@ -47,7 +46,7 @@ public class TestVariableInitExp extends TestCase {
 		assertTrue(variableInitExp.getVarValue() instanceof OperationCallExp);
 	}
 
-	public void testVariableInitTypedExp() throws IOCLException {
+	public void testVariableInitTypedExp() {
 		exp = "var tmp:String := 'Marcellus';";
 
 		oclExp = iocl.parse(exp);

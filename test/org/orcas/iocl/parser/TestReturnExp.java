@@ -20,14 +20,13 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.Iocl;
-import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.ReturnExp;
 
 public class TestReturnExp extends TestCase {
 
-	public void testReturnExp() throws IOCLException {
+	public void testReturnExp() {
 		exp = "return;";
 
 		oclExp = iocl.parse(exp);

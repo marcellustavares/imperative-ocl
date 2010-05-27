@@ -20,7 +20,6 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.Iocl;
-import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.BooleanLiteralExp;
 import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
@@ -29,7 +28,7 @@ import org.orcas.iocl.exp.StringLiteralExp;
 
 public class TestPrimitiveLiteralExp extends TestCase {
 
-	public void testBooleanLiteralExp() throws IOCLException {
+	public void testBooleanLiteralExp() {
 		exp = "true";
 		oclExp = iocl.parse(exp);
 
@@ -41,21 +40,21 @@ public class TestPrimitiveLiteralExp extends TestCase {
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 	}
 
-	public void testIntegerLiteralExp() throws IOCLException {
+	public void testIntegerLiteralExp() {
 		exp = "2";
 		oclExp = iocl.parse(exp);
 
 		assertTrue(oclExp instanceof IntegerLiteralExp);
 	}
 
-	public void testRealLiteralExp() throws IOCLException {
+	public void testRealLiteralExp() {
 		exp = "2.2";
 		oclExp = iocl.parse(exp);
 
 		assertTrue(oclExp instanceof RealLiteralExp);
 	}
 
-	public void testStringLiteralExp() throws IOCLException {
+	public void testStringLiteralExp() {
 		exp = "'marcellus'";
 		oclExp = iocl.parse(exp);
 

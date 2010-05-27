@@ -20,14 +20,13 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.Iocl;
-import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.PathName;
 import org.orcas.iocl.exp.RaiseExp;
 
 public class TestRaiseExp extends TestCase {
 
-	public void testRaiseExceptionMessageExp() throws IOCLException {
+	public void testRaiseExceptionMessageExp() {
 		exp = "raise 'custom exception message';";
 
 		oclExp = iocl.parse(exp);
@@ -40,7 +39,7 @@ public class TestRaiseExp extends TestCase {
 			raiseExp.getExceptionMessage(), "custom exception message");
 	}
 
-	public void testRaiseTypeExp() throws IOCLException {
+	public void testRaiseTypeExp() {
 		exp = "raise java::lang::Exception;";
 
 		oclExp = iocl.parse(exp);

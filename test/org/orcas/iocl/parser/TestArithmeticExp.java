@@ -22,7 +22,6 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.Iocl;
-import org.orcas.iocl.exception.IOCLException;
 import org.orcas.iocl.exp.NumericLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
@@ -30,7 +29,7 @@ import org.orcas.iocl.exp.SimpleName;
 
 public class TestArithmeticExp extends TestCase {
 
-	public void testUnaryExp() throws IOCLException{
+	public void testUnaryExp() {
 		String[] exps = new String[] {" -1", "- 1.2 "};
 
 		for (String exp : exps) {
@@ -40,7 +39,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testMultiplicativeExp() throws IOCLException{
+	public void testMultiplicativeExp() {
 		String[] exps = new String[] {
 			"1*1", "2 / 3", "1.2 /	4", "2.6   *4.3"};
 
@@ -51,7 +50,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testAdditiveExp() throws IOCLException{
+	public void testAdditiveExp() {
 		String[] exps = new String[] {
 			"1+1", "2 - 3", "1.2 +	4", "2.6   -4.3"};
 
@@ -62,7 +61,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testArithmeticExp() throws IOCLException{
+	public void testArithmeticExp() {
 		String[] exps = new String[] {"-1+2", "-1-1"};
 
 		for (String exp : exps) {

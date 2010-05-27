@@ -22,8 +22,13 @@ import java.util.List;
 
 import org.orcas.iocl.exp.BlockExp;
 import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.Visitor;
 
 public class BlockExpImpl extends ImperativeExpImpl implements BlockExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public void addExpression(OclExpression oclExpression) {
 		_expressions.add(oclExpression);

@@ -18,9 +18,14 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.IntegerLiteralExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class IntegerLiteralExpImpl extends NumericLiteralExpImpl
 	implements IntegerLiteralExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitIntegerLiteralExp(this);
+	}
 
 	public Integer getIntegerSymbol() {
 		return _integerSymbol;

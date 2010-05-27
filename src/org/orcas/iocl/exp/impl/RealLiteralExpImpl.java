@@ -18,9 +18,14 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.RealLiteralExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class RealLiteralExpImpl extends NumericLiteralExpImpl
 	implements RealLiteralExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitRealLiteralExp(this);
+	}
 
 	public Double getRealSymbol() {
 		return _realSymbol;

@@ -20,8 +20,13 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.AssignExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.exp.Visitor;
 
 public class AssignExpImpl extends ImperativeExpImpl implements AssignExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public SimpleName getLeft() {
 		return _left;

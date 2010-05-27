@@ -20,9 +20,14 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.PropertyCallExp;
 import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.exp.Visitor;
 
 public class PropertyCallExpImpl extends OclExpressionImpl
 	implements PropertyCallExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public SimpleName getSimpleName() {
 		return _simpleName;

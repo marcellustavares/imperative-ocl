@@ -20,9 +20,14 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.CollectionType;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.exp.Visitor;
 
 public class CollectionTypeImpl extends TypeImpl
 	implements CollectionType {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public CollectionTypeIdentifier getCollectionTypeIdentifier() {
 		return _collectionTypeIdentifier;

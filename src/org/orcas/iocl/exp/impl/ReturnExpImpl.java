@@ -19,8 +19,13 @@ package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.ReturnExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class ReturnExpImpl extends ImperativeExpImpl implements ReturnExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitReturnExp(this);
+	}
 
 	public OclExpression getOclExpression() {
 		return _oclExpression;

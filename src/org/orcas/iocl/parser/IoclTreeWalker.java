@@ -62,6 +62,7 @@ import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
 import org.orcas.iocl.exp.impl.VariableInitExpImpl;
 import org.orcas.iocl.exp.impl.WhileExpImpl;
 import org.orcas.iocl.parser.antlr.IoclParser;
+import org.orcas.iocl.util.OperationCode;
 
 public class IoclTreeWalker {
 
@@ -83,11 +84,10 @@ public class IoclTreeWalker {
 			case IoclParser.OR:
 			case IoclParser.PLUS:
 			case IoclParser.XOR:
-				SimpleName simpleName = createSimpleName(
-					SimpleTypeEnum.STRING, tree.getText());
+				int operationCode = OperationCode.fromLabel(tree.getText());
 
 				OperationCallExp opCallExp = createOperationCallExp(
-					simpleName, walk(tree.getChild(0)));
+					operationCode, walk(tree.getChild(0)));
 
 				if (tree.getChildCount() > 1) {
 					opCallExp.addArgument(walk(tree.getChild(1)));
@@ -99,11 +99,11 @@ public class IoclTreeWalker {
 
 			case IoclParser.DOT:
 			case IoclParser.ARROW:
-				simpleName = createSimpleName(
-					SimpleTypeEnum.IDENTIFIER, tree.getChild(1).getText());
+				operationCode = OperationCode.fromLabel(
+					tree.getChild(1).getText());
 
 				opCallExp = createOperationCallExp(
-					simpleName, walk(tree.getChild(0)));
+					operationCode, walk(tree.getChild(0)));
 
 				for (int i = 2; i < tree.getChildCount(); i++) {
 					opCallExp.addArgument(walk(tree.getChild(i)));
@@ -252,7 +252,7 @@ public class IoclTreeWalker {
 
 			case IoclParser.APPEND:
 			case IoclParser.IS:
-				simpleName = createSimpleName(
+				SimpleName simpleName = createSimpleName(
 					SimpleTypeEnum.IDENTIFIER, tree.getChild(0).getText());
 
 				AssignExp assignExp = createAssignExp(simpleName);
@@ -392,11 +392,11 @@ public class IoclTreeWalker {
 	}
 
 	protected OperationCallExp createOperationCallExp(
-		SimpleName simpleName, OclExpression source) {
+		int operationCode, OclExpression source) {
 
 		OperationCallExp operationCallExp = new OperationCallExpImpl();
 
-		operationCallExp.setSimpleName(simpleName);
+		operationCallExp.setOperationCode(operationCode);
 		operationCallExp.setSource(source);
 
 		return operationCallExp;

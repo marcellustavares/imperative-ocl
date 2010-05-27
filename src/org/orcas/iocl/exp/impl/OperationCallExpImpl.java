@@ -22,9 +22,14 @@ import java.util.List;
 
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class OperationCallExpImpl extends ModelPropertyCallExpImpl
 	implements OperationCallExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitOperationCallExp(this);
+	}
 
 	public void addArgument(OclExpression argument) {
 		_arguments.add(argument);
@@ -34,10 +39,19 @@ public class OperationCallExpImpl extends ModelPropertyCallExpImpl
 		return _arguments;
 	}
 
+	public int getOperationCode() {
+		return _operationCode;
+	}
+
 	public void setArguments(List<OclExpression> arguments) {
 		_arguments = arguments;
 	}
 
+	public void setOperationCode(int operationCode) {
+		_operationCode = operationCode;
+	}
+
 	private List<OclExpression> _arguments = new ArrayList<OclExpression>();
+	private int _operationCode;
 
 }

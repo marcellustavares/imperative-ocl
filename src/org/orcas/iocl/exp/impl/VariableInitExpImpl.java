@@ -20,9 +20,14 @@ package org.orcas.iocl.exp.impl;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.Type;
 import org.orcas.iocl.exp.VariableInitExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class VariableInitExpImpl extends ImperativeExpImpl
 	implements VariableInitExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public String getVarName() {
 		return _varName;

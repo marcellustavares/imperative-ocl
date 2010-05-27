@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tools.ant.DirectoryScanner;
+import org.orcas.iocl.Iocl;
 import org.orcas.util.FileUtil;
 
 public class TestIoclCompiler {
@@ -105,8 +106,8 @@ public class TestIoclCompiler {
 			}
 
 			if (line.indexOf("]>") != -1) {
-				sb.append("#" + bodyExp+ "\n");
-
+				sb.append(Iocl.getInstance().compileToJava(bodyExp));
+				sb.append("\n");
 				sb.append(line.replace("]>", "}"));
 				sb.append("\n");
 

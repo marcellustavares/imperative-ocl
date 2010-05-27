@@ -18,9 +18,14 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.BooleanLiteralExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class BooleanLiteralExpImpl extends PrimitiveLiteralExpImpl
 	implements BooleanLiteralExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitBooleanLiteralExp(this);
+	}
 
 	public Boolean getBooleanSymbol() {
 		return _booleanSymbol;
@@ -31,5 +36,6 @@ public class BooleanLiteralExpImpl extends PrimitiveLiteralExpImpl
 	}
 
 	private Boolean _booleanSymbol;
+
 
 }

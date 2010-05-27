@@ -18,10 +18,15 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.StringLiteralExp;
+import org.orcas.iocl.exp.Visitor;
 import org.orcas.iocl.util.StringUtil;
 
 public class StringLiteralExpImpl extends PrimitiveLiteralExpImpl
 	implements StringLiteralExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitStringLiteralExp(this);
+	}
 
 	public String getStringSymbol() {
 		return _stringSymbol;
@@ -32,5 +37,6 @@ public class StringLiteralExpImpl extends PrimitiveLiteralExpImpl
 	}
 
 	private String _stringSymbol;
+
 
 }

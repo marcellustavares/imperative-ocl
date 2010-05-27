@@ -21,6 +21,7 @@ import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
+import org.orcas.iocl.compiler.JavaVisitor;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
@@ -53,11 +54,25 @@ public class Iocl {
 		return null;
 	}
 
+	public String compileToJava(String exp) {
+		try {
+			OclExpression oclExpression = parse(exp);
+
+			return oclExpression.accept(_javaVisitor);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 	protected void showIoclAst(Tree tree) {
 		System.out.println(tree.toStringTree());
 	}
 
 	private static Iocl _instance = new Iocl();
+	private JavaVisitor _javaVisitor = new JavaVisitor();
 	private IoclTreeWalker _walker = new IoclTreeWalker();
 
 }

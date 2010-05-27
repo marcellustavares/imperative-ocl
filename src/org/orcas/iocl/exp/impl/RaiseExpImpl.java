@@ -19,9 +19,14 @@ package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.RaiseExp;
 import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.exp.Visitor;
 import org.orcas.iocl.util.StringPool;
 
 public class RaiseExpImpl extends ImperativeExpImpl implements RaiseExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public Type getException() {
 		return _exception;

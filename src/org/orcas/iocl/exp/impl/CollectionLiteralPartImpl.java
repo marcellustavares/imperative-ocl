@@ -19,9 +19,14 @@ package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.CollectionLiteralPart;
 import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.Visitor;
 
 public class CollectionLiteralPartImpl extends OclExpressionImpl
 	implements CollectionLiteralPart {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public OclExpression getOCLExpresion() {
 		return _ocleExpression;

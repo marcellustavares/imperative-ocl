@@ -21,8 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.orcas.iocl.exp.PathName;
+import org.orcas.iocl.exp.Visitor;
 
 public class PathNameImpl extends TypeImpl implements PathName {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 	public void addName(String name) {
 		_qualifiedName.add(name);

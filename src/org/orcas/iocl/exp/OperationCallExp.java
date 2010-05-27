@@ -25,6 +25,10 @@ public interface OperationCallExp extends ModelPropertyCallExp {
 
 	public List<OclExpression> getArguments();
 
+	public int getOperationCode();
+
 	public void setArguments(List<OclExpression> arguments);
+
+	public void setOperationCode(int operationCode);
 
 }

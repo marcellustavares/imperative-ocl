@@ -19,6 +19,39 @@ package org.orcas.iocl.exp;
 
 public interface Visitor<T> {
 
+	public T visitAssignExp(AssignExp assignExp);
+
+	public T visitBlockExp(BlockExp blockExp);
+
+	public T visitBooleanLiteralExp(BooleanLiteralExp booleanLiteralExp);
+
+	public T visitBreakExp(BreakExp breakExp);
+
+	public T visitCollectionLiteralExp(
+		CollectionLiteralExp collectionLiteralExp);
+
+	public T visitCollectionLiteralPart(
+		CollectionLiteralPart collectionLiteralPart);
+
+	public T visitCollectionLiteralParts(
+		CollectionLiteralParts collectionLiteralParts);
+
+	public T visitContinueExp(ContinueExp continueExp);
+
+	public T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp);
+
+	public T visitOperationCallExp(OperationCallExp operationCallExp);
+
+	public T visitPropertyCallExp(PropertyCallExp propertyCallExp);
+
+	public T visitRaiseExp(RaiseExp raiseExp);
+
+	public T visitRealLiteralExp(RealLiteralExp realLiteralExp);
+
+	public T visitReturnExp(ReturnExp returnExp);
+
+	public T visitSimpleName(SimpleName simpleName);
+
 	public T visitStringLiteralExp(StringLiteralExp stringLiteralExp);
 
 }

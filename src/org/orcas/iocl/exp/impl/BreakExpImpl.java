@@ -18,7 +18,12 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.BreakExp;
+import org.orcas.iocl.exp.Visitor;
 
 public class BreakExpImpl extends ImperativeExpImpl implements BreakExp {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
 
 }

@@ -28,7 +28,16 @@
 		/>
 	</target>
 
-	<target name="test">
+	<target name="test-compiler">
+		<java
+			classname="org.orcas.iocl.compiler.TestIoclCompiler"
+			classpathref="project.classpath"
+			fork="true"
+			newenvironment="true"
+		/>
+	</target>
+
+	<target name="test-parser">
 		<java
 			classname="org.orcas.iocl.parser.OclExpressionTest"
 			classpathref="project.classpath"

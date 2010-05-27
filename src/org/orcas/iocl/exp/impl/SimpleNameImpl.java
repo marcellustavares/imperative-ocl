@@ -19,9 +19,14 @@ package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.SimpleTypeEnum;
+import org.orcas.iocl.exp.Visitor;
 
 public class SimpleNameImpl extends OclExpressionImpl
 	implements SimpleName {
+
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitSimpleName(this);
+	}
 
 	public SimpleTypeEnum getSimpleType() {
 		return _type;

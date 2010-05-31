@@ -19,14 +19,14 @@ package org.orcas.iocl.exp;
 
 import java.util.List;
 
-public interface WhileExp extends ImperativeExp {
+public interface SwitchExp extends ImperativeExp {
 
-	public void addBodyExpression(ImperativeExp bodyExpression);
+	public void addAlternativePart(AltExp alternativePart);
 
-	public OclExpression getCondition();
+	public void addElsePart(ImperativeExp elsePart);
 
-	public List<ImperativeExp> getBody();
+	public List<AltExp> getAlternativeParts();
 
-	public void setCondition(OclExpression condition);
+	public List<ImperativeExp> getElsePart();
 
 }

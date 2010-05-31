@@ -19,7 +19,7 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.Iocl;
+import org.orcas.iocl.ImperativeOcl;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.WhileExp;
@@ -38,11 +38,11 @@ public class TestWhileExp extends TestCase {
 		WhileExp whileExp = (WhileExp) oclExp;
 
 		assertTrue(whileExp.getCondition() instanceof OperationCallExp);
-		assertEquals(whileExp.getExpressions().size(), 1);
+		assertEquals(whileExp.getBody().size(), 1);
 	}
 
 	protected String exp;
-	protected Iocl iocl = Iocl.getInstance();
+	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

@@ -15,37 +15,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.parser;
+package org.orcas.iocl.exp.impl;
 
-import junit.framework.TestCase;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.orcas.iocl.ImperativeOcl;
+import org.orcas.iocl.exp.AltExp;
+import org.orcas.iocl.exp.ImperativeExp;
 import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.ReturnExp;
+import org.orcas.iocl.exp.Visitor;
 
-public class TestReturnExp extends TestCase {
+public class AltExpImpl extends ImperativeExpImpl implements AltExp {
 
-	public void testReturnExp() {
-		exp = "return;";
-
-		oclExp = iocl.parse(exp);
-
-		assertTrue(oclExp instanceof ReturnExp);
-
-		exp = "return 1+2;";
-
-		oclExp = iocl.parse(exp);
-
-		assertTrue(oclExp instanceof ReturnExp);
-
-		ReturnExp returnExp = (ReturnExp) oclExp;
-
-		assertTrue(returnExp.getOclExpression() instanceof OperationCallExp);
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
 	}
 
-	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
-	protected OclExpression oclExp;
+	public void addBodyExpression(ImperativeExp bodyExp) {
+		_body.add(bodyExp);
+	}
+
+	public List<ImperativeExp> getBody() {
+		return _body;
+	}
+
+	public OclExpression getCondition() {
+		return _condition;
+	}
+
+	public void setCondition(OclExpression condition) {
+		_condition = condition;
+	}
+
+	private List<ImperativeExp> _body = new ArrayList<ImperativeExp>();
+	private OclExpression _condition;
 
 }

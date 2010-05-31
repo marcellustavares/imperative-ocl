@@ -19,7 +19,7 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.Iocl;
+import org.orcas.iocl.ImperativeOcl;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.PathName;
@@ -84,7 +84,7 @@ public class TestVariableInitExp extends TestCase {
 	}
 
 	protected String exp;
-	protected Iocl iocl = Iocl.getInstance();
+	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

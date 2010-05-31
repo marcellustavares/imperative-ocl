@@ -20,34 +20,35 @@ package org.orcas.iocl.exp.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.orcas.iocl.exp.AltExp;
 import org.orcas.iocl.exp.ImperativeExp;
-import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.SwitchExp;
 import org.orcas.iocl.exp.Visitor;
-import org.orcas.iocl.exp.WhileExp;
 
-public class WhileExpImpl extends ImperativeExpImpl implements WhileExp {
+public class SwitchExpImpl extends ImperativeExpImpl implements SwitchExp {
 
 	public <T, V extends Visitor<T>> T accept(V v) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void addBodyExpression(ImperativeExp bodyExpression) {
-		_body.add(bodyExpression);
+	public void addAlternativePart(AltExp altPart) {
+		_alternativeParts.add(altPart);
+
 	}
 
-	public OclExpression getCondition() {
-		return _condition;
+	public void addElsePart(ImperativeExp elsePart) {
+		_elsePart.add(elsePart);
 	}
 
-	public List<ImperativeExp> getBody() {
-		return _body;
+	public List<AltExp> getAlternativeParts() {
+		return _alternativeParts;
 	}
 
-	public void setCondition(OclExpression condition) {
-		_condition = condition;
+	public List<ImperativeExp> getElsePart() {
+		return _elsePart;
 	}
 
-	private OclExpression _condition;
-	private List<ImperativeExp> _body = new ArrayList<ImperativeExp>();
+	private List<AltExp> _alternativeParts = new ArrayList<AltExp>();
+	private List<ImperativeExp> _elsePart = new ArrayList<ImperativeExp>();
 
 }

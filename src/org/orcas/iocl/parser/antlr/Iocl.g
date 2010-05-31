@@ -25,11 +25,10 @@ output=AST;
 
 tokens {
 AND = 'and';
+ALT_EXP;
 APPEND = '+=';
 ARROW = '->';
 BREAK = 'break';
-CLOSE_CURLY_BRACE = '}';
-CLOSE_PARENTHESIS = ')';
 COLLECTION_LITERAL;
 COLLECTION_LITERAL_PARTS;
 COLLECTION_TYPE;
@@ -38,22 +37,27 @@ CONTINUE = 'continue';
 DO = 'do';
 DIV = '/';
 DOT = '.';
+ELIF = 'elif';
+ELSE = 'else';
 EQUAL = '=';
 GT = '>';
 GTE = '>=';
+IF = 'if';
 IS = ':=';
+LCURLY = '{';
+LPAREN = '(';
 LT = '<';
 LTE = '<=';
 MINUS = '-';
 NOT = 'not';
 NOT_EQUAL = '<>';
-OPEN_CURLY_BRACE = '{';
-OPEN_PARENTHESIS = '(';
 MULT = '*';
 OR = 'or';
 PLUS = '+';
 RAISE = 'raise';
+RCURLY = '}';
 RETURN = 'return';
+RPAREN = ')';
 SCOPE = '::';
 SELF = 'self';
 SEMICOLON = ';';
@@ -191,7 +195,7 @@ primitiveType
 	;
 
 collectionType
-	: collectionTypeIdentifierCS OPEN_PARENTHESIS type CLOSE_PARENTHESIS -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
+	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
 	;
 
 type
@@ -215,10 +219,11 @@ imperativeExp
 	| assignExp
 	| raiseExp
 	| whileExp
+	| ifExp
 	;
 
 blockExp
-	: DO OPEN_CURLY_BRACE (oclExpressionCS SEMICOLON)* CLOSE_CURLY_BRACE -> ^(DO oclExpressionCS*)
+	: DO LCURLY (oclExpressionCS SEMICOLON)* RCURLY -> ^(DO oclExpressionCS*)
 	;
 
 breakExp
@@ -246,8 +251,24 @@ raiseExp
 	;
 
 whileExp
-	: WHILE OPEN_PARENTHESIS oclExpressionCS CLOSE_PARENTHESIS 
-		OPEN_CURLY_BRACE oclExpressionCS* CLOSE_CURLY_BRACE -> ^(WHILE oclExpressionCS oclExpressionCS*)
+	: WHILE LPAREN oclExpressionCS RPAREN 
+		LCURLY imperativeExp* RCURLY -> ^(WHILE oclExpressionCS imperativeExp*)
+	;
+
+ifExp
+	: IF altExp (elifExp)* (elseExp)? -> ^(IF altExp elifExp* elseExp?)
+	;
+
+elifExp
+	: ELIF! altExp
+	;
+
+elseExp	
+	: ELSE LCURLY (imperativeExp)* RCURLY -> imperativeExp*
+	;
+	
+altExp 
+	: LPAREN oclExpressionCS RPAREN LCURLY (imperativeExp)* RCURLY -> ^(ALT_EXP oclExpressionCS imperativeExp*)
 	;
 
 BOOLEAN_LITERAL

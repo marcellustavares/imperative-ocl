@@ -25,11 +25,11 @@ import org.orcas.iocl.compiler.JavaVisitor;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
-import org.orcas.iocl.parser.IoclTreeWalker;
+import org.orcas.iocl.parser.ImperativeOclTreeWalker;
 
-public class Iocl {
+public class ImperativeOcl {
 
-	public static Iocl getInstance() {
+	public static ImperativeOcl getInstance() {
 		return _instance;
 	}
 
@@ -71,8 +71,8 @@ public class Iocl {
 		System.out.println(tree.toStringTree());
 	}
 
-	private static Iocl _instance = new Iocl();
+	private static ImperativeOcl _instance = new ImperativeOcl();
 	private JavaVisitor _javaVisitor = new JavaVisitor();
-	private IoclTreeWalker _walker = new IoclTreeWalker();
+	private ImperativeOclTreeWalker _walker = new ImperativeOclTreeWalker();
 
 }

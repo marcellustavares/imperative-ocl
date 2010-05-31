@@ -19,7 +19,7 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.Iocl;
+import org.orcas.iocl.ImperativeOcl;
 
 import org.orcas.iocl.exp.NumericLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
@@ -51,7 +51,7 @@ public class TestRelationalExp extends TestCase {
 	}
 
 	protected String exp;
-	protected Iocl iocl = Iocl.getInstance();
+	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

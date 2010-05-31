@@ -19,7 +19,7 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.Iocl;
+import org.orcas.iocl.ImperativeOcl;
 import org.orcas.iocl.exp.CollectionLiteralExp;
 import org.orcas.iocl.exp.CollectionLiteralParts;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
@@ -84,7 +84,7 @@ public class TestCollectionLiteralExp extends TestCase {
 
 	protected String exp;
 	protected CollectionLiteralExp collectionLiteralExp;
-	protected Iocl iocl = Iocl.getInstance();
+	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

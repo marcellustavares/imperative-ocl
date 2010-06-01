@@ -23,7 +23,7 @@ import org.orcas.iocl.ImperativeOcl;
 import org.orcas.iocl.exp.BooleanLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.util.OperationCode;
 
 public class TestEqualityExp extends TestCase {
 
@@ -39,9 +39,9 @@ public class TestEqualityExp extends TestCase {
 
 			assertTrue(source instanceof BooleanLiteralExp);
 
-			SimpleName simpleName = opCallExp.getSimpleName();
+			int operationCode = opCallExp.getOperationCode();
 
-			String operation = simpleName.getValue();
+			String operation = OperationCode.toLabel(operationCode);
 
 			boolean opCheck = (operation.equals("=") || operation.equals("<>"));
 

@@ -20,11 +20,10 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOcl;
-
 import org.orcas.iocl.exp.NumericLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.util.OperationCode;
 
 public class TestRelationalExp extends TestCase {
 
@@ -40,9 +39,9 @@ public class TestRelationalExp extends TestCase {
 
 			assertTrue(source instanceof NumericLiteralExp);
 
-			SimpleName simpleName = opCallExp.getSimpleName();
+			int operationCode = opCallExp.getOperationCode();
 
-			String operation = simpleName.getValue();
+			String operation = OperationCode.toLabel(operationCode);
 
 			boolean opCheck = (operation.equals("<") || operation.equals(">="));
 

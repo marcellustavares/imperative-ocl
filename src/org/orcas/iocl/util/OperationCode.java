@@ -19,25 +19,63 @@ package org.orcas.iocl.util;
 
 public class OperationCode {
 
-	public static final int DIV=1;
+	public static final int AND = 1;
+
+	public static final String AND_LABEL = "and";
+
+	public static final int DIV = 2;
 
 	public static final String DIV_LABEL = "/";
 
-	public static final int MINUS=2;
+	public static final int EQUAL = 3;
+
+	public static final String EQUAL_LABEL = "=";
+
+	public static final int GT = 4;
+
+	public static final String GT_LABEL = ">";
+
+	public static final int GTE = 5;
+
+	public static final String GTE_LABEL = ">=";
+
+	public static final int LT = 6;
+
+	public static final String LT_LABEL = "<";
+
+	public static final int LTE = 7;
+
+	public static final String LTE_LABEL = "<=";
+
+	public static final int MINUS = 8;
 
 	public static final String MINUS_LABEL = "-";
 
-	public static final int MULT=3;
+	public static final int MULT = 9;
 
 	public static final String MULT_LABEL = "*";
 
-	public static final int PLUS=4;
+	public static final int NOT_EQUAL = 10;
+
+	public static final String NOT_EQUAL_LABEL = "<>";
+
+	public static final int OR = 11;
+
+	public static final String OR_LABEL = "or";
+
+	public static final int PLUS = 12;
 
 	public static final String PLUS_LABEL = "+";
 
+	public static final int XOR = 13;
+
+	public static final String XOR_LABEL = "xor";
+
 	public static Object[][] OPERATIONS = {
-		{DIV, DIV_LABEL}, {MINUS, MINUS_LABEL}, {DIV, DIV_LABEL},
-		{MULT, MINUS_LABEL}, {PLUS, PLUS_LABEL}};
+		{AND, AND_LABEL}, {DIV, DIV_LABEL}, {EQUAL, EQUAL_LABEL},
+		{GT, GT_LABEL}, {GTE, GTE_LABEL}, {LT, LT_LABEL}, {LTE, LTE_LABEL},
+		{MINUS, MINUS_LABEL}, {MULT, MULT_LABEL}, {NOT_EQUAL, NOT_EQUAL_LABEL},
+		{OR, OR_LABEL}, {PLUS, PLUS_LABEL}, {XOR, XOR_LABEL} };
 
 	public static int fromLabel(String label) {
 		for (int i = 0; i < OPERATIONS.length; i++) {

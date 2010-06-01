@@ -25,7 +25,7 @@ import org.orcas.iocl.ImperativeOcl;
 import org.orcas.iocl.exp.NumericLiteralExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.SimpleName;
+import org.orcas.iocl.util.OperationCode;
 
 public class TestArithmeticExp extends TestCase {
 
@@ -67,17 +67,7 @@ public class TestArithmeticExp extends TestCase {
 		for (String exp : exps) {
 			oclExp = iocl.parse(exp);
 
-			// operationCallExp (+|-) numericLiteralExp
-
 			checkAdditiveExp(oclExp);
-
-			// (- numericLiteralExp)
-
-			OperationCallExp opCallExp = (OperationCallExp) oclExp;
-
-			OclExpression source = opCallExp.getSource();
-
-			checkUnaryExp(source);
 		}
 
 		exps = new String[] {"-1*2", "-1/1"};
@@ -85,17 +75,7 @@ public class TestArithmeticExp extends TestCase {
 		for (String exp : exps) {
 			oclExp = iocl.parse(exp);
 
-			// operationCallExp (*|/) numericLiteralExp
-
 			checkMultiplicativeExp(oclExp);
-
-			// (-|+) numericLiteralExp
-
-			OperationCallExp opCallExp = (OperationCallExp) oclExp;
-
-			OclExpression source = opCallExp.getSource();
-
-			checkUnaryExp(source);
 		}
 	}
 
@@ -107,15 +87,15 @@ public class TestArithmeticExp extends TestCase {
 		OclExpression lhs = opCallExp.getSource();
 
 		if (lhs instanceof OperationCallExp) {
-			checkMultiplicativeExp(lhs);
+			checkUnaryExp(lhs);
 		}
 		else {
 			assertTrue(lhs instanceof NumericLiteralExp);
 		}
 
-		SimpleName sipleName = opCallExp.getSimpleName();
+		int operationCode = opCallExp.getOperationCode();
 
-		String operation = sipleName.getValue();
+		String operation = OperationCode.toLabel(operationCode);
 
 		boolean opCheck = (operation.equals("+") || operation.equals("-"));
 
@@ -149,13 +129,9 @@ public class TestArithmeticExp extends TestCase {
 			assertTrue(lhs instanceof NumericLiteralExp);
 		}
 
-		SimpleName simpleName = opCallExp.getSimpleName();
+		int operationCode = opCallExp.getOperationCode();
 
-		String operation = simpleName.getValue();
-
-		if (operation.equals("+") || operation.equals("-")) {
-			return;
-		}
+		String operation = OperationCode.toLabel(operationCode);
 
 		boolean opCheck = (operation.equals("*") || operation.equals("/"));
 
@@ -184,9 +160,9 @@ public class TestArithmeticExp extends TestCase {
 
 		assertTrue(source instanceof NumericLiteralExp);
 
-		SimpleName simpleName = opCallExp.getSimpleName();
+		int operationCode = opCallExp.getOperationCode();
 
-		String operation = simpleName.getValue();
+		String operation = OperationCode.toLabel(operationCode);
 
 		boolean opCheck = operation.equals("-");
 

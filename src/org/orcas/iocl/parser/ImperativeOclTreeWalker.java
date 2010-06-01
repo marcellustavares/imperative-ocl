@@ -408,6 +408,7 @@ public class ImperativeOclTreeWalker {
 
 	protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
 		IntegerLiteralExp integerLiteralExp = new IntegerLiteralExpImpl();
+
 		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
 
 		return integerLiteralExp;
@@ -416,24 +417,21 @@ public class ImperativeOclTreeWalker {
 	protected OperationCallExp createNumericOperationCallExp(
 		String numericOperaration) {
 
-		OperationCallExp operationCallExpCS = new OperationCallExpImpl();
+		OperationCallExp operationCallExp = new OperationCallExpImpl();
 
 		int index = numericOperaration.indexOf('.');
 		String integerSymbol = numericOperaration.substring(0, index);
 
-		IntegerLiteralExp integerLiteralExpCS = createIntegerLiteralExp(
+		IntegerLiteralExp integerLiteralExp = createIntegerLiteralExp(
 			integerSymbol);
 
-		operationCallExpCS.setSource(integerLiteralExpCS);
+		operationCallExp.setSource(integerLiteralExp);
 
-		String simpleName = numericOperaration.substring(index + 1);
+		String label = numericOperaration.substring(index + 1);
 
-		SimpleName simpleNameCS = createSimpleName(
-			SimpleTypeEnum.IDENTIFIER, simpleName);
+		operationCallExp.setOperationCode(OperationCode.fromLabel(label));
 
-		operationCallExpCS.setSimpleName(simpleNameCS);
-
-		return operationCallExpCS;
+		return operationCallExp;
 	}
 
 	protected OperationCallExp createOperationCallExp(

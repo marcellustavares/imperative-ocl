@@ -15,12 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp;
+package org.orcas.iocl.exp.impl;
 
-public interface PropertyCallExp extends OclExpression {
+import org.orcas.iocl.exp.Variable;
+import org.orcas.iocl.exp.VariableExp;
+import org.orcas.iocl.exp.Visitor;
 
-	public OclExpression getSource();
+public class VariableExpImpl extends OclExpressionImpl implements VariableExp {
 
-	public void setSource(OclExpression source);
+	public <T, V extends Visitor<T>> T accept(V v) {
+		throw new UnsupportedOperationException();
+	}
+
+	public Variable getReferredVariable() {
+		return _referredVariable;
+	}
+
+	public void setReferredVaraible(Variable referredVariable) {
+		_referredVariable = referredVariable;
+	}
+
+	private Variable _referredVariable;
 
 }

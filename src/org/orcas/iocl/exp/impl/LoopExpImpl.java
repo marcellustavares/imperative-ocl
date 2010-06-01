@@ -15,12 +15,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp;
+package org.orcas.iocl.exp.impl;
 
-public interface PropertyCallExp extends OclExpression {
+import java.util.ArrayList;
+import java.util.List;
 
-	public OclExpression getSource();
+import org.orcas.iocl.exp.LoopExp;
+import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.Variable;
 
-	public void setSource(OclExpression source);
+public class LoopExpImpl extends PropertyCallExpImpl
+	implements LoopExp {
+
+	public void addIterator(Variable variable) {
+		_iterator.add(variable);
+	}
+
+	public OclExpression getBody() {
+		return _body;
+	}
+
+	public List<Variable> getIterator() {
+		return _iterator;
+	}
+
+	public void setBody(OclExpression body) {
+		_body = body;
+	}
+
+	private OclExpression _body;
+	private List<Variable> _iterator = new ArrayList<Variable>();
 
 }

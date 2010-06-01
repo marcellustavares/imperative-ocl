@@ -17,10 +17,10 @@
 
 package org.orcas.iocl.exp;
 
-public interface PropertyCallExp extends OclExpression {
+public interface VariableExp extends OclExpression {
 
-	public OclExpression getSource();
+	public Variable getReferredVariable();
 
-	public void setSource(OclExpression source);
+	public void setReferredVaraible(Variable referredVariable);
 
 }

@@ -18,24 +18,42 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.PropertyCallExp;
+import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.exp.Variable;
 import org.orcas.iocl.exp.Visitor;
 
-public class PropertyCallExpImpl extends OclExpressionImpl
-	implements PropertyCallExp {
+public class VariableImpl extends OclExpressionImpl implements Variable {
 
 	public <T, V extends Visitor<T>> T accept(V v) {
 		throw new UnsupportedOperationException();
 	}
 
-	public OclExpression getSource() {
-		return _source;
+	public OclExpression getInitExpression() {
+		return _initExpression;
 	}
 
-	public void setSource(OclExpression source) {
-		_source = source;
+	public String getName() {
+		return _name;
 	}
 
-	private OclExpression _source;
+	public Type getType() {
+		return _type;
+	}
+
+	public void setInitExpression(OclExpression initExpression) {
+		_initExpression = initExpression;
+	}
+
+	public void setName(String name) {
+		_name = name;
+	}
+
+	public void setType(Type type) {
+		_type = type;
+	}
+
+	private OclExpression _initExpression;
+	private String _name;
+	private Type _type;
 
 }

@@ -15,12 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp;
+package org.orcas.iocl.exp.impl;
 
-public interface PropertyCallExp extends OclExpression {
+import org.orcas.iocl.exp.IterateExp;
 
-	public OclExpression getSource();
-
-	public void setSource(OclExpression source);
+public class IterateExpImpl extends LoopExpImpl implements IterateExp {
 
 }

@@ -17,10 +17,6 @@
 
 package org.orcas.iocl.exp;
 
-public interface PropertyCallExp extends OclExpression {
-
-	public OclExpression getSource();
-
-	public void setSource(OclExpression source);
+public interface IterateExp extends LoopExp {
 
 }

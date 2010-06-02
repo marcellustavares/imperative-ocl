@@ -29,13 +29,13 @@ public class CollectionLiteralPartImpl extends OclExpressionImpl
 	}
 
 	public OclExpression getOCLExpresion() {
-		return _ocleExpression;
+		return _oclExpression;
 	}
 
 	public void setOCLExpresion(OclExpression oclExpression) {
-		_ocleExpression = oclExpression;
+		_oclExpression = oclExpression;
 	}
 
-	private OclExpression _ocleExpression;
+	private OclExpression _oclExpression;
 
 }

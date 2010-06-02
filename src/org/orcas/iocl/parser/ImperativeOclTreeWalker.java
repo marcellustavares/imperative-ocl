@@ -29,6 +29,7 @@ import org.orcas.iocl.exp.CollectionType;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.ImperativeExp;
 import org.orcas.iocl.exp.IntegerLiteralExp;
+import org.orcas.iocl.exp.IterateExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.PathName;
@@ -41,6 +42,7 @@ import org.orcas.iocl.exp.SimpleTypeEnum;
 import org.orcas.iocl.exp.StringLiteralExp;
 import org.orcas.iocl.exp.SwitchExp;
 import org.orcas.iocl.exp.Type;
+import org.orcas.iocl.exp.Variable;
 import org.orcas.iocl.exp.VariableInitExp;
 import org.orcas.iocl.exp.WhileExp;
 import org.orcas.iocl.exp.impl.AltExpImpl;
@@ -55,6 +57,7 @@ import org.orcas.iocl.exp.impl.CollectionTypeIdentifierImpl;
 import org.orcas.iocl.exp.impl.CollectionTypeImpl;
 import org.orcas.iocl.exp.impl.ContinueExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
+import org.orcas.iocl.exp.impl.IterateExpImpl;
 import org.orcas.iocl.exp.impl.OperationCallExpImpl;
 import org.orcas.iocl.exp.impl.PathNameImpl;
 import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
@@ -64,6 +67,7 @@ import org.orcas.iocl.exp.impl.ReturnExpImpl;
 import org.orcas.iocl.exp.impl.SimpleNameImpl;
 import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
 import org.orcas.iocl.exp.impl.SwitchExpImpl;
+import org.orcas.iocl.exp.impl.VariableImpl;
 import org.orcas.iocl.exp.impl.VariableInitExpImpl;
 import org.orcas.iocl.exp.impl.WhileExpImpl;
 import org.orcas.iocl.parser.antlr.IoclParser;
@@ -115,6 +119,45 @@ public class ImperativeOclTreeWalker {
 				}
 
 				oclExpression = opCallExp;
+
+				break;
+
+			case IoclParser.ITERATE:
+				IterateExp iterateExp = createIterateExp(
+					walk(tree.getChild(0)));
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+					
+					if (exp instanceof Variable) {
+						iterateExp.addIterator((Variable)exp);
+					}
+					else {
+						iterateExp.setBody(exp);
+					}
+				}
+
+				oclExpression = iterateExp;
+
+				break;
+
+			case IoclParser.VARIABLE:
+				Variable variable = new VariableImpl();
+
+				variable.setName(tree.getChild(0).getText());
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Type) {
+						variable.setType((Type)exp);
+					}
+					else {
+						variable.setInitExpression(exp);
+					}
+				}
+
+				oclExpression = variable;
 
 				break;
 
@@ -412,6 +455,14 @@ public class ImperativeOclTreeWalker {
 		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
 
 		return integerLiteralExp;
+	}
+	
+	protected IterateExp createIterateExp(OclExpression source) {
+		IterateExp iterateExp = new IterateExpImpl();
+
+		iterateExp.setSource(source);
+
+		return iterateExp;
 	}
 
 	protected OperationCallExp createNumericOperationCallExp(

@@ -43,6 +43,8 @@ EQUAL = '=';
 GT = '>';
 GTE = '>=';
 IF = 'if';
+ITERATE = 'iterate';
+ITERATOR;
 IS = ':=';
 LCURLY = '{';
 LPAREN = '(';
@@ -62,6 +64,7 @@ SCOPE = '::';
 SELF = 'self';
 SEMICOLON = ';';
 VAR = 'var';
+VARIABLE;
 WHILE = 'while';
 XOR = 'xor';
 }
@@ -106,7 +109,7 @@ unaryExpCS
 
 dotArrowExpCS
 	: NUMERIC_OPERATION '(' argumentsCS? ')' -> ^(NUMERIC_OPERATION argumentsCS?)
-	| oclExpCS ((DOT | ARROW)^ propertyCallExp)*
+	| propertyCallExp
 	| oclExpCS
 	;
 
@@ -170,14 +173,32 @@ realLiteralExpCS
 
 propertyCallExp
 	: modelPropertyCallExp
+	| loopExp
 	;
 
 modelPropertyCallExp
 	: operationCallExpCS
 	;
 
+loopExp
+	: iteratorExpCS
+	| iterateExpCS
+	;
+
+iteratorExpCS
+	: simpleNameCS LPAREN  oclExpressionCS RPAREN -> ^(ITERATOR simpleNameCS oclExpressionCS)
+	;
+
+iterateExpCS
+	: oclExpCS ARROW ITERATE LPAREN ( v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpressionCS RPAREN -> ^(ITERATE oclExpCS $v1? $v2 oclExpressionCS)
+	;
+
+variableDeclaration
+	: IDENTIFIER (':' type)? ('=' oclExpressionCS)? -> ^(VARIABLE IDENTIFIER type? oclExpressionCS?)
+	;
+
 operationCallExpCS
-	: simpleNameCS '(' argumentsCS? ')' -> simpleNameCS argumentsCS?
+	: oclExpCS (DOT | ARROW)^ simpleNameCS '('! argumentsCS? ')'!
 	;
 
 argumentsCS

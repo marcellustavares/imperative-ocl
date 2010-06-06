@@ -17,24 +17,8 @@
 
 package org.orcas.iocl.exp.impl;
 
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.Variable;
-import org.orcas.iocl.exp.Visitor;
+import org.orcas.iocl.exp.IteratorExp;
 
-public class VariableImpl extends OclExpressionImpl implements Variable {
-
-	public <T, V extends Visitor<T>> T accept(V v) {
-		throw new UnsupportedOperationException();
-	}
-
-	public OclExpression getInitExpression() {
-		return _initExpression;
-	}
-
-	public void setInitExpression(OclExpression initExpression) {
-		_initExpression = initExpression;
-	}
-
-	private OclExpression _initExpression;
+public class IteratorExpImpl extends LoopExpImpl implements IteratorExp {
 
 }

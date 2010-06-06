@@ -18,7 +18,27 @@
 package org.orcas.iocl.exp.impl;
 
 import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.exp.Type;
 
 public abstract class OclExpressionImpl implements OclExpression {
+
+	public String getName() {
+		return _name;
+	}
+
+	public Type getType() {
+		return _type;
+	}
+
+	public void setName(String name) {
+		_name = name;
+	}
+
+	public void setType(Type type) {
+		_type = type;
+	}
+
+	private String _name;
+	private Type _type;
 
 }

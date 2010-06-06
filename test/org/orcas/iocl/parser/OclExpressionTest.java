@@ -29,6 +29,8 @@ public class OclExpressionTest {
 		suite.addTestSuite(TestAssignExp.class);
 		suite.addTestSuite(TestCollectionLiteralExp.class);
 		suite.addTestSuite(TestEqualityExp.class);
+		suite.addTestSuite(TestIterateExp.class);
+		suite.addTestSuite(TestIteratorExp.class);
 		suite.addTestSuite(TestLogicalExp.class);
 		suite.addTestSuite(TestPrimitiveLiteralExp.class);
 		suite.addTestSuite(TestRaiseExp.class);

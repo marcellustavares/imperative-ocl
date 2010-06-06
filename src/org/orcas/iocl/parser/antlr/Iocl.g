@@ -186,11 +186,11 @@ loopExp
 	;
 
 iteratorExpCS
-	: simpleNameCS LPAREN  oclExpressionCS RPAREN -> ^(ITERATOR simpleNameCS oclExpressionCS)
+	:  oclExpCS ARROW ITERATOR_NAME LPAREN ((v1 = variableDeclaration ',')? v2 = variableDeclaration '|')? oclExpressionCS RPAREN -> ^(ITERATOR oclExpCS ITERATOR_NAME $v1? $v2? oclExpressionCS)
 	;
 
 iterateExpCS
-	: oclExpCS ARROW ITERATE LPAREN ( v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpressionCS RPAREN -> ^(ITERATE oclExpCS $v1? $v2 oclExpressionCS)
+	: oclExpCS ARROW ITERATE LPAREN (v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpressionCS RPAREN -> ^(ITERATE oclExpCS $v1? $v2 oclExpressionCS)
 	;
 
 variableDeclaration
@@ -327,7 +327,21 @@ STRING_LITERAL
 	: '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
 	;
 
-IDENTIFIER  
+ITERATOR_NAME
+	: 'any'
+	| 'closure'
+	| 'collect'
+	| 'collectNested'
+	| 'exists'
+	| 'forAll'
+	| 'isUnique'
+	| 'one'
+	| 'select'
+	| 'sortedBy'
+	| 'reject'
+	;
+	
+IDENTIFIER
 	: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     	;
 

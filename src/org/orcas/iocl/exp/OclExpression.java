@@ -17,6 +17,6 @@
 
 package org.orcas.iocl.exp;
 
-public interface OclExpression extends Visitable {
+public interface OclExpression extends TypedElement, Visitable {
 
 }

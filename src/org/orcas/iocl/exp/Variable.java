@@ -21,14 +21,6 @@ public interface Variable extends OclExpression {
 
 	public OclExpression getInitExpression();
 
-	public String getName();
-
-	public Type getType();
-
 	public void setInitExpression(OclExpression initExpression);
-
-	public void setName(String name);
-
-	public void setType(Type type);
 
 }

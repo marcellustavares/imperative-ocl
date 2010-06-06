@@ -15,26 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.exp.impl;
+package org.orcas.iocl.parser;
 
+import junit.framework.TestCase;
+
+import org.orcas.iocl.ImperativeOcl;
+import org.orcas.iocl.exp.IteratorExp;
 import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.Variable;
-import org.orcas.iocl.exp.Visitor;
 
-public class VariableImpl extends OclExpressionImpl implements Variable {
+public class TestIteratorExp extends TestCase {
 
-	public <T, V extends Visitor<T>> T accept(V v) {
-		throw new UnsupportedOperationException();
+	public void testIterateExp() {
+		exp = "Sequence{1,2,3,4,5}->forAll(a | a > 2)";
+
+		oclExp = iocl.parse(exp);
+
+		assertTrue(oclExp instanceof IteratorExp);
+
+		IteratorExp iteratorExp = (IteratorExp)oclExp;
+
+		assertEquals("forAll", iteratorExp.getName());
 	}
 
-	public OclExpression getInitExpression() {
-		return _initExpression;
-	}
-
-	public void setInitExpression(OclExpression initExpression) {
-		_initExpression = initExpression;
-	}
-
-	private OclExpression _initExpression;
+	protected String exp;
+	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
+	protected OclExpression oclExp;
 
 }

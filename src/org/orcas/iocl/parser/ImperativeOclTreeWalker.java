@@ -30,6 +30,7 @@ import org.orcas.iocl.exp.CollectionTypeIdentifier;
 import org.orcas.iocl.exp.ImperativeExp;
 import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.IterateExp;
+import org.orcas.iocl.exp.IteratorExp;
 import org.orcas.iocl.exp.OclExpression;
 import org.orcas.iocl.exp.OperationCallExp;
 import org.orcas.iocl.exp.PathName;
@@ -58,6 +59,7 @@ import org.orcas.iocl.exp.impl.CollectionTypeImpl;
 import org.orcas.iocl.exp.impl.ContinueExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
 import org.orcas.iocl.exp.impl.IterateExpImpl;
+import org.orcas.iocl.exp.impl.IteratorExpImpl;
 import org.orcas.iocl.exp.impl.OperationCallExpImpl;
 import org.orcas.iocl.exp.impl.PathNameImpl;
 import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
@@ -128,7 +130,7 @@ public class ImperativeOclTreeWalker {
 
 				for (int i = 1; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
-					
+
 					if (exp instanceof Variable) {
 						iterateExp.addIterator((Variable)exp);
 					}
@@ -138,6 +140,27 @@ public class ImperativeOclTreeWalker {
 				}
 
 				oclExpression = iterateExp;
+
+				break;
+
+			case IoclParser.ITERATOR:
+				IteratorExp iteratorExp = createIteratorExp(
+					walk(tree.getChild(0)));
+
+				iteratorExp.setName(tree.getChild(1).getText());
+
+				for (int i = 2; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Variable) {
+						iteratorExp.addIterator((Variable)exp);
+					}
+					else {
+						iteratorExp.setBody(exp);
+					}
+				}
+
+				oclExpression = iteratorExp;
 
 				break;
 
@@ -456,13 +479,21 @@ public class ImperativeOclTreeWalker {
 
 		return integerLiteralExp;
 	}
-	
+
 	protected IterateExp createIterateExp(OclExpression source) {
 		IterateExp iterateExp = new IterateExpImpl();
 
 		iterateExp.setSource(source);
 
 		return iterateExp;
+	}
+
+	protected IteratorExp createIteratorExp(OclExpression source) {
+		IteratorExp iteratorExp = new IteratorExpImpl();
+
+		iteratorExp.setSource(source);
+
+		return iteratorExp;
 	}
 
 	protected OperationCallExp createNumericOperationCallExp(

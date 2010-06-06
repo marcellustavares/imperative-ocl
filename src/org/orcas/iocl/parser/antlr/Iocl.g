@@ -40,6 +40,7 @@ DOT = '.';
 ELIF = 'elif';
 ELSE = 'else';
 EQUAL = '=';
+EXCEPT = 'except';
 GT = '>';
 GTE = '>=';
 IF = 'if';
@@ -63,6 +64,7 @@ RPAREN = ')';
 SCOPE = '::';
 SELF = 'self';
 SEMICOLON = ';';
+TRY = 'try';
 VAR = 'var';
 VARIABLE;
 WHILE = 'while';
@@ -241,10 +243,15 @@ imperativeExp
 	| raiseExp
 	| whileExp
 	| ifExp
+	| tryExp
 	;
 
 blockExp
-	: DO LCURLY (oclExpressionCS SEMICOLON)* RCURLY -> ^(DO oclExpressionCS*)
+	: DO LCURLY bodyExp RCURLY -> ^(DO bodyExp)
+	;
+
+bodyExp
+	: imperativeExp* -> imperativeExp*
 	;
 
 breakExp
@@ -273,7 +280,7 @@ raiseExp
 
 whileExp
 	: WHILE LPAREN oclExpressionCS RPAREN 
-		LCURLY imperativeExp* RCURLY -> ^(WHILE oclExpressionCS imperativeExp*)
+		LCURLY bodyExp RCURLY -> ^(WHILE oclExpressionCS bodyExp)
 	;
 
 ifExp
@@ -285,11 +292,19 @@ elifExp
 	;
 
 elseExp	
-	: ELSE LCURLY (imperativeExp)* RCURLY -> imperativeExp*
+	: ELSE LCURLY bodyExp RCURLY -> bodyExp
 	;
 	
 altExp 
-	: LPAREN oclExpressionCS RPAREN LCURLY (imperativeExp)* RCURLY -> ^(ALT_EXP oclExpressionCS imperativeExp*)
+	: LPAREN oclExpressionCS RPAREN LCURLY bodyExp RCURLY -> ^(ALT_EXP oclExpressionCS bodyExp)
+	;
+
+tryExp
+	: TRY LCURLY b1 = bodyExp RCURLY except LCURLY b2 = bodyExp RCURLY -> ^(TRY $b1 except $b2)
+	;
+
+except
+	: EXCEPT LPAREN t1 = type (',' t2 = type)* RPAREN -> $t1 ($t2)*
 	;
 
 BOOLEAN_LITERAL

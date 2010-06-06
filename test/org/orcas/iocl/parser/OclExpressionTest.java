@@ -36,6 +36,7 @@ public class OclExpressionTest {
 		suite.addTestSuite(TestRaiseExp.class);
 		suite.addTestSuite(TestRelationalExp.class);
 		suite.addTestSuite(TestReturnExp.class);
+		suite.addTestSuite(TestTryExp.class);
 		suite.addTestSuite(TestVariableInitExp.class);
 		suite.addTestSuite(TestWhileExp.class);
 

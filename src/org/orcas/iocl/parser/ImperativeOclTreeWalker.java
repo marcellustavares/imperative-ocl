@@ -42,6 +42,7 @@ import org.orcas.iocl.exp.SimpleName;
 import org.orcas.iocl.exp.SimpleTypeEnum;
 import org.orcas.iocl.exp.StringLiteralExp;
 import org.orcas.iocl.exp.SwitchExp;
+import org.orcas.iocl.exp.TryExp;
 import org.orcas.iocl.exp.Type;
 import org.orcas.iocl.exp.Variable;
 import org.orcas.iocl.exp.VariableInitExp;
@@ -69,6 +70,7 @@ import org.orcas.iocl.exp.impl.ReturnExpImpl;
 import org.orcas.iocl.exp.impl.SimpleNameImpl;
 import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
 import org.orcas.iocl.exp.impl.SwitchExpImpl;
+import org.orcas.iocl.exp.impl.TryExpImpl;
 import org.orcas.iocl.exp.impl.VariableImpl;
 import org.orcas.iocl.exp.impl.VariableInitExpImpl;
 import org.orcas.iocl.exp.impl.WhileExpImpl;
@@ -392,6 +394,30 @@ public class ImperativeOclTreeWalker {
 				oclExpression = altExp;
 
 				break;
+
+			case IoclParser.TRY:
+				TryExp tryExp = createTryExp();
+
+				boolean isExceptBody = false;
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Type) {
+						tryExp.addException((Type)exp);
+						isExceptBody = true;
+					}
+					else if (isExceptBody) {
+						tryExp.addExceptExpression(exp);
+					}
+					else {
+						tryExp.addTryExpression(exp);
+					}
+				}
+
+				oclExpression = tryExp;
+
+				break;
 		}
 
 		return oclExpression;
@@ -564,6 +590,10 @@ public class ImperativeOclTreeWalker {
 		simpleName.setValue(value);
 
 		return simpleName;
+	}
+
+	protected TryExp createTryExp() {
+		return new TryExpImpl();
 	}
 
 	protected VariableInitExp createVariableInitExp(String varName) {

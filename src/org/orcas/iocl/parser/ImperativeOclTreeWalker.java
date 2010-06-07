@@ -27,6 +27,7 @@ import org.orcas.iocl.exp.CollectionLiteralPart;
 import org.orcas.iocl.exp.CollectionLiteralParts;
 import org.orcas.iocl.exp.CollectionType;
 import org.orcas.iocl.exp.CollectionTypeIdentifier;
+import org.orcas.iocl.exp.ForExp;
 import org.orcas.iocl.exp.ImperativeExp;
 import org.orcas.iocl.exp.IntegerLiteralExp;
 import org.orcas.iocl.exp.IterateExp;
@@ -58,6 +59,7 @@ import org.orcas.iocl.exp.impl.CollectionLiteralPartsImpl;
 import org.orcas.iocl.exp.impl.CollectionTypeIdentifierImpl;
 import org.orcas.iocl.exp.impl.CollectionTypeImpl;
 import org.orcas.iocl.exp.impl.ContinueExpImpl;
+import org.orcas.iocl.exp.impl.ForExpImpl;
 import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
 import org.orcas.iocl.exp.impl.IterateExpImpl;
 import org.orcas.iocl.exp.impl.IteratorExpImpl;
@@ -418,6 +420,29 @@ public class ImperativeOclTreeWalker {
 				oclExpression = tryExp;
 
 				break;
+
+			case IoclParser.FOR:
+				ForExp forExp = createForExp(tree.getChild(0).getText());
+
+				forExp.setSource(walk(tree.getChild(1)));
+
+				for (int i = 2; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Variable) {
+						forExp.addIterator((Variable)exp);
+					}
+					else if (exp instanceof ImperativeExp) {
+						forExp.setBody(exp);
+					}
+					else {
+						forExp.setCondition(exp);
+					}
+				}
+
+				oclExpression = forExp;
+
+				break;
 		}
 
 		return oclExpression;
@@ -488,6 +513,14 @@ public class ImperativeOclTreeWalker {
 		identifier.setCollectionType(type);
 
 		return identifier;
+	}
+
+	protected ForExp createForExp(String name) {
+		ForExp forExp = new ForExpImpl();
+
+		forExp.setName(name);
+
+		return forExp;
 	}
 
 	protected PrimitiveType createPrimitiveType(String type) {

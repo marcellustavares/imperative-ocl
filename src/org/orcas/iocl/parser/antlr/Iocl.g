@@ -41,6 +41,7 @@ ELIF = 'elif';
 ELSE = 'else';
 EQUAL = '=';
 EXCEPT = 'except';
+FOR = 'for';
 GT = '>';
 GTE = '>=';
 IF = 'if';
@@ -80,8 +81,8 @@ package org.orcas.iocl.parser.antlr;
 }
 
 oclExpressionCS
-	: logicalExpCS
-	| imperativeExp
+	: imperativeExp
+	| logicalExpCS
 	;
 
 logicalExpCS
@@ -244,6 +245,7 @@ imperativeExp
 	| whileExp
 	| ifExp
 	| tryExp
+	| forExp
 	;
 
 blockExp
@@ -307,6 +309,15 @@ except
 	: EXCEPT LPAREN t1 = type (',' t2 = type)* RPAREN -> $t1 ($t2)*
 	;
 
+forExp	
+	: oclExpCS ARROW FOR_NAME LPAREN iteratorList ('|' oclExpressionCS)? RPAREN LCURLY bodyExp RCURLY 
+		-> ^(FOR FOR_NAME oclExpCS iteratorList oclExpressionCS? bodyExp)
+	;
+
+iteratorList
+	: variableDeclaration (','! variableDeclaration)*
+	;
+
 BOOLEAN_LITERAL
 	: 'true' 
 	| 'false'
@@ -354,6 +365,11 @@ ITERATOR_NAME
 	| 'select'
 	| 'sortedBy'
 	| 'reject'
+	;
+
+FOR_NAME
+	: 'forEach'
+	| 'forOne'
 	;
 	
 IDENTIFIER

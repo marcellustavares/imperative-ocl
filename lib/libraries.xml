@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<libraries>
+	<library>
+		<file>ant</file>
+		<version>1.8.1</version>
+		<project-name>Apache ANT Project</project-name>
+		<project-url>http://ant.apache.org/</project-url>	
+	</library>
+	<library>
+		<file>antlr.jar</file>
+		<version>3.2</version>
+		<project-name>ANTLR, ANother Tool for Language Recognition</project-name>
+		<project-url>http://www.antlr.org</project-url>	
+	</library>
+	<library>
+		<file>antlr3.jar</file>
+		<version>1.0</version>
+		<project-name>ANTLR v3 Ant task</project-name>
+		<project-url>http://www.antlr.org/share/1169924912745/antlr3-task.zip</project-url>	
+	</library>
+	<library>
+		<file>freemarker.jar</file>
+		<version>2.3.16</version>
+		<project-name>FreeMarker</project-name>
+		<project-url>http://www.freemarker.org</project-url>	
+	</library>
+	<library>
+		<file>junit.jar</file>
+		<version>4.8.1</version>
+		<project-name>JUnit</project-name>
+		<project-url>http://www.junit.org</project-url>	
+	</library>
+</libraries>

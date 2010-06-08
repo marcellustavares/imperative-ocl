@@ -386,19 +386,21 @@
     <eClassifiers xsi:type="ecore:EClass" name="AnyType" eSuperTypes="#//emof/Class #//emof/Type"/>
   </eSubpackages>
   <eSubpackages name="util" nsURI="http://www.orcas.org/spec/iocl/1.0/util" nsPrefix="util">
-    <eClassifiers xsi:type="ecore:EClass" name="Visitable">
+    <eClassifiers xsi:type="ecore:EClass" name="Visitable" abstract="true" interface="true">
       <eOperations name="accept">
         <eGenericType eTypeParameter="#//util/Visitable/accept/T"/>
         <eTypeParameters name="T"/>
         <eTypeParameters name="V">
-          <eBounds eClassifier="#//util/Visitor"/>
+          <eBounds eClassifier="#//util/Visitor">
+            <eTypeArguments eTypeParameter="#//util/Visitable/accept/T"/>
+          </eBounds>
         </eTypeParameters>
         <eParameters name="v">
           <eGenericType eTypeParameter="#//util/Visitable/accept/V"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Visitor">
+    <eClassifiers xsi:type="ecore:EClass" name="Visitor" abstract="true" interface="true">
       <eTypeParameters name="T"/>
     </eClassifiers>
   </eSubpackages>

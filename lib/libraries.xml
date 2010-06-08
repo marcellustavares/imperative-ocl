@@ -20,6 +20,18 @@
 		<project-url>http://www.antlr.org/share/1169924912745/antlr3-task.zip</project-url>	
 	</library>
 	<library>
+		<file>emf-common.jar</file>
+		<version>2.5.0</version>
+		<project-name>Eclipse Modeling Framework Project</project-name>
+		<project-url>http://www.eclipse.org/modeling/emf/</project-url>	
+	</library>
+	<library>
+		<file>emf-ecore.jar</file>
+		<version>2.5.0</version>
+		<project-name>Eclipse Modeling Framework Project</project-name>
+		<project-url>http://www.eclipse.org/modeling/emf/</project-url>
+	</library>
+	<library>
 		<file>freemarker.jar</file>
 		<version>2.3.16</version>
 		<project-name>FreeMarker</project-name>

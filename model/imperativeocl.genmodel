@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) 2010  Marcellus C. Tavares&#xA;&#xA;This program is free software: you can redistribute it and/or modify&#xA;it under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version.&#xA;&#xA;This program is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License&#xA;along with this program.  If not, see &lt;http://www.gnu.org/licenses/>."
+    modelDirectory="/imperative-ocl/src" modelPluginID="imperative-ocl" modelName="Imperativeocl"
+    updateClasspath="false" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>imperativeocl.ecore</foreignModel>
+  <genPackages prefix="Expressions" basePackage="org.orcas.iocl" disposableProviderFactory="true"
+      contentTypeIdentifier="org.orcas.iocl" ecorePackage="imperativeocl.ecore#/">
+    <nestedGenPackages prefix="Emof" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//emof">
+      <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/Boolean"/>
+      <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/String"/>
+      <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/UnlimitedNatural"/>
+      <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/Integer"/>
+      <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/Real"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Class">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Class/ownedAttribute"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Class/ownedOperation"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Class/superClass"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Class/isAbstract"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/DataType"/>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//emof/Element">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Element/tag"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Element/ownedComment"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Tag">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Tag/element"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Tag/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Tag/name"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Enumeration">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Enumeration/ownedLiteral"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//emof/NamedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/NamedElement/name"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Extent"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Object"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Operation">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Operation/class"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Operation/ownedParameter"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Operation/raisedException"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//emof/MultiplicityElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/MultiplicityElement/isOrdered"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/MultiplicityElement/isUnique"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/MultiplicityElement/lower"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/MultiplicityElement/upper"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Package">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Package/ownedType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Package/nestedPackage"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Package/uri"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//emof/Type">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Type/package"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Parameter">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Parameter/operation"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/EnumerationLiteral">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/EnumerationLiteral/enumeration"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Property">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Property/class"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Property/opposite"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Property/isReadOnly"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Property/isDerived"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Property/isComposite"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Property/isId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//emof/Property/default"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//emof/TypedElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/TypedElement/type"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/PrimitiveType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/URIExtent"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//emof/Comment">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Comment/annotatedElement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Imperativeocl" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//imperativeocl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="imperativeocl.ecore#//imperativeocl/SeverityKind">
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//imperativeocl/SeverityKind/error"/>
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//imperativeocl/SeverityKind/warning"/>
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//imperativeocl/SeverityKind/fatal"/>
+      </genEnums>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/AssignExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AssignExp/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AssignExp/left"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AssignExp/defaultValue"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/AssignExp/isReset"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/BlockExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/BlockExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/SwitchExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/SwitchExp/alternativePart"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/SwitchExp/elsePart"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/VariableInitExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/VariableInitExp/referredVariable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/VariableInitExp/withResult"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/WhileExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/WhileExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/WhileExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ComputeExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/ComputeExp/returnedElement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/ComputeExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/AltExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AltExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AltExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/UnlinkExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/UnlinkExp/target"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/UnlinkExp/item"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ReturnExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/ReturnExp/value"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/BreakExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/TryExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/TryExp/tryBody"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/TryExp/catchClause"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/RaiseExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/RaiseExp/exception"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/RaiseExp/argument"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ContinueExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ForExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/Typedef">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/Typedef/base"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/Typedef/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/InstantiationExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/InstantiationExp/instantiatedClass"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/InstantiationExp/extent"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/InstantiationExp/argument"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/DictionaryType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/DictionaryType/keyType"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/DictLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/DictLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/DictLiteralPart">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/DictLiteralPart/key"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/DictLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/TemplateParameterType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/TemplateParameterType/specification"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/LogExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/LogExp/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/AssertExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/AssertExp/severity"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AssertExp/log"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/AssertExp/assertion"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//imperativeocl/ImperativeLoopExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/ImperativeLoopExp/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ImperativeIterateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/ImperativeIterateExp/target"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//imperativeocl/ImperativeExpression"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/UnpackExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/UnpackExp/targetVariable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/UnpackExp/source"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/OrderedTupleType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/OrderedTupleType/elementType"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/OrderedTupleLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/OrderedTupleLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/OrderedTupleLiteralPart">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/OrderedTupleLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ListType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/CatchExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/CatchExp/body"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/CatchExp/exception"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Ocl" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//ocl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="imperativeocl.ecore#//ocl/CollectionKind">
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//ocl/CollectionKind/Set"/>
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//ocl/CollectionKind/OrderedSet"/>
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//ocl/CollectionKind/Bag"/>
+        <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//ocl/CollectionKind/Sequence"/>
+      </genEnums>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/BooleanLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/BooleanLiteralExp/booleanSymbol"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/CallExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CallExp/source"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/OclExpression"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/UnlimitedNaturalExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/UnlimitedNaturalExp/symbol"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/IfExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/IfExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/IfExp/thenExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/IfExp/elseExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/LetExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/LetExp/in"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/LetExp/variable"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/Variable">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/Variable/initExpression"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/Variable/letExp"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/Variable/bindParameter"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/PropertyCallExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/PropertyCallExp/referredProperty"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/VariableExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/VariableExp/referredVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/TypeExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/TypeExp/referredType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/LoopExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/LoopExp/body"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/LoopExp/iterator"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/IteratorExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/StringLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/StringLiteralExp/stringSymbol"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/IntegerLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/IntegerLiteralExp/integerSymbol"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/OperationCallExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/OperationCallExp/argument"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/OperationCallExp/referredOperation"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/RealLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/RealLiteralExp/realSymbol"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/LiteralExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/IterateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/IterateExp/result"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/PrimitiveLiteralExp"/>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/NumericLiteralExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/CollectionLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//ocl/CollectionLiteralExp/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionLiteralExp/part"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/CollectionLiteralPart">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionLiteralPart/collectionLiteralExp"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/CollectionItem">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionItem/item"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/CollectionRange">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionRange/first"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionRange/last"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/TupleLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/TupleLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/NullLiteralExp"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/ExpressionInOcl">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/ExpressionInOcl/bodyExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/ExpressionInOcl/context"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/ExpressionInOcl/resultVariable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/ExpressionInOcl/parameterVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/OpaqueExpression"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/InvalidLiteralExp"/>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/FeaturePropertyCall"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/TupleLiteralPart">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/TupleLiteralPart/tupleLiteralExp"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/TupleLiteralPart/attribute"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/TupleLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/BagType"/>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//ocl/CollectionType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/CollectionType/elementType"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/EnumLiteralExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference imperativeocl.ecore#//ocl/EnumLiteralExp/referredEnumLiteral"/>
+      </genClasses>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/InvalidType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/OrderedSetType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/SequenceType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/SetType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/TupleType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/VoidType"/>
+      <genClasses ecoreClass="imperativeocl.ecore#//ocl/AnyType"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Util" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//util">
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//util/Visitable">
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitable/accept">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitable/accept/v"/>
+          <genTypeParameters ecoreTypeParameter="imperativeocl.ecore#//util/Visitable/accept/T"/>
+          <genTypeParameters ecoreTypeParameter="imperativeocl.ecore#//util/Visitable/accept/V"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="imperativeocl.ecore#//util/Visitor">
+        <genTypeParameters ecoreTypeParameter="imperativeocl.ecore#//util/Visitor/T"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

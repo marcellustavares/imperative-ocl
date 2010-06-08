@@ -1,3 +1,20 @@
+/**
+ * Copyright (C) 2010  Marcellus C. Tavares
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.orcas.tools;
 
 import java.io.BufferedReader;
@@ -35,27 +52,27 @@ public class SourceFormatter {
 			packagePath = packagePath.replace('/', '.');
 
 			String newContent = _formatContent(packagePath, content);
-			
+
 			if (!newContent.contains(copyright)) {
 				newContent = copyright.concat("\n\n" + newContent);
 			}
-			
-			if (newContent.indexOf("if(") != -1) {
-				newContent = newContent.replace("if(", "if (");
+
+			if (newContent.indexOf("if (") != -1) {
+				newContent = newContent.replace("if (", "if (");
 			}
 
-			if (newContent.indexOf("while(") != -1) {
-				newContent = newContent.replace("while(", "while (");
+			if (newContent.indexOf("while (") != -1) {
+				newContent = newContent.replace("while (", "while (");
 			}
-			
-			if (newContent.indexOf("){") != -1) {
-				newContent = newContent.replace("){", ") {");
+
+			if (newContent.indexOf(") {") != -1) {
+				newContent = newContent.replace(") {", ") {");
 			}
-			
+
 			if (newContent.indexOf("  {") != -1) {
 				System.out.println("{:" + files[i]);
 			}
-			
+
 			if (!newContent.endsWith("\n\n}") &&
 				!newContent.endsWith("{\n}")) {
 
@@ -71,7 +88,7 @@ public class SourceFormatter {
 	}
 
 	private static String _formatContent(
-		String fileName, String content) throws IOException{
+		String fileName, String content) throws IOException {
 
 		BufferedReader bufferedReader = new BufferedReader(
 			new StringReader(content));
@@ -88,7 +105,7 @@ public class SourceFormatter {
 			}
 
 			line = StringUtil.trimTrailing(line);
-			
+
 			sb.append(line);
 			sb.append("\n");
 
@@ -134,7 +151,7 @@ public class SourceFormatter {
 
 		return newContent;
 	}
-	
+
 	private static String[] _getJavaFiles() {
 		String basedir = "./";
 
@@ -143,7 +160,8 @@ public class SourceFormatter {
 		ds.setBasedir(basedir);
 		ds.setExcludes(new String[] {
 			"**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
-			"**\\SourceFormatter.java", "**\\input\\**"});
+			"**\\input\\**", "**\\SourceFormatter.java",
+			"**\\expressions\\**"});
 
 		ds.setIncludes(new String[] {"**\\*.java"});
 

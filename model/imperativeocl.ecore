@@ -87,7 +87,7 @@
     <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
     <eClassifiers xsi:type="ecore:EDataType" name="UnlimitedNatural" instanceClassName="java.lang.Integer"/>
     <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="java.lang.Integer"/>
-    <eClassifiers xsi:type="ecore:EDataType" name="Real" instanceClassName="java.lang.Float"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Real" instanceClassName="java.lang.Double"/>
     <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//emof/Element">
       <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedElement" upperBound="-1"
           eType="#//emof/NamedElement"/>
@@ -97,67 +97,67 @@
       nsPrefix="imperativeocl">
     <eClassifiers xsi:type="ecore:EClass" name="AssignExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//ocl/OclExpression"
+          eType="#//imperativeocl/OclExpression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//imperativeocl/OclExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReset" eType="#//emof/Boolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BlockExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="SwitchExp" eSuperTypes="#//ocl/CallExp #//imperativeocl/ImperativeExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="SwitchExp" eSuperTypes="#//imperativeocl/CallExp #//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="alternativePart" upperBound="-1"
           eType="#//imperativeocl/AltExp" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="elsePart" eType="#//ocl/OclExpression"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elsePart" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="VariableInitExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredVariable" lowerBound="1"
-          eType="#//ocl/Variable" containment="true"/>
+          eType="#//imperativeocl/Variable" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="withResult" eType="#//emof/Boolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="WhileExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ComputeExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="returnedElement" lowerBound="1"
-          eType="#//ocl/Variable" containment="true"/>
+          eType="#//imperativeocl/Variable" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AltExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnlinkExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ReturnExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BreakExp" eSuperTypes="#//imperativeocl/ImperativeExpression"/>
     <eClassifiers xsi:type="ecore:EClass" name="TryExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="tryBody" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="catchClause" upperBound="-1"
           eType="#//imperativeocl/CatchExp" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RaiseExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="exception" lowerBound="1"
           eType="#//emof/Type"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//ocl/OclExpression"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ContinueExp" eSuperTypes="#//imperativeocl/ImperativeExpression"/>
@@ -165,34 +165,34 @@
     <eClassifiers xsi:type="ecore:EClass" name="Typedef" eSuperTypes="#//emof/Class">
       <eStructuralFeatures xsi:type="ecore:EReference" name="base" lowerBound="1"
           eType="#//emof/Type"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ocl/OclExpression"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="InstantiationExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="instantiatedClass" lowerBound="1"
           eType="#//emof/Class"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="extent" eType="#//ocl/Variable"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="extent" eType="#//imperativeocl/Variable"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="argument" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DictionaryType" eSuperTypes="#//ocl/CollectionType">
+    <eClassifiers xsi:type="ecore:EClass" name="DictionaryType" eSuperTypes="#//imperativeocl/CollectionType">
       <eStructuralFeatures xsi:type="ecore:EReference" name="keyType" eType="#//emof/Type"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DictLiteralExp" eSuperTypes="#//ocl/LiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="DictLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp">
       <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1"
           eType="#//imperativeocl/DictLiteralPart" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DictLiteralPart" eSuperTypes="#//emof/Element">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//ocl/OclExpression"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//imperativeocl/OclExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TemplateParameterType" eSuperTypes="#//emof/Type">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="specification" eType="#//emof/String"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="LogExp" eSuperTypes="#//ocl/OperationCallExp #//imperativeocl/ImperativeExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ocl/OclExpression"
+    <eClassifiers xsi:type="ecore:EClass" name="LogExp" eSuperTypes="#//imperativeocl/OperationCallExp #//imperativeocl/ImperativeExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
@@ -200,7 +200,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="log" eType="#//imperativeocl/LogExp"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="assertion" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="SeverityKind">
       <eLiterals name="error"/>
@@ -208,48 +208,46 @@
       <eLiterals name="fatal" value="2"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ImperativeLoopExp" abstract="true"
-        eSuperTypes="#//ocl/LoopExp #//imperativeocl/ImperativeExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ocl/OclExpression"
+        eSuperTypes="#//imperativeocl/LoopExp #//imperativeocl/ImperativeExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ImperativeIterateExp" eSuperTypes="#//imperativeocl/ImperativeLoopExp">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ocl/Variable"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//imperativeocl/Variable"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ImperativeExpression" abstract="true"
-        eSuperTypes="#//ocl/OclExpression"/>
+        eSuperTypes="#//imperativeocl/OclExpression"/>
     <eClassifiers xsi:type="ecore:EClass" name="UnpackExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="targetVariable" lowerBound="1"
-          upperBound="-1" eType="#//ocl/Variable" containment="true"/>
+          upperBound="-1" eType="#//imperativeocl/Variable" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OrderedTupleType" eSuperTypes="#//emof/Class">
       <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" upperBound="-1"
           eType="#//emof/Type"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OrderedTupleLiteralExp" eSuperTypes="#//ocl/LiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedTupleLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp">
       <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1"
           eType="#//imperativeocl/OrderedTupleLiteralPart" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OrderedTupleLiteralPart" eSuperTypes="#//emof/Element">
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ListType" eSuperTypes="#//ocl/CollectionType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ListType" eSuperTypes="#//imperativeocl/CollectionType"/>
     <eClassifiers xsi:type="ecore:EClass" name="CatchExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="exception" upperBound="-1"
           eType="#//emof/Type"/>
     </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="ocl" nsURI="http://www.orcas.org/spec/iocl/1.0/ocl" nsPrefix="ocl">
-    <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteralExp" eSuperTypes="#//ocl/PrimitiveLiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteralExp" eSuperTypes="#//imperativeocl/PrimitiveLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanSymbol" eType="#//emof/Boolean"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="CallExp" abstract="true" eSuperTypes="#//ocl/OclExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ocl/OclExpression"
+    <eClassifiers xsi:type="ecore:EClass" name="CallExp" abstract="true" eSuperTypes="#//imperativeocl/OclExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//imperativeocl/OclExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="CollectionKind">
@@ -259,128 +257,130 @@
       <eLiterals name="Sequence" value="3"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclExpression" abstract="true" eSuperTypes="#//emof/TypedElement #//util/Visitable"/>
-    <eClassifiers xsi:type="ecore:EClass" name="UnlimitedNaturalExp" eSuperTypes="#//ocl/NumericLiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="UnlimitedNaturalExp" eSuperTypes="#//imperativeocl/NumericLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="#//emof/UnlimitedNatural"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IfExp" eSuperTypes="#//ocl/OclExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="IfExp" eSuperTypes="#//imperativeocl/OclExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="thenExpression" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="elseExpression" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="LetExp" eSuperTypes="#//ocl/OclExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="in" lowerBound="1" eType="#//ocl/OclExpression"
+    <eClassifiers xsi:type="ecore:EClass" name="LetExp" eSuperTypes="#//imperativeocl/OclExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="in" lowerBound="1" eType="#//imperativeocl/OclExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
-          eType="#//ocl/Variable" containment="true" eOpposite="#//ocl/Variable/letExp"/>
+          eType="#//imperativeocl/Variable" containment="true" eOpposite="#//imperativeocl/Variable/letExp"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//emof/TypedElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="initExpression" eType="#//ocl/OclExpression"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="initExpression" eType="#//imperativeocl/OclExpression"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="letExp" eType="#//ocl/LetExp"
-          transient="true" eOpposite="#//ocl/LetExp/variable"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="letExp" eType="#//imperativeocl/LetExp"
+          transient="true" eOpposite="#//imperativeocl/LetExp/variable"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="bindParameter" eType="#//emof/Parameter"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PropertyCallExp" eSuperTypes="#//ocl/FeaturePropertyCall">
+    <eClassifiers xsi:type="ecore:EClass" name="PropertyCallExp" eSuperTypes="#//imperativeocl/FeaturePropertyCall">
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredProperty" eType="#//emof/Property"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="VariableExp" eSuperTypes="#//ocl/OclExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="referredVariable" eType="#//ocl/Variable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="VariableExp" eSuperTypes="#//imperativeocl/OclExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="referredVariable" eType="#//imperativeocl/Variable"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TypeExp" eSuperTypes="#//ocl/OclExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="TypeExp" eSuperTypes="#//imperativeocl/OclExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredType" eType="#//emof/Type"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="LoopExp" abstract="true" eSuperTypes="#//ocl/CallExp #//ocl/OclExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="LoopExp" abstract="true" eSuperTypes="#//imperativeocl/CallExp #//imperativeocl/OclExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="iterator" upperBound="-1"
-          eType="#//ocl/Variable" containment="true"/>
+          eType="#//imperativeocl/Variable" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IteratorExp" eSuperTypes="#//ocl/LoopExp"/>
-    <eClassifiers xsi:type="ecore:EClass" name="StringLiteralExp" eSuperTypes="#//ocl/PrimitiveLiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="IteratorExp" eSuperTypes="#//imperativeocl/LoopExp"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StringLiteralExp" eSuperTypes="#//imperativeocl/PrimitiveLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringSymbol" eType="#//emof/String"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteralExp" eSuperTypes="#//ocl/NumericLiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteralExp" eSuperTypes="#//imperativeocl/NumericLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="integerSymbol" eType="#//emof/Integer"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OperationCallExp" eSuperTypes="#//ocl/FeaturePropertyCall">
+    <eClassifiers xsi:type="ecore:EClass" name="OperationCallExp" eSuperTypes="#//imperativeocl/FeaturePropertyCall">
       <eStructuralFeatures xsi:type="ecore:EReference" name="argument" upperBound="-1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredOperation" eType="#//emof/Operation"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationCode" eType="#//emof/Integer"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="RealLiteralExp" eSuperTypes="#//ocl/NumericLiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="RealLiteralExp" eSuperTypes="#//imperativeocl/NumericLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="realSymbol" eType="#//emof/Real"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="LiteralExp" abstract="true" eSuperTypes="#//ocl/OclExpression"/>
-    <eClassifiers xsi:type="ecore:EClass" name="IterateExp" eSuperTypes="#//ocl/LoopExp">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="result" eType="#//ocl/Variable"
+    <eClassifiers xsi:type="ecore:EClass" name="LiteralExp" abstract="true" eSuperTypes="#//imperativeocl/OclExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IterateExp" eSuperTypes="#//imperativeocl/LoopExp">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="result" eType="#//imperativeocl/Variable"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PrimitiveLiteralExp" abstract="true"
-        eSuperTypes="#//ocl/LiteralExp"/>
+        eSuperTypes="#//imperativeocl/LiteralExp"/>
     <eClassifiers xsi:type="ecore:EClass" name="NumericLiteralExp" abstract="true"
-        eSuperTypes="#//ocl/PrimitiveLiteralExp"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteralExp" eSuperTypes="#//ocl/LiteralExp">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ocl/CollectionKind"/>
+        eSuperTypes="#//imperativeocl/PrimitiveLiteralExp"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//imperativeocl/CollectionKind"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1"
-          eType="#//ocl/CollectionLiteralPart" containment="true" eOpposite="#//ocl/CollectionLiteralPart/collectionLiteralExp"/>
+          eType="#//imperativeocl/CollectionLiteralPart" containment="true" eOpposite="#//imperativeocl/CollectionLiteralPart/collectionLiteralExp"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteralPart" abstract="true"
         eSuperTypes="#//emof/TypedElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="collectionLiteralExp"
-          lowerBound="1" eType="#//ocl/CollectionLiteralExp" transient="true" eOpposite="#//ocl/CollectionLiteralExp/part"/>
+          lowerBound="1" eType="#//imperativeocl/CollectionLiteralExp" transient="true"
+          eOpposite="#//imperativeocl/CollectionLiteralExp/part"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="CollectionItem" eSuperTypes="#//ocl/CollectionLiteralPart">
+    <eClassifiers xsi:type="ecore:EClass" name="CollectionItem" eSuperTypes="#//imperativeocl/CollectionLiteralPart">
       <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="CollectionRange" eSuperTypes="#//ocl/CollectionLiteralPart">
+    <eClassifiers xsi:type="ecore:EClass" name="CollectionRange" eSuperTypes="#//imperativeocl/CollectionLiteralPart">
       <eStructuralFeatures xsi:type="ecore:EReference" name="first" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="last" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TupleLiteralExp" eSuperTypes="#//ocl/LiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="TupleLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp">
       <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1"
-          eType="#//ocl/TupleLiteralPart" containment="true" eOpposite="#//ocl/TupleLiteralPart/tupleLiteralExp"/>
+          eType="#//imperativeocl/TupleLiteralPart" containment="true" eOpposite="#//imperativeocl/TupleLiteralPart/tupleLiteralExp"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="NullLiteralExp" eSuperTypes="#//ocl/LiteralExp"/>
-    <eClassifiers xsi:type="ecore:EClass" name="ExpressionInOcl" eSuperTypes="#//ocl/OpaqueExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="NullLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ExpressionInOcl" eSuperTypes="#//imperativeocl/OpaqueExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="bodyExpression" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//ocl/Variable"
+          eType="#//imperativeocl/OclExpression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//imperativeocl/Variable"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="resultVariable" eType="#//ocl/Variable"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="resultVariable" eType="#//imperativeocl/Variable"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="parameterVariable" eType="#//ocl/Variable"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameterVariable" eType="#//imperativeocl/Variable"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OpaqueExpression"/>
-    <eClassifiers xsi:type="ecore:EClass" name="InvalidLiteralExp" eSuperTypes="#//ocl/LiteralExp"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InvalidLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp"/>
     <eClassifiers xsi:type="ecore:EClass" name="FeaturePropertyCall" abstract="true"
-        eSuperTypes="#//ocl/CallExp"/>
+        eSuperTypes="#//imperativeocl/CallExp"/>
     <eClassifiers xsi:type="ecore:EClass" name="TupleLiteralPart" eSuperTypes="#//emof/TypedElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="tupleLiteralExp" eType="#//ocl/TupleLiteralExp"
-          transient="true" eOpposite="#//ocl/TupleLiteralExp/part"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tupleLiteralExp" eType="#//imperativeocl/TupleLiteralExp"
+          transient="true" eOpposite="#//imperativeocl/TupleLiteralExp/part"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" eType="#//emof/Property"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
-          eType="#//ocl/OclExpression" containment="true"/>
+          eType="#//imperativeocl/OclExpression" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="BagType" eSuperTypes="#//ocl/CollectionType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BagType" eSuperTypes="#//imperativeocl/CollectionType"/>
     <eClassifiers xsi:type="ecore:EClass" name="CollectionType" abstract="true" eSuperTypes="#//emof/DataType">
       <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//emof/Type"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EnumLiteralExp" eSuperTypes="#//ocl/LiteralExp">
+    <eClassifiers xsi:type="ecore:EClass" name="EnumLiteralExp" eSuperTypes="#//imperativeocl/LiteralExp">
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredEnumLiteral"
           eType="#//emof/EnumerationLiteral"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="InvalidType" eSuperTypes="#//emof/Type"/>
-    <eClassifiers xsi:type="ecore:EClass" name="OrderedSetType" eSuperTypes="#//ocl/CollectionType"/>
-    <eClassifiers xsi:type="ecore:EClass" name="SequenceType" eSuperTypes="#//ocl/CollectionType"/>
-    <eClassifiers xsi:type="ecore:EClass" name="SetType" eSuperTypes="#//ocl/CollectionType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedSetType" eSuperTypes="#//imperativeocl/CollectionType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SequenceType" eSuperTypes="#//imperativeocl/CollectionType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SetType" eSuperTypes="#//imperativeocl/CollectionType"/>
     <eClassifiers xsi:type="ecore:EClass" name="TupleType" eSuperTypes="#//emof/Class #//emof/DataType"/>
     <eClassifiers xsi:type="ecore:EClass" name="VoidType" eSuperTypes="#//emof/Type"/>
     <eClassifiers xsi:type="ecore:EClass" name="AnyType" eSuperTypes="#//emof/Class #//emof/Type"/>
@@ -402,6 +402,10 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Visitor" abstract="true" interface="true">
       <eTypeParameters name="T"/>
+      <eOperations name="visitStringLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="stringLiteralExp" eType="#//imperativeocl/StringLiteralExp"/>
+      </eOperations>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

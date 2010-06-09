@@ -30,7 +30,6 @@ APPEND = '+=';
 ARROW = '->';
 BREAK = 'break';
 COLLECTION_LITERAL;
-COLLECTION_LITERAL_PARTS;
 COLLECTION_TYPE;
 COLON = ':';
 CONTINUE = 'continue';
@@ -140,7 +139,7 @@ collectionTypeIdentifierCS
 	;
 
 collectionLiteralPartsCS
-	: collectionLiteralPartCS (',' collectionLiteralPartCS)* -> ^(COLLECTION_LITERAL_PARTS collectionLiteralPartCS collectionLiteralPartCS*)
+	: clp1 = collectionLiteralPartCS (',' clp2 = collectionLiteralPartCS)* -> $clp1 $clp2*
 	;
 
 collectionLiteralPartCS
@@ -209,23 +208,23 @@ argumentsCS
 	;
 
 simpleNameCS
-	: primitiveType
-	| SELF
+	//: primitiveType
+	: SELF
 	| IDENTIFIER
 	;
 
-primitiveType
-	: PRIMITIVE_TYPE_LITERAL
-	;
+//primitiveType
+//	: PRIMITIVE_TYPE_LITERAL
+//	;
 
-collectionType
-	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
-	;
+//collectionType
+//	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
+//	;
 
 type
-	: primitiveType
-	| collectionType
-	| pathName
+	//: primitiveType
+	//| collectionType
+	: pathName
 	;
 
 pathName

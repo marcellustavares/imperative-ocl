@@ -17,17 +17,12 @@
 
 package org.orcas.iocl.compiler;
 
-import java.util.List;
-
-import org.orcas.iocl.exp.AbstractVisitor;
-import org.orcas.iocl.exp.BooleanLiteralExp;
-import org.orcas.iocl.exp.IntegerLiteralExp;
-import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.RealLiteralExp;
-import org.orcas.iocl.exp.ReturnExp;
-import org.orcas.iocl.exp.SimpleName;
-import org.orcas.iocl.exp.StringLiteralExp;
-import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
+import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.util.AbstractVisitor;
 
 public class JavaVisitor extends AbstractVisitor<String> {
 
@@ -43,7 +38,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return integerLiteralExp.getIntegerSymbol().toString();
 	}
 
-	protected String handleOperationCallExp(
+	/*protected String handleOperationCallExp(
 		OperationCallExp operationCallExp, String sourceResult,
 		List<String> argumentsResult) {
 
@@ -73,6 +68,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 		return result.toString();
 	}
+	*/
 
 	protected String handleRealLiteralExp(RealLiteralExp realLiteralExp) {
 		return realLiteralExp.getRealSymbol().toString();
@@ -85,10 +81,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		else {
 			return "return " + returnResult + ";";
 		}
-	}
-
-	protected String handleSimpleName(SimpleName simpleName) {
-		return simpleName.getValue();
 	}
 
 	protected String handleStringLiteralExp(StringLiteralExp stringLiteralExp) {

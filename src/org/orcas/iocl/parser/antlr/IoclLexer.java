@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-06-06 22:18:46
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-06-09 00:15:36
 
 package org.orcas.iocl.parser.antlr;
 
@@ -9,71 +9,70 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class IoclLexer extends Lexer {
-    public static final int ITERATOR_NAME=56;
+    public static final int ITERATOR_NAME=55;
     public static final int APPEND=6;
     public static final int T__66=66;
-    public static final int LT=30;
-    public static final int T__67=67;
-    public static final int EXPONENT=60;
-    public static final int WHILE=48;
-    public static final int PRIMITIVE_TYPE_LITERAL=58;
-    public static final int GTE=23;
-    public static final int COLLECTION_LITERAL_PARTS=10;
-    public static final int OCTAL_ESC=65;
-    public static final int FOR=21;
-    public static final int DO=14;
-    public static final int NOT=33;
-    public static final int EXCEPT=20;
+    public static final int LT=29;
+    public static final int EXPONENT=59;
+    public static final int T__65=65;
+    public static final int WHILE=47;
+    public static final int PRIMITIVE_TYPE_LITERAL=57;
+    public static final int GTE=22;
+    public static final int OCTAL_ESC=64;
+    public static final int FOR=20;
+    public static final int DO=13;
+    public static final int NOT=32;
+    public static final int EXCEPT=19;
     public static final int AND=4;
     public static final int EOF=-1;
-    public static final int LTE=31;
+    public static final int LTE=30;
     public static final int BREAK=8;
-    public static final int LPAREN=29;
-    public static final int IF=24;
-    public static final int RPAREN=41;
-    public static final int ESC_SEQ=61;
-    public static final int STRING_LITERAL=52;
-    public static final int REAL_LITERAL=55;
-    public static final int SCOPE=42;
-    public static final int COLLECTION_TYPE_LITERAL=51;
-    public static final int CONTINUE=13;
-    public static final int NOT_EQUAL=34;
-    public static final int IS=27;
-    public static final int IDENTIFIER=57;
-    public static final int ITERATOR=26;
-    public static final int EQUAL=19;
-    public static final int RETURN=40;
-    public static final int PLUS=37;
-    public static final int VAR=46;
-    public static final int RAISE=38;
-    public static final int DOT=16;
+    public static final int LPAREN=28;
+    public static final int IF=23;
+    public static final int RPAREN=40;
+    public static final int ESC_SEQ=60;
+    public static final int STRING_LITERAL=51;
+    public static final int REAL_LITERAL=54;
+    public static final int SCOPE=41;
+    public static final int COLLECTION_TYPE_LITERAL=50;
+    public static final int CONTINUE=12;
+    public static final int NOT_EQUAL=33;
+    public static final int IS=26;
+    public static final int IDENTIFIER=56;
+    public static final int ITERATOR=25;
+    public static final int EQUAL=18;
+    public static final int RETURN=39;
+    public static final int PLUS=36;
+    public static final int VAR=45;
+    public static final int RAISE=37;
+    public static final int DOT=15;
     public static final int COLLECTION_LITERAL=9;
-    public static final int FOR_NAME=59;
-    public static final int XOR=49;
-    public static final int COLLECTION_TYPE=11;
-    public static final int NUMERIC_OPERATION=50;
-    public static final int UNICODE_ESC=64;
-    public static final int ELSE=18;
-    public static final int HEX_DIGIT=63;
-    public static final int LCURLY=28;
-    public static final int SEMICOLON=44;
-    public static final int MULT=35;
-    public static final int MINUS=32;
-    public static final int TRY=45;
-    public static final int COLON=12;
-    public static final int BOOLEAN_LITERAL=53;
+    public static final int FOR_NAME=58;
+    public static final int XOR=48;
+    public static final int COLLECTION_TYPE=10;
+    public static final int NUMERIC_OPERATION=49;
+    public static final int UNICODE_ESC=63;
+    public static final int ELSE=17;
+    public static final int HEX_DIGIT=62;
+    public static final int LCURLY=27;
+    public static final int SEMICOLON=43;
+    public static final int MULT=34;
+    public static final int MINUS=31;
+    public static final int TRY=44;
+    public static final int COLON=11;
+    public static final int BOOLEAN_LITERAL=52;
     public static final int ALT_EXP=5;
-    public static final int ITERATE=25;
-    public static final int ELIF=17;
-    public static final int WS=62;
-    public static final int VARIABLE=47;
-    public static final int INTEGER_LITERAL=54;
-    public static final int RCURLY=39;
-    public static final int OR=36;
-    public static final int GT=22;
+    public static final int ITERATE=24;
+    public static final int ELIF=16;
+    public static final int WS=61;
+    public static final int VARIABLE=46;
+    public static final int INTEGER_LITERAL=53;
+    public static final int RCURLY=38;
+    public static final int OR=35;
+    public static final int GT=21;
     public static final int ARROW=7;
-    public static final int DIV=15;
-    public static final int SELF=43;
+    public static final int DIV=14;
+    public static final int SELF=42;
 
     // delegates
     // delegators
@@ -914,10 +913,10 @@ public class IoclLexer extends Lexer {
     }
     // $ANTLR end "XOR"
 
-    // $ANTLR start "T__66"
-    public final void mT__66() throws RecognitionException {
+    // $ANTLR start "T__65"
+    public final void mT__65() throws RecognitionException {
         try {
-            int _type = T__66;
+            int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:47:7: ( ',' )
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:47:9: ','
@@ -932,12 +931,12 @@ public class IoclLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__66"
+    // $ANTLR end "T__65"
 
-    // $ANTLR start "T__67"
-    public final void mT__67() throws RecognitionException {
+    // $ANTLR start "T__66"
+    public final void mT__66() throws RecognitionException {
         try {
-            int _type = T__67;
+            int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:48:7: ( '|' )
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:48:9: '|'
@@ -952,14 +951,14 @@ public class IoclLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__67"
+    // $ANTLR end "T__66"
 
     // $ANTLR start "BOOLEAN_LITERAL"
     public final void mBOOLEAN_LITERAL() throws RecognitionException {
         try {
             int _type = BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:322:2: ( 'true' | 'false' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:2: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -977,7 +976,7 @@ public class IoclLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:322:4: 'true'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:4: 'true'
                     {
                     match("true"); 
 
@@ -985,7 +984,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:323:4: 'false'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:322:4: 'false'
                     {
                     match("false"); 
 
@@ -1007,7 +1006,7 @@ public class IoclLexer extends Lexer {
         try {
             int _type = COLLECTION_TYPE_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:327:2: ( 'Bag' | 'Collection' | 'OrderedSet' | 'Sequence' | 'Set' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:326:2: ( 'Bag' | 'Collection' | 'OrderedSet' | 'Sequence' | 'Set' )
             int alt2=5;
             switch ( input.LA(1) ) {
             case 'B':
@@ -1062,7 +1061,7 @@ public class IoclLexer extends Lexer {
 
             switch (alt2) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:327:4: 'Bag'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:326:4: 'Bag'
                     {
                     match("Bag"); 
 
@@ -1070,7 +1069,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:328:4: 'Collection'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:327:4: 'Collection'
                     {
                     match("Collection"); 
 
@@ -1078,7 +1077,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:4: 'OrderedSet'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:328:4: 'OrderedSet'
                     {
                     match("OrderedSet"); 
 
@@ -1086,7 +1085,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:330:4: 'Sequence'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:4: 'Sequence'
                     {
                     match("Sequence"); 
 
@@ -1094,7 +1093,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:331:4: 'Set'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:330:4: 'Set'
                     {
                     match("Set"); 
 
@@ -1116,7 +1115,7 @@ public class IoclLexer extends Lexer {
         try {
             int _type = PRIMITIVE_TYPE_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:335:2: ( 'Integer' | 'String' | 'Real' | 'Boolean' | 'OclAny' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:334:2: ( 'Integer' | 'String' | 'Real' | 'Boolean' | 'OclAny' )
             int alt3=5;
             switch ( input.LA(1) ) {
             case 'I':
@@ -1153,7 +1152,7 @@ public class IoclLexer extends Lexer {
 
             switch (alt3) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:335:4: 'Integer'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:334:4: 'Integer'
                     {
                     match("Integer"); 
 
@@ -1161,7 +1160,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:336:4: 'String'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:335:4: 'String'
                     {
                     match("String"); 
 
@@ -1169,7 +1168,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:337:4: 'Real'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:336:4: 'Real'
                     {
                     match("Real"); 
 
@@ -1177,7 +1176,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:4: 'Boolean'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:337:4: 'Boolean'
                     {
                     match("Boolean"); 
 
@@ -1185,7 +1184,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:339:4: 'OclAny'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:4: 'OclAny'
                     {
                     match("OclAny"); 
 
@@ -1207,10 +1206,10 @@ public class IoclLexer extends Lexer {
         try {
             int _type = INTEGER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:343:2: ( ( '0' .. '9' )+ )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:343:4: ( '0' .. '9' )+
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:2: ( ( '0' .. '9' )+ )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:4: ( '0' .. '9' )+
             {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:343:4: ( '0' .. '9' )+
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:4: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1224,7 +1223,7 @@ public class IoclLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:343:4: '0' .. '9'
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:4: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1256,14 +1255,14 @@ public class IoclLexer extends Lexer {
         try {
             int _type = REAL_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:2: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:2: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt11=3;
             alt11 = dfa11.predict(input);
             switch (alt11) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:4: ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:4: ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:4: ( '0' .. '9' )+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:4: ( '0' .. '9' )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -1277,7 +1276,7 @@ public class IoclLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:5: '0' .. '9'
+                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:5: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1294,7 +1293,7 @@ public class IoclLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:20: ( '0' .. '9' )+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:20: ( '0' .. '9' )+
                     int cnt6=0;
                     loop6:
                     do {
@@ -1308,7 +1307,7 @@ public class IoclLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:21: '0' .. '9'
+                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:21: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1324,7 +1323,7 @@ public class IoclLexer extends Lexer {
                         cnt6++;
                     } while (true);
 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:32: ( EXPONENT )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:32: ( EXPONENT )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -1333,7 +1332,7 @@ public class IoclLexer extends Lexer {
                     }
                     switch (alt7) {
                         case 1 :
-                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:32: EXPONENT
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:32: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1346,10 +1345,10 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:4: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:4: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:8: ( '0' .. '9' )+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:8: ( '0' .. '9' )+
                     int cnt8=0;
                     loop8:
                     do {
@@ -1363,7 +1362,7 @@ public class IoclLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:9: '0' .. '9'
+                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:9: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1379,7 +1378,7 @@ public class IoclLexer extends Lexer {
                         cnt8++;
                     } while (true);
 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:20: ( EXPONENT )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:20: ( EXPONENT )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1388,7 +1387,7 @@ public class IoclLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:20: EXPONENT
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:347:20: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1401,9 +1400,9 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:349:4: ( '0' .. '9' )+ EXPONENT
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:4: ( '0' .. '9' )+ EXPONENT
                     {
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:349:4: ( '0' .. '9' )+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:4: ( '0' .. '9' )+
                     int cnt10=0;
                     loop10:
                     do {
@@ -1417,7 +1416,7 @@ public class IoclLexer extends Lexer {
 
                         switch (alt10) {
                     	case 1 :
-                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:349:5: '0' .. '9'
+                    	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:348:5: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1452,11 +1451,11 @@ public class IoclLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\'' )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\''
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:352:2: ( '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\'' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:352:4: '\\'' ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )* '\\''
             {
             match('\''); 
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:9: ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:352:9: ( ESC_SEQ | ~ ( '\\\\' | '\\'' ) )*
             loop12:
             do {
                 int alt12=3;
@@ -1472,14 +1471,14 @@ public class IoclLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:11: ESC_SEQ
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:352:11: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:21: ~ ( '\\\\' | '\\'' )
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:352:21: ~ ( '\\\\' | '\\'' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1516,12 +1515,12 @@ public class IoclLexer extends Lexer {
         try {
             int _type = ITERATOR_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:357:2: ( 'any' | 'closure' | 'collect' | 'collectNested' | 'exists' | 'forAll' | 'isUnique' | 'one' | 'select' | 'sortedBy' | 'reject' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:356:2: ( 'any' | 'closure' | 'collect' | 'collectNested' | 'exists' | 'forAll' | 'isUnique' | 'one' | 'select' | 'sortedBy' | 'reject' )
             int alt13=11;
             alt13 = dfa13.predict(input);
             switch (alt13) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:357:4: 'any'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:356:4: 'any'
                     {
                     match("any"); 
 
@@ -1529,7 +1528,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:4: 'closure'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:357:4: 'closure'
                     {
                     match("closure"); 
 
@@ -1537,7 +1536,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:359:4: 'collect'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:4: 'collect'
                     {
                     match("collect"); 
 
@@ -1545,7 +1544,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:360:4: 'collectNested'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:359:4: 'collectNested'
                     {
                     match("collectNested"); 
 
@@ -1553,7 +1552,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:361:4: 'exists'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:360:4: 'exists'
                     {
                     match("exists"); 
 
@@ -1561,7 +1560,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:4: 'forAll'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:361:4: 'forAll'
                     {
                     match("forAll"); 
 
@@ -1569,7 +1568,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:4: 'isUnique'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:4: 'isUnique'
                     {
                     match("isUnique"); 
 
@@ -1577,7 +1576,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 8 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:364:4: 'one'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:4: 'one'
                     {
                     match("one"); 
 
@@ -1585,7 +1584,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 9 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:365:4: 'select'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:364:4: 'select'
                     {
                     match("select"); 
 
@@ -1593,7 +1592,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 10 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:366:4: 'sortedBy'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:365:4: 'sortedBy'
                     {
                     match("sortedBy"); 
 
@@ -1601,7 +1600,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 11 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:4: 'reject'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:366:4: 'reject'
                     {
                     match("reject"); 
 
@@ -1623,7 +1622,7 @@ public class IoclLexer extends Lexer {
         try {
             int _type = FOR_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:371:2: ( 'forEach' | 'forOne' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:370:2: ( 'forEach' | 'forOne' )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1671,7 +1670,7 @@ public class IoclLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:371:4: 'forEach'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:370:4: 'forEach'
                     {
                     match("forEach"); 
 
@@ -1679,7 +1678,7 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:372:4: 'forOne'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:371:4: 'forOne'
                     {
                     match("forOne"); 
 
@@ -1701,8 +1700,8 @@ public class IoclLexer extends Lexer {
         try {
             int _type = IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:376:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:376:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:375:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:375:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1713,7 +1712,7 @@ public class IoclLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:376:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:375:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop15:
             do {
                 int alt15=2;
@@ -1762,8 +1761,8 @@ public class IoclLexer extends Lexer {
         try {
             int _type = NUMERIC_OPERATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:380:2: ( INTEGER_LITERAL '.' IDENTIFIER )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:380:4: INTEGER_LITERAL '.' IDENTIFIER
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:379:2: ( INTEGER_LITERAL '.' IDENTIFIER )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:379:4: INTEGER_LITERAL '.' IDENTIFIER
             {
             mINTEGER_LITERAL(); 
             match('.'); 
@@ -1784,8 +1783,8 @@ public class IoclLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:384:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:384:4: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:383:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:383:4: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -1811,8 +1810,8 @@ public class IoclLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:393:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:393:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:392:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:392:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1823,7 +1822,7 @@ public class IoclLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:393:14: ( '+' | '-' )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:392:14: ( '+' | '-' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1849,7 +1848,7 @@ public class IoclLexer extends Lexer {
 
             }
 
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:393:25: ( '0' .. '9' )+
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:392:25: ( '0' .. '9' )+
             int cnt17=0;
             loop17:
             do {
@@ -1863,7 +1862,7 @@ public class IoclLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:393:26: '0' .. '9'
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:392:26: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1891,8 +1890,8 @@ public class IoclLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:398:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:398:4: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:397:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:397:4: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
                 input.consume();
@@ -1915,7 +1914,7 @@ public class IoclLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:402:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:401:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt18=3;
             int LA18_0 = input.LA(1);
 
@@ -1966,7 +1965,7 @@ public class IoclLexer extends Lexer {
             }
             switch (alt18) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:402:4: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:401:4: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
                     if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1982,14 +1981,14 @@ public class IoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:403:4: UNICODE_ESC
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:402:4: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:404:4: OCTAL_ESC
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:403:4: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -2006,7 +2005,7 @@ public class IoclLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:2: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:2: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt19=3;
             int LA19_0 = input.LA(1);
 
@@ -2052,13 +2051,41 @@ public class IoclLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:4: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:4: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:9: ( '0' .. '3' )
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:10: '0' .. '3'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:9: ( '0' .. '3' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:10: '0' .. '3'
                     {
                     matchRange('0','3'); 
+
+                    }
+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:20: ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:21: '0' .. '7'
+                    {
+                    matchRange('0','7'); 
+
+                    }
+
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:31: ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:408:32: '0' .. '7'
+                    {
+                    matchRange('0','7'); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:4: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    {
+                    match('\\'); 
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:9: ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:10: '0' .. '7'
+                    {
+                    matchRange('0','7'); 
 
                     }
 
@@ -2069,43 +2096,15 @@ public class IoclLexer extends Lexer {
 
                     }
 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:31: ( '0' .. '7' )
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:409:32: '0' .. '7'
-                    {
-                    matchRange('0','7'); 
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:4: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
-                    {
-                    match('\\'); 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:9: ( '0' .. '7' )
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:10: '0' .. '7'
-                    {
-                    matchRange('0','7'); 
-
-                    }
-
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:20: ( '0' .. '7' )
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:21: '0' .. '7'
-                    {
-                    matchRange('0','7'); 
-
-                    }
-
 
                     }
                     break;
                 case 3 :
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:411:4: '\\\\' ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:4: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:411:9: ( '0' .. '7' )
-                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:411:10: '0' .. '7'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:9: ( '0' .. '7' )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:410:10: '0' .. '7'
                     {
                     matchRange('0','7'); 
 
@@ -2125,8 +2124,8 @@ public class IoclLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:416:2: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:416:4: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:415:2: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:415:4: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
             match('u'); 
@@ -2144,7 +2143,7 @@ public class IoclLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:8: ( AND | APPEND | ARROW | BREAK | COLON | CONTINUE | DO | DIV | DOT | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__66 | T__67 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:8: ( AND | APPEND | ARROW | BREAK | COLON | CONTINUE | DO | DIV | DOT | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__65 | T__66 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS )
         int alt20=53;
         alt20 = dfa20.predict(input);
         switch (alt20) {
@@ -2429,16 +2428,16 @@ public class IoclLexer extends Lexer {
                 }
                 break;
             case 41 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:227: T__66
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:227: T__65
                 {
-                mT__66(); 
+                mT__65(); 
 
                 }
                 break;
             case 42 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:233: T__67
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:233: T__66
                 {
-                mT__67(); 
+                mT__66(); 
 
                 }
                 break;
@@ -2578,7 +2577,7 @@ public class IoclLexer extends Lexer {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "346:1: REAL_LITERAL : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+            return "345:1: REAL_LITERAL : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
         }
     }
     static final String DFA13_eotS =
@@ -2650,7 +2649,7 @@ public class IoclLexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "356:1: ITERATOR_NAME : ( 'any' | 'closure' | 'collect' | 'collectNested' | 'exists' | 'forAll' | 'isUnique' | 'one' | 'select' | 'sortedBy' | 'reject' );";
+            return "355:1: ITERATOR_NAME : ( 'any' | 'closure' | 'collect' | 'collectNested' | 'exists' | 'forAll' | 'isUnique' | 'one' | 'select' | 'sortedBy' | 'reject' );";
         }
     }
     static final String DFA20_eotS =
@@ -3021,7 +3020,7 @@ public class IoclLexer extends Lexer {
             this.transition = DFA20_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( AND | APPEND | ARROW | BREAK | COLON | CONTINUE | DO | DIV | DOT | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__66 | T__67 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS );";
+            return "1:1: Tokens : ( AND | APPEND | ARROW | BREAK | COLON | CONTINUE | DO | DIV | DOT | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__65 | T__66 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS );";
         }
     }
  

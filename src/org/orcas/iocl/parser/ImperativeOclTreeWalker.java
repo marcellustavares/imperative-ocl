@@ -18,66 +18,35 @@
 package org.orcas.iocl.parser;
 
 import org.antlr.runtime.tree.Tree;
-import org.orcas.iocl.exp.AltExp;
-import org.orcas.iocl.exp.AssignExp;
-import org.orcas.iocl.exp.BlockExp;
-import org.orcas.iocl.exp.BooleanLiteralExp;
-import org.orcas.iocl.exp.CollectionLiteralExp;
-import org.orcas.iocl.exp.CollectionLiteralPart;
-import org.orcas.iocl.exp.CollectionLiteralParts;
-import org.orcas.iocl.exp.CollectionType;
-import org.orcas.iocl.exp.CollectionTypeIdentifier;
-import org.orcas.iocl.exp.ForExp;
-import org.orcas.iocl.exp.ImperativeExp;
-import org.orcas.iocl.exp.IntegerLiteralExp;
-import org.orcas.iocl.exp.IterateExp;
-import org.orcas.iocl.exp.IteratorExp;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.PathName;
-import org.orcas.iocl.exp.PrimitiveType;
-import org.orcas.iocl.exp.RaiseExp;
-import org.orcas.iocl.exp.RealLiteralExp;
-import org.orcas.iocl.exp.ReturnExp;
-import org.orcas.iocl.exp.SimpleName;
-import org.orcas.iocl.exp.SimpleTypeEnum;
-import org.orcas.iocl.exp.StringLiteralExp;
-import org.orcas.iocl.exp.SwitchExp;
-import org.orcas.iocl.exp.TryExp;
-import org.orcas.iocl.exp.Type;
-import org.orcas.iocl.exp.Variable;
-import org.orcas.iocl.exp.VariableInitExp;
-import org.orcas.iocl.exp.WhileExp;
-import org.orcas.iocl.exp.impl.AltExpImpl;
-import org.orcas.iocl.exp.impl.AssignExpImpl;
-import org.orcas.iocl.exp.impl.BlockExpImpl;
-import org.orcas.iocl.exp.impl.BooleanLiteralExpImpl;
-import org.orcas.iocl.exp.impl.BreakExpImpl;
-import org.orcas.iocl.exp.impl.CollectionLiteralExpImpl;
-import org.orcas.iocl.exp.impl.CollectionLiteralPartImpl;
-import org.orcas.iocl.exp.impl.CollectionLiteralPartsImpl;
-import org.orcas.iocl.exp.impl.CollectionTypeIdentifierImpl;
-import org.orcas.iocl.exp.impl.CollectionTypeImpl;
-import org.orcas.iocl.exp.impl.ContinueExpImpl;
-import org.orcas.iocl.exp.impl.ForExpImpl;
-import org.orcas.iocl.exp.impl.IntegerLiteralExpImpl;
-import org.orcas.iocl.exp.impl.IterateExpImpl;
-import org.orcas.iocl.exp.impl.IteratorExpImpl;
-import org.orcas.iocl.exp.impl.OperationCallExpImpl;
-import org.orcas.iocl.exp.impl.PathNameImpl;
-import org.orcas.iocl.exp.impl.PrimitiveTypeImpl;
-import org.orcas.iocl.exp.impl.RaiseExpImpl;
-import org.orcas.iocl.exp.impl.RealLiteralExpImpl;
-import org.orcas.iocl.exp.impl.ReturnExpImpl;
-import org.orcas.iocl.exp.impl.SimpleNameImpl;
-import org.orcas.iocl.exp.impl.StringLiteralExpImpl;
-import org.orcas.iocl.exp.impl.SwitchExpImpl;
-import org.orcas.iocl.exp.impl.TryExpImpl;
-import org.orcas.iocl.exp.impl.VariableImpl;
-import org.orcas.iocl.exp.impl.VariableInitExpImpl;
-import org.orcas.iocl.exp.impl.WhileExpImpl;
+import org.eclipse.emf.common.util.EList;
+import org.orcas.iocl.expressions.emof.EmofFactory;
+import org.orcas.iocl.expressions.emof.PrimitiveType;
+import org.orcas.iocl.expressions.emof.Type;
+import org.orcas.iocl.expressions.imperativeocl.AltExp;
+import org.orcas.iocl.expressions.imperativeocl.AssignExp;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
+import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
+import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
+import org.orcas.iocl.expressions.imperativeocl.ForExp;
+import org.orcas.iocl.expressions.imperativeocl.ImperativeOclFactory;
+import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.IterateExp;
+import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
+import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.TryExp;
+import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableExp;
+import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
+import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.parser.antlr.IoclParser;
 import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.StringUtil;
 
 public class ImperativeOclTreeWalker {
 
@@ -101,14 +70,16 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.XOR:
 				int operationCode = OperationCode.fromLabel(tree.getText());
 
-				OperationCallExp opCallExp = createOperationCallExp(
+				OperationCallExp operationCallExp = createOperationCallExp(
 					operationCode, walk(tree.getChild(0)));
 
+				EList<OclExpression> argument = operationCallExp.getArgument();
+
 				if (tree.getChildCount() > 1) {
-					opCallExp.addArgument(walk(tree.getChild(1)));
+					argument.add(walk(tree.getChild(1)));
 				}
 
-				oclExpression = opCallExp;
+				oclExpression = operationCallExp;
 
 				break;
 
@@ -117,14 +88,16 @@ public class ImperativeOclTreeWalker {
 				operationCode = OperationCode.fromLabel(
 					tree.getChild(1).getText());
 
-				opCallExp = createOperationCallExp(
+				operationCallExp = createOperationCallExp(
 					operationCode, walk(tree.getChild(0)));
 
+				argument = operationCallExp.getArgument();
+
 				for (int i = 2; i < tree.getChildCount(); i++) {
-					opCallExp.addArgument(walk(tree.getChild(i)));
+					argument.add(walk(tree.getChild(i)));
 				}
 
-				oclExpression = opCallExp;
+				oclExpression = operationCallExp;
 
 				break;
 
@@ -132,11 +105,15 @@ public class ImperativeOclTreeWalker {
 				IterateExp iterateExp = createIterateExp(
 					walk(tree.getChild(0)));
 
+				EList<Variable> iterator = iterateExp.getIterator();
+
 				for (int i = 1; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Variable) {
-						iterateExp.addIterator((Variable)exp);
+					if (exp instanceof VariableExp) {
+						VariableExp variableExp = (VariableExp)exp;
+
+						iterator.add(variableExp.getReferredVariable());
 					}
 					else {
 						iterateExp.setBody(exp);
@@ -153,11 +130,15 @@ public class ImperativeOclTreeWalker {
 
 				iteratorExp.setName(tree.getChild(1).getText());
 
+				iterator = iteratorExp.getIterator();
+
 				for (int i = 2; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Variable) {
-						iteratorExp.addIterator((Variable)exp);
+					if (exp instanceof VariableExp) {
+						VariableExp variableExp = (VariableExp)exp;
+
+						iterator.add(variableExp.getReferredVariable());
 					}
 					else {
 						iteratorExp.setBody(exp);
@@ -169,7 +150,7 @@ public class ImperativeOclTreeWalker {
 				break;
 
 			case IoclParser.VARIABLE:
-				Variable variable = new VariableImpl();
+				Variable variable = createVariable();
 
 				variable.setName(tree.getChild(0).getText());
 
@@ -184,7 +165,7 @@ public class ImperativeOclTreeWalker {
 					}
 				}
 
-				oclExpression = variable;
+				oclExpression = createVariableExp(variable);
 
 				break;
 
@@ -194,45 +175,23 @@ public class ImperativeOclTreeWalker {
 
 				break;
 
-		  case IoclParser.COLLECTION_LITERAL:
-				CollectionLiteralExp collectionLiteralExp =
-					createCollectionLiteralExp(walk(tree.getChild(0)));
+			case IoclParser.COLLECTION_LITERAL:
+				Tree kind = tree.getChild(0);
 
-				if (tree.getChildCount() > 1) {
-					collectionLiteralExp.setCollectionLiteralParts(
-						walk(tree.getChild(1)));
+				CollectionKind collectionKind = CollectionKind.get(
+					kind.getText());
+
+				CollectionLiteralExp collectionLiteralExp =
+					createCollectionLiteralExp(collectionKind);
+
+				EList<CollectionLiteralPart> part =
+					collectionLiteralExp.getPart();
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					part.add(createCollectionItem(walk(tree.getChild(i))));
 				}
 
 				oclExpression = collectionLiteralExp;
-
-				break;
-
-			case IoclParser.COLLECTION_LITERAL_PARTS:
-				CollectionLiteralParts collectionLiteralParts =
-					new CollectionLiteralPartsImpl();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					collectionLiteralParts.addPart(
-						createCollectionLiteralPart(walk(tree.getChild(i))));
-				}
-
-				oclExpression = collectionLiteralParts;
-
-				break;
-
-			case IoclParser.COLLECTION_TYPE_LITERAL:
-				oclExpression = createCollectionTypeIdentifier(tree.getText());
-
-				break;
-
-			case IoclParser.PRIMITIVE_TYPE_LITERAL:
-				oclExpression = createPrimitiveType(tree.getText());
-
-				break;
-
-			case IoclParser.IDENTIFIER:
-				oclExpression = createSimpleName(
-					SimpleTypeEnum.IDENTIFIER, tree.getText());
 
 				break;
 
@@ -243,11 +202,13 @@ public class ImperativeOclTreeWalker {
 				break;
 
 			case IoclParser.NUMERIC_OPERATION:
-				OperationCallExp operationCallExp =
+				operationCallExp =
 					createNumericOperationCallExp(tree.getText());
 
+				argument = operationCallExp.getArgument();
+
 				for (int i = 0; i < tree.getChildCount(); i++) {
-					operationCallExp.addArgument(walk(tree.getChild(i)));
+					argument.add(walk(tree.getChild(i)));
 				}
 
 				oclExpression = operationCallExp;
@@ -265,19 +226,7 @@ public class ImperativeOclTreeWalker {
 					tree.getText());
 
 				break;
-
-			case IoclParser.COLLECTION_TYPE:
-				CollectionType collectionType =
-					createCollectionType(walk(tree.getChild(0)));
-
-				Type type = (Type) walk(tree.getChild(1));
-
-				collectionType.setType(type);
-
-				oclExpression = collectionType;
-
-				break;
-
+/*
 			case IoclParser.DO:
 				BlockExp blockExp = new BlockExpImpl();
 
@@ -443,96 +392,77 @@ public class ImperativeOclTreeWalker {
 				oclExpression = forExp;
 
 				break;
+				*/
 		}
 
 		return oclExpression;
 	}
 
 	protected AltExp createAltExp(OclExpression condition) {
-		AltExp altExp = new AltExpImpl();
+		AltExp altExp = ImperativeOclFactory.eINSTANCE.createAltExp();
 
 		altExp.setCondition(condition);
 
 		return altExp;
 	}
 
-	protected AssignExp createAssignExp(SimpleName simpleName) {
-		AssignExp assignExp = new AssignExpImpl();
+	protected AssignExp createAssignExp(OclExpression left) {
+		AssignExp assignExp = ImperativeOclFactory.eINSTANCE.createAssignExp();
 
-		assignExp.setLeft(simpleName);
+		assignExp.setLeft(left);
 
 		return assignExp;
 	}
 
 	protected BooleanLiteralExp createBooleanLiteralExp(String booleanSymbol) {
-		BooleanLiteralExp booleanLiteralExp = new BooleanLiteralExpImpl();
+		BooleanLiteralExp booleanLiteralExp =
+			ImperativeOclFactory.eINSTANCE.createBooleanLiteralExp();
+
 		booleanLiteralExp.setBooleanSymbol(Boolean.parseBoolean(booleanSymbol));
 
 		return booleanLiteralExp;
 	}
 
 	protected CollectionLiteralExp createCollectionLiteralExp(
-		OclExpression collectionTypeIdentifierCS) {
+		CollectionKind collectionKind) {
 
 		CollectionLiteralExp collectionLiteralExp =
-			new CollectionLiteralExpImpl();
+			ImperativeOclFactory.eINSTANCE.createCollectionLiteralExp();
 
-		collectionLiteralExp.setCollectionKind(
-			(CollectionTypeIdentifier) collectionTypeIdentifierCS);
+		collectionLiteralExp.setKind(collectionKind);
 
 		return collectionLiteralExp;
 	}
 
-	protected CollectionLiteralPart createCollectionLiteralPart(
-		OclExpression oclExpressionCS) {
+	protected CollectionItem createCollectionItem(OclExpression item) {
+		CollectionItem collectionItem =
+			ImperativeOclFactory.eINSTANCE.createCollectionItem();
 
-		CollectionLiteralPartImpl part = new CollectionLiteralPartImpl();
+		collectionItem.setItem(item);
 
-		part.setOCLExpresion(oclExpressionCS);
-
-		return part;
-	}
-
-	protected CollectionType createCollectionType(
-		OclExpression collectionTypeIdentifier) {
-
-		CollectionType collectionType = new CollectionTypeImpl();
-
-		collectionType.setCollectionTypeIdentifier(
-			(CollectionTypeIdentifier) collectionTypeIdentifier);
-
-		return collectionType;
-	}
-
-	protected CollectionTypeIdentifier createCollectionTypeIdentifier(
-		String type) {
-
-		CollectionTypeIdentifier identifier =
-			new CollectionTypeIdentifierImpl();
-
-		identifier.setCollectionType(type);
-
-		return identifier;
+		return collectionItem;
 	}
 
 	protected ForExp createForExp(String name) {
-		ForExp forExp = new ForExpImpl();
+		ForExp forExp = ImperativeOclFactory.eINSTANCE.createForExp();
 
 		forExp.setName(name);
 
 		return forExp;
 	}
 
-	protected PrimitiveType createPrimitiveType(String type) {
-		PrimitiveType primitiveType = new PrimitiveTypeImpl();
+	protected PrimitiveType createPrimitiveType(String name) {
+		PrimitiveType primitiveType =
+			EmofFactory.eINSTANCE.createPrimitiveType();
 
-		primitiveType.setSimpleType(SimpleTypeEnum.get(type));
+		primitiveType.setName(name);
 
 		return primitiveType;
 	}
 
 	protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
-		IntegerLiteralExp integerLiteralExp = new IntegerLiteralExpImpl();
+		IntegerLiteralExp integerLiteralExp =
+			ImperativeOclFactory.eINSTANCE.createIntegerLiteralExp();
 
 		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
 
@@ -540,7 +470,8 @@ public class ImperativeOclTreeWalker {
 	}
 
 	protected IterateExp createIterateExp(OclExpression source) {
-		IterateExp iterateExp = new IterateExpImpl();
+		IterateExp iterateExp =
+			ImperativeOclFactory.eINSTANCE.createIterateExp();
 
 		iterateExp.setSource(source);
 
@@ -548,7 +479,8 @@ public class ImperativeOclTreeWalker {
 	}
 
 	protected IteratorExp createIteratorExp(OclExpression source) {
-		IteratorExp iteratorExp = new IteratorExpImpl();
+		IteratorExp iteratorExp =
+			ImperativeOclFactory.eINSTANCE.createIteratorExp();
 
 		iteratorExp.setSource(source);
 
@@ -558,7 +490,8 @@ public class ImperativeOclTreeWalker {
 	protected OperationCallExp createNumericOperationCallExp(
 		String numericOperaration) {
 
-		OperationCallExp operationCallExp = new OperationCallExpImpl();
+		OperationCallExp operationCallExp =
+			ImperativeOclFactory.eINSTANCE.createOperationCallExp();
 
 		int index = numericOperaration.indexOf('.');
 		String integerSymbol = numericOperaration.substring(0, index);
@@ -578,7 +511,8 @@ public class ImperativeOclTreeWalker {
 	protected OperationCallExp createOperationCallExp(
 		int operationCode, OclExpression source) {
 
-		OperationCallExp operationCallExp = new OperationCallExpImpl();
+		OperationCallExp operationCallExp =
+			ImperativeOclFactory.eINSTANCE.createOperationCallExp();
 
 		operationCallExp.setOperationCode(operationCode);
 		operationCallExp.setSource(source);
@@ -587,7 +521,7 @@ public class ImperativeOclTreeWalker {
 	}
 
 	protected RaiseExp createRaiseExp(OclExpression oclExpression) {
-		RaiseExp raiseExp = new RaiseExpImpl();
+		RaiseExp raiseExp = ImperativeOclFactory.eINSTANCE.createRaiseExp();
 
 		if (oclExpression instanceof Type) {
 			raiseExp.setException((Type) oclExpression);
@@ -596,49 +530,58 @@ public class ImperativeOclTreeWalker {
 			StringLiteralExp stringLiteralExp =
 				(StringLiteralExp) oclExpression;
 
-			raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
+			//raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
 		}
 
 		return raiseExp;
 	}
 
 	protected RealLiteralExp createRealLiteralExp(String realSymbol) {
-		RealLiteralExp realLiteralExp = new RealLiteralExpImpl();
+		RealLiteralExp realLiteralExp =
+			ImperativeOclFactory.eINSTANCE.createRealLiteralExp();
+
 		realLiteralExp.setRealSymbol(Double.parseDouble(realSymbol));
 
 		return realLiteralExp;
 	}
 
 	protected StringLiteralExp createStringLiteralExp(String stringSymbol) {
-		StringLiteralExp stringLiteralExp = new StringLiteralExpImpl();
-		stringLiteralExp.setStringSymbol(stringSymbol);
+		StringLiteralExp stringLiteralExp =
+			ImperativeOclFactory.eINSTANCE.createStringLiteralExp();
+
+		stringLiteralExp.setStringSymbol(StringUtil.unescape(stringSymbol));
 
 		return stringLiteralExp;
 	}
 
-	protected SimpleName createSimpleName(SimpleTypeEnum type, String value) {
-		SimpleName simpleName = new SimpleNameImpl();
-
-		simpleName.setSimpleType(type);
-		simpleName.setValue(value);
-
-		return simpleName;
-	}
-
 	protected TryExp createTryExp() {
-		return new TryExpImpl();
+		return ImperativeOclFactory.eINSTANCE.createTryExp();
 	}
 
-	protected VariableInitExp createVariableInitExp(String varName) {
-		VariableInitExp variableInitExp = new VariableInitExpImpl();
+	protected Variable createVariable() {
+		return ImperativeOclFactory.eINSTANCE.createVariable();
+	}
 
-		variableInitExp.setVarName(varName);
+	protected VariableExp createVariableExp(Variable variable) {
+		VariableExp variableExp =
+			ImperativeOclFactory.eINSTANCE.createVariableExp();
+
+		variableExp.setReferredVariable(variable);
+
+		return variableExp;
+	}
+
+	protected VariableInitExp createVariableInitExp(String name) {
+		VariableInitExp variableInitExp =
+			ImperativeOclFactory.eINSTANCE.createVariableInitExp();
+
+		variableInitExp.setName(name);
 
 		return variableInitExp;
 	}
 
 	protected WhileExp createWhileExp(OclExpression condition) {
-		WhileExp whileExp = new WhileExpImpl();
+		WhileExp whileExp = ImperativeOclFactory.eINSTANCE.createWhileExp();
 
 		whileExp.setCondition(condition);
 

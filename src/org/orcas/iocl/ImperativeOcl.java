@@ -22,7 +22,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 import org.orcas.iocl.compiler.JavaVisitor;
-import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
 import org.orcas.iocl.parser.ImperativeOclTreeWalker;

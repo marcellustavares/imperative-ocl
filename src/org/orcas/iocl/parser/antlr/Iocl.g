@@ -32,10 +32,12 @@ BREAK = 'break';
 COLLECTION_LITERAL;
 COLLECTION_TYPE;
 COLON = ':';
+COMPUTE = 'compute';
 CONTINUE = 'continue';
 DO = 'do';
 DIV = '/';
 DOT = '.';
+ENDIF = 'endif';
 ELIF = 'elif';
 ELSE = 'else';
 EQUAL = '=';
@@ -213,18 +215,18 @@ simpleNameCS
 	| IDENTIFIER
 	;
 
-//primitiveType
-//	: PRIMITIVE_TYPE_LITERAL
-//	;
+primitiveType
+	: PRIMITIVE_TYPE_LITERAL
+	;
 
-//collectionType
-//	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
-//	;
+collectionType
+	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
+	;
 
 type
-	//: primitiveType
-	//| collectionType
-	: pathName
+	: primitiveType
+	| collectionType
+	| pathName
 	;
 
 pathName
@@ -236,6 +238,7 @@ pathName
 imperativeExp
 	: blockExp
 	| breakExp
+	| computeExp
 	| continueExp
 	| returnExp
 	| variableInitExp
@@ -248,19 +251,19 @@ imperativeExp
 	;
 
 blockExp
-	: DO LCURLY bodyExp RCURLY -> ^(DO bodyExp)
-	;
-
-bodyExp
-	: imperativeExp* -> imperativeExp*
+	: DO? LCURLY oclExpressionCS* RCURLY -> ^(DO oclExpressionCS*)
 	;
 
 breakExp
-	: BREAK SEMICOLON!
+	: BREAK SEMICOLON
+	;
+
+computeExp
+	: COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpressionCS RCURLY -> ^(COMPUTE variableDeclaration oclExpressionCS)
 	;
 
 continueExp
-	: CONTINUE SEMICOLON!
+	: CONTINUE SEMICOLON
 	;
 
 returnExp
@@ -268,7 +271,7 @@ returnExp
 	;
 
 variableInitExp
-	: VAR IDENTIFIER (COLON type)? IS oclExpressionCS SEMICOLON -> ^(VAR IDENTIFIER type? oclExpressionCS)
+	: VAR v1 = variableDeclaration (',' v2 = variableDeclaration)* SEMICOLON -> ^(VAR $v1 $v2)
 	;
 
 assignExp
@@ -280,12 +283,12 @@ raiseExp
 	;
 
 whileExp
-	: WHILE LPAREN oclExpressionCS RPAREN 
-		LCURLY bodyExp RCURLY -> ^(WHILE oclExpressionCS bodyExp)
+	: WHILE LPAREN condition = oclExpressionCS RPAREN 
+		LCURLY body = oclExpressionCS RCURLY -> ^(WHILE $condition $body)
 	;
 
 ifExp
-	: IF altExp (elifExp)* (elseExp)? -> ^(IF altExp elifExp* elseExp?)
+	: IF altExp (elifExp)* (elseExp)? ENDIF -> ^(IF altExp elifExp* elseExp?)
 	;
 
 elifExp
@@ -293,24 +296,24 @@ elifExp
 	;
 
 elseExp	
-	: ELSE LCURLY bodyExp RCURLY -> bodyExp
+	: ELSE! oclExpressionCS
 	;
 	
 altExp 
-	: LPAREN oclExpressionCS RPAREN LCURLY bodyExp RCURLY -> ^(ALT_EXP oclExpressionCS bodyExp)
+	: LPAREN condition = oclExpressionCS RPAREN  body = oclExpressionCS -> ^(ALT_EXP $condition $body)
 	;
 
 tryExp
-	: TRY LCURLY b1 = bodyExp RCURLY except LCURLY b2 = bodyExp RCURLY -> ^(TRY $b1 except $b2)
+	: TRY LCURLY oclExpressionCS* RCURLY except -> ^(TRY oclExpressionCS* except)
 	;
 
 except
-	: EXCEPT LPAREN t1 = type (',' t2 = type)* RPAREN -> $t1 ($t2)*
+	: EXCEPT LPAREN t1 = type (',' t2 = type*) RPAREN LCURLY oclExpressionCS* RCURLY -> ^(EXCEPT $t1 $t2* oclExpressionCS*)
 	;
 
 forExp	
-	: oclExpCS ARROW FOR_NAME LPAREN iteratorList ('|' oclExpressionCS)? RPAREN LCURLY bodyExp RCURLY 
-		-> ^(FOR FOR_NAME oclExpCS iteratorList oclExpressionCS? bodyExp)
+	: oclExpCS ARROW FOR_NAME LPAREN iteratorList ('|' oclExpressionCS)? RPAREN LCURLY oclExpressionCS RCURLY 
+		-> ^(FOR FOR_NAME oclExpCS iteratorList oclExpressionCS? oclExpressionCS)
 	;
 
 iteratorList

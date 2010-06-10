@@ -17,74 +17,64 @@
 
 package org.orcas.iocl.parser;
 
-import junit.framework.TestCase;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
+import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.CollectionLiteralExp;
-import org.orcas.iocl.exp.CollectionLiteralParts;
-import org.orcas.iocl.exp.CollectionTypeIdentifier;
-import org.orcas.iocl.exp.OclExpression;
+import junit.framework.TestCase;
 
 public class TestCollectionLiteralExp extends TestCase {
 
 	public void testBagExpression() {
 		exp = "Bag{1, 2}";
 
-		basicCheck(exp, CollectionTypeIdentifier.BAG, 2);
-	}
-
-	public void testCollectionExpression() {
-		exp = "Collection{}";
-
-		basicCheck(exp, CollectionTypeIdentifier.COLLECTION, 0);
+		basicCheck(exp, CollectionKind.BAG, 2);
 	}
 
 	public void testOrderedSetExpression() {
 		exp = "OrderedSet{1, 2}";
 
-		basicCheck(exp, CollectionTypeIdentifier.ORDERED_SET, 2);
+		basicCheck(exp, CollectionKind.ORDERED_SET, 2);
 	}
 
 	public void testSequenceExpression() {
 		exp = "Sequence {1.2, 3.5, 4, true}";
 
-		basicCheck(exp, CollectionTypeIdentifier.SEQUENCE, 4);
+		basicCheck(exp, CollectionKind.SEQUENCE, 4);
 	}
 
 	public void testSetExpression() {
 		exp = "Set{false, 'marcellus'}";
 
-		basicCheck(exp, CollectionTypeIdentifier.SET, 2);
+		basicCheck(exp, CollectionKind.SET, 2);
 	}
 
-	protected void basicCheck(String exp, int expectedType, int expectedSize)
+	protected void basicCheck(String exp, CollectionKind kind, int expectedSize)
 		{
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof CollectionLiteralExp);
 
 		collectionLiteralExp = (CollectionLiteralExp) oclExp;
 
-		CollectionTypeIdentifier type =
-			collectionLiteralExp.getCollectionKind();
+		CollectionKind collectionKind =
+			collectionLiteralExp.getKind();
 
-		assertEquals(type.getCollectionType(), expectedType);
+		assertEquals(kind, collectionKind);
 
 		if (expectedSize == 0) {
-			assertNull(collectionLiteralExp.getCollectionLiteralParts());
+			assertNull(collectionLiteralExp.getPart().isEmpty());
 		}
 		else {
-			CollectionLiteralParts collectionLiteralParts =
-				collectionLiteralExp.getCollectionLiteralParts();
 			assertEquals(
-				collectionLiteralParts.getParts().size(), expectedSize);
+				collectionLiteralExp.getPart().size(), expectedSize);
 		}
 	}
 
 	protected String exp;
 	protected CollectionLiteralExp collectionLiteralExp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

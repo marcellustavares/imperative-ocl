@@ -17,58 +17,57 @@
 
 package org.orcas.iocl.parser;
 
-import junit.framework.TestCase;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.BooleanLiteralExp;
-import org.orcas.iocl.exp.IntegerLiteralExp;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.RealLiteralExp;
-import org.orcas.iocl.exp.StringLiteralExp;
+import junit.framework.TestCase;
 
 public class TestPrimitiveLiteralExp extends TestCase {
 
 	public void testBooleanLiteralExp() {
 		exp = "true";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 
 		exp = "false";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 	}
 
 	public void testIntegerLiteralExp() {
 		exp = "2";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof IntegerLiteralExp);
 	}
 
 	public void testRealLiteralExp() {
 		exp = "2.2";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof RealLiteralExp);
 	}
 
 	public void testStringLiteralExp() {
 		exp = "'marcellus'";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		exp = "'\u4147 ok'  ";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		exp = "' t  e\t\nst '	  ";
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof StringLiteralExp);
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

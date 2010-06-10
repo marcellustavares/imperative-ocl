@@ -17,14 +17,13 @@
 
 package org.orcas.iocl.parser;
 
-import java.util.List;
-
 import junit.framework.TestCase;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.NumericLiteralExp;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
+import org.eclipse.emf.common.util.EList;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.NumericLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.util.OperationCode;
 
 public class TestArithmeticExp extends TestCase {
@@ -33,7 +32,7 @@ public class TestArithmeticExp extends TestCase {
 		String[] exps = new String[] {" -1", "- 1.2 "};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			checkUnaryExp(oclExp);
 		}
@@ -44,7 +43,7 @@ public class TestArithmeticExp extends TestCase {
 			"1*1", "2 / 3", "1.2 /	4", "2.6   *4.3"};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			checkMultiplicativeExp(oclExp);
 		}
@@ -55,7 +54,7 @@ public class TestArithmeticExp extends TestCase {
 			"1+1", "2 - 3", "1.2 +	4", "2.6   -4.3"};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			checkAdditiveExp(oclExp);
 		}
@@ -65,7 +64,7 @@ public class TestArithmeticExp extends TestCase {
 		String[] exps = new String[] {"-1+2", "-1-1"};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			checkAdditiveExp(oclExp);
 		}
@@ -73,7 +72,7 @@ public class TestArithmeticExp extends TestCase {
 		exps = new String[] {"-1*2", "-1/1"};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			checkMultiplicativeExp(oclExp);
 		}
@@ -101,7 +100,7 @@ public class TestArithmeticExp extends TestCase {
 
 		assertTrue(opCheck);
 
-		List<OclExpression> args = opCallExp.getArguments();
+		EList<OclExpression> args = opCallExp.getArgument();
 
 		assertTrue(args.size() == 1);
 
@@ -137,7 +136,7 @@ public class TestArithmeticExp extends TestCase {
 
 		assertTrue(opCheck);
 
-		List<OclExpression> args = opCallExp.getArguments();
+		EList<OclExpression> args = opCallExp.getArgument();
 
 		assertTrue(args.size() == 1);
 
@@ -170,7 +169,6 @@ public class TestArithmeticExp extends TestCase {
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

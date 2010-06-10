@@ -19,10 +19,10 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.BooleanLiteralExp;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.util.OperationCode;
 
 public class TestEqualityExp extends TestCase {
@@ -31,7 +31,7 @@ public class TestEqualityExp extends TestCase {
 		String[] exps = new String[] {"true = false", "false <> true "};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
@@ -50,7 +50,6 @@ public class TestEqualityExp extends TestCase {
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

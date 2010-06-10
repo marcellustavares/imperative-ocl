@@ -19,10 +19,10 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.BooleanLiteralExp;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.util.OperationCode;
 
 public class TestLogicalExp extends TestCase {
@@ -32,7 +32,7 @@ public class TestLogicalExp extends TestCase {
 			"true and false", "true or true ", " false xor false"};
 
 		for (String exp : exps) {
-			oclExp = iocl.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(exp);
 
 			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
@@ -55,7 +55,7 @@ public class TestLogicalExp extends TestCase {
 	public void testNestedLogicalExp() {
 		String exp = "false and false or false xor true";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
@@ -71,14 +71,13 @@ public class TestLogicalExp extends TestCase {
 
 		assertEquals("xor", operation);
 
-		OclExpression arg = opCallExp.getArguments().get(0);
+		OclExpression arg = opCallExp.getArgument().get(0);
 
 		assertTrue(arg instanceof BooleanLiteralExp);
 
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

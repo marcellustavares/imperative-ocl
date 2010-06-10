@@ -27,11 +27,7 @@ import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
 import org.orcas.iocl.parser.ImperativeOclTreeWalker;
 
-public class ImperativeOcl {
-
-	public static ImperativeOcl getInstance() {
-		return _instance;
-	}
+public class ImperativeOclServiceImpl implements ImperativeOclService {
 
 	public OclExpression parse(String exp) {
 		try {
@@ -71,7 +67,6 @@ public class ImperativeOcl {
 		System.out.println(tree.toStringTree());
 	}
 
-	private static ImperativeOcl _instance = new ImperativeOcl();
 	private JavaVisitor _javaVisitor = new JavaVisitor();
 	private ImperativeOclTreeWalker _walker = new ImperativeOclTreeWalker();
 

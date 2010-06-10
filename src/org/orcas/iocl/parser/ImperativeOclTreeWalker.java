@@ -315,12 +315,9 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.IS:
 				AssignExp assignExp = getFactory().createAssignExp();
 
-				String name = tree.getChild(0).getText();
-
-				assignExp.setName(name);
-
 				boolean isReset = (tree.getType() == IoclParser.IS);
 
+				assignExp.setLeft(walk(tree.getChild(0)));
 				assignExp.setIsReset(isReset);
 				assignExp.setDefaultValue(walk(tree.getChild(1)));
 

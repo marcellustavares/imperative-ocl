@@ -15,29 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.parser;
+package org.orcas.iocl;
 
-import junit.framework.TestCase;
-
-import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
-public class TestIteratorExp extends TestCase {
+public interface ImperativeOclService {
 
-	public void testIterateExp() {
-		exp = "Sequence{1,2,3,4,5}->forAll(a | a > 2)";
+	public String compileToJava(String expression);
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
-
-		assertTrue(oclExp instanceof IteratorExp);
-
-		IteratorExp iteratorExp = (IteratorExp)oclExp;
-
-		assertEquals("forAll", iteratorExp.getName());
-	}
-
-	protected String exp;
-	protected OclExpression oclExp;
+	public OclExpression parse(String expression);
 
 }

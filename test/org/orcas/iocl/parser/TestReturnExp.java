@@ -17,35 +17,34 @@
 
 package org.orcas.iocl.parser;
 
-import junit.framework.TestCase;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.ReturnExp;
+import junit.framework.TestCase;
 
 public class TestReturnExp extends TestCase {
 
 	public void testReturnExp() {
 		exp = "return;";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof ReturnExp);
 
 		exp = "return 1+2;";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof ReturnExp);
 
 		ReturnExp returnExp = (ReturnExp) oclExp;
 
-		assertTrue(returnExp.getOclExpression() instanceof OperationCallExp);
+		assertTrue(returnExp.getValue() instanceof OperationCallExp);
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

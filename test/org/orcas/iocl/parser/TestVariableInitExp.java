@@ -19,72 +19,80 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.OperationCallExp;
-import org.orcas.iocl.exp.PathName;
-import org.orcas.iocl.exp.PrimitiveType;
-import org.orcas.iocl.exp.SimpleTypeEnum;
-import org.orcas.iocl.exp.StringLiteralExp;
-import org.orcas.iocl.exp.VariableInitExp;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.emof.PrimitiveType;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
+import org.orcas.iocl.util.PathType;
 
 public class TestVariableInitExp extends TestCase {
 
 	public void testVariableInitExp() {
 		exp = "var tmp := 1+2;";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof VariableInitExp);
 
 		VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-		assertEquals(variableInitExp.getVarName(), "tmp");
+		Variable referredVariable = variableInitExp.getReferredVariable();
+
+		assertEquals(referredVariable.getName(), "tmp");
 
 		assertTrue(variableInitExp.getType() == null);
 
-		assertTrue(variableInitExp.getVarValue() instanceof OperationCallExp);
+		OclExpression initExpression = referredVariable.getInitExpression();
+
+		assertTrue(initExpression instanceof OperationCallExp);
 	}
 
 	public void testVariableInitTypedExp() {
 		exp = "var tmp:String := 'Marcellus';";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof VariableInitExp);
 
 		VariableInitExp variableInitExp = (VariableInitExp) oclExp;
 
-		assertEquals(variableInitExp.getVarName(), "tmp");
+		Variable referredVariable = variableInitExp.getReferredVariable();
+
+		assertEquals(referredVariable.getName(), "tmp");
 
 		assertTrue(variableInitExp.getType() instanceof PrimitiveType);
 
-		PrimitiveType primitiveType = (PrimitiveType) variableInitExp.getType();
+		OclExpression initExpression = referredVariable.getInitExpression();
 
-		assertEquals(primitiveType.getSimpleType(), SimpleTypeEnum.STRING);
+		assertTrue(initExpression instanceof StringLiteralExp);
 
-		assertTrue(variableInitExp.getVarValue() instanceof StringLiteralExp);
+		StringLiteralExp stringLiteralExp = (StringLiteralExp)initExpression;
 
-		StringLiteralExp varValue =
-			(StringLiteralExp) variableInitExp.getVarValue();
-
-		assertEquals(varValue.getStringSymbol(), "Marcellus");
+		assertEquals(stringLiteralExp.getStringSymbol(), "Marcellus");
 
 		exp = "var tmp:javax::portlet::Portlet := 'Marcellus';";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		variableInitExp = (VariableInitExp) oclExp;
 
-		assertTrue(variableInitExp.getType() instanceof PathName);
+		assertTrue(oclExp instanceof VariableInitExp);
 
-		PathName pathName = (PathName) variableInitExp.getType();
+		variableInitExp = (VariableInitExp) oclExp;
 
-		assertTrue(pathName.getQualifiedName().size() == 3);
+		referredVariable = variableInitExp.getReferredVariable();
+
+		assertTrue(referredVariable.getType() instanceof PathType);
+
+		PathType pathType = (PathType)referredVariable.getType();
+
+		assertEquals(3, pathType.getQualifiedName().size());
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

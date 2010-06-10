@@ -17,19 +17,19 @@
 
 package org.orcas.iocl.parser;
 
-import junit.framework.TestCase;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
+import org.orcas.iocl.util.PathType;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.PathName;
-import org.orcas.iocl.exp.RaiseExp;
+import junit.framework.TestCase;
 
 public class TestRaiseExp extends TestCase {
 
-	public void testRaiseExceptionMessageExp() {
+	/*public void testRaiseExceptionMessageExp() {
 		exp = "raise 'custom exception message';";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof RaiseExp);
 
@@ -37,26 +37,25 @@ public class TestRaiseExp extends TestCase {
 
 		assertEquals(
 			raiseExp.getExceptionMessage(), "custom exception message");
-	}
+	}*/
 
 	public void testRaiseTypeExp() {
 		exp = "raise java::lang::Exception;";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof RaiseExp);
 
 		RaiseExp raiseExp = (RaiseExp) oclExp;
 
-		assertTrue(raiseExp.getException() instanceof PathName);
+		assertTrue(raiseExp.getException() instanceof PathType);
 
-		PathName pathName = (PathName) raiseExp.getException();
+		PathType pathType = (PathType) raiseExp.getException();
 
-		assertTrue(pathName.getQualifiedName().size() == 3);
+		assertTrue(pathType.getQualifiedName().size() == 3);
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

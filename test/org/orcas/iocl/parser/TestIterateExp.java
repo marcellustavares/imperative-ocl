@@ -19,22 +19,21 @@ package org.orcas.iocl.parser;
 
 import junit.framework.TestCase;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.IterateExp;
-import org.orcas.iocl.exp.OclExpression;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.IterateExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
 public class TestIterateExp extends TestCase {
 
 	public void testIterateExp() {
 		exp = "Set{1 ,2 ,3}->iterate(v1; v2:Boolean = false | v2 or v1 > 2)";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof IterateExp);
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

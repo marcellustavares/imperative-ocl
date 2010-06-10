@@ -17,11 +17,11 @@
 
 package org.orcas.iocl.parser;
 
-import junit.framework.TestCase;
+import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.TryExp;
 
-import org.orcas.iocl.ImperativeOcl;
-import org.orcas.iocl.exp.OclExpression;
-import org.orcas.iocl.exp.TryExp;
+import junit.framework.TestCase;
 
 public class TestTryExp extends TestCase {
 
@@ -34,13 +34,12 @@ public class TestTryExp extends TestCase {
 			  " raise 'something is wrong'; " +
 			  "}";
 
-		oclExp = iocl.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof TryExp);
 	}
 
 	protected String exp;
-	protected ImperativeOcl iocl = ImperativeOcl.getInstance();
 	protected OclExpression oclExp;
 
 }

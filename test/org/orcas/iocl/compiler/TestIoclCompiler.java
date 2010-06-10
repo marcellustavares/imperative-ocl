@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tools.ant.DirectoryScanner;
-import org.orcas.iocl.ImperativeOcl;
+import org.orcas.iocl.ImperativeOclServiceUtil;
 import org.orcas.util.FileUtil;
 
 public class TestIoclCompiler {
@@ -106,7 +106,7 @@ public class TestIoclCompiler {
 			}
 
 			if (line.indexOf("]>") != -1) {
-				sb.append(ImperativeOcl.getInstance().compileToJava(bodyExp));
+				sb.append(ImperativeOclServiceUtil.compileToJava(bodyExp));
 				sb.append("\n");
 				sb.append(line.replace("]>", "}"));
 				sb.append("\n");

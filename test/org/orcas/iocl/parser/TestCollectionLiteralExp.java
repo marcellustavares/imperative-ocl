@@ -69,7 +69,7 @@ public class TestCollectionLiteralExp extends TestCase {
 		}
 		else {
 			assertEquals(
-				collectionLiteralExp.getPart().size(), expectedSize);
+				expectedSize, collectionLiteralExp.getPart().size());
 		}
 	}
 

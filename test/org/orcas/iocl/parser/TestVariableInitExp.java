@@ -63,7 +63,7 @@ public class TestVariableInitExp extends TestCase {
 
 		assertEquals(referredVariable.getName(), "tmp");
 
-		assertTrue(variableInitExp.getType() instanceof PrimitiveType);
+		assertTrue(referredVariable.getType() instanceof PrimitiveType);
 
 		OclExpression initExpression = referredVariable.getInitExpression();
 

@@ -228,13 +228,17 @@ public class ImperativeOclTreeWalker {
 				for (int i = 0; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Type) {
-						exception.add((Type)exp);
+					if (exp instanceof TypeExp) {
+						typeExp = (TypeExp)exp;
+
+						exception.add(typeExp.getReferredType());
 					}
 					else {
 						body.add(exp);
 					}
 				}
+
+				oclExpression = catchExp;
 
 				break;
 
@@ -379,9 +383,19 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.RAISE:
 				RaiseExp raiseExp = getFactory().createRaiseExp();
 
-				typeExp = (TypeExp)walk(tree.getChild(0));
+				OclExpression exp = walk(tree.getChild(0));
 
-				raiseExp.setException(typeExp.getReferredType());
+				if (exp instanceof TypeExp) {
+					typeExp = (TypeExp)exp;
+
+					raiseExp.setException(typeExp.getReferredType());
+				}
+				else {
+					StringLiteralExp stringLiteralExp = (StringLiteralExp)exp;
+
+					raiseExp.setExceptionMessage(
+						stringLiteralExp.getStringSymbol());
+				}
 
 				oclExpression = raiseExp;
 
@@ -444,7 +458,7 @@ public class ImperativeOclTreeWalker {
 				EList<OclExpression> tryBody = tryExp.getTryBody();
 
 				for (int i = 0; i < tree.getChildCount(); i++) {
-					OclExpression exp = walk(tree.getChild(i));
+					exp = walk(tree.getChild(i));
 
 					if (exp instanceof CatchExp) {
 						catchClause.add((CatchExp)exp);
@@ -462,7 +476,9 @@ public class ImperativeOclTreeWalker {
 				VariableInitExp variableInitExp =
 					getFactory().createVariableInitExp();
 
-				Variable referredVariable = (Variable)walk(tree.getChild(0));
+				VariableExp variableExp = (VariableExp)walk(tree.getChild(0));
+
+				Variable referredVariable = variableExp.getReferredVariable();
 
 				variableInitExp.setReferredVariable(referredVariable);
 
@@ -476,17 +492,19 @@ public class ImperativeOclTreeWalker {
 				variable.setName(tree.getChild(0).getText());
 
 				for (int i = 1; i < tree.getChildCount(); i++) {
-					OclExpression exp = walk(tree.getChild(i));
+					exp = walk(tree.getChild(i));
 
-					if (exp instanceof Type) {
-						variable.setType((Type)exp);
+					if (exp instanceof TypeExp) {
+						typeExp = (TypeExp)exp;
+
+						variable.setType(typeExp.getReferredType());
 					}
 					else {
 						variable.setInitExpression(exp);
 					}
 				}
 
-				VariableExp variableExp = getFactory().createVariableExp();
+				variableExp = getFactory().createVariableExp();
 
 				variableExp.setReferredVariable(variable);
 

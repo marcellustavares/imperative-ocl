@@ -141,7 +141,7 @@ collectionTypeIdentifierCS
 	;
 
 collectionLiteralPartsCS
-	: clp1 = collectionLiteralPartCS (',' clp2 = collectionLiteralPartCS)* -> $clp1 $clp2*
+	: collectionLiteralPartCS (','! collectionLiteralPartsCS)*
 	;
 
 collectionLiteralPartCS
@@ -271,7 +271,15 @@ returnExp
 	;
 
 variableInitExp
-	: VAR v1 = variableDeclaration (',' v2 = variableDeclaration)* SEMICOLON -> ^(VAR $v1 $v2)
+	: VAR^ imperativeVarDeclarations SEMICOLON!
+	;
+	
+imperativeVarDeclarations
+	: imperativeVarDeclaration (','! imperativeVarDeclaration)*
+	;
+	
+imperativeVarDeclaration
+	: IDENTIFIER (':' type)? ((EQUAL | IS)  oclExpressionCS)? -> ^(VARIABLE IDENTIFIER type? oclExpressionCS?)
 	;
 
 assignExp
@@ -308,7 +316,7 @@ tryExp
 	;
 
 except
-	: EXCEPT LPAREN t1 = type (',' t2 = type*) RPAREN LCURLY oclExpressionCS* RCURLY -> ^(EXCEPT $t1 $t2* oclExpressionCS*)
+	: EXCEPT LPAREN type RPAREN LCURLY oclExpressionCS* RCURLY -> ^(EXCEPT type oclExpressionCS*)
 	;
 
 forExp	

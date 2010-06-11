@@ -15,30 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.parser;
+package org.orcas.iocl.exception;
 
-import junit.framework.TestCase;
+@SuppressWarnings("serial")
+public class ParserException extends Exception {
 
-import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
-import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
-import org.orcas.iocl.expressions.imperativeocl.OclExpression;
-
-public class TestIteratorExp extends TestCase {
-
-	public void testIterateExp() throws ParserException {
-		exp = "Sequence{1,2,3,4,5}->forAll(a | a > 2)";
-
-		oclExp = ImperativeOclServiceUtil.parse(exp);
-
-		assertTrue(oclExp instanceof IteratorExp);
-
-		IteratorExp iteratorExp = (IteratorExp)oclExp;
-
-		assertEquals("forAll", iteratorExp.getName());
+	public ParserException() {
+		super();
 	}
 
-	protected String exp;
-	protected OclExpression oclExp;
+	public ParserException(String message) {
+		super(message);
+	}
+
+	public ParserException(Throwable cause) {
+		super(cause);
+	}
+
+	public ParserException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
 }

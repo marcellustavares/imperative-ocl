@@ -22,6 +22,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
 import org.orcas.iocl.compiler.JavaVisitor;
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
@@ -29,7 +30,7 @@ import org.orcas.iocl.parser.ImperativeOclTreeWalker;
 
 public class ImperativeOclServiceImpl implements ImperativeOclService {
 
-	public OclExpression parse(String exp) {
+	public OclExpression parse(String exp) throws ParserException {
 		try {
 			ANTLRStringStream input = new ANTLRStringStream(exp);
 
@@ -44,23 +45,14 @@ public class ImperativeOclServiceImpl implements ImperativeOclService {
 			return _walker.walk(tree);
 		}
 		catch (RecognitionException re) {
-			re.printStackTrace();
+			throw new ParserException(re);
 		}
-
-		return null;
 	}
 
-	public String compileToJava(String exp) {
-		try {
-			OclExpression oclExpression = parse(exp);
+	public String compileToJava(String exp) throws ParserException {
+		OclExpression oclExpression = parse(exp);
 
-			return oclExpression.accept(_javaVisitor);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
+		return oclExpression.accept(_javaVisitor);
 	}
 
 	protected void showIoclAst(Tree tree) {

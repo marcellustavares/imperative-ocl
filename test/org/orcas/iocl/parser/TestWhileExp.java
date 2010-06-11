@@ -20,12 +20,13 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 
 public class TestWhileExp extends TestCase {
 
-	public void testWhileExp() {
+	public void testWhileExp() throws ParserException {
 		exp = "while (x < 10) { " +
 			  " x := x + 1;" +
 			  "} ";

@@ -18,6 +18,7 @@
 package org.orcas.iocl.parser;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
 
@@ -25,7 +26,7 @@ import junit.framework.TestCase;
 
 public class TestTryExp extends TestCase {
 
-	public void testTryExp() {
+	public void testTryExp() throws ParserException {
 		exp = "try {" +
 			  " var a:String := 'marcellus';" +
 			  "	var size:Integer := a.size();" +

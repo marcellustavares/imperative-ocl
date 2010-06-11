@@ -17,15 +17,20 @@
 
 package org.orcas.iocl;
 
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
 public class ImperativeOclServiceUtil {
 
-	public static String compileToJava(String expression) {
+	public static String compileToJava(String expression) 
+		throws ParserException {
+		
 		return getService().compileToJava(expression);
 	}
 
-	public static OclExpression parse(String expression) {
+	public static OclExpression parse(String expression) 
+		throws ParserException {
+		
 		return getService().parse(expression);
 	}
 

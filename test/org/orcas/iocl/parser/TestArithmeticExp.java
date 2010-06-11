@@ -21,6 +21,7 @@ import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.EList;
 import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.NumericLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
@@ -28,7 +29,7 @@ import org.orcas.iocl.util.OperationCode;
 
 public class TestArithmeticExp extends TestCase {
 
-	public void testUnaryExp() {
+	public void testUnaryExp() throws ParserException {
 		String[] exps = new String[] {" -1", "- 1.2 "};
 
 		for (String exp : exps) {
@@ -38,7 +39,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testMultiplicativeExp() {
+	public void testMultiplicativeExp() throws ParserException {
 		String[] exps = new String[] {
 			"1*1", "2 / 3", "1.2 /	4", "2.6   *4.3"};
 
@@ -49,7 +50,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testAdditiveExp() {
+	public void testAdditiveExp() throws ParserException {
 		String[] exps = new String[] {
 			"1+1", "2 - 3", "1.2 +	4", "2.6   -4.3"};
 
@@ -60,7 +61,7 @@ public class TestArithmeticExp extends TestCase {
 		}
 	}
 
-	public void testArithmeticExp() {
+	public void testArithmeticExp() throws ParserException {
 		String[] exps = new String[] {"-1+2", "-1-1"};
 
 		for (String exp : exps) {

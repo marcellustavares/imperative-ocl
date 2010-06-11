@@ -81,6 +81,26 @@ package org.orcas.iocl.parser.antlr;
 package org.orcas.iocl.parser.antlr;
 }
 
+@members {
+protected void mismatch(IntStream input, int ttype, BitSet follow)
+    throws RecognitionException
+{
+    throw new MismatchedTokenException(ttype, input);
+}
+
+public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow)
+    throws RecognitionException
+{
+    throw e;
+}
+}
+
+@rulecatch {
+catch (RecognitionException e) {
+    throw e;
+}
+}
+
 oclExpressionCS
 	: imperativeExp
 	| logicalExpCS

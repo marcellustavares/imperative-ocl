@@ -18,6 +18,7 @@
 package org.orcas.iocl.parser;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
+import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
@@ -26,32 +27,33 @@ import junit.framework.TestCase;
 
 public class TestCollectionLiteralExp extends TestCase {
 
-	public void testBagExpression() {
+	public void testBagExpression() throws ParserException {
 		exp = "Bag{1, 2}";
 
 		basicCheck(exp, CollectionKind.BAG, 2);
 	}
 
-	public void testOrderedSetExpression() {
+	public void testOrderedSetExpression() throws ParserException {
 		exp = "OrderedSet{1, 2}";
 
 		basicCheck(exp, CollectionKind.ORDERED_SET, 2);
 	}
 
-	public void testSequenceExpression() {
+	public void testSequenceExpression() throws ParserException {
 		exp = "Sequence {1.2, 3.5, 4, true}";
 
 		basicCheck(exp, CollectionKind.SEQUENCE, 4);
 	}
 
-	public void testSetExpression() {
+	public void testSetExpression() throws ParserException {
 		exp = "Set{false, 'marcellus'}";
 
 		basicCheck(exp, CollectionKind.SET, 2);
 	}
 
-	protected void basicCheck(String exp, CollectionKind kind, int expectedSize)
-		{
+	protected void basicCheck(
+			String exp, CollectionKind kind, int expectedSize) 
+		throws ParserException {
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);
 

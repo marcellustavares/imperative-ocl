@@ -1016,6 +1016,15 @@ public class ImperativeOclPackageImpl extends EPackageImpl implements Imperative
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getRaiseExp_ExceptionMessage() {
+		return (EAttribute)raiseExpEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContinueExp() {
 		return continueExpEClass;
 	}
@@ -2200,6 +2209,7 @@ public class ImperativeOclPackageImpl extends EPackageImpl implements Imperative
 		raiseExpEClass = createEClass(RAISE_EXP);
 		createEReference(raiseExpEClass, RAISE_EXP__EXCEPTION);
 		createEReference(raiseExpEClass, RAISE_EXP__ARGUMENT);
+		createEAttribute(raiseExpEClass, RAISE_EXP__EXCEPTION_MESSAGE);
 
 		continueExpEClass = createEClass(CONTINUE_EXP);
 
@@ -2545,6 +2555,7 @@ public class ImperativeOclPackageImpl extends EPackageImpl implements Imperative
 		initEClass(raiseExpEClass, RaiseExp.class, "RaiseExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getRaiseExp_Exception(), theEmofPackage.getType(), null, "exception", null, 1, 1, RaiseExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getRaiseExp_Argument(), this.getOclExpression(), null, "argument", null, 0, 1, RaiseExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getRaiseExp_ExceptionMessage(), theEmofPackage.getString(), "exceptionMessage", null, 0, 1, RaiseExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(continueExpEClass, ContinueExp.class, "ContinueExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

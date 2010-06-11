@@ -1107,13 +1107,22 @@ public interface ImperativeOclPackage extends EPackage {
 	int RAISE_EXP__ARGUMENT = IMPERATIVE_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Exception Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAISE_EXP__EXCEPTION_MESSAGE = IMPERATIVE_EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Raise Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RAISE_EXP_FEATURE_COUNT = IMPERATIVE_EXPRESSION_FEATURE_COUNT + 2;
+	int RAISE_EXP_FEATURE_COUNT = IMPERATIVE_EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.orcas.iocl.expressions.imperativeocl.impl.ContinueExpImpl <em>Continue Exp</em>}' class.
@@ -5516,6 +5525,17 @@ public interface ImperativeOclPackage extends EPackage {
 	EReference getRaiseExp_Argument();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.orcas.iocl.expressions.imperativeocl.RaiseExp#getExceptionMessage <em>Exception Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exception Message</em>'.
+	 * @see org.orcas.iocl.expressions.imperativeocl.RaiseExp#getExceptionMessage()
+	 * @see #getRaiseExp()
+	 * @generated
+	 */
+	EAttribute getRaiseExp_ExceptionMessage();
+
+	/**
 	 * Returns the meta object for class '{@link org.orcas.iocl.expressions.imperativeocl.ContinueExp <em>Continue Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7134,6 +7154,14 @@ public interface ImperativeOclPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RAISE_EXP__ARGUMENT = eINSTANCE.getRaiseExp_Argument();
+
+		/**
+		 * The meta object literal for the '<em><b>Exception Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RAISE_EXP__EXCEPTION_MESSAGE = eINSTANCE.getRaiseExp_ExceptionMessage();
 
 		/**
 		 * The meta object literal for the '{@link org.orcas.iocl.expressions.imperativeocl.impl.ContinueExpImpl <em>Continue Exp</em>}' class.

@@ -30,6 +30,7 @@ import org.orcas.iocl.expressions.emof.Type;
  * <ul>
  *   <li>{@link org.orcas.iocl.expressions.imperativeocl.RaiseExp#getException <em>Exception</em>}</li>
  *   <li>{@link org.orcas.iocl.expressions.imperativeocl.RaiseExp#getArgument <em>Argument</em>}</li>
+ *   <li>{@link org.orcas.iocl.expressions.imperativeocl.RaiseExp#getExceptionMessage <em>Exception Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,5 +90,31 @@ public interface RaiseExp extends ImperativeExpression {
 	 * @generated
 	 */
 	void setArgument(OclExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Exception Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Exception Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Exception Message</em>' attribute.
+	 * @see #setExceptionMessage(String)
+	 * @see org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage#getRaiseExp_ExceptionMessage()
+	 * @model dataType="org.orcas.iocl.expressions.emof.String"
+	 * @generated
+	 */
+	String getExceptionMessage();
+
+	/**
+	 * Sets the value of the '{@link org.orcas.iocl.expressions.imperativeocl.RaiseExp#getExceptionMessage <em>Exception Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Exception Message</em>' attribute.
+	 * @see #getExceptionMessage()
+	 * @generated
+	 */
+	void setExceptionMessage(String value);
 
 } // RaiseExp

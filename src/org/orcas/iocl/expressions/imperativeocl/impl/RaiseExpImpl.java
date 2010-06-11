@@ -41,6 +41,7 @@ import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
  * <ul>
  *   <li>{@link org.orcas.iocl.expressions.imperativeocl.impl.RaiseExpImpl#getException <em>Exception</em>}</li>
  *   <li>{@link org.orcas.iocl.expressions.imperativeocl.impl.RaiseExpImpl#getArgument <em>Argument</em>}</li>
+ *   <li>{@link org.orcas.iocl.expressions.imperativeocl.impl.RaiseExpImpl#getExceptionMessage <em>Exception Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 	 * @ordered
 	 */
 	protected OclExpression argument;
+
+	/**
+	 * The default value of the '{@link #getExceptionMessage() <em>Exception Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExceptionMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXCEPTION_MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExceptionMessage() <em>Exception Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExceptionMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String exceptionMessage = EXCEPTION_MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +193,27 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getExceptionMessage() {
+		return exceptionMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExceptionMessage(String newExceptionMessage) {
+		String oldExceptionMessage = exceptionMessage;
+		exceptionMessage = newExceptionMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImperativeOclPackage.RAISE_EXP__EXCEPTION_MESSAGE, oldExceptionMessage, exceptionMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -194,6 +236,8 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 				return basicGetException();
 			case ImperativeOclPackage.RAISE_EXP__ARGUMENT:
 				return getArgument();
+			case ImperativeOclPackage.RAISE_EXP__EXCEPTION_MESSAGE:
+				return getExceptionMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -211,6 +255,9 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 				return;
 			case ImperativeOclPackage.RAISE_EXP__ARGUMENT:
 				setArgument((OclExpression)newValue);
+				return;
+			case ImperativeOclPackage.RAISE_EXP__EXCEPTION_MESSAGE:
+				setExceptionMessage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -230,6 +277,9 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 			case ImperativeOclPackage.RAISE_EXP__ARGUMENT:
 				setArgument((OclExpression)null);
 				return;
+			case ImperativeOclPackage.RAISE_EXP__EXCEPTION_MESSAGE:
+				setExceptionMessage(EXCEPTION_MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,8 +296,26 @@ public class RaiseExpImpl extends ImperativeExpressionImpl implements RaiseExp {
 				return exception != null;
 			case ImperativeOclPackage.RAISE_EXP__ARGUMENT:
 				return argument != null;
+			case ImperativeOclPackage.RAISE_EXP__EXCEPTION_MESSAGE:
+				return EXCEPTION_MESSAGE_EDEFAULT == null ? exceptionMessage != null : !EXCEPTION_MESSAGE_EDEFAULT.equals(exceptionMessage);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (exceptionMessage: "); //$NON-NLS-1$
+		result.append(exceptionMessage);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RaiseExpImpl

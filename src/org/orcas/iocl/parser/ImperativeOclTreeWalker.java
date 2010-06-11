@@ -76,10 +76,13 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.OR:
 			case IoclParser.PLUS:
 			case IoclParser.XOR:
+				OperationCallExp operationCallExp =
+					getFactory().createOperationCallExp();
+
 				int operationCode = OperationCode.fromLabel(tree.getText());
 
-				OperationCallExp operationCallExp = createOperationCallExp(
-					operationCode, walk(tree.getChild(0)));
+				operationCallExp.setOperationCode(operationCode);
+				operationCallExp.setSource(walk(tree.getChild(0)));
 
 				EList<OclExpression> argument = operationCallExp.getArgument();
 
@@ -91,223 +94,13 @@ public class ImperativeOclTreeWalker {
 
 				break;
 
-			case IoclParser.DOT:
-			case IoclParser.ARROW:
-				operationCode = OperationCode.fromLabel(
-					tree.getChild(1).getText());
+			case IoclParser.ALT_EXP:
+				AltExp altExp = getFactory().createAltExp();
 
-				operationCallExp = createOperationCallExp(
-					operationCode, walk(tree.getChild(0)));
+				altExp.setCondition(walk(tree.getChild(0)));
+				altExp.setBody(walk(tree.getChild(1)));
 
-				argument = operationCallExp.getArgument();
-
-				for (int i = 2; i < tree.getChildCount(); i++) {
-					argument.add(walk(tree.getChild(i)));
-				}
-
-				oclExpression = operationCallExp;
-
-				break;
-
-			case IoclParser.ITERATE:
-				IterateExp iterateExp = createIterateExp(
-					walk(tree.getChild(0)));
-
-				EList<Variable> iterator = iterateExp.getIterator();
-
-				for (int i = 1; i < tree.getChildCount(); i++) {
-					OclExpression exp = walk(tree.getChild(i));
-
-					if (exp instanceof VariableExp) {
-						VariableExp variableExp = (VariableExp)exp;
-
-						iterator.add(variableExp.getReferredVariable());
-					}
-					else {
-						iterateExp.setBody(exp);
-					}
-				}
-
-				oclExpression = iterateExp;
-
-				break;
-
-			case IoclParser.ITERATOR:
-				IteratorExp iteratorExp = createIteratorExp(
-					walk(tree.getChild(0)));
-
-				iteratorExp.setName(tree.getChild(1).getText());
-
-				iterator = iteratorExp.getIterator();
-
-				for (int i = 2; i < tree.getChildCount(); i++) {
-					OclExpression exp = walk(tree.getChild(i));
-
-					if (exp instanceof VariableExp) {
-						VariableExp variableExp = (VariableExp)exp;
-
-						iterator.add(variableExp.getReferredVariable());
-					}
-					else {
-						iteratorExp.setBody(exp);
-					}
-				}
-
-				oclExpression = iteratorExp;
-
-				break;
-
-			case IoclParser.PRIMITIVE_TYPE_LITERAL:
-				PrimitiveType primitiveType =
-					EmofFactory.eINSTANCE.createPrimitiveType();
-
-				primitiveType.setName(tree.getText());
-
-				TypeExp typeExp = getFactory().createTypeExp();
-
-				typeExp.setReferredType(primitiveType);
-
-				oclExpression = typeExp;
-
-				break;
-
-			case IoclParser.COLLECTION_TYPE:
-				Tree kind = tree.getChild(0);
-
-				CollectionKind collectionKind = CollectionKind.get(
-					kind.getText());
-
-				CollectionType collectionType = getCollectionType(
-					collectionKind);
-
-				typeExp = getFactory().createTypeExp();
-
-				typeExp.setReferredType(collectionType);
-
-				oclExpression = typeExp;
-
-				break;
-
-
-			case IoclParser.VARIABLE:
-				Variable variable = createVariable();
-
-				variable.setName(tree.getChild(0).getText());
-
-				for (int i = 1; i < tree.getChildCount(); i++) {
-					OclExpression exp = walk(tree.getChild(i));
-
-					if (exp instanceof Type) {
-						variable.setType((Type)exp);
-					}
-					else {
-						variable.setInitExpression(exp);
-					}
-				}
-
-				oclExpression = createVariableExp(variable);
-
-				break;
-
-			case IoclParser.BOOLEAN_LITERAL:
-				oclExpression = createBooleanLiteralExp(
-					tree.getText());
-
-				break;
-
-			case IoclParser.COLLECTION_LITERAL:
-				kind = tree.getChild(0);
-
-				collectionKind = CollectionKind.get(kind.getText());
-
-				CollectionLiteralExp collectionLiteralExp =
-					createCollectionLiteralExp(collectionKind);
-
-				EList<CollectionLiteralPart> part =
-					collectionLiteralExp.getPart();
-
-				for (int i = 1; i < tree.getChildCount(); i++) {
-					part.add(createCollectionItem(walk(tree.getChild(i))));
-				}
-
-				oclExpression = collectionLiteralExp;
-
-				break;
-
-			case IoclParser.INTEGER_LITERAL:
-				oclExpression = createIntegerLiteralExp(
-					tree.getText());
-
-				break;
-
-			case IoclParser.NUMERIC_OPERATION:
-				operationCallExp =
-					createNumericOperationCallExp(tree.getText());
-
-				argument = operationCallExp.getArgument();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					argument.add(walk(tree.getChild(i)));
-				}
-
-				oclExpression = operationCallExp;
-
-				break;
-
-			case IoclParser.REAL_LITERAL:
-				oclExpression = createRealLiteralExp(
-					tree.getText());
-
-				break;
-
-			case IoclParser.STRING_LITERAL:
-				oclExpression = createStringLiteralExp(
-					tree.getText());
-
-				break;
-
-			case IoclParser.DO:
-				BlockExp blockExp = getFactory().createBlockExp();
-
-				EList<OclExpression> body = blockExp.getBody();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					body.add(walk(tree.getChild(i)));
-				}
-
-				oclExpression = blockExp;
-
-				break;
-
-			case IoclParser.VAR:
-				VariableInitExp variableInitExp =
-					getFactory().createVariableInitExp();
-
-				Variable referredVariable = (Variable)walk(tree.getChild(0));
-
-				variableInitExp.setReferredVariable(referredVariable);
-
-				oclExpression = variableInitExp;
-
-				break;
-
-			case IoclParser.BREAK:
-				oclExpression = getFactory().createBreakExp();
-
-				break;
-			case IoclParser.CONTINUE:
-				oclExpression = getFactory().createContinueExp();
-
-				break;
-
-			case IoclParser.RETURN:
-				ReturnExp returnExp = getFactory().createReturnExp();
-
-				if (tree.getChildCount() > 0) {
-					returnExp.setValue(walk(tree.getChild(0)));
-				}
-
-				oclExpression = returnExp;
+				oclExpression = altExp;
 
 				break;
 
@@ -325,39 +118,151 @@ public class ImperativeOclTreeWalker {
 
 				break;
 
-			case IoclParser.RAISE:
-				RaiseExp raiseExp = getFactory().createRaiseExp();
+			case IoclParser.ARROW:
+			case IoclParser.DOT:
+				operationCallExp = getFactory().createOperationCallExp();
 
-				typeExp = (TypeExp)walk(tree.getChild(0));
+				operationCode = OperationCode.fromLabel(
+					tree.getChild(1).getText());
 
-				raiseExp.setException(typeExp.getReferredType());
+				operationCallExp.setOperationCode(operationCode);
+				operationCallExp.setSource(walk(tree.getChild(0)));
 
-				oclExpression = raiseExp;
+				argument = operationCallExp.getArgument();
+
+				for (int i = 2; i < tree.getChildCount(); i++) {
+					argument.add(walk(tree.getChild(i)));
+				}
+
+				oclExpression = operationCallExp;
 
 				break;
 
-			case IoclParser.SCOPE:
-				PathType pathType = new PathType();
+			case IoclParser.BOOLEAN_LITERAL:
+				BooleanLiteralExp booleanLiteralExp =
+					getFactory().createBooleanLiteralExp();
 
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					pathType.addName(tree.getChild(i).getText());
+				Boolean booleanSymbol = Boolean.parseBoolean(tree.getText());
+
+				booleanLiteralExp.setBooleanSymbol(booleanSymbol);
+
+				oclExpression = booleanLiteralExp;
+
+				break;
+
+			case IoclParser.BREAK:
+				oclExpression = getFactory().createBreakExp();
+
+				break;
+
+
+			case IoclParser.COLLECTION_LITERAL:
+				CollectionLiteralExp collectionLiteralExp =
+					getFactory().createCollectionLiteralExp();
+
+				Tree kind = tree.getChild(0);
+
+				CollectionKind collectionKind = CollectionKind.get(
+					kind.getText());
+
+				collectionLiteralExp.setKind(collectionKind);
+
+				EList<CollectionLiteralPart> part =
+					collectionLiteralExp.getPart();
+
+				CollectionItem collectionItem;
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					collectionItem = getFactory().createCollectionItem();
+
+					collectionItem.setItem(walk(tree.getChild(i)));
+
+					part.add(collectionItem);
 				}
 
-				typeExp = getFactory().createTypeExp();
+				oclExpression = collectionLiteralExp;
 
-				typeExp.setReferredType(pathType);
+				break;
+
+			case IoclParser.COLLECTION_TYPE:
+				kind = tree.getChild(0);
+
+				collectionKind = CollectionKind.get(kind.getText());
+
+				CollectionType collectionType = getCollectionType(
+					collectionKind);
+
+				TypeExp typeExp = getFactory().createTypeExp();
+
+				typeExp.setReferredType(collectionType);
 
 				oclExpression = typeExp;
 
 				break;
 
-			case IoclParser.WHILE:
-				WhileExp whileExp = getFactory().createWhileExp();
+			case IoclParser.CONTINUE:
+				oclExpression = getFactory().createContinueExp();
 
-				whileExp.setCondition(walk(tree.getChild(0)));
-				whileExp.setBody(walk(tree.getChild(1)));
+				break;
 
-				oclExpression = whileExp;
+			case IoclParser.DO:
+				BlockExp blockExp = getFactory().createBlockExp();
+
+				EList<OclExpression> body = blockExp.getBody();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					body.add(walk(tree.getChild(i)));
+				}
+
+				oclExpression = blockExp;
+
+				break;
+
+
+			case IoclParser.EXCEPT:
+				CatchExp catchExp = getFactory().createCatchExp();
+
+				EList<Type> exception = catchExp.getException();
+				body = catchExp.getBody();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Type) {
+						exception.add((Type)exp);
+					}
+					else {
+						body.add(exp);
+					}
+				}
+
+				break;
+
+			case IoclParser.FOR:
+				ForExp forExp = getFactory().createForExp();
+
+				tree = tree.getChild(0);
+
+				forExp.setName(tree.getText());
+				forExp.setSource(walk(tree.getChild(1)));
+
+				EList<Variable> iterator = forExp.getIterator();
+
+				for (int i = 2; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Variable) {
+						iterator.add((Variable)exp);
+					}
+					else if (exp instanceof ImperativeExpression) {
+						forExp.setBody(exp);
+					}
+					else {
+						forExp.setCondition(exp);
+					}
+				}
+
+				oclExpression = forExp;
 
 				break;
 
@@ -382,88 +287,249 @@ public class ImperativeOclTreeWalker {
 
 				break;
 
-			case IoclParser.ALT_EXP:
-				AltExp altExp = getFactory().createAltExp();
+			case IoclParser.INTEGER_LITERAL:
+				IntegerLiteralExp integerLiteralExp =
+					getFactory().createIntegerLiteralExp();
 
-				altExp.setCondition(walk(tree.getChild(0)));
-				altExp.setBody(walk(tree.getChild(1)));
+				Integer integerSymbol = Integer.parseInt(tree.getText());
 
-				oclExpression = altExp;
+				integerLiteralExp.setIntegerSymbol(integerSymbol);
+
+				oclExpression = integerLiteralExp;
 
 				break;
 
-			case IoclParser.TRY:
-					TryExp tryExp = getFactory().createTryExp();
+			case IoclParser.ITERATE:
+				IterateExp iterateExp = getFactory().createIterateExp();
 
-					EList<CatchExp> catchClause = tryExp.getCatchClause();
-					EList<OclExpression> tryBody = tryExp.getTryBody();
+				iterateExp.setSource(walk(tree.getChild(0)));
 
-					for (int i = 0; i < tree.getChildCount(); i++) {
-						OclExpression exp = walk(tree.getChild(i));
+				iterator = iterateExp.getIterator();
 
-						if (exp instanceof CatchExp) {
-							catchClause.add((CatchExp)exp);
-						}
-						else {
-							tryBody.add(exp);
-						}
-					}
-
-					oclExpression = tryExp;
-
-					break;
-
-			case IoclParser.EXCEPT:
-				CatchExp catchExp = getFactory().createCatchExp();
-
-				EList<Type> exception = catchExp.getException();
-				body = catchExp.getBody();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
+				for (int i = 1; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Type) {
-						exception.add((Type)exp);
+					if (exp instanceof VariableExp) {
+						VariableExp variableExp = (VariableExp)exp;
+
+						iterator.add(variableExp.getReferredVariable());
 					}
 					else {
-						body.add(exp);
+						iterateExp.setBody(exp);
 					}
 				}
 
+				oclExpression = iterateExp;
+
 				break;
 
+			case IoclParser.ITERATOR:
+				IteratorExp iteratorExp = getFactory().createIteratorExp();
 
-			case IoclParser.FOR:
-				ForExp forExp = getFactory().createForExp();
+				iteratorExp.setSource(walk(tree.getChild(0)));
+				iteratorExp.setName(tree.getChild(1).getText());
 
-				tree = tree.getChild(0);
-
-				forExp.setName(tree.getText());
-				forExp.setSource(walk(tree.getChild(1)));
-
-				iterator = forExp.getIterator();
+				iterator = iteratorExp.getIterator();
 
 				for (int i = 2; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Variable) {
-						iterator.add((Variable)exp);
-					}
-					else if (exp instanceof ImperativeExpression) {
-						forExp.setBody(exp);
+					if (exp instanceof VariableExp) {
+						VariableExp variableExp = (VariableExp)exp;
+
+						iterator.add(variableExp.getReferredVariable());
 					}
 					else {
-						forExp.setCondition(exp);
+						iteratorExp.setBody(exp);
 					}
 				}
 
-				oclExpression = forExp;
+				oclExpression = iteratorExp;
 
 				break;
 
+			case IoclParser.NUMERIC_OPERATION:
+				operationCallExp =
+					createNumericOperationCallExp(tree.getText());
+
+				argument = operationCallExp.getArgument();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					argument.add(walk(tree.getChild(i)));
+				}
+
+				oclExpression = operationCallExp;
+
+				break;
+
+			case IoclParser.PRIMITIVE_TYPE_LITERAL:
+				PrimitiveType primitiveType =
+					EmofFactory.eINSTANCE.createPrimitiveType();
+
+				primitiveType.setName(tree.getText());
+
+				typeExp = getFactory().createTypeExp();
+
+				typeExp.setReferredType(primitiveType);
+
+				oclExpression = typeExp;
+
+				break;
+
+			case IoclParser.RAISE:
+				RaiseExp raiseExp = getFactory().createRaiseExp();
+
+				typeExp = (TypeExp)walk(tree.getChild(0));
+
+				raiseExp.setException(typeExp.getReferredType());
+
+				oclExpression = raiseExp;
+
+				break;
+
+			case IoclParser.REAL_LITERAL:
+				RealLiteralExp realLiteralExp =
+					getFactory().createRealLiteralExp();
+
+				Double realSymbol = Double.parseDouble(tree.getText());
+
+				realLiteralExp.setRealSymbol(realSymbol);
+
+				oclExpression = realLiteralExp;
+
+				break;
+
+			case IoclParser.RETURN:
+				ReturnExp returnExp = getFactory().createReturnExp();
+
+				if (tree.getChildCount() > 0) {
+					returnExp.setValue(walk(tree.getChild(0)));
+				}
+
+				oclExpression = returnExp;
+
+				break;
+
+			case IoclParser.SCOPE:
+				PathType pathType = new PathType();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					pathType.addName(tree.getChild(i).getText());
+				}
+
+				typeExp = getFactory().createTypeExp();
+
+				typeExp.setReferredType(pathType);
+
+				oclExpression = typeExp;
+
+				break;
+
+			case IoclParser.STRING_LITERAL:
+				StringLiteralExp stringLiteralExp =
+					getFactory().createStringLiteralExp();
+
+				String stringSymbol = StringUtil.unescape(tree.getText());
+
+				stringLiteralExp.setStringSymbol(stringSymbol);
+
+				oclExpression = stringLiteralExp;
+
+				break;
+
+			case IoclParser.TRY:
+				TryExp tryExp = getFactory().createTryExp();
+
+				EList<CatchExp> catchClause = tryExp.getCatchClause();
+				EList<OclExpression> tryBody = tryExp.getTryBody();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof CatchExp) {
+						catchClause.add((CatchExp)exp);
+					}
+					else {
+						tryBody.add(exp);
+					}
+				}
+
+				oclExpression = tryExp;
+
+				break;
+
+			case IoclParser.VAR:
+				VariableInitExp variableInitExp =
+					getFactory().createVariableInitExp();
+
+				Variable referredVariable = (Variable)walk(tree.getChild(0));
+
+				variableInitExp.setReferredVariable(referredVariable);
+
+				oclExpression = variableInitExp;
+
+				break;
+
+			case IoclParser.VARIABLE:
+				Variable variable = getFactory().createVariable();
+
+				variable.setName(tree.getChild(0).getText());
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					OclExpression exp = walk(tree.getChild(i));
+
+					if (exp instanceof Type) {
+						variable.setType((Type)exp);
+					}
+					else {
+						variable.setInitExpression(exp);
+					}
+				}
+
+				VariableExp variableExp = getFactory().createVariableExp();
+
+				variableExp.setReferredVariable(variable);
+
+				oclExpression = variableExp;
+
+				break;
+
+			case IoclParser.WHILE:
+				WhileExp whileExp = getFactory().createWhileExp();
+
+				whileExp.setCondition(walk(tree.getChild(0)));
+				whileExp.setBody(walk(tree.getChild(1)));
+
+				oclExpression = whileExp;
+
+				break;
 		}
 
 		return oclExpression;
+	}
+
+	protected OperationCallExp createNumericOperationCallExp(
+		String numericOperaration) {
+
+		IntegerLiteralExp integerLiteralExp =
+			getFactory().createIntegerLiteralExp();
+
+		int index = numericOperaration.indexOf('.');
+
+		String integerSymbol = numericOperaration.substring(0, index);
+
+		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
+
+		OperationCallExp operationCallExp =
+			getFactory().createOperationCallExp();
+
+		operationCallExp.setSource(integerLiteralExp);
+
+		String label = numericOperaration.substring(index + 1);
+
+		operationCallExp.setOperationCode(OperationCode.fromLabel(label));
+
+		return operationCallExp;
 	}
 
 	protected CollectionType getCollectionType(CollectionKind collectionKind) {
@@ -484,198 +550,6 @@ public class ImperativeOclTreeWalker {
 
 	protected ImperativeOclFactory getFactory() {
 		return ImperativeOclFactory.eINSTANCE;
-	}
-
-
-
-	protected AltExp createAltExp(OclExpression condition) {
-		AltExp altExp = ImperativeOclFactory.eINSTANCE.createAltExp();
-
-		altExp.setCondition(condition);
-
-		return altExp;
-	}
-
-	protected AssignExp createAssignExp(OclExpression left) {
-		AssignExp assignExp = ImperativeOclFactory.eINSTANCE.createAssignExp();
-
-		assignExp.setLeft(left);
-
-		return assignExp;
-	}
-
-	protected BooleanLiteralExp createBooleanLiteralExp(String booleanSymbol) {
-		BooleanLiteralExp booleanLiteralExp =
-			ImperativeOclFactory.eINSTANCE.createBooleanLiteralExp();
-
-		booleanLiteralExp.setBooleanSymbol(Boolean.parseBoolean(booleanSymbol));
-
-		return booleanLiteralExp;
-	}
-
-	protected CollectionLiteralExp createCollectionLiteralExp(
-		CollectionKind collectionKind) {
-
-		CollectionLiteralExp collectionLiteralExp =
-			ImperativeOclFactory.eINSTANCE.createCollectionLiteralExp();
-
-		collectionLiteralExp.setKind(collectionKind);
-
-		return collectionLiteralExp;
-	}
-
-	protected CollectionItem createCollectionItem(OclExpression item) {
-		CollectionItem collectionItem =
-			ImperativeOclFactory.eINSTANCE.createCollectionItem();
-
-		collectionItem.setItem(item);
-
-		return collectionItem;
-	}
-
-	protected ForExp createForExp(String name) {
-		ForExp forExp = ImperativeOclFactory.eINSTANCE.createForExp();
-
-		forExp.setName(name);
-
-		return forExp;
-	}
-
-	protected PrimitiveType createPrimitiveType(String name) {
-		PrimitiveType primitiveType =
-			EmofFactory.eINSTANCE.createPrimitiveType();
-
-		primitiveType.setName(name);
-
-		return primitiveType;
-	}
-
-	protected IntegerLiteralExp createIntegerLiteralExp(String integerSymbol) {
-		IntegerLiteralExp integerLiteralExp =
-			ImperativeOclFactory.eINSTANCE.createIntegerLiteralExp();
-
-		integerLiteralExp.setIntegerSymbol(Integer.parseInt(integerSymbol));
-
-		return integerLiteralExp;
-	}
-
-	protected IterateExp createIterateExp(OclExpression source) {
-		IterateExp iterateExp =
-			ImperativeOclFactory.eINSTANCE.createIterateExp();
-
-		iterateExp.setSource(source);
-
-		return iterateExp;
-	}
-
-	protected IteratorExp createIteratorExp(OclExpression source) {
-		IteratorExp iteratorExp =
-			ImperativeOclFactory.eINSTANCE.createIteratorExp();
-
-		iteratorExp.setSource(source);
-
-		return iteratorExp;
-	}
-
-	protected OperationCallExp createNumericOperationCallExp(
-		String numericOperaration) {
-
-		OperationCallExp operationCallExp =
-			ImperativeOclFactory.eINSTANCE.createOperationCallExp();
-
-		int index = numericOperaration.indexOf('.');
-		String integerSymbol = numericOperaration.substring(0, index);
-
-		IntegerLiteralExp integerLiteralExp = createIntegerLiteralExp(
-			integerSymbol);
-
-		operationCallExp.setSource(integerLiteralExp);
-
-		String label = numericOperaration.substring(index + 1);
-
-		operationCallExp.setOperationCode(OperationCode.fromLabel(label));
-
-		return operationCallExp;
-	}
-
-	protected OperationCallExp createOperationCallExp(
-		int operationCode, OclExpression source) {
-
-		OperationCallExp operationCallExp =
-			ImperativeOclFactory.eINSTANCE.createOperationCallExp();
-
-		operationCallExp.setOperationCode(operationCode);
-		operationCallExp.setSource(source);
-
-		return operationCallExp;
-	}
-
-	protected RaiseExp createRaiseExp(OclExpression oclExpression) {
-		RaiseExp raiseExp = ImperativeOclFactory.eINSTANCE.createRaiseExp();
-
-		if (oclExpression instanceof Type) {
-			raiseExp.setException((Type) oclExpression);
-		}
-		else {
-			StringLiteralExp stringLiteralExp =
-				(StringLiteralExp) oclExpression;
-
-			//raiseExp.setExceptionMessage(stringLiteralExp.getStringSymbol());
-		}
-
-		return raiseExp;
-	}
-
-	protected RealLiteralExp createRealLiteralExp(String realSymbol) {
-		RealLiteralExp realLiteralExp =
-			ImperativeOclFactory.eINSTANCE.createRealLiteralExp();
-
-		realLiteralExp.setRealSymbol(Double.parseDouble(realSymbol));
-
-		return realLiteralExp;
-	}
-
-	protected StringLiteralExp createStringLiteralExp(String stringSymbol) {
-		StringLiteralExp stringLiteralExp =
-			ImperativeOclFactory.eINSTANCE.createStringLiteralExp();
-
-		stringLiteralExp.setStringSymbol(StringUtil.unescape(stringSymbol));
-
-		return stringLiteralExp;
-	}
-
-	protected TryExp createTryExp() {
-		return ImperativeOclFactory.eINSTANCE.createTryExp();
-	}
-
-	protected Variable createVariable() {
-		return ImperativeOclFactory.eINSTANCE.createVariable();
-	}
-
-	protected VariableExp createVariableExp(Variable variable) {
-		VariableExp variableExp =
-			ImperativeOclFactory.eINSTANCE.createVariableExp();
-
-		variableExp.setReferredVariable(variable);
-
-		return variableExp;
-	}
-
-	protected VariableInitExp createVariableInitExp(String name) {
-		VariableInitExp variableInitExp =
-			ImperativeOclFactory.eINSTANCE.createVariableInitExp();
-
-		variableInitExp.setName(name);
-
-		return variableInitExp;
-	}
-
-	protected WhileExp createWhileExp(OclExpression condition) {
-		WhileExp whileExp = ImperativeOclFactory.eINSTANCE.createWhileExp();
-
-		whileExp.setCondition(condition);
-
-		return whileExp;
 	}
 
 }

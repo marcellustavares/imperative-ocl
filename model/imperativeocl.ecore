@@ -159,6 +159,7 @@
           eType="#//emof/Type"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//imperativeocl/OclExpression"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="exceptionMessage" eType="#//emof/String"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ContinueExp" eSuperTypes="#//imperativeocl/ImperativeExpression"/>
     <eClassifiers xsi:type="ecore:EClass" name="ForExp" eSuperTypes="#//imperativeocl/ImperativeLoopExp"/>

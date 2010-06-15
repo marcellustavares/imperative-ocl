@@ -52,7 +52,7 @@ public class TestCollectionLiteralExp extends TestCase {
 	}
 
 	protected void basicCheck(
-			String exp, CollectionKind kind, int expectedSize) 
+			String exp, CollectionKind kind, int expectedSize)
 		throws ParserException {
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

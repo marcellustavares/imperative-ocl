@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -364,6 +365,15 @@ public class AssignExpImpl extends ImperativeExpressionImpl implements AssignExp
 		result.append(isReset);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitAssignExp(this);
 	}
 
 } //AssignExpImpl

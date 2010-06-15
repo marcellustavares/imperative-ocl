@@ -230,8 +230,128 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 
 		initEClass(visitorEClass, Visitor.class, "Visitor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
+		op = addEOperation(visitorEClass, null, "visitAssignExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getAssignExp(), "assignExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitBlockExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getBlockExp(), "blockExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitBooleanLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getBooleanLiteralExp(), "booleanLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitBreakExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getBreakExp(), "breakExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitCollectionLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getCollectionLiteralExp(), "collectionLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitCollectionItem", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getCollectionItem(), "collectionItem", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitComputeExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getComputeExp(), "computeExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitContinueExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getContinueExp(), "continueExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitForExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getForExp(), "forExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitIfExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getIfExp(), "ifExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitIntegerLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getIntegerLiteralExp(), "integerLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitIterateExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getIterateExp(), "iterateExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitIteratorExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getIteratorExp(), "iteratorExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitOperationCallExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getOperationCallExp(), "operationCallExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitPropertyCallExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getPropertyCallExp(), "propertyCallExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitRaiseExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getRaiseExp(), "raiseExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitRealLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getRealLiteralExp(), "realLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitReturnExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getReturnExp(), "returnExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
 		op = addEOperation(visitorEClass, null, "visitStringLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theImperativeOclPackage.getStringLiteralExp(), "stringLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitTryExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getTryExp(), "tryExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitTypeExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getTypeExp(), "typeExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitVariable", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getVariable(), "variable", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitVariableExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getVariableExp(), "variableExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitVariableInitExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getVariableInitExp(), "variableInitExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitWhileExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getWhileExp(), "whileExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		g1 = createEGenericType(visitorEClass_T);
 		initEOperation(op, g1);
 

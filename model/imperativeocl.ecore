@@ -275,7 +275,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
           eType="#//imperativeocl/Variable" containment="true" eOpposite="#//imperativeocl/Variable/letExp"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//emof/TypedElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//emof/TypedElement #//util/Visitable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="initExpression" eType="#//imperativeocl/OclExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="letExp" eType="#//imperativeocl/LetExp"
@@ -403,9 +403,105 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Visitor" abstract="true" interface="true">
       <eTypeParameters name="T"/>
+      <eOperations name="visitAssignExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="assignExp" eType="#//imperativeocl/AssignExp"/>
+      </eOperations>
+      <eOperations name="visitBlockExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="blockExp" eType="#//imperativeocl/BlockExp"/>
+      </eOperations>
+      <eOperations name="visitBooleanLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="booleanLiteralExp" eType="#//imperativeocl/BooleanLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitBreakExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="breakExp" eType="#//imperativeocl/BreakExp"/>
+      </eOperations>
+      <eOperations name="visitCollectionLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="collectionLiteralExp" eType="#//imperativeocl/CollectionLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitCollectionItem">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="collectionItem" eType="#//imperativeocl/CollectionItem"/>
+      </eOperations>
+      <eOperations name="visitComputeExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="computeExp" eType="#//imperativeocl/ComputeExp"/>
+      </eOperations>
+      <eOperations name="visitContinueExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="continueExp" eType="#//imperativeocl/ContinueExp"/>
+      </eOperations>
+      <eOperations name="visitForExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="forExp" eType="#//imperativeocl/ForExp"/>
+      </eOperations>
+      <eOperations name="visitIfExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="ifExp" eType="#//imperativeocl/IfExp"/>
+      </eOperations>
+      <eOperations name="visitIntegerLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="integerLiteralExp" eType="#//imperativeocl/IntegerLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitIterateExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="iterateExp" eType="#//imperativeocl/IterateExp"/>
+      </eOperations>
+      <eOperations name="visitIteratorExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="iteratorExp" eType="#//imperativeocl/IteratorExp"/>
+      </eOperations>
+      <eOperations name="visitOperationCallExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="operationCallExp" eType="#//imperativeocl/OperationCallExp"/>
+      </eOperations>
+      <eOperations name="visitPropertyCallExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="propertyCallExp" eType="#//imperativeocl/PropertyCallExp"/>
+      </eOperations>
+      <eOperations name="visitRaiseExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="raiseExp" eType="#//imperativeocl/RaiseExp"/>
+      </eOperations>
+      <eOperations name="visitRealLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="realLiteralExp" eType="#//imperativeocl/RealLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitReturnExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="returnExp" eType="#//imperativeocl/ReturnExp"/>
+      </eOperations>
       <eOperations name="visitStringLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="stringLiteralExp" eType="#//imperativeocl/StringLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitTryExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="tryExp" eType="#//imperativeocl/TryExp"/>
+      </eOperations>
+      <eOperations name="visitTypeExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="typeExp" eType="#//imperativeocl/TypeExp"/>
+      </eOperations>
+      <eOperations name="visitVariable">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="variable" eType="#//imperativeocl/Variable"/>
+      </eOperations>
+      <eOperations name="visitVariableExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="variableExp" eType="#//imperativeocl/VariableExp"/>
+      </eOperations>
+      <eOperations name="visitVariableInitExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="variableInitExp" eType="#//imperativeocl/VariableInitExp"/>
+      </eOperations>
+      <eOperations name="visitWhileExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="whileExp" eType="#//imperativeocl/WhileExp"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>

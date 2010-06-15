@@ -19,7 +19,31 @@
 package org.orcas.iocl.expressions.util;
 
 import org.eclipse.emf.ecore.EObject;
+import org.orcas.iocl.expressions.imperativeocl.AssignExp;
+import org.orcas.iocl.expressions.imperativeocl.BlockExp;
+import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.BreakExp;
+import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
+import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
+import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
+import org.orcas.iocl.expressions.imperativeocl.ForExp;
+import org.orcas.iocl.expressions.imperativeocl.IfExp;
+import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.IterateExp;
+import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
+import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
+import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.TryExp;
+import org.orcas.iocl.expressions.imperativeocl.TypeExp;
+import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableExp;
+import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
+import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,5 +63,197 @@ public interface Visitor<T> extends EObject {
 	 * @model
 	 * @generated
 	 */
+	T visitAssignExp(AssignExp assignExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitBlockExp(BlockExp blockExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitBooleanLiteralExp(BooleanLiteralExp booleanLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitBreakExp(BreakExp breakExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitCollectionLiteralExp(CollectionLiteralExp collectionLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitCollectionItem(CollectionItem collectionItem);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitComputeExp(ComputeExp computeExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitContinueExp(ContinueExp continueExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitForExp(ForExp forExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitIfExp(IfExp ifExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitIterateExp(IterateExp iterateExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitIteratorExp(IteratorExp iteratorExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitOperationCallExp(OperationCallExp operationCallExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitPropertyCallExp(PropertyCallExp propertyCallExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitRaiseExp(RaiseExp raiseExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitRealLiteralExp(RealLiteralExp realLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitReturnExp(ReturnExp returnExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	T visitStringLiteralExp(StringLiteralExp stringLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitTryExp(TryExp tryExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitTypeExp(TypeExp typeExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitVariable(Variable variable);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitVariableExp(VariableExp variableExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitVariableInitExp(VariableInitExp variableInitExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitWhileExp(WhileExp whileExp);
 } // Visitor

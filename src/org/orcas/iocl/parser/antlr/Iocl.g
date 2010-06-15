@@ -144,7 +144,7 @@ oclExpCS
 	;		
 
 variableExp
-	: simpleNameCS
+	: simpleNameCS -> ^(VARIABLE simpleNameCS)
 	;
 
 literalExpCS
@@ -202,6 +202,22 @@ propertyCallExp
 
 modelPropertyCallExp
 	: operationCallExpCS
+	//| attributeCallExpCS
+	//| navigationCallExpCS
+	;
+
+attributeCallExpCS
+	: oclExpressionCS DOT simpleNameCS isMarkedPreCS?
+	| simpleNameCS isMarkedPreCS?
+	| pathName
+	;
+
+isMarkedPreCS
+	: '@pre'
+	;
+
+navigationCallExpCS
+	: oclExpressionCS DOT simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
 	;
 
 loopExp
@@ -303,7 +319,7 @@ imperativeVarDeclaration
 	;
 
 assignExp
-	: variableExp (IS | APPEND)^ oclExpressionCS SEMICOLON!
+	: dotArrowExpCS (IS | APPEND)^ oclExpressionCS SEMICOLON!
 	;
 
 raiseExp

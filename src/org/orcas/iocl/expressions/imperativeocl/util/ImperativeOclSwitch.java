@@ -582,7 +582,6 @@ public class ImperativeOclSwitch<T> {
 				Variable variable = (Variable)theEObject;
 				T result = caseVariable(variable);
 				if (result == null) result = caseTypedElement(variable);
-				if (result == null) result = caseVisitable(variable);
 				if (result == null) result = caseNamedElement(variable);
 				if (result == null) result = caseElement(variable);
 				if (result == null) result = caseObject(variable);

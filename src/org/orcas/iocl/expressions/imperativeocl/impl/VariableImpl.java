@@ -220,15 +220,6 @@ public class VariableImpl extends TypedElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public <T, V extends Visitor<T>> T accept(V v) {
-		return v.visitVariable(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {

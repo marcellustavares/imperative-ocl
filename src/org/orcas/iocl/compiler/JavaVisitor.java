@@ -40,7 +40,6 @@ import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
-import org.orcas.iocl.expressions.imperativeocl.VariableExp;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.util.AbstractVisitor;
@@ -191,11 +190,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleVariable(Variable variable, String initResult) {
 		return variable.getName();
-	}
-
-	protected String handleVariableExp(VariableExp variableExp) {
-
-		return null;
 	}
 
 	protected String handleVariableInitExp(VariableInitExp variableInitExp) {

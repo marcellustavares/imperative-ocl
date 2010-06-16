@@ -152,14 +152,12 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return null;
 	}
 
-	public T visitVariable(Variable variable) {
-		T initResult = visit(variable.getInitExpression());
-
-		return handleVariable(variable, initResult);
-	}
-
 	public T visitVariableExp(VariableExp variableExp) {
-		return visitVariable(variableExp.getReferredVariable());
+		Variable referredVariable = variableExp.getReferredVariable();
+
+		T initResult = visit(referredVariable.getInitExpression());
+
+		return handleVariable(referredVariable, initResult);
 	}
 
 	public T visitVariableInitExp(VariableInitExp variableInitExp) {
@@ -217,8 +215,6 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleTryExp(TryExp tryExp);
 
 	protected abstract T handleVariable(Variable variable, T initResult);
-
-	protected abstract T handleVariableExp(VariableExp variableExp);
 
 	protected abstract T handleVariableInitExp(VariableInitExp variableInitExp);
 

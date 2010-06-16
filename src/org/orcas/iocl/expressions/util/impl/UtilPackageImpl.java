@@ -335,11 +335,6 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 		g1 = createEGenericType(visitorEClass_T);
 		initEOperation(op, g1);
 
-		op = addEOperation(visitorEClass, null, "visitVariable", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theImperativeOclPackage.getVariable(), "variable", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		g1 = createEGenericType(visitorEClass_T);
-		initEOperation(op, g1);
-
 		op = addEOperation(visitorEClass, null, "visitVariableExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theImperativeOclPackage.getVariableExp(), "variableExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		g1 = createEGenericType(visitorEClass_T);

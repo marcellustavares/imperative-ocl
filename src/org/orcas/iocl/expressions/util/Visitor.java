@@ -231,14 +231,6 @@ public interface Visitor<T> extends EObject {
 	 * @model
 	 * @generated
 	 */
-	T visitVariable(Variable variable);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	T visitVariableExp(VariableExp variableExp);
 
 	/**

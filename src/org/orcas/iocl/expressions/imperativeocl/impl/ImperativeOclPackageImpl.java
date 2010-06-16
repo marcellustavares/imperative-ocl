@@ -2472,7 +2472,6 @@ public class ImperativeOclPackageImpl extends EPackageImpl implements Imperative
 		ifExpEClass.getESuperTypes().add(this.getOclExpression());
 		letExpEClass.getESuperTypes().add(this.getOclExpression());
 		variableEClass.getESuperTypes().add(theEmofPackage.getTypedElement());
-		variableEClass.getESuperTypes().add(theUtilPackage.getVisitable());
 		propertyCallExpEClass.getESuperTypes().add(this.getFeaturePropertyCall());
 		variableExpEClass.getESuperTypes().add(this.getOclExpression());
 		typeExpEClass.getESuperTypes().add(this.getOclExpression());

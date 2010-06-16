@@ -275,7 +275,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
           eType="#//imperativeocl/Variable" containment="true" eOpposite="#//imperativeocl/Variable/letExp"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//emof/TypedElement #//util/Visitable">
+    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//emof/TypedElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="initExpression" eType="#//imperativeocl/OclExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="letExp" eType="#//imperativeocl/LetExp"
@@ -486,10 +486,6 @@
       <eOperations name="visitTypeExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="typeExp" eType="#//imperativeocl/TypeExp"/>
-      </eOperations>
-      <eOperations name="visitVariable">
-        <eGenericType eTypeParameter="#//util/Visitor/T"/>
-        <eParameters name="variable" eType="#//imperativeocl/Variable"/>
       </eOperations>
       <eOperations name="visitVariableExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>

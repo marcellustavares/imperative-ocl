@@ -20,7 +20,6 @@ package org.orcas.iocl.expressions.imperativeocl;
 
 import org.orcas.iocl.expressions.emof.Parameter;
 import org.orcas.iocl.expressions.emof.TypedElement;
-import org.orcas.iocl.expressions.util.Visitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +39,7 @@ import org.orcas.iocl.expressions.util.Visitable;
  * @model
  * @generated
  */
-public interface Variable extends TypedElement, Visitable {
+public interface Variable extends TypedElement {
 	/**
 	 * Returns the value of the '<em><b>Init Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-06-14 22:38:54
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-06-15 22:51:19
 
 package org.orcas.iocl.parser.antlr;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class IoclLexer extends Lexer {
     public static final int T__68=68;
-    public static final int ITERATOR_NAME=57;
+    public static final int ITERATOR_NAME=56;
     public static final int T__69=69;
     public static final int APPEND=6;
     public static final int LT=31;
@@ -33,14 +33,14 @@ public class IoclLexer extends Lexer {
     public static final int IF=25;
     public static final int RPAREN=42;
     public static final int ESC_SEQ=62;
-    public static final int STRING_LITERAL=53;
-    public static final int REAL_LITERAL=56;
+    public static final int STRING_LITERAL=52;
+    public static final int REAL_LITERAL=55;
     public static final int SCOPE=43;
-    public static final int COLLECTION_TYPE_LITERAL=52;
+    public static final int COLLECTION_TYPE_LITERAL=51;
     public static final int CONTINUE=13;
     public static final int NOT_EQUAL=35;
     public static final int IS=28;
-    public static final int IDENTIFIER=58;
+    public static final int IDENTIFIER=57;
     public static final int ITERATOR=27;
     public static final int EQUAL=20;
     public static final int RETURN=41;
@@ -53,7 +53,7 @@ public class IoclLexer extends Lexer {
     public static final int XOR=50;
     public static final int FOR_NAME=60;
     public static final int COLLECTION_TYPE=10;
-    public static final int NUMERIC_OPERATION=51;
+    public static final int NUMERIC_OPERATION=58;
     public static final int UNICODE_ESC=65;
     public static final int ELSE=19;
     public static final int HEX_DIGIT=64;
@@ -63,7 +63,7 @@ public class IoclLexer extends Lexer {
     public static final int MINUS=33;
     public static final int TRY=46;
     public static final int COLON=11;
-    public static final int BOOLEAN_LITERAL=54;
+    public static final int BOOLEAN_LITERAL=53;
     public static final int ALT_EXP=5;
     public static final int ITERATE=26;
     public static final int ELIF=18;
@@ -71,7 +71,7 @@ public class IoclLexer extends Lexer {
     public static final int WS=63;
     public static final int VARIABLE=48;
     public static final int T__70=70;
-    public static final int INTEGER_LITERAL=55;
+    public static final int INTEGER_LITERAL=54;
     public static final int OR=37;
     public static final int RCURLY=40;
     public static final int GT=23;

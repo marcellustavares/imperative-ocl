@@ -37,7 +37,7 @@ public class ImperativeOclServiceImpl implements ImperativeOclService {
 			IoclLexer lexer = new IoclLexer(input);
 			IoclParser parser = new IoclParser(new CommonTokenStream(lexer));
 
-			IoclParser.oclExpressionCS_return r = parser.oclExpressionCS();
+			IoclParser.oclExpression_return r = parser.oclExpression();
 			Tree tree = (Tree) r.getTree();
 
 			showIoclAst(tree);

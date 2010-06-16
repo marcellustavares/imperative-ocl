@@ -101,97 +101,96 @@ catch (RecognitionException e) {
 }
 }
 
-oclExpressionCS
+oclExpression
 	: imperativeExp
-	| logicalExpCS
+	| logicalExp
 	;
 
-logicalExpCS
-	: equalityExpCS ((AND | OR | XOR)^ equalityExpCS)*
+logicalExp
+	: equalityExp ((AND | OR | XOR)^ equalityExp)*
 	;
 
-equalityExpCS
-	: relationalExpCS ((EQUAL | NOT_EQUAL)^ relationalExpCS)*
+equalityExp
+	: relationalExp ((EQUAL | NOT_EQUAL)^ relationalExp)*
 	;
 
-relationalExpCS
-	: additiveExpCS ((LT | LTE | GT | GTE)^ additiveExpCS)*
+relationalExp
+	: additiveExp ((LT | LTE | GT | GTE)^ additiveExp)*
 	;
 
-additiveExpCS
-	: multiplicativeExpCS ((PLUS | MINUS)^ multiplicativeExpCS)*
+additiveExp
+	: multiplicativeExp ((PLUS | MINUS)^ multiplicativeExp)*
 	;
 
-multiplicativeExpCS
-	: unaryExpCS ((MULT | DIV)^  unaryExpCS)*
+multiplicativeExp
+	: unaryExp ((MULT | DIV)^  unaryExp)*
 	;
 
-unaryExpCS
-	: (MINUS | NOT)^ unaryExpCS
-	| dotArrowExpCS
+unaryExp
+	: (MINUS | NOT)^ unaryExp
+	| dotArrowExp
 	;
 
-dotArrowExpCS
-	: NUMERIC_OPERATION '(' argumentsCS? ')' -> ^(NUMERIC_OPERATION argumentsCS?)
-	| propertyCallExp
-	| oclExpCS
+dotArrowExp
+	: propertyCallExp
+	| oclExp
 	;
 
-oclExpCS
+oclExp
 	: variableExp
-	| literalExpCS
-	| '(' oclExpressionCS ')' -> oclExpressionCS 
+	| literalExp
+	| '(' oclExpression ')' -> oclExpression 
 	;		
 
 variableExp
-	: simpleNameCS -> ^(VARIABLE simpleNameCS)
+	: simpleName -> ^(VARIABLE simpleName)
 	;
 
-literalExpCS
-	: collectionLiteralExpCS 
-	| primitiveLiteralExpCS
+literalExp
+	: collectionLiteralExp 
+	| primitiveLiteralExp
 	;
 
-collectionLiteralExpCS
-	: collectionTypeIdentifierCS '{' collectionLiteralPartsCS? '}' -> ^(COLLECTION_LITERAL collectionTypeIdentifierCS collectionLiteralPartsCS?)
+collectionLiteralExp
+	: collectionTypeIdentifier '{' collectionLiteralParts? '}' -> ^(COLLECTION_LITERAL collectionTypeIdentifier collectionLiteralParts?)
 	;
 
-collectionTypeIdentifierCS
+collectionTypeIdentifier
 	: COLLECTION_TYPE_LITERAL
 	;
 
-collectionLiteralPartsCS
-	: collectionLiteralPartCS (','! collectionLiteralPartsCS)*
+collectionLiteralParts
+	: collectionLiteralPart (','! collectionLiteralParts)*
 	;
 
-collectionLiteralPartCS
-	: oclExpressionCS
+collectionLiteralPart
+	: oclExpression
 	;
 
-primitiveLiteralExpCS
-	: numericLiteralExpCS
-	| stringLiteralExpCS
-	| booleanLiteralExpCS
+primitiveLiteralExp
+	: numericLiteralExp
+	| stringLiteralExp
+	| booleanLiteralExp
 	;
 
-numericLiteralExpCS
-	: integerLiteralExpCS
-	| realLiteralExpCS
+numericLiteralExp
+	: integerLiteralExp
+	| realLiteralExp
 	;
     
-stringLiteralExpCS
+stringLiteralExp
 	: STRING_LITERAL
 	;
 
-booleanLiteralExpCS
+booleanLiteralExp
 	: BOOLEAN_LITERAL
 	;
 
-integerLiteralExpCS
+integerLiteralExp
 	: INTEGER_LITERAL
 	;	
 
-realLiteralExpCS
+realLiteralExp
 	: REAL_LITERAL
 	;
 
@@ -201,51 +200,54 @@ propertyCallExp
 	;
 
 modelPropertyCallExp
-	: operationCallExpCS
-	//| attributeCallExpCS
-	//| navigationCallExpCS
+	: operationCallExp
+	//| attributeCallExp
+	//| navigationCallExp
 	;
 
-attributeCallExpCS
-	: oclExpressionCS DOT simpleNameCS isMarkedPreCS?
-	| simpleNameCS isMarkedPreCS?
+attributeCallExp
+	: oclExpression DOT simpleName isMarkedPre?
+	| simpleName isMarkedPre?
 	| pathName
 	;
 
-isMarkedPreCS
+isMarkedPre
 	: '@pre'
 	;
 
-navigationCallExpCS
-	: oclExpressionCS DOT simpleNameCS ('[' argumentsCS ']')? isMarkedPreCS?
+navigationCallExp
+	: oclExpression DOT simpleName ('[' arguments ']')? isMarkedPre?
 	;
 
 loopExp
-	: iteratorExpCS
-	| iterateExpCS
+	: iteratorExp
+	| iterateExp
 	;
 
-iteratorExpCS
-	:  oclExpCS ARROW ITERATOR_NAME LPAREN ((v1 = variableDeclaration ',')? v2 = variableDeclaration '|')? oclExpressionCS RPAREN -> ^(ITERATOR oclExpCS ITERATOR_NAME $v1? $v2? oclExpressionCS)
+iteratorExp
+	:  oclExp ARROW ITERATOR_NAME LPAREN ((v1 = variableDeclaration ',')? v2 = variableDeclaration '|')? oclExpression RPAREN 
+		-> ^(ITERATOR oclExp ITERATOR_NAME $v1? $v2? oclExpression)
 	;
 
-iterateExpCS
-	: oclExpCS ARROW ITERATE LPAREN (v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpressionCS RPAREN -> ^(ITERATE oclExpCS $v1? $v2 oclExpressionCS)
+iterateExp
+	: oclExp ARROW ITERATE LPAREN (v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpression RPAREN 
+		-> ^(ITERATE oclExp $v1? $v2 oclExpression)
 	;
 
 variableDeclaration
-	: IDENTIFIER (':' type)? ('=' oclExpressionCS)? -> ^(VARIABLE IDENTIFIER type? oclExpressionCS?)
+	: IDENTIFIER (':' type)? ('=' oclExpression)? -> ^(VARIABLE IDENTIFIER type? oclExpression?)
 	;
 
-operationCallExpCS
-	: oclExpCS (DOT | ARROW)^ simpleNameCS '('! argumentsCS? ')'!
+operationCallExp
+	: NUMERIC_OPERATION '(' arguments? ')' -> ^(NUMERIC_OPERATION arguments?)
+	| oclExp (DOT | ARROW)^ simpleName '('! arguments? ')'!
 	;
 
-argumentsCS
-	: oclExpressionCS (','! oclExpressionCS)*
+arguments
+	: oclExpression (','! oclExpression)*
 	;
 
-simpleNameCS
+simpleName
 	//: primitiveType
 	: SELF
 	| IDENTIFIER
@@ -256,7 +258,7 @@ primitiveType
 	;
 
 collectionType
-	: collectionTypeIdentifierCS LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifierCS type) 
+	: collectionTypeIdentifier LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifier type) 
 	;
 
 type
@@ -287,7 +289,7 @@ imperativeExp
 	;
 
 blockExp
-	: DO? LCURLY oclExpressionCS* RCURLY -> ^(DO oclExpressionCS*)
+	: DO? LCURLY oclExpression* RCURLY -> ^(DO oclExpression*)
 	;
 
 breakExp
@@ -295,7 +297,7 @@ breakExp
 	;
 
 computeExp
-	: COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpressionCS RCURLY -> ^(COMPUTE variableDeclaration oclExpressionCS)
+	: COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpression RCURLY -> ^(COMPUTE variableDeclaration oclExpression)
 	;
 
 continueExp
@@ -303,7 +305,7 @@ continueExp
 	;
 
 returnExp
-	: RETURN oclExpressionCS? SEMICOLON -> ^(RETURN oclExpressionCS?)
+	: RETURN oclExpression? SEMICOLON -> ^(RETURN oclExpression?)
 	;
 
 variableInitExp
@@ -315,11 +317,11 @@ imperativeVarDeclarations
 	;
 	
 imperativeVarDeclaration
-	: IDENTIFIER (':' type)? ((EQUAL | IS)  oclExpressionCS)? -> ^(VARIABLE IDENTIFIER type? oclExpressionCS?)
+	: IDENTIFIER (':' type)? ((EQUAL | IS)  oclExpression)? -> ^(VARIABLE IDENTIFIER type? oclExpression?)
 	;
 
 assignExp
-	: dotArrowExpCS (IS | APPEND)^ oclExpressionCS SEMICOLON!
+	: dotArrowExp (IS | APPEND)^ oclExpression SEMICOLON!
 	;
 
 raiseExp
@@ -327,8 +329,8 @@ raiseExp
 	;
 
 whileExp
-	: WHILE LPAREN condition = oclExpressionCS RPAREN 
-		LCURLY body = oclExpressionCS RCURLY -> ^(WHILE $condition $body)
+	: WHILE LPAREN condition = oclExpression RPAREN 
+		LCURLY body = oclExpression RCURLY -> ^(WHILE $condition $body)
 	;
 
 ifExp
@@ -340,24 +342,24 @@ elifExp
 	;
 
 elseExp	
-	: ELSE! oclExpressionCS
+	: ELSE! oclExpression
 	;
 	
 altExp 
-	: LPAREN condition = oclExpressionCS RPAREN  body = oclExpressionCS -> ^(ALT_EXP $condition $body)
+	: LPAREN condition = oclExpression RPAREN  body = oclExpression -> ^(ALT_EXP $condition $body)
 	;
 
 tryExp
-	: TRY LCURLY oclExpressionCS* RCURLY except -> ^(TRY oclExpressionCS* except)
+	: TRY LCURLY oclExpression* RCURLY except -> ^(TRY oclExpression* except)
 	;
 
 except
-	: EXCEPT LPAREN type RPAREN LCURLY oclExpressionCS* RCURLY -> ^(EXCEPT type oclExpressionCS*)
+	: EXCEPT LPAREN type RPAREN LCURLY oclExpression* RCURLY -> ^(EXCEPT type oclExpression*)
 	;
 
 forExp	
-	: oclExpCS ARROW FOR_NAME LPAREN iteratorList ('|' oclExpressionCS)? RPAREN LCURLY oclExpressionCS RCURLY 
-		-> ^(FOR FOR_NAME oclExpCS iteratorList oclExpressionCS? oclExpressionCS)
+	: oclExp ARROW FOR_NAME LPAREN iteratorList ('|' oclExpression)? RPAREN LCURLY oclExpression RCURLY 
+		-> ^(FOR FOR_NAME oclExp iteratorList oclExpression? oclExpression)
 	;
 
 iteratorList

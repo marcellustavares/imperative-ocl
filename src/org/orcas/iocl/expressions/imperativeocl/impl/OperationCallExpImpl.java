@@ -38,6 +38,7 @@ import org.orcas.iocl.expressions.emof.Operation;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -294,6 +295,15 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 		result.append(operationCode);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitOperationCallExp(this);
 	}
 
 } //OperationCallExpImpl

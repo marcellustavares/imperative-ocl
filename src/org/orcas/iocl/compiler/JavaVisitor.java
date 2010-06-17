@@ -17,7 +17,9 @@
 
 package org.orcas.iocl.compiler;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
@@ -44,20 +46,19 @@ import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.util.AbstractVisitor;
 import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.Template;
+import org.orcas.iocl.util.TemplateUtil;
 
 public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleAssignExp(
 		AssignExp assignExp, String leftResult, String defaultValueResult) {
 
-		StringBuilder result = new StringBuilder();
+		_map.clear();
+		_map.put("leftResult", leftResult);
+		_map.put("defaultValueResult", defaultValueResult);
 
-		result.append(leftResult);
-		result.append(" = ");
-		result.append(defaultValueResult);
-		result.append(";");
-
-		return result.toString();
+		return TemplateUtil.process(Template.ASSIGN, _map);
 	}
 
 	protected String handleBlockExp(BlockExp blockExp) {
@@ -128,23 +129,26 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		OperationCallExp operationCallExp, String sourceResult,
 		List<String> argResult) {
 
-		StringBuilder result = new StringBuilder();
+		String result = null;
 
-		int operationCode = operationCallExp.getOperationCode();
+		_map.clear();
+
+		int opCode = operationCallExp.getOperationCode();
 		int argumentsSize = argResult.size();
 
 		switch (argumentsSize) {
 			case 1:
-				switch (operationCode) {
+				switch (opCode) {
 					case OperationCode.DIV:
 					case OperationCode.MINUS:
 					case OperationCode.MULT:
 					case OperationCode.PLUS:
-						result.append("(");
-						result.append(sourceResult);
-						result.append(OperationCode.toLabel(operationCode));
-						result.append(argResult.get(0));
-						result.append(")");
+						_map.put("sourceResult", sourceResult);
+						_map.put("operation", OperationCode.toLabel(opCode));
+						_map.put("argResult", argResult.get(0));
+
+						result = TemplateUtil.process(
+							Template.ARITHMETIC_EXPRESSION, _map);
 
 						break;
 				}
@@ -152,7 +156,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 				break;
 		}
 
-		return result.toString();
+		return result;
 	}
 
 	protected String handlePropertyCallExp(PropertyCallExp propertyCallExp) {
@@ -170,12 +174,10 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleReturnExp(ReturnExp returnExp, String returnResult) {
-		if (returnResult == null) {
-			return "return;";
-		}
-		else {
-			return "return " + returnResult + ";";
-		}
+		_map.clear();
+		_map.put("returnResult", returnResult);
+
+		return TemplateUtil.process(Template.RETURN, _map);
 	}
 
 	protected String handleStringLiteralExp(StringLiteralExp stringLiteralExp) {
@@ -201,5 +203,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 		return null;
 	}
+
+	private Map<String, String> _map = new HashMap<String, String>();
 
 }

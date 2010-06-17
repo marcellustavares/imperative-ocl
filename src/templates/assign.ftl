@@ -1,0 +1,1 @@
+${leftResult} = ${defaultValueResult};

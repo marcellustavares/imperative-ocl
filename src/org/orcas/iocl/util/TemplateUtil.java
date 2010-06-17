@@ -27,13 +27,17 @@ import freemarker.template.Template;
 
 public class TemplateUtil {
 
-	public static String process(String templateName, Map<String, String> map) {
+	public static String process(
+		org.orcas.iocl.util.Template template, Map<String, String> map) {
+
 		try {
-			Template template = _instance._configuration.getTemplate(
-				"templates/" + templateName + ".ftl");
+			Template tmpl = _instance._configuration.getTemplate(
+				"templates/" + template.getTemplateName() + ".ftl");
 
 			StringWriter writer = new StringWriter();
-			template.process(map, writer);
+
+			tmpl.process(map, writer);
+
 			writer.flush();
 
 			return writer.toString();

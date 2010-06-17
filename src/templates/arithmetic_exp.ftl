@@ -1,0 +1,1 @@
+(${sourceResult} ${operation} ${argResult})

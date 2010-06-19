@@ -52,7 +52,7 @@ import org.orcas.iocl.expressions.imperativeocl.VariableExp;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.parser.antlr.IoclParser;
-import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.Operation;
 import org.orcas.iocl.util.PathType;
 import org.orcas.iocl.util.StringUtil;
 
@@ -79,7 +79,7 @@ public class ImperativeOclTreeWalker {
 				OperationCallExp operationCallExp =
 					getFactory().createOperationCallExp();
 
-				int operationCode = OperationCode.fromLabel(tree.getText());
+				int operationCode = Operation.toOperationCode(tree.getText());
 
 				operationCallExp.setOperationCode(operationCode);
 				operationCallExp.setSource(walk(tree.getChild(0)));
@@ -122,7 +122,7 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.DOT:
 				operationCallExp = getFactory().createOperationCallExp();
 
-				operationCode = OperationCode.fromLabel(
+				operationCode = Operation.toOperationCode(
 					tree.getChild(1).getText());
 
 				operationCallExp.setOperationCode(operationCode);
@@ -543,9 +543,10 @@ public class ImperativeOclTreeWalker {
 
 		operationCallExp.setSource(integerLiteralExp);
 
-		String label = numericOperaration.substring(index + 1);
+		String operationName = numericOperaration.substring(index + 1);
 
-		operationCallExp.setOperationCode(OperationCode.fromLabel(label));
+		operationCallExp.setOperationCode(
+			Operation.toOperationCode(operationName));
 
 		return operationCallExp;
 	}

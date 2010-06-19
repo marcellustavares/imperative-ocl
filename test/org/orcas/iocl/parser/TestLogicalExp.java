@@ -24,7 +24,7 @@ import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
-import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.Operation;
 
 public class TestLogicalExp extends TestCase {
 
@@ -43,7 +43,7 @@ public class TestLogicalExp extends TestCase {
 
 			int operationCode = opCallExp.getOperationCode();
 
-			String operation = OperationCode.toLabel(operationCode);
+			String operation = Operation.fromOperationCode(operationCode);
 
 			boolean opCheck = (
 				operation.equals("and") || operation.equals("or") ||
@@ -68,7 +68,7 @@ public class TestLogicalExp extends TestCase {
 
 		int operationCode = opCallExp.getOperationCode();
 
-		String operation = OperationCode.toLabel(operationCode);
+		String operation = Operation.fromOperationCode(operationCode);
 
 		assertEquals("xor", operation);
 

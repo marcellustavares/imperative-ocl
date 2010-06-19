@@ -24,7 +24,7 @@ import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.NumericLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
-import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.Operation;
 
 public class TestRelationalExp extends TestCase {
 
@@ -42,7 +42,7 @@ public class TestRelationalExp extends TestCase {
 
 			int operationCode = opCallExp.getOperationCode();
 
-			String operation = OperationCode.toLabel(operationCode);
+			String operation = Operation.fromOperationCode(operationCode);
 
 			boolean opCheck = (operation.equals("<") || operation.equals(">="));
 

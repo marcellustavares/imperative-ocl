@@ -328,7 +328,7 @@
           eType="#//imperativeocl/CollectionLiteralPart" containment="true" eOpposite="#//imperativeocl/CollectionLiteralPart/collectionLiteralExp"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteralPart" abstract="true"
-        eSuperTypes="#//emof/TypedElement">
+        eSuperTypes="#//emof/TypedElement #//util/Visitable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="collectionLiteralExp"
           lowerBound="1" eType="#//imperativeocl/CollectionLiteralExp" transient="true"
           eOpposite="#//imperativeocl/CollectionLiteralExp/part"/>

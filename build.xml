@@ -37,6 +37,15 @@
 		/>
 	</target>
 
+	<target name="translate-jiocl-files">
+		<java
+			classname="org.orcas.iocl.compiler.JioclTranslator"
+			classpathref="project.classpath"
+			fork="true"
+			newenvironment="true"
+		/>
+	</target>
+
 	<target name="test-parser">
 		<java
 			classname="org.orcas.iocl.parser.OclExpressionTest"

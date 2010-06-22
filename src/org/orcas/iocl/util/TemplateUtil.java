@@ -28,7 +28,7 @@ import freemarker.template.Template;
 public class TemplateUtil {
 
 	public static String process(
-		org.orcas.iocl.util.Template template, Map<String, String> map) {
+		org.orcas.iocl.util.Template template, Map<String, Object> map) {
 
 		try {
 			Template tmpl = _instance._configuration.getTemplate(

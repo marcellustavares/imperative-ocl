@@ -26,6 +26,7 @@ import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.BreakExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
+import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
@@ -34,6 +35,7 @@ import org.orcas.iocl.expressions.imperativeocl.IfExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
+import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
@@ -45,7 +47,7 @@ import org.orcas.iocl.expressions.imperativeocl.Variable;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.util.AbstractVisitor;
-import org.orcas.iocl.util.OperationCode;
+import org.orcas.iocl.util.Operation;
 import org.orcas.iocl.util.Template;
 import org.orcas.iocl.util.TemplateUtil;
 
@@ -77,15 +79,23 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return null;
 	}
 
-	protected String handleCollectionItem(CollectionItem collectionItem) {
+	protected String handleCollectionItem(
+		CollectionItem collectionItem, String collectionItemResult) {
 
-		return null;
+		return collectionItemResult;
 	}
 
 	protected String handleCollectionLiteralExp(
-			CollectionLiteralExp collectionLiteralExp) {
+		CollectionLiteralExp collectionLiteralExp, List<String> partResults) {
 
-		return null;
+		_map.clear();
+		_map.put("partResults", partResults);
+
+		CollectionKind collectionKind = collectionLiteralExp.getKind();
+
+		_map.put("collectionType", collectionKind.getName());
+
+		return TemplateUtil.process(Template.COLLECTION, _map);
 	}
 
 	protected String handleComputeExp(ComputeExp computeExp) {
@@ -131,20 +141,80 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 		String result = null;
 
-		_map.clear();
+		OclExpression source = operationCallExp.getSource();
 
-		int opCode = operationCallExp.getOperationCode();
 		int argumentsSize = argResult.size();
+		int operationCode = operationCallExp.getOperationCode();
+
+		Operation operation = Operation.getByOperationCode(operationCode);
 
 		switch (argumentsSize) {
+			case 0:
+				_map.clear();
+				_map.put("sourceResult", sourceResult);
+
+				switch (operation) {
+					case ABS:
+					case AS_BAG:
+					case AS_ORDERED_SET:
+					case AS_SEQUENCE:
+					case AS_SET:
+					case FIRST:
+					case FLATTEN:
+					case IS_EMPTY:
+					case LAST:
+					case MINUS:
+					case NOT:
+					case NOT_EMPTY:
+					case SUM:
+					case TO_INTEGER:
+					case TO_LOWER:
+					case TO_REAL:
+					case TO_UPPER:
+						Template template = Template.getByName(
+							operation.getOperationName());
+
+						result = TemplateUtil.process(template, _map);
+
+						break;
+
+					case FLOOR:
+					case ROUND:
+						if (source instanceof RealLiteralExp) {
+							template = Template.getByName(
+								operation.getOperationName());
+
+							result = TemplateUtil.process(template, _map);
+						}
+						else {
+							result = sourceResult;
+						}
+
+						break;
+
+					case SIZE:
+						if (source instanceof StringLiteralExp){
+							_map.put("operator", "length");
+						}
+						else {
+							_map.put("operator", "size");
+						}
+
+						result = TemplateUtil.process(Template.SIZE, _map);
+
+						break;
+				}
+
+				break;
+
 			case 1:
-				switch (opCode) {
-					case OperationCode.DIV:
-					case OperationCode.MINUS:
-					case OperationCode.MULT:
-					case OperationCode.PLUS:
+				switch (operation) {
+					case DIVIDE:
+					case MINUS:
+					case MULT:
+					case PLUS:
 						_map.put("sourceResult", sourceResult);
-						_map.put("operation", OperationCode.toLabel(opCode));
+						_map.put("operator", operation.getOperationName());
 						_map.put("argResult", argResult.get(0));
 
 						result = TemplateUtil.process(
@@ -204,6 +274,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return null;
 	}
 
-	private Map<String, String> _map = new HashMap<String, String>();
+	private Map<String, Object> _map = new HashMap<String, Object>();
 
 }

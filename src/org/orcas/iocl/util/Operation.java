@@ -19,35 +19,172 @@ package org.orcas.iocl.util;
 
 public enum Operation {
 
-	AND(1, "and"),
+	ABS(1, "abs"),
 
-	DIV(2, "/"),
+	AND(2, "and"),
 
-	EQUAL(3, "="),
+	ANY(3, "any"),
 
-	GT(4, ">"),
+	APPEND(4, "append"),
 
-	GTE(5, ">="),
+	AS_BAG(6, "asBag"),
 
-	LT(6, "<"),
+	AS_ORDERED_SET(7, "asOrderedSet"),
 
-	LTE(7, "<="),
+	AS_SEQUENCE(8, "asSequence"),
 
-	MINUS(8, "-"),
+	AS_SET(9, "asSet"),
 
-	MULT(9, "*"),
+	AT(5, "at"),
 
-	NOT_EQUAL(10, "<>"),
+	CLOSURE(10, "closure"),
 
-	OR(11, "or"),
+	COLLECT(11, "collect"),
 
-	PLUS(12, "+"),
+	COLLECT_NESTED(12, "collectNested"),
 
-	XOR(13, "xor");
+	CONCAT(13, "concat"),
+
+	COUNT(14, "count"),
+
+	DIV(15, "div"),
+
+	DIVIDE(16, "/"),
+
+	EQUAL(17, "="),
+
+	EXCLUDES(18, "excludes"),
+
+	EXCLUDING(19, "excluding"),
+
+	EXISTS(20, "exists"),
+
+	FIRST(21, "first"),
+
+	FLATTEN(22, "flatten"),
+
+	FLOOR(23, "floor"),
+
+	FOR_ALL(24, "forAll"),
+
+	GT(25, ">"),
+
+	GTE(26, ">="),
+
+	INCLUDES(27, "includes"),
+
+	INCLUDES_ALL(28, "includesAll"),
+
+	INCLUDING(29, "including"),
+
+	INDEX_OF(30, "indexOf"),
+
+	INSERT_AT(31, "insertAt"),
+
+	INTERSECTION(32, "intersection"),
+
+	IS_EMPTY(33, "isEmpty"),
+
+	IS_UNIQUE(34, "isUnique"),
+
+	LAST(35, "last"),
+
+	LT(36, "<"),
+
+	LTE(37, "<="),
+
+	MAX(38, "max"),
+
+	MIN(39, "min"),
+
+	MINUS(40, "-"),
+
+	MOD(41, "mod"),
+
+	MULT(42, "*"),
+
+	NOT(43, "not"),
+
+	NOT_EMPTY(44, "not"),
+
+	NOT_EQUAL(45, "<>"),
+
+	OCL_AS_TYPE(46, "oclAsType"),
+
+	OCL_IS_KIND_OF(47, "oclIsKindOf"),
+
+	OCL_IS_TYPE_OF(48, "oclIsTypeOf"),
+
+	ONE(49, "one"),
+
+	OR(50, "or"),
+
+	PLUS(51, "+"),
+
+	PREPEND(52, "prepend"),
+
+	PRODUCT(53, "product"),
+
+	REJECT(54, "reject"),
+
+	ROUND(55, "round"),
+
+	SELECT(56, "select"),
+
+	SIZE(57, "size"),
+
+	SORTED_BY(58, "sortedBy"),
+
+	SUBSTRING(59, "substring"),
+
+	SUB_ORDERED_SET(60, "subOrderedSet" ),
+
+	SYMMETRIC_DIFFERENCE(61, "symmetricDifference"),
+
+	SUM(62, "sum"),
+
+	TO_INTEGER(63, "toInteger"),
+
+	TO_LOWER(64, "toInteger"),
+
+	TO_REAL(65, "toInteger"),
+
+	TO_UPPER(66, "toInteger"),
+
+	UNION(67, "union"),
+
+	XOR(68, "xor");
 
 	public static Operation[] OPERATIONS = {
-		AND, DIV, EQUAL, GT, GTE, LT, LTE, MINUS, MULT, NOT_EQUAL, OR, PLUS,
-		XOR};
+		ABS, AND, ANY, APPEND, AT, AS_BAG, AS_ORDERED_SET, AS_SEQUENCE, AS_SET,
+		CLOSURE, COLLECT, COLLECT_NESTED, CONCAT, COUNT, DIV, DIVIDE, EQUAL,
+		EXCLUDES, EXCLUDING, EXISTS, FIRST, FLATTEN, FLOOR, FOR_ALL, GT, GTE,
+		INCLUDES, INCLUDES_ALL, INCLUDING, INDEX_OF, INSERT_AT, INTERSECTION,
+		IS_EMPTY, IS_UNIQUE, LAST, LT, LTE, MAX, MIN, MINUS, MOD, MULT, NOT,
+		NOT_EMPTY, NOT_EQUAL, OCL_AS_TYPE, OCL_IS_KIND_OF, OCL_IS_TYPE_OF, ONE,
+		OR, PLUS, PREPEND, PRODUCT, REJECT, ROUND, SELECT, SIZE, SORTED_BY,
+		SUBSTRING, SUB_ORDERED_SET, SYMMETRIC_DIFFERENCE, SUM, TO_INTEGER,
+		TO_LOWER, TO_REAL, TO_UPPER, UNION, XOR};
+
+	public static String fromOperationCode(int operationCode) {
+		for (int i = 0; i < OPERATIONS.length; i++) {
+			if (OPERATIONS[i].getOperationCode() == operationCode) {
+				return OPERATIONS[i].getOperationName();
+			}
+		}
+
+		return null;
+	}
+
+	public static Operation getByOperationCode(int operationCode) {
+		for (int i = 0; i < OPERATIONS.length; i++) {
+			if (OPERATIONS[i].getOperationCode() == operationCode) {
+				return OPERATIONS[i];
+			}
+		}
+
+		return null;
+	}
 
 	public static int toOperationCode(String operationName) {
 		for (int i = 0; i < OPERATIONS.length; i++) {
@@ -59,16 +196,6 @@ public enum Operation {
 		}
 
 		return -1;
-	}
-
-	public static String fromOperationCode(int operationCode) {
-		for (int i = 0; i < OPERATIONS.length; i++) {
-			if (OPERATIONS[i].getOperationCode() == operationCode) {
-				return OPERATIONS[i].getOperationName();
-			}
-		}
-
-		return null;
 	}
 
 	public int getOperationCode() {

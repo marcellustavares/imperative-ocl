@@ -26,6 +26,7 @@ import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.BreakExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
@@ -71,13 +72,23 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitCollectionItem(CollectionItem collectionItem) {
-		return null;
+		T collectionItemResult = visit(collectionItem.getItem());
+
+		return handleCollectionItem(collectionItem, collectionItemResult);
 	}
 
 	public T visitCollectionLiteralExp(
 		CollectionLiteralExp collectionLiteralExp) {
 
-		return null;
+		List<T> partResults = new ArrayList<T>();
+
+		List<CollectionLiteralPart> parts = collectionLiteralExp.getPart();
+
+		for (CollectionLiteralPart part : parts) {
+			partResults.add(visit(part));
+		}
+
+		return handleCollectionLiteralExp(collectionLiteralExp, partResults);
 	}
 
 	public T visitComputeExp(ComputeExp computeExp) {
@@ -178,10 +189,11 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handleBreakExp(BreakExp breakExp);
 
-	protected abstract T handleCollectionItem(CollectionItem collectionItem);
+	protected abstract T handleCollectionItem(
+		CollectionItem collectionItem, T collectionItemResult);
 
 	protected abstract T handleCollectionLiteralExp(
-		CollectionLiteralExp collectionLiteralExp);
+		CollectionLiteralExp collectionLiteralExp, List<T> partResults);
 
 	protected abstract T handleComputeExp(ComputeExp computeExp);
 

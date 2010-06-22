@@ -781,6 +781,7 @@ public class ImperativeOclSwitch<T> {
 				CollectionLiteralPart collectionLiteralPart = (CollectionLiteralPart)theEObject;
 				T result = caseCollectionLiteralPart(collectionLiteralPart);
 				if (result == null) result = caseTypedElement(collectionLiteralPart);
+				if (result == null) result = caseVisitable(collectionLiteralPart);
 				if (result == null) result = caseNamedElement(collectionLiteralPart);
 				if (result == null) result = caseElement(collectionLiteralPart);
 				if (result == null) result = caseObject(collectionLiteralPart);
@@ -792,6 +793,7 @@ public class ImperativeOclSwitch<T> {
 				T result = caseCollectionItem(collectionItem);
 				if (result == null) result = caseCollectionLiteralPart(collectionItem);
 				if (result == null) result = caseTypedElement(collectionItem);
+				if (result == null) result = caseVisitable(collectionItem);
 				if (result == null) result = caseNamedElement(collectionItem);
 				if (result == null) result = caseElement(collectionItem);
 				if (result == null) result = caseObject(collectionItem);
@@ -803,6 +805,7 @@ public class ImperativeOclSwitch<T> {
 				T result = caseCollectionRange(collectionRange);
 				if (result == null) result = caseCollectionLiteralPart(collectionRange);
 				if (result == null) result = caseTypedElement(collectionRange);
+				if (result == null) result = caseVisitable(collectionRange);
 				if (result == null) result = caseNamedElement(collectionRange);
 				if (result == null) result = caseElement(collectionRange);
 				if (result == null) result = caseObject(collectionRange);

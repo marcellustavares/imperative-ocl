@@ -37,6 +37,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -248,6 +249,15 @@ public class CollectionLiteralExpImpl extends LiteralExpImpl implements Collecti
 		result.append(kind);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitCollectionLiteralExp(this);
 	}
 
 } //CollectionLiteralExpImpl

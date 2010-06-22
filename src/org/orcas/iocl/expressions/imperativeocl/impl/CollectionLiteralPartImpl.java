@@ -33,6 +33,7 @@ import org.orcas.iocl.expressions.emof.impl.TypedElementImpl;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,6 +107,17 @@ public abstract class CollectionLiteralPartImpl extends TypedElementImpl impleme
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ImperativeOclPackage.COLLECTION_LITERAL_PART__COLLECTION_LITERAL_EXP, newCollectionLiteralExp, newCollectionLiteralExp));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

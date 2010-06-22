@@ -19,6 +19,7 @@
 package org.orcas.iocl.expressions.imperativeocl;
 
 import org.orcas.iocl.expressions.emof.TypedElement;
+import org.orcas.iocl.expressions.util.Visitable;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +37,7 @@ import org.orcas.iocl.expressions.emof.TypedElement;
  * @model abstract="true"
  * @generated
  */
-public interface CollectionLiteralPart extends TypedElement {
+public interface CollectionLiteralPart extends TypedElement, Visitable {
 	/**
 	 * Returns the value of the '<em><b>Collection Literal Exp</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp#getPart <em>Part</em>}'.

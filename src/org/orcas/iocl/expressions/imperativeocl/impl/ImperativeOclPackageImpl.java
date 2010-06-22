@@ -2488,6 +2488,7 @@ public class ImperativeOclPackageImpl extends EPackageImpl implements Imperative
 		numericLiteralExpEClass.getESuperTypes().add(this.getPrimitiveLiteralExp());
 		collectionLiteralExpEClass.getESuperTypes().add(this.getLiteralExp());
 		collectionLiteralPartEClass.getESuperTypes().add(theEmofPackage.getTypedElement());
+		collectionLiteralPartEClass.getESuperTypes().add(theUtilPackage.getVisitable());
 		collectionItemEClass.getESuperTypes().add(this.getCollectionLiteralPart());
 		collectionRangeEClass.getESuperTypes().add(this.getCollectionLiteralPart());
 		tupleLiteralExpEClass.getESuperTypes().add(this.getLiteralExp());

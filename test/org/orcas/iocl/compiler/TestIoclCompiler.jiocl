@@ -1,0 +1,19 @@
+package org.orcas.iocl.compiler;
+
+import junit.framework.TestCase;
+import junit.textui.TestRunner;
+
+public class TestIoclCompiler extends TestCase {
+
+    public int abs(int a) <![
+        return a.abs();
+    ]>
+
+    public void testAbs() {
+    	assertEquals(5, abs(-5));
+    }
+    
+    public static void main(String[] args) {
+    	TestRunner.run(TestIoclCompiler.class);
+    }
+}

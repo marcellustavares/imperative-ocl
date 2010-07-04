@@ -160,7 +160,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitTypeExp(TypeExp typeExp) {
-		return null;
+		return handleTypeExp(typeExp);
 	}
 
 	public T visitVariableExp(VariableExp variableExp) {
@@ -225,6 +225,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		StringLiteralExp stringLiteralExp);
 
 	protected abstract T handleTryExp(TryExp tryExp);
+
+	protected abstract T handleTypeExp(TypeExp typeExp);
 
 	protected abstract T handleVariable(Variable variable, T initResult);
 

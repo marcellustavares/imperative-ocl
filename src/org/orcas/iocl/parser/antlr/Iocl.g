@@ -139,6 +139,7 @@ dotArrowExp
 oclExp
 	: variableExp
 	| literalExp
+	| type
 	| '(' oclExpression ')' -> oclExpression 
 	;		
 
@@ -247,8 +248,7 @@ arguments
 	: oclExpression (','! oclExpression)*
 	;
 
-simpleName
-	//: primitiveType
+simpleName	
 	: SELF
 	| IDENTIFIER
 	;

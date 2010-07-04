@@ -137,7 +137,9 @@ public enum Template {
 
 	SUBSTRING("substring"),
 
-	SUB_ORDERED_SET("subOrderedSet" ),
+	SUB_ORDERED_SET("subOrderedSet"),
+
+	SUB_SEQUENCE("subSequence"),
 
 	SYMMETRIC_DIFFERENCE("symmetricDifference"),
 
@@ -145,11 +147,11 @@ public enum Template {
 
 	TO_INTEGER("toInteger"),
 
-	TO_LOWER("toInteger"),
+	TO_LOWER("toLower"),
 
-	TO_REAL("toInteger"),
+	TO_REAL("toReal"),
 
-	TO_UPPER("toInteger"),
+	TO_UPPER("toUpper"),
 
 	UNION("union"),
 
@@ -164,8 +166,8 @@ public enum Template {
 		LT, LTE, MAX, MIN, MOD, NOT, NOT_EMPTY, NOT_EQUAL,	OCL_AS_TYPE,
 		OCL_IS_KIND_OF, OCL_IS_TYPE_OF, ONE, OR, PREPEND, PRODUCT, REJECT,
 		RETURN, ROUND, SELECT, SIZE, SORTED_BY, SUBSTRING,	SUB_ORDERED_SET,
-		SYMMETRIC_DIFFERENCE, SUM, TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER,
-		UNION, XOR};
+		SUB_SEQUENCE, SYMMETRIC_DIFFERENCE, SUM, TO_INTEGER, TO_LOWER, TO_REAL,
+		TO_UPPER, UNION, XOR};
 
 	public static Template getByName(String templateName) {
 		for (int i = 0; i < TEMPLATES.length; i++) {

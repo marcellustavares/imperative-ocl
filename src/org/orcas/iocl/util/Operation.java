@@ -137,23 +137,25 @@ public enum Operation {
 
 	SUBSTRING(59, "substring"),
 
-	SUB_ORDERED_SET(60, "subOrderedSet" ),
+	SUB_ORDERED_SET(60, "subOrderedSet"),
 
-	SYMMETRIC_DIFFERENCE(61, "symmetricDifference"),
+	SUB_SEQUENCE(61, "subSequence"),
 
-	SUM(62, "sum"),
+	SYMMETRIC_DIFFERENCE(62, "symmetricDifference"),
 
-	TO_INTEGER(63, "toInteger"),
+	SUM(63, "sum"),
 
-	TO_LOWER(64, "toInteger"),
+	TO_INTEGER(64, "toInteger"),
 
-	TO_REAL(65, "toInteger"),
+	TO_LOWER(65, "toLower"),
 
-	TO_UPPER(66, "toInteger"),
+	TO_REAL(66, "toReal"),
 
-	UNION(67, "union"),
+	TO_UPPER(67, "toUpper"),
 
-	XOR(68, "xor");
+	UNION(68, "union"),
+
+	XOR(69, "xor");
 
 	public static Operation[] OPERATIONS = {
 		ABS, AND, ANY, APPEND, AT, AS_BAG, AS_ORDERED_SET, AS_SEQUENCE, AS_SET,
@@ -163,8 +165,8 @@ public enum Operation {
 		IS_EMPTY, IS_UNIQUE, LAST, LT, LTE, MAX, MIN, MINUS, MOD, MULT, NOT,
 		NOT_EMPTY, NOT_EQUAL, OCL_AS_TYPE, OCL_IS_KIND_OF, OCL_IS_TYPE_OF, ONE,
 		OR, PLUS, PREPEND, PRODUCT, REJECT, ROUND, SELECT, SIZE, SORTED_BY,
-		SUBSTRING, SUB_ORDERED_SET, SYMMETRIC_DIFFERENCE, SUM, TO_INTEGER,
-		TO_LOWER, TO_REAL, TO_UPPER, UNION, XOR};
+		SUBSTRING, SUB_ORDERED_SET, SUB_SEQUENCE, SYMMETRIC_DIFFERENCE, SUM,
+		TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER, UNION, XOR};
 
 	public static String fromOperationCode(int operationCode) {
 		for (int i = 0; i < OPERATIONS.length; i++) {

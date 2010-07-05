@@ -1,5 +1,4 @@
-<#assign type = argType>
-<#if argType == 'Real'>
-	<#assign type = 'Double'>
+<#if argResult == 'Real'>
+	<#assign argResult = 'Double'>
 </#if>
-${sourceResult} instanceof ${type}
+${sourceResult} instanceof ${argResult}

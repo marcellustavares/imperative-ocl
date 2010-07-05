@@ -1,19 +1,7 @@
-<#if argType == 'Integer'>
-	<#if sourceType == 'Integer'>
-${sourceResult}
-	<#else>
+<#if argResult == 'Integer'>
 new Integer(${sourceResult})
-	</#if>
-<#elseif argType == 'Real'>
-	<#if sourceType == 'Real'>
-${sourceResult}
-	<#else>
+<#elseif argResult == 'Real'>
 new Double(${sourceResult})
-	</#if>
-<#elseif argType == 'String'>
-	<#if sourceType == 'String'>
-${sourceResult}
-	<#else>
+<#elseif argResult == 'String'>
 ${sourceResult}.toString()
-	</#if>
 </#if>

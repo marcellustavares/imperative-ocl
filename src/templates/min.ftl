@@ -1,1 +1,1 @@
-Math.min(${sourceResult},${argResult})
+Math.min(${sourceResult}, ${argResult})

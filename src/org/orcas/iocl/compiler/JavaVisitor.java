@@ -43,6 +43,7 @@ import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
+import org.orcas.iocl.expressions.imperativeocl.TypeExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
@@ -208,17 +209,74 @@ public class JavaVisitor extends AbstractVisitor<String> {
 				break;
 
 			case 1:
+				_map.clear();
+				_map.put("sourceResult", sourceResult);
+				_map.put("argResult", argResult.get(0));
+
 				switch (operation) {
+					case AND:
+					case APPEND:
+					case AT:
+					case COUNT:
+					case DIV:
+					case EQUAL:
+					case EXCLUDES:
+					case EXCLUDING:
+					case GT:
+					case GTE:
+					case INCLUDES:
+					case INCLUDES_ALL:
+					case INCLUDING:
+					case INDEX_OF:
+					case INTERSECTION:
+					case LT:
+					case LTE:
+					case MAX:
+					case MIN:
+					case MOD:
+					case NOT_EQUAL:
+					case OCL_AS_TYPE:
+					case OCL_IS_KIND_OF:
+					case OCL_IS_TYPE_OF:
+					case OR:
+					case SYMMETRIC_DIFFERENCE:
+					case UNION:
+					case XOR:
+						Template template = Template.getByName(
+							operation.getOperationName());
+
+						result = TemplateUtil.process(template, _map);
+
+						break;
+
 					case DIVIDE:
 					case MINUS:
 					case MULT:
 					case PLUS:
-						_map.put("sourceResult", sourceResult);
 						_map.put("operator", operation.getOperationName());
-						_map.put("argResult", argResult.get(0));
 
 						result = TemplateUtil.process(
 							Template.ARITHMETIC_EXPRESSION, _map);
+
+						break;
+				}
+
+				break;
+
+			case 2:
+				_map.clear();
+				_map.put("sourceResult", sourceResult);
+				_map.put("arg0Result", argResult.get(0));
+				_map.put("arg1Result", argResult.get(1));
+
+				switch (operation) {
+					case INSERT_AT:
+					case SUB_ORDERED_SET:
+					case SUB_SEQUENCE:
+						Template template = Template.getByName(
+							operation.getOperationName());
+
+						result = TemplateUtil.process(template, _map);
 
 						break;
 				}
@@ -256,8 +314,11 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 
 	protected String handleTryExp(TryExp tryExp) {
-
 		return null;
+	}
+
+	protected String handleTypeExp(TypeExp typeExp) {
+		return typeExp.getReferredType().getName();
 	}
 
 	protected String handleVariable(Variable variable, String initResult) {

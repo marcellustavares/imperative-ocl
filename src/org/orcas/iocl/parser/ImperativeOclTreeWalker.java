@@ -138,6 +138,19 @@ public class ImperativeOclTreeWalker {
 
 				break;
 
+			case IoclParser.BLOCK:
+				BlockExp blockExp = getFactory().createBlockExp();
+
+				EList<OclExpression> body = blockExp.getBody();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					body.add(walk(tree.getChild(i)));
+				}
+
+				oclExpression = blockExp;
+
+				break;
+
 			case IoclParser.BOOLEAN_LITERAL:
 				BooleanLiteralExp booleanLiteralExp =
 					getFactory().createBooleanLiteralExp();
@@ -204,20 +217,6 @@ public class ImperativeOclTreeWalker {
 				oclExpression = getFactory().createContinueExp();
 
 				break;
-
-			case IoclParser.DO:
-				BlockExp blockExp = getFactory().createBlockExp();
-
-				EList<OclExpression> body = blockExp.getBody();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					body.add(walk(tree.getChild(i)));
-				}
-
-				oclExpression = blockExp;
-
-				break;
-
 
 			case IoclParser.EXCEPT:
 				CatchExp catchExp = getFactory().createCatchExp();

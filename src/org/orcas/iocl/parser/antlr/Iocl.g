@@ -28,6 +28,7 @@ AND = 'and';
 ALT_EXP;
 APPEND = '+=';
 ARROW = '->';
+BLOCK;
 BREAK = 'break';
 COLLECTION_LITERAL;
 COLLECTION_TYPE;
@@ -289,11 +290,11 @@ imperativeExp
 	;
 
 blockExp
-	: DO? LCURLY oclExpression* RCURLY -> ^(DO oclExpression*)
+	: DO? LCURLY oclExpression* RCURLY -> ^(BLOCK oclExpression*)
 	;
 
 breakExp
-	: BREAK SEMICOLON
+	: BREAK^ SEMICOLON
 	;
 
 computeExp
@@ -301,7 +302,7 @@ computeExp
 	;
 
 continueExp
-	: CONTINUE SEMICOLON
+	: CONTINUE^ SEMICOLON
 	;
 
 returnExp

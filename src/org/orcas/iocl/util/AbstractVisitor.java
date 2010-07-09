@@ -60,7 +60,15 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitBlockExp(BlockExp blockExp) {
-		return null;
+		List<T> bodyResults = new ArrayList<T>();
+
+		List<OclExpression> body = blockExp.getBody();
+
+		for (OclExpression bodyPart : body) {
+			bodyResults.add(visit(bodyPart));
+		}
+
+		return handleBlockExp(blockExp, bodyResults);
 	}
 
 	public T visitBooleanLiteralExp(BooleanLiteralExp booleanLiteralExp) {
@@ -68,7 +76,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitBreakExp(BreakExp breakExp) {
-		return null;
+		return handleBreakExp(breakExp);
 	}
 
 	public T visitCollectionItem(CollectionItem collectionItem) {
@@ -96,7 +104,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitContinueExp(ContinueExp continueExp) {
-		return null;
+		return handleContinueExp(continueExp);
 	}
 
 	public T visitForExp(ForExp forExp) {
@@ -182,7 +190,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleAssignExp(
 		AssignExp assignExp, T leftResult, T defaultValueResult);
 
-	protected abstract T handleBlockExp(BlockExp blockExp);
+	protected abstract T handleBlockExp(BlockExp blockExp, List<T> bodyResults);
 
 	protected abstract T handleBooleanLiteralExp(
 		BooleanLiteralExp booleanLiteralExp);

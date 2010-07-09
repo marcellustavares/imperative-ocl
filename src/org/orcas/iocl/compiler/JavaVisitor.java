@@ -64,9 +64,13 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.ASSIGN, _map);
 	}
 
-	protected String handleBlockExp(BlockExp blockExp) {
+	protected String handleBlockExp(
+		BlockExp blockExp, List<String> bodyResults) {
 
-		return null;
+		_map.clear();
+		_map.put("bodyResults", bodyResults);
+
+		return TemplateUtil.process(Template.BLOCK, _map);
 	}
 
 	protected String handleBooleanLiteralExp(
@@ -76,8 +80,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleBreakExp(BreakExp breakExp) {
-
-		return null;
+		return TemplateUtil.process(Template.BREAK, null);
 	}
 
 	protected String handleCollectionItem(
@@ -105,8 +108,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleContinueExp(ContinueExp continueExp) {
-
-		return null;
+		return TemplateUtil.process(Template.CONTINUE, null);
 	}
 
 	protected String handleForExp(ForExp forExp) {

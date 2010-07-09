@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -161,6 +162,15 @@ public class BlockExpImpl extends ImperativeExpressionImpl implements BlockExp {
 				return body != null && !body.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitBlockExp(this);
 	}
 
 } //BlockExpImpl

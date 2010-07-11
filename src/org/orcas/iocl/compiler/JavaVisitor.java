@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
@@ -103,7 +104,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleComputeExp(ComputeExp computeExp) {
-
 		return null;
 	}
 
@@ -127,15 +127,47 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return integerLiteralExp.getIntegerSymbol().toString();
 	}
 
-	protected String handleIterateExp(IterateExp iterateExp) {
+	protected String handleIterateExp(
+		IterateExp iterateExp, String sourceResult,
+		List<String> variableResults, String resultResult, String bodyResult) {
 
-		return null;
+		_map.clear();
+
+		_map.put("sourceResult", sourceResult);
+		_map.put("variableResults", variableResults);
+		_map.put("bodyResult", bodyResult);
+
+		String iterateName = iterateExp.getName();
+
+		Template template = Template.getByName(iterateName);
+
+		return TemplateUtil.process(template, _map);
 	}
 
 
-	protected String handleIteratorExp(IteratorExp iteratorExp) {
+	protected String handleIteratorExp(
+		IteratorExp iteratorExp, String sourceResult,
+		List<String> variableResults, String bodyResult) {
 
-		return null;
+		_map.clear();
+
+		_map.put("sourceResult", sourceResult);
+		_map.put("sourceType", _getType(iteratorExp.getSource()));
+		_map.put("variableResults", variableResults);
+		_map.put("bodyResult", bodyResult);
+
+		List<Variable> variables = iteratorExp.getIterator();
+
+		Variable accumulator = variables.get(0);
+
+		_map.put("accName", accumulator.getName());
+		_map.put("accType", _getType(accumulator.getType()));
+
+		String iteratorName = iteratorExp.getName();
+
+		Template template = Template.getByName(iteratorName);
+
+		return TemplateUtil.process(template, _map);
 	}
 
 	protected String handleOperationCallExp(
@@ -324,7 +356,13 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleVariable(Variable variable, String initResult) {
-		return variable.getName();
+		_map.clear();
+
+		_map.put("initResult", initResult);
+		_map.put("name", variable.getName());
+		_map.put("type", _getType(variable.getType()));
+
+		return TemplateUtil.process(Template.VARIABLE, _map);
 	}
 
 	protected String handleVariableInitExp(VariableInitExp variableInitExp) {
@@ -333,6 +371,25 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleWhileExp(WhileExp whileExp) {
+
+		return null;
+	}
+
+	private String _getType(OclExpression oclExpression) {
+		if (oclExpression instanceof CollectionLiteralExp) {
+			CollectionLiteralExp collectionExp =
+				(CollectionLiteralExp)oclExpression;
+
+			return collectionExp.getKind().getName();
+		}
+
+		return null;
+	}
+
+	private String _getType(Type type) {
+		if (type != null) {
+			return type.getName();
+		}
 
 		return null;
 	}

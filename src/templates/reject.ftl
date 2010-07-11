@@ -1,10 +1,10 @@
 <#include "iteratorCommon.ftl">
 
-for (java.util.Iterator<${tmpType}> it = ${sourceResult}.iterator(); it.hasNext();){
-	${tmpName} = it.next(); 
+for (java.util.Iterator<${accType}> it = ${sourceResult}.iterator(); it.hasNext();){
+	${accName} = it.next(); 
 	
 	if (!${bodyResult}){
-		collection.add(${tmpName});	
+		collection.add(${accName});	
 	}
 } 
 

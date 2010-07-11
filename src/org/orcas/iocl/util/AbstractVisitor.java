@@ -120,11 +120,39 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitIterateExp(IterateExp iterateExp) {
-		return null;
+		T sourceResult = visit(iterateExp.getSource());
+
+		List<T> variableResults = new ArrayList<T>();
+
+		List<Variable> variables = iterateExp.getIterator();
+
+		for (Variable variable : variables) {
+			variableResults.add(visit(variable));
+		}
+
+		T resultResult = visit(iterateExp.getResult());
+		T bodyResult = visit(iterateExp.getBody());
+
+		return handleIterateExp(
+			iterateExp, sourceResult, variableResults, resultResult,
+			bodyResult);
 	}
 
 	public T visitIteratorExp(IteratorExp iteratorExp) {
-		return null;
+		T sourceResult = visit(iteratorExp.getSource());
+
+		List<T> variableResults = new ArrayList<T>();
+
+		List<Variable> variables = iteratorExp.getIterator();
+
+		for (Variable variable : variables) {
+			variableResults.add(visit(variable));
+		}
+
+		T bodyResult = visit(iteratorExp.getBody());
+
+		return handleIteratorExp(
+			iteratorExp, sourceResult, variableResults, bodyResult);
 	}
 
 	public T visitOperationCallExp(OperationCallExp operationCallExp) {
@@ -171,16 +199,16 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return handleTypeExp(typeExp);
 	}
 
+	public T visitVariable(Variable variable) {
+		T initResult = visit(variable.getInitExpression());
+
+		return handleVariable(variable, initResult);
+	}
+
 	public T visitVariableExp(VariableExp variableExp) {
 		Variable referredVariable = variableExp.getReferredVariable();
 
-		T initResult = visit(referredVariable.getInitExpression());
-
-		return handleVariable(referredVariable, initResult);
-	}
-
-	public T visitVariableInitExp(VariableInitExp variableInitExp) {
-		return null;
+		return visit(referredVariable);
 	}
 
 	public T visitWhileExp(WhileExp whileExp) {
@@ -214,9 +242,13 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp);
 
-	protected abstract T handleIterateExp(IterateExp iterateExp);
+	protected abstract T handleIterateExp(
+		IterateExp iterateExp, T sourceResult, List<T> variableResults,
+		T resultResult, T bodyResult);
 
-	protected abstract T handleIteratorExp(IteratorExp iteratorExp);
+	protected abstract T handleIteratorExp(
+		IteratorExp iteratorExp, T sourceResult, List<T> variableResults,
+		T bodyResult);
 
 	protected abstract T handleOperationCallExp(
 		OperationCallExp operationCallExp, T sourceResult, List<T> argResult);

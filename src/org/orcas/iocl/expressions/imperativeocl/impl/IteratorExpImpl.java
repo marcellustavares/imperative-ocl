@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,6 +51,15 @@ public class IteratorExpImpl extends LoopExpImpl implements IteratorExp {
 	@Override
 	protected EClass eStaticClass() {
 		return ImperativeOclPackage.Literals.ITERATOR_EXP;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitIteratorExp(this);
 	}
 
 } //IteratorExpImpl

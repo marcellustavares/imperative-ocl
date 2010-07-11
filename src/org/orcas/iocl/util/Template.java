@@ -161,6 +161,8 @@ public enum Template {
 
 	UNION("union"),
 
+	VARIABLE("variable"),
+
 	XOR("xor");
 
 	public static Template[] TEMPLATES = {
@@ -173,7 +175,7 @@ public enum Template {
 		NOT_EQUAL,	OCL_AS_TYPE, OCL_IS_KIND_OF, OCL_IS_TYPE_OF, ONE, OR,
 		PREPEND, PRODUCT, REJECT, RETURN, ROUND, SELECT, SIZE, SORTED_BY,
 		SUBSTRING,	SUB_ORDERED_SET, SUB_SEQUENCE, SYMMETRIC_DIFFERENCE, SUM,
-		TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER, UNION, XOR};
+		TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER, UNION, VARIABLE, XOR};
 
 	public static Template getByName(String templateName) {
 		for (int i = 0; i < TEMPLATES.length; i++) {

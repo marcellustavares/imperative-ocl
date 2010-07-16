@@ -20,6 +20,7 @@ package org.orcas.iocl.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
@@ -30,7 +31,6 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
-import org.orcas.iocl.expressions.imperativeocl.IfExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
@@ -41,6 +41,7 @@ import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.SwitchExp;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
 import org.orcas.iocl.expressions.imperativeocl.TypeExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
@@ -50,6 +51,13 @@ import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.expressions.util.Visitable;
 
 public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
+
+	public T visitAltExp(AltExp altExp) {
+		T conditionResult = visit(altExp.getCondition());
+		T bodyResult = visit(altExp.getBody());
+
+		return handleAltExp(altExp, conditionResult, bodyResult);
+	}
 
 	public T visitAssignExp(AssignExp assignExp) {
 		T leftResult = visit(assignExp.getLeft());
@@ -108,10 +116,6 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitForExp(ForExp forExp) {
-		return null;
-	}
-
-	public T visitIfExp(IfExp ifExp) {
 		return null;
 	}
 
@@ -191,6 +195,20 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return handleStringLiteralExp(stringLiteralExp);
 	}
 
+	public T visitSwitchExp(SwitchExp switchExp) {
+		List<T> altPartResults = new ArrayList<T>();
+		List<AltExp> altParts = switchExp.getAlternativePart();
+
+		for (AltExp altExp : altParts) {
+			altPartResults.add(visit(altExp));
+		}
+
+		T elseResult = visit(switchExp.getElsePart());
+
+		return handleSwitchExp(switchExp, altPartResults, elseResult);
+	}
+
+
 	public T visitTryExp(TryExp tryExp) {
 		return null;
 	}
@@ -215,6 +233,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return null;
 	}
 
+	protected abstract T handleAltExp(
+		AltExp altExp, T conditionResult, T bodyResult);
+
 	protected abstract T handleAssignExp(
 		AssignExp assignExp, T leftResult, T defaultValueResult);
 
@@ -236,8 +257,6 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleContinueExp(ContinueExp continueExp);
 
 	protected abstract T handleForExp(ForExp forExp);
-
-	protected abstract T handleIfExp(IfExp ifExp);
 
 	protected abstract T handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp);
@@ -263,6 +282,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handleStringLiteralExp(
 		StringLiteralExp stringLiteralExp);
+
+	protected abstract T handleSwitchExp(
+		SwitchExp switchExp, List<T> altPartResults, T elseResult);
 
 	protected abstract T handleTryExp(TryExp tryExp);
 

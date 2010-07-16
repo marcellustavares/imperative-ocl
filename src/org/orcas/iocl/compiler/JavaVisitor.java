@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.orcas.iocl.expressions.emof.Type;
+import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
@@ -32,7 +33,6 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
-import org.orcas.iocl.expressions.imperativeocl.IfExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
@@ -43,6 +43,7 @@ import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.SwitchExp;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
 import org.orcas.iocl.expressions.imperativeocl.TypeExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
@@ -54,6 +55,16 @@ import org.orcas.iocl.util.Template;
 import org.orcas.iocl.util.TemplateUtil;
 
 public class JavaVisitor extends AbstractVisitor<String> {
+
+	protected String handleAltExp(
+		AltExp altExp, String conditionResult, String bodyResult) {
+
+		_map.clear();
+		_map.put("conditionResult", conditionResult);
+		_map.put("bodyResult", bodyResult);
+
+		return TemplateUtil.process(Template.ALT, _map);
+	}
 
 	protected String handleAssignExp(
 		AssignExp assignExp, String leftResult, String defaultValueResult) {
@@ -112,11 +123,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleForExp(ForExp forExp) {
-
-		return null;
-	}
-
-	protected String handleIfExp(IfExp ifExp) {
 
 		return null;
 	}
@@ -346,6 +352,15 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return "\"" + stringLiteralExp.getStringSymbol() + "\"";
 	}
 
+	protected String handleSwitchExp(
+		SwitchExp switchExp, List<String> altPartResults, String elseResult) {
+
+		_map.clear();
+		_map.put("altPartResults", altPartResults);
+		_map.put("elseResult", elseResult);
+
+		return TemplateUtil.process(Template.SWITCH, _map);
+	}
 
 	protected String handleTryExp(TryExp tryExp) {
 		return null;

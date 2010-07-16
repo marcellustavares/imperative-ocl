@@ -230,6 +230,11 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 
 		initEClass(visitorEClass, Visitor.class, "Visitor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
+		op = addEOperation(visitorEClass, null, "visitAltExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getAltExp(), "altExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
 		op = addEOperation(visitorEClass, null, "visitAssignExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theImperativeOclPackage.getAssignExp(), "assignExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		g1 = createEGenericType(visitorEClass_T);
@@ -275,11 +280,6 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 		g1 = createEGenericType(visitorEClass_T);
 		initEOperation(op, g1);
 
-		op = addEOperation(visitorEClass, null, "visitIfExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theImperativeOclPackage.getIfExp(), "ifExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		g1 = createEGenericType(visitorEClass_T);
-		initEOperation(op, g1);
-
 		op = addEOperation(visitorEClass, null, "visitIntegerLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theImperativeOclPackage.getIntegerLiteralExp(), "integerLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		g1 = createEGenericType(visitorEClass_T);
@@ -322,6 +322,11 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 
 		op = addEOperation(visitorEClass, null, "visitStringLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theImperativeOclPackage.getStringLiteralExp(), "stringLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(visitorEClass, null, "visitSwitchExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theImperativeOclPackage.getSwitchExp(), "switchExp", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		g1 = createEGenericType(visitorEClass_T);
 		initEOperation(op, g1);
 

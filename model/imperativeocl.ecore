@@ -403,6 +403,10 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Visitor" abstract="true" interface="true">
       <eTypeParameters name="T"/>
+      <eOperations name="visitAltExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="altExp" eType="#//imperativeocl/AltExp"/>
+      </eOperations>
       <eOperations name="visitAssignExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="assignExp" eType="#//imperativeocl/AssignExp"/>
@@ -439,10 +443,6 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="forExp" eType="#//imperativeocl/ForExp"/>
       </eOperations>
-      <eOperations name="visitIfExp">
-        <eGenericType eTypeParameter="#//util/Visitor/T"/>
-        <eParameters name="ifExp" eType="#//imperativeocl/IfExp"/>
-      </eOperations>
       <eOperations name="visitIntegerLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="integerLiteralExp" eType="#//imperativeocl/IntegerLiteralExp"/>
@@ -478,6 +478,10 @@
       <eOperations name="visitStringLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="stringLiteralExp" eType="#//imperativeocl/StringLiteralExp"/>
+      </eOperations>
+      <eOperations name="visitSwitchExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="switchExp" eType="#//imperativeocl/SwitchExp"/>
       </eOperations>
       <eOperations name="visitTryExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>

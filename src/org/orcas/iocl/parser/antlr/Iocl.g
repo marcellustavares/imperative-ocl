@@ -335,7 +335,7 @@ whileExp
 	;
 
 ifExp
-	: IF altExp (elifExp)* (elseExp)? ENDIF -> ^(IF altExp elifExp* elseExp?)
+	: IF altExp (elifExp)* (elseExp)? ENDIF? -> ^(IF altExp elifExp* elseExp?)
 	;
 
 elifExp

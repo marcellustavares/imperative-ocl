@@ -37,6 +37,7 @@ import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.SwitchExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -231,6 +232,15 @@ public class SwitchExpImpl extends CallExpImpl implements SwitchExp {
 				return elsePart != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitSwitchExp(this);
 	}
 
 } //SwitchExpImpl

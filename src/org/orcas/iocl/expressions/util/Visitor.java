@@ -19,6 +19,7 @@
 package org.orcas.iocl.expressions.util;
 
 import org.eclipse.emf.ecore.EObject;
+import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
@@ -38,6 +39,7 @@ import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.SwitchExp;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
 import org.orcas.iocl.expressions.imperativeocl.TypeExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
@@ -56,6 +58,14 @@ import org.orcas.iocl.expressions.imperativeocl.WhileExp;
  * @generated
  */
 public interface Visitor<T> extends EObject {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitAltExp(AltExp altExp);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,14 +145,6 @@ public interface Visitor<T> extends EObject {
 	 * @model
 	 * @generated
 	 */
-	T visitIfExp(IfExp ifExp);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp);
 
 	/**
@@ -208,6 +210,14 @@ public interface Visitor<T> extends EObject {
 	 * @generated
 	 */
 	T visitStringLiteralExp(StringLiteralExp stringLiteralExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitSwitchExp(SwitchExp switchExp);
 
 	/**
 	 * <!-- begin-user-doc -->

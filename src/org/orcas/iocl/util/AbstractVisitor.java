@@ -200,7 +200,13 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitRaiseExp(RaiseExp raiseExp) {
-		return null;
+		T typeResult = null;
+
+		if (raiseExp.getException() != null) {
+			typeResult = handleType(raiseExp.getException());
+		}
+
+		return handleRaiseExp(raiseExp, typeResult);
 	}
 
 	public T visitRealLiteralExp(RealLiteralExp realLiteralExp) {
@@ -320,7 +326,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handlePropertyCallExp(PropertyCallExp propertyCallExp);
 
-	protected abstract T handleRaiseExp(RaiseExp raiseExp);
+	protected abstract T handleRaiseExp(RaiseExp raiseExp, T typeResult);
 
 	protected abstract T handleRealLiteralExp(RealLiteralExp realLiteralExp);
 

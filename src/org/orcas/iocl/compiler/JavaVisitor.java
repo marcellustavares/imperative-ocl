@@ -345,9 +345,12 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return null;
 	}
 
-	protected String handleRaiseExp(RaiseExp raiseExp) {
+	protected String handleRaiseExp(RaiseExp raiseExp, String typeResult) {
+		_map.clear();
+		_map.put("typeResult", typeResult);
+		_map.put("exceptionMessage", raiseExp.getExceptionMessage());
 
-		return null;
+		return TemplateUtil.process(Template.RAISE, _map);
 	}
 
 	protected String handleRealLiteralExp(RealLiteralExp realLiteralExp) {

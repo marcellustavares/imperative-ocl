@@ -372,7 +372,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleVariable(Variable variable, String initResult) {
 		_map.clear();
-
 		_map.put("initResult", initResult);
 		_map.put("name", variable.getName());
 		_map.put("type", _getType(variable.getType()));
@@ -385,9 +384,14 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return null;
 	}
 
-	protected String handleWhileExp(WhileExp whileExp) {
+	protected String handleWhileExp(
+		WhileExp whileExp, String conditionResult, String bodyResult) {
 
-		return null;
+		_map.clear();
+		_map.put("conditionResult", conditionResult);
+		_map.put("bodyResult", bodyResult);
+
+		return TemplateUtil.process(Template.WHILE, _map);
 	}
 
 	private String _getType(OclExpression oclExpression) {

@@ -167,6 +167,8 @@ public enum Template {
 
 	VARIABLE("variable"),
 
+	WHILE("while"),
+
 	XOR("xor");
 
 	public static Template[] TEMPLATES = {
@@ -180,7 +182,7 @@ public enum Template {
 		PREPEND, PRODUCT, REJECT, RETURN, ROUND, SELECT, SIZE, SORTED_BY,
 		SUBSTRING,	SUB_ORDERED_SET, SUB_SEQUENCE, SUM, SWITCH,
 		SYMMETRIC_DIFFERENCE, TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER, UNION,
-		VARIABLE, XOR};
+		VARIABLE, WHILE, XOR};
 
 	public static Template getByName(String templateName) {
 		for (int i = 0; i < TEMPLATES.length; i++) {

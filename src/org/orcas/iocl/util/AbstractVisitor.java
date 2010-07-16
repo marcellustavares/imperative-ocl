@@ -230,7 +230,10 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitWhileExp(WhileExp whileExp) {
-		return null;
+		T conditionResult = visit(whileExp.getCondition());
+		T bodyResult = visit(whileExp.getBody());
+
+		return handleWhileExp(whileExp, conditionResult, bodyResult);
 	}
 
 	protected abstract T handleAltExp(
@@ -294,7 +297,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handleVariableInitExp(VariableInitExp variableInitExp);
 
-	protected abstract T handleWhileExp(WhileExp whileExp);
+	protected abstract T handleWhileExp(
+		WhileExp whileExp, T conditionResult, T bodyResult);
 
 	protected T visit(Visitable visitable) {
 		if (visitable != null) {

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -252,6 +253,15 @@ public class WhileExpImpl extends ImperativeExpressionImpl implements WhileExp {
 				return body != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitWhileExp(this);
 	}
 
 } //WhileExpImpl

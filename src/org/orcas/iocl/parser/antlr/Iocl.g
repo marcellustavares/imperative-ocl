@@ -331,7 +331,7 @@ raiseExp
 
 whileExp
 	: WHILE LPAREN condition = oclExpression RPAREN 
-		LCURLY body = oclExpression RCURLY -> ^(WHILE $condition $body)
+		body = oclExpression -> ^(WHILE $condition $body)
 	;
 
 ifExp

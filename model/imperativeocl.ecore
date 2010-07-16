@@ -423,6 +423,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="breakExp" eType="#//imperativeocl/BreakExp"/>
       </eOperations>
+      <eOperations name="visitCatchExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="catchExp" eType="#//imperativeocl/CatchExp"/>
+      </eOperations>
       <eOperations name="visitCollectionLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="collectionLiteralExp" eType="#//imperativeocl/CollectionLiteralExp"/>

@@ -18,6 +18,7 @@
 package org.orcas.iocl.compiler;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,7 @@ import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.BreakExp;
+import org.orcas.iocl.expressions.imperativeocl.CatchExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
@@ -51,6 +53,7 @@ import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.util.AbstractVisitor;
 import org.orcas.iocl.util.Operation;
+import org.orcas.iocl.util.PathType;
 import org.orcas.iocl.util.Template;
 import org.orcas.iocl.util.TemplateUtil;
 
@@ -93,6 +96,16 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleBreakExp(BreakExp breakExp) {
 		return TemplateUtil.process(Template.BREAK, null);
+	}
+
+	protected String handleCatchExp(
+		CatchExp catchExp, List<String> typeResults, List<String> bodyResults) {
+
+		_map.clear();
+		_map.put("typeResults", typeResults);
+		_map.put("bodyResults", bodyResults);
+
+		return TemplateUtil.process(Template.CATCH, _map);
 	}
 
 	protected String handleCollectionItem(
@@ -362,12 +375,41 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.SWITCH, _map);
 	}
 
-	protected String handleTryExp(TryExp tryExp) {
-		return null;
+	protected String handleTryExp(
+		TryExp tryExp, List<String> bodyResults, List<String> catchResults) {
+
+		_map.clear();
+		_map.put("bodyResults", bodyResults);
+		_map.put("catchResults", catchResults);
+
+		return TemplateUtil.process(Template.TRY, _map);
+	}
+
+	protected String handleType(Type type) {
+		StringBuilder typeBuilder = new StringBuilder();
+
+		if (type instanceof PathType) {
+			PathType pathType = (PathType)type;
+
+			Iterator<String> it = pathType.getQualifiedName().iterator();
+
+			while (it.hasNext()) {
+				typeBuilder.append(it.next());
+
+				if (it.hasNext()) {
+					typeBuilder.append(".");
+				}
+			}
+		}
+		else {
+			typeBuilder.append(type.getName());
+		}
+
+		return typeBuilder.toString();
 	}
 
 	protected String handleTypeExp(TypeExp typeExp) {
-		return typeExp.getReferredType().getName();
+		return handleType(typeExp.getReferredType());
 	}
 
 	protected String handleVariable(Variable variable, String initResult) {

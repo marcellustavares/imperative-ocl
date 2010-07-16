@@ -24,6 +24,7 @@ import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.BreakExp;
+import org.orcas.iocl.expressions.imperativeocl.CatchExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
@@ -98,6 +99,14 @@ public interface Visitor<T> extends EObject {
 	 * @generated
 	 */
 	T visitBreakExp(BreakExp breakExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitCatchExp(CatchExp catchExp);
 
 	/**
 	 * <!-- begin-user-doc -->

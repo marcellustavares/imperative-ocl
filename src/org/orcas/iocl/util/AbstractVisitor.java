@@ -20,11 +20,13 @@ package org.orcas.iocl.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.BreakExp;
+import org.orcas.iocl.expressions.imperativeocl.CatchExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
@@ -85,6 +87,26 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	public T visitBreakExp(BreakExp breakExp) {
 		return handleBreakExp(breakExp);
+	}
+
+	public T visitCatchExp(CatchExp catchExp) {
+		List<T> typeResults = new ArrayList<T>();
+
+		List<Type> exceptions = catchExp.getException();
+
+		for (Type exception : exceptions) {
+			typeResults.add(handleType(exception));
+		}
+
+		List<T> bodyResults = new ArrayList<T>();
+
+		List<OclExpression> body = catchExp.getBody();
+
+		for (OclExpression bodyPart : body) {
+			bodyResults.add(visit(bodyPart));
+		}
+
+		return handleCatchExp(catchExp, typeResults, bodyResults);
 	}
 
 	public T visitCollectionItem(CollectionItem collectionItem) {
@@ -197,6 +219,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	public T visitSwitchExp(SwitchExp switchExp) {
 		List<T> altPartResults = new ArrayList<T>();
+
 		List<AltExp> altParts = switchExp.getAlternativePart();
 
 		for (AltExp altExp : altParts) {
@@ -210,7 +233,23 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 
 	public T visitTryExp(TryExp tryExp) {
-		return null;
+		List<T> bodyResults = new ArrayList<T>();
+
+		List<OclExpression> body = tryExp.getTryBody();
+
+		for (OclExpression bodyPart : body) {
+			bodyResults.add(visit(bodyPart));
+		}
+
+		List<T> catchResults = new ArrayList<T>();
+
+		List<CatchExp> catchClauses = tryExp.getCatchClause();
+
+		for (CatchExp catchExp : catchClauses) {
+			catchResults.add(visit(catchExp));
+		}
+
+		return handleTryExp(tryExp, bodyResults, catchResults);
 	}
 
 	public T visitTypeExp(TypeExp typeExp) {
@@ -231,6 +270,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	public T visitWhileExp(WhileExp whileExp) {
 		T conditionResult = visit(whileExp.getCondition());
+
 		T bodyResult = visit(whileExp.getBody());
 
 		return handleWhileExp(whileExp, conditionResult, bodyResult);
@@ -248,6 +288,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		BooleanLiteralExp booleanLiteralExp);
 
 	protected abstract T handleBreakExp(BreakExp breakExp);
+
+	protected abstract T handleCatchExp(
+		CatchExp catchExp, List<T> typeResults, List<T> bodyResults);
 
 	protected abstract T handleCollectionItem(
 		CollectionItem collectionItem, T collectionItemResult);
@@ -289,7 +332,10 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleSwitchExp(
 		SwitchExp switchExp, List<T> altPartResults, T elseResult);
 
-	protected abstract T handleTryExp(TryExp tryExp);
+	protected abstract T handleTryExp(
+		TryExp tryExp, List<T> bodyResults, List<T> catchResults);
+
+	protected abstract T handleType(Type type);
 
 	protected abstract T handleTypeExp(TypeExp typeExp);
 

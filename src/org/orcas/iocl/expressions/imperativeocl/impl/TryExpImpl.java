@@ -34,6 +34,7 @@ import org.orcas.iocl.expressions.imperativeocl.CatchExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.TryExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -198,6 +199,15 @@ public class TryExpImpl extends ImperativeExpressionImpl implements TryExp {
 				return catchClause != null && !catchClause.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitTryExp(this);
 	}
 
 } //TryExpImpl

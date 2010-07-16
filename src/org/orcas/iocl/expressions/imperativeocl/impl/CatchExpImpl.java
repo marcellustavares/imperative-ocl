@@ -36,6 +36,7 @@ import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.CatchExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -198,6 +199,15 @@ public class CatchExpImpl extends ImperativeExpressionImpl implements CatchExp {
 				return exception != null && !exception.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitCatchExp(this);
 	}
 
 } //CatchExpImpl

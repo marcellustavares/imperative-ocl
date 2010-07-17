@@ -130,7 +130,11 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitComputeExp(ComputeExp computeExp) {
-		return null;
+		T variableResult = visit(computeExp.getReturnedElement());
+
+		T bodyResult = visit(computeExp.getBody());
+
+		return handleComputeExp(computeExp, variableResult, bodyResult);
 	}
 
 	public T visitContinueExp(ContinueExp continueExp) {
@@ -310,7 +314,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleCollectionLiteralExp(
 		CollectionLiteralExp collectionLiteralExp, List<T> partResults);
 
-	protected abstract T handleComputeExp(ComputeExp computeExp);
+	protected abstract T handleComputeExp(
+		ComputeExp computeExp, T variableResult, T bodyResult);
 
 	protected abstract T handleContinueExp(ContinueExp continueExp);
 

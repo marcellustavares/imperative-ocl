@@ -142,9 +142,23 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.CONTINUE, null);
 	}
 
-	protected String handleForExp(ForExp forExp) {
+	protected String handleForExp(
+		ForExp forExp, String conditionResult, String bodyResult,
+		List<String> variableResults, String sourceResult) {
 
-		return null;
+		_map.clear();
+		_map.put("forName", forExp.getName());
+		_map.put("conditionResult", conditionResult);
+		_map.put("bodyResult", bodyResult);
+		_map.put("variableResults", variableResults);
+		_map.put("sourceResult", sourceResult);
+
+		Variable variable = forExp.getIterator().get(0);
+
+		_map.put("variableName", variable.getName());
+		_map.put("variableType", _getType(variable.getType()));
+
+		return TemplateUtil.process(Template.FOR, _map);
 	}
 
 	protected String handleIntegerLiteralExp(

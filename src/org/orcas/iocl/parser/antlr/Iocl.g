@@ -359,8 +359,8 @@ except
 	;
 
 forExp	
-	: oclExp ARROW FOR_NAME LPAREN iteratorList ('|' oclExpression)? RPAREN LCURLY oclExpression RCURLY 
-		-> ^(FOR FOR_NAME oclExp iteratorList oclExpression? oclExpression)
+	: oclExp ARROW FOR_NAME LPAREN iteratorList ('|' condition = oclExpression)? RPAREN body = oclExpression
+		-> ^(FOR FOR_NAME oclExp iteratorList $condition? $body)
 	;
 
 iteratorList

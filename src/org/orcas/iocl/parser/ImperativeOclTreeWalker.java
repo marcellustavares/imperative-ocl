@@ -260,9 +260,7 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.FOR:
 				ForExp forExp = getFactory().createForExp();
 
-				tree = tree.getChild(0);
-
-				forExp.setName(tree.getText());
+				forExp.setName(tree.getChild(0).getText());
 				forExp.setSource(walk(tree.getChild(1)));
 
 				EList<Variable> iterator = forExp.getIterator();
@@ -270,8 +268,10 @@ public class ImperativeOclTreeWalker {
 				for (int i = 2; i < tree.getChildCount(); i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
-					if (exp instanceof Variable) {
-						iterator.add((Variable)exp);
+					if (exp instanceof VariableExp) {
+						VariableExp variableExp = (VariableExp)exp;
+
+						iterator.add(variableExp.getReferredVariable());
 					}
 					else if (exp instanceof ImperativeExpression) {
 						forExp.setBody(exp);

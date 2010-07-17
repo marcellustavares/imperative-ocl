@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,6 +51,15 @@ public class ForExpImpl extends ImperativeLoopExpImpl implements ForExp {
 	@Override
 	protected EClass eStaticClass() {
 		return ImperativeOclPackage.Literals.FOR_EXP;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitForExp(this);
 	}
 
 } //ForExpImpl

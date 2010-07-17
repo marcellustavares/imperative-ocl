@@ -142,7 +142,21 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitForExp(ForExp forExp) {
-		return null;
+		T conditionResult = visit(forExp.getCondition());
+		T bodyResult = visit(forExp.getBody());
+
+		List<T> variableResults = new ArrayList<T>();
+
+		List<Variable> variables = forExp.getIterator();
+
+		for (Variable variable : variables) {
+			variableResults.add(visit(variable));
+		}
+
+		T sourceResult = visit(forExp.getSource());
+
+		return handleForExp(
+			forExp, conditionResult, bodyResult, variableResults, sourceResult);
 	}
 
 	public T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp) {
@@ -319,7 +333,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handleContinueExp(ContinueExp continueExp);
 
-	protected abstract T handleForExp(ForExp forExp);
+	protected abstract T handleForExp(
+		ForExp forExp, T conditionResult, T bodyResult, List<T> variableResults,
+		T sourceResult);
 
 	protected abstract T handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp);

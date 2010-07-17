@@ -214,7 +214,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitPropertyCallExp(PropertyCallExp propertyCallExp) {
-		return null;
+		T sourceResult = visit(propertyCallExp.getSource());
+
+		return handlePropertyCallExp(propertyCallExp, sourceResult);
 	}
 
 	public T visitRaiseExp(RaiseExp raiseExp) {
@@ -351,7 +353,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleOperationCallExp(
 		OperationCallExp operationCallExp, T sourceResult, List<T> argResults);
 
-	protected abstract T handlePropertyCallExp(PropertyCallExp propertyCallExp);
+	protected abstract T handlePropertyCallExp(
+		PropertyCallExp propertyCallExp, T sourceResult);
 
 	protected abstract T handleRaiseExp(RaiseExp raiseExp, T typeResult);
 

@@ -21,6 +21,7 @@ import org.antlr.runtime.tree.Tree;
 import org.eclipse.emf.common.util.EList;
 import org.orcas.iocl.expressions.emof.EmofFactory;
 import org.orcas.iocl.expressions.emof.PrimitiveType;
+import org.orcas.iocl.expressions.emof.Property;
 import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
@@ -41,6 +42,7 @@ import org.orcas.iocl.expressions.imperativeocl.IterateExp;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
@@ -138,6 +140,21 @@ public class ImperativeOclTreeWalker {
 				}
 
 				oclExpression = operationCallExp;
+
+				break;
+
+			case IoclParser.ATTRIBUTE_CALL:
+				PropertyCallExp propertyCallExp =
+					getFactory().createPropertyCallExp();
+
+				Property property = EmofFactory.eINSTANCE.createProperty();
+
+				propertyCallExp.setSource(walk(tree.getChild(0)));
+				property.setName(tree.getChild(1).getText());
+
+				propertyCallExp.setReferredProperty(property);
+
+				oclExpression = propertyCallExp;
 
 				break;
 

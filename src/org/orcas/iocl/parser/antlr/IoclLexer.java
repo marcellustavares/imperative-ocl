@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-07-17 17:05:45
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-07-17 18:55:30
 
 package org.orcas.iocl.parser.antlr;
 
@@ -9,76 +9,77 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class IoclLexer extends Lexer {
-    public static final int T__68=68;
-    public static final int ITERATOR_NAME=57;
+    public static final int ITERATOR_NAME=58;
     public static final int T__69=69;
     public static final int APPEND=6;
-    public static final int LT=32;
-    public static final int EXPONENT=62;
-    public static final int WHILE=50;
-    public static final int PRIMITIVE_TYPE_LITERAL=60;
-    public static final int COMPUTE=13;
-    public static final int GTE=25;
-    public static final int OCTAL_ESC=67;
-    public static final int FOR=23;
-    public static final int DO=15;
-    public static final int NOT=35;
-    public static final int EXCEPT=22;
-    public static final int AND=4;
+    public static final int LT=33;
+    public static final int EXPONENT=63;
+    public static final int WHILE=51;
+    public static final int PRIMITIVE_TYPE_LITERAL=61;
+    public static final int COMPUTE=14;
+    public static final int GTE=26;
+    public static final int OCTAL_ESC=68;
+    public static final int FOR=24;
+    public static final int DO=16;
+    public static final int NOT=36;
+    public static final int EXCEPT=23;
+    public static final int AND=5;
     public static final int EOF=-1;
-    public static final int LTE=33;
-    public static final int BREAK=9;
-    public static final int LPAREN=31;
-    public static final int IF=26;
-    public static final int RPAREN=43;
-    public static final int ESC_SEQ=63;
-    public static final int STRING_LITERAL=53;
-    public static final int REAL_LITERAL=56;
-    public static final int SCOPE=44;
-    public static final int COLLECTION_TYPE_LITERAL=52;
-    public static final int CONTINUE=14;
-    public static final int NOT_EQUAL=36;
-    public static final int IS=29;
-    public static final int IDENTIFIER=58;
-    public static final int ITERATOR=28;
-    public static final int EQUAL=21;
-    public static final int RETURN=42;
-    public static final int ENDIF=18;
-    public static final int PLUS=39;
-    public static final int VAR=48;
-    public static final int RAISE=40;
-    public static final int DOT=17;
-    public static final int COLLECTION_LITERAL=10;
-    public static final int XOR=51;
-    public static final int FOR_NAME=61;
-    public static final int COLLECTION_TYPE=11;
-    public static final int NUMERIC_OPERATION=59;
-    public static final int UNICODE_ESC=66;
-    public static final int ELSE=20;
-    public static final int HEX_DIGIT=65;
-    public static final int LCURLY=30;
-    public static final int SEMICOLON=46;
-    public static final int MULT=37;
-    public static final int MINUS=34;
-    public static final int TRY=47;
-    public static final int COLON=12;
-    public static final int BOOLEAN_LITERAL=54;
-    public static final int ALT_EXP=5;
-    public static final int ITERATE=27;
-    public static final int ELIF=19;
+    public static final int LTE=34;
+    public static final int BREAK=10;
+    public static final int LPAREN=32;
+    public static final int IF=27;
+    public static final int RPAREN=44;
+    public static final int ESC_SEQ=64;
+    public static final int STRING_LITERAL=54;
+    public static final int REAL_LITERAL=57;
+    public static final int SCOPE=45;
+    public static final int COLLECTION_TYPE_LITERAL=53;
+    public static final int CONTINUE=15;
+    public static final int NOT_EQUAL=37;
+    public static final int IS=30;
+    public static final int IDENTIFIER=59;
+    public static final int ITERATOR=29;
+    public static final int EQUAL=22;
+    public static final int RETURN=43;
+    public static final int ENDIF=19;
+    public static final int PLUS=40;
+    public static final int VAR=49;
+    public static final int RAISE=41;
+    public static final int DOT=18;
+    public static final int COLLECTION_LITERAL=11;
+    public static final int FOR_NAME=62;
+    public static final int XOR=52;
+    public static final int COLLECTION_TYPE=12;
+    public static final int ATTRIBUTE_CALL=8;
+    public static final int NUMERIC_OPERATION=60;
+    public static final int UNICODE_ESC=67;
+    public static final int ELSE=21;
+    public static final int HEX_DIGIT=66;
+    public static final int LCURLY=31;
+    public static final int SEMICOLON=47;
+    public static final int MULT=38;
+    public static final int MINUS=35;
+    public static final int TRY=48;
+    public static final int COLON=13;
+    public static final int BOOLEAN_LITERAL=55;
+    public static final int ALT_EXP=4;
+    public static final int ITERATE=28;
+    public static final int ELIF=20;
     public static final int T__71=71;
-    public static final int WS=64;
+    public static final int WS=65;
     public static final int T__72=72;
-    public static final int VARIABLE=49;
+    public static final int VARIABLE=50;
     public static final int T__70=70;
-    public static final int INTEGER_LITERAL=55;
-    public static final int BLOCK=8;
-    public static final int OR=38;
-    public static final int RCURLY=41;
-    public static final int GT=24;
+    public static final int INTEGER_LITERAL=56;
+    public static final int BLOCK=9;
+    public static final int OR=39;
+    public static final int RCURLY=42;
+    public static final int GT=25;
     public static final int ARROW=7;
-    public static final int DIV=16;
-    public static final int SELF=45;
+    public static final int DIV=17;
+    public static final int SELF=46;
+    public static final int T__73=73;
 
     // delegates
     // delegators
@@ -961,36 +962,15 @@ public class IoclLexer extends Lexer {
     }
     // $ANTLR end "XOR"
 
-    // $ANTLR start "T__68"
-    public final void mT__68() throws RecognitionException {
-        try {
-            int _type = T__68;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:49:7: ( ',' )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:49:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__68"
-
     // $ANTLR start "T__69"
     public final void mT__69() throws RecognitionException {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:50:7: ( '@pre' )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:50:9: '@pre'
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:49:7: ( ',' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:49:9: ','
             {
-            match("@pre"); 
-
+            match(','); 
 
             }
 
@@ -1007,10 +987,11 @@ public class IoclLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:51:7: ( '[' )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:51:9: '['
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:50:7: ( '@pre' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:50:9: '@pre'
             {
-            match('['); 
+            match("@pre"); 
+
 
             }
 
@@ -1027,10 +1008,10 @@ public class IoclLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:52:7: ( ']' )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:52:9: ']'
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:51:7: ( '[' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:51:9: '['
             {
-            match(']'); 
+            match('['); 
 
             }
 
@@ -1047,6 +1028,26 @@ public class IoclLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:52:7: ( ']' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:52:9: ']'
+            {
+            match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__72"
+
+    // $ANTLR start "T__73"
+    public final void mT__73() throws RecognitionException {
+        try {
+            int _type = T__73;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:53:7: ( '|' )
             // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:53:9: '|'
             {
@@ -1060,7 +1061,7 @@ public class IoclLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__72"
+    // $ANTLR end "T__73"
 
     // $ANTLR start "BOOLEAN_LITERAL"
     public final void mBOOLEAN_LITERAL() throws RecognitionException {
@@ -2252,7 +2253,7 @@ public class IoclLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:8: ( AND | APPEND | ARROW | BREAK | COLON | COMPUTE | CONTINUE | DO | DIV | DOT | ENDIF | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__68 | T__69 | T__70 | T__71 | T__72 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:8: ( AND | APPEND | ARROW | BREAK | COLON | COMPUTE | CONTINUE | DO | DIV | DOT | ENDIF | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__69 | T__70 | T__71 | T__72 | T__73 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS )
         int alt20=58;
         alt20 = dfa20.predict(input);
         switch (alt20) {
@@ -2551,37 +2552,37 @@ public class IoclLexer extends Lexer {
                 }
                 break;
             case 43 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:241: T__68
-                {
-                mT__68(); 
-
-                }
-                break;
-            case 44 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:247: T__69
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:241: T__69
                 {
                 mT__69(); 
 
                 }
                 break;
-            case 45 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:253: T__70
+            case 44 :
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:247: T__70
                 {
                 mT__70(); 
 
                 }
                 break;
-            case 46 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:259: T__71
+            case 45 :
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:253: T__71
                 {
                 mT__71(); 
 
                 }
                 break;
-            case 47 :
-                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:265: T__72
+            case 46 :
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:259: T__72
                 {
                 mT__72(); 
+
+                }
+                break;
+            case 47 :
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:1:265: T__73
+                {
+                mT__73(); 
 
                 }
                 break;
@@ -3183,7 +3184,7 @@ public class IoclLexer extends Lexer {
             this.transition = DFA20_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( AND | APPEND | ARROW | BREAK | COLON | COMPUTE | CONTINUE | DO | DIV | DOT | ENDIF | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__68 | T__69 | T__70 | T__71 | T__72 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS );";
+            return "1:1: Tokens : ( AND | APPEND | ARROW | BREAK | COLON | COMPUTE | CONTINUE | DO | DIV | DOT | ENDIF | ELIF | ELSE | EQUAL | EXCEPT | FOR | GT | GTE | IF | ITERATE | IS | LCURLY | LPAREN | LT | LTE | MINUS | NOT | NOT_EQUAL | MULT | OR | PLUS | RAISE | RCURLY | RETURN | RPAREN | SCOPE | SELF | SEMICOLON | TRY | VAR | WHILE | XOR | T__69 | T__70 | T__71 | T__72 | T__73 | BOOLEAN_LITERAL | COLLECTION_TYPE_LITERAL | PRIMITIVE_TYPE_LITERAL | INTEGER_LITERAL | REAL_LITERAL | STRING_LITERAL | ITERATOR_NAME | FOR_NAME | IDENTIFIER | NUMERIC_OPERATION | WS );";
         }
     }
  

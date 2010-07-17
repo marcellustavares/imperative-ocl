@@ -24,10 +24,11 @@ output=AST;
 }
 
 tokens {
-AND = 'and';
 ALT_EXP;
+AND = 'and';
 APPEND = '+=';
 ARROW = '->';
+ATTRIBUTE_CALL;
 BLOCK;
 BREAK = 'break';
 COLLECTION_LITERAL;
@@ -203,14 +204,12 @@ propertyCallExp
 
 modelPropertyCallExp
 	: operationCallExp
-	//| attributeCallExp
+	| attributeCallExp
 	//| navigationCallExp
 	;
 
 attributeCallExp
-	: oclExpression DOT simpleName isMarkedPre?
-	| simpleName isMarkedPre?
-	| pathName
+	: oclExp DOT simpleName isMarkedPre? -> ^(ATTRIBUTE_CALL oclExp simpleName isMarkedPre?)
 	;
 
 isMarkedPre

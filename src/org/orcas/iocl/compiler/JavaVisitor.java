@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.orcas.iocl.expressions.emof.Property;
 import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
@@ -369,9 +370,16 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return result;
 	}
 
-	protected String handlePropertyCallExp(PropertyCallExp propertyCallExp) {
+	protected String handlePropertyCallExp(
+		PropertyCallExp propertyCallExp, String sourceResult) {
 
-		return null;
+		Property referredProperty = propertyCallExp.getReferredProperty();
+
+		_map.clear();
+		_map.put("sourceResult", sourceResult);
+		_map.put("propertyName", referredProperty.getName());
+
+		return TemplateUtil.process(Template.PROPERTY_CALL, _map);
 	}
 
 	protected String handleRaiseExp(RaiseExp raiseExp, String typeResult) {

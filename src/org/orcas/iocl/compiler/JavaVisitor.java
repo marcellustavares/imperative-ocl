@@ -211,16 +211,25 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleOperationCallExp(
 		OperationCallExp operationCallExp, String sourceResult,
-		List<String> argResult) {
+		List<String> argResults) {
 
 		String result = null;
 
 		OclExpression source = operationCallExp.getSource();
 
-		int argumentsSize = argResult.size();
+		int argumentsSize = argResults.size();
 		int operationCode = operationCallExp.getOperationCode();
 
 		Operation operation = Operation.getByOperationCode(operationCode);
+
+		if (operation == Operation.CUSTOM) {
+			_map.clear();
+			_map.put("sourceResult", sourceResult);
+			_map.put("operation", operationCallExp.getName());
+			_map.put("argResults", argResults);
+
+			return TemplateUtil.process(Template.CUSTOM, _map);
+		}
 
 		switch (argumentsSize) {
 			case 0:
@@ -284,7 +293,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 			case 1:
 				_map.clear();
 				_map.put("sourceResult", sourceResult);
-				_map.put("argResult", argResult.get(0));
+				_map.put("argResult", argResults.get(0));
 
 				switch (operation) {
 					case AND:
@@ -339,8 +348,8 @@ public class JavaVisitor extends AbstractVisitor<String> {
 			case 2:
 				_map.clear();
 				_map.put("sourceResult", sourceResult);
-				_map.put("arg0Result", argResult.get(0));
-				_map.put("arg1Result", argResult.get(1));
+				_map.put("arg0Result", argResults.get(0));
+				_map.put("arg1Result", argResults.get(1));
 
 				switch (operation) {
 					case INSERT_AT:

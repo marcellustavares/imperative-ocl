@@ -47,126 +47,129 @@ public enum Operation {
 
 	COUNT(14, "count"),
 
-	DIV(15, "div"),
+	CUSTOM(15, "custom"),
 
-	DIVIDE(16, "/"),
+	DIV(16, "div"),
 
-	EQUAL(17, "="),
+	DIVIDE(17, "/"),
 
-	EXCLUDES(18, "excludes"),
+	EQUAL(18, "="),
 
-	EXCLUDING(19, "excluding"),
+	EXCLUDES(19, "excludes"),
 
-	EXISTS(20, "exists"),
+	EXCLUDING(20, "excluding"),
 
-	FIRST(21, "first"),
+	EXISTS(21, "exists"),
 
-	FLATTEN(22, "flatten"),
+	FIRST(22, "first"),
 
-	FLOOR(23, "floor"),
+	FLATTEN(23, "flatten"),
 
-	FOR_ALL(24, "forAll"),
+	FLOOR(24, "floor"),
 
-	GT(25, ">"),
+	FOR_ALL(25, "forAll"),
 
-	GTE(26, ">="),
+	GT(26, ">"),
 
-	INCLUDES(27, "includes"),
+	GTE(27, ">="),
 
-	INCLUDES_ALL(28, "includesAll"),
+	INCLUDES(28, "includes"),
 
-	INCLUDING(29, "including"),
+	INCLUDES_ALL(29, "includesAll"),
 
-	INDEX_OF(30, "indexOf"),
+	INCLUDING(30, "including"),
 
-	INSERT_AT(31, "insertAt"),
+	INDEX_OF(31, "indexOf"),
 
-	INTERSECTION(32, "intersection"),
+	INSERT_AT(32, "insertAt"),
 
-	IS_EMPTY(33, "isEmpty"),
+	INTERSECTION(33, "intersection"),
 
-	IS_UNIQUE(34, "isUnique"),
+	IS_EMPTY(34, "isEmpty"),
 
-	LAST(35, "last"),
+	IS_UNIQUE(35, "isUnique"),
 
-	LT(36, "<"),
+	LAST(36, "last"),
 
-	LTE(37, "<="),
+	LT(37, "<"),
 
-	MAX(38, "max"),
+	LTE(38, "<="),
 
-	MIN(39, "min"),
+	MAX(39, "max"),
 
-	MINUS(40, "-"),
+	MIN(40, "min"),
 
-	MOD(41, "mod"),
+	MINUS(41, "-"),
 
-	MULT(42, "*"),
+	MOD(42, "mod"),
 
-	NOT(43, "not"),
+	MULT(43, "*"),
 
-	NOT_EMPTY(44, "not"),
+	NOT(44, "not"),
 
-	NOT_EQUAL(45, "<>"),
+	NOT_EMPTY(45, "not"),
 
-	OCL_AS_TYPE(46, "oclAsType"),
+	NOT_EQUAL(46, "<>"),
 
-	OCL_IS_KIND_OF(47, "oclIsKindOf"),
+	OCL_AS_TYPE(47, "oclAsType"),
 
-	OCL_IS_TYPE_OF(48, "oclIsTypeOf"),
+	OCL_IS_KIND_OF(48, "oclIsKindOf"),
 
-	ONE(49, "one"),
+	OCL_IS_TYPE_OF(49, "oclIsTypeOf"),
 
-	OR(50, "or"),
+	ONE(50, "one"),
 
-	PLUS(51, "+"),
+	OR(51, "or"),
 
-	PREPEND(52, "prepend"),
+	PLUS(52, "+"),
 
-	PRODUCT(53, "product"),
+	PREPEND(53, "prepend"),
 
-	REJECT(54, "reject"),
+	PRODUCT(54, "product"),
 
-	ROUND(55, "round"),
+	REJECT(55, "reject"),
 
-	SELECT(56, "select"),
+	ROUND(56, "round"),
 
-	SIZE(57, "size"),
+	SELECT(57, "select"),
 
-	SORTED_BY(58, "sortedBy"),
+	SIZE(58, "size"),
 
-	SUBSTRING(59, "substring"),
+	SORTED_BY(59, "sortedBy"),
 
-	SUB_ORDERED_SET(60, "subOrderedSet"),
+	SUBSTRING(60, "substring"),
 
-	SUB_SEQUENCE(61, "subSequence"),
+	SUB_ORDERED_SET(61, "subOrderedSet"),
 
-	SYMMETRIC_DIFFERENCE(62, "symmetricDifference"),
+	SUB_SEQUENCE(62, "subSequence"),
 
-	SUM(63, "sum"),
+	SYMMETRIC_DIFFERENCE(63, "symmetricDifference"),
 
-	TO_INTEGER(64, "toInteger"),
+	SUM(64, "sum"),
 
-	TO_LOWER(65, "toLower"),
+	TO_INTEGER(65, "toInteger"),
 
-	TO_REAL(66, "toReal"),
+	TO_LOWER(66, "toLower"),
 
-	TO_UPPER(67, "toUpper"),
+	TO_REAL(67, "toReal"),
 
-	UNION(68, "union"),
+	TO_UPPER(68, "toUpper"),
 
-	XOR(69, "xor");
+	UNION(69, "union"),
+
+	XOR(70, "xor");
 
 	public static Operation[] OPERATIONS = {
 		ABS, AND, ANY, APPEND, AT, AS_BAG, AS_ORDERED_SET, AS_SEQUENCE, AS_SET,
-		CLOSURE, COLLECT, COLLECT_NESTED, CONCAT, COUNT, DIV, DIVIDE, EQUAL,
-		EXCLUDES, EXCLUDING, EXISTS, FIRST, FLATTEN, FLOOR, FOR_ALL, GT, GTE,
-		INCLUDES, INCLUDES_ALL, INCLUDING, INDEX_OF, INSERT_AT, INTERSECTION,
-		IS_EMPTY, IS_UNIQUE, LAST, LT, LTE, MAX, MIN, MINUS, MOD, MULT, NOT,
-		NOT_EMPTY, NOT_EQUAL, OCL_AS_TYPE, OCL_IS_KIND_OF, OCL_IS_TYPE_OF, ONE,
-		OR, PLUS, PREPEND, PRODUCT, REJECT, ROUND, SELECT, SIZE, SORTED_BY,
-		SUBSTRING, SUB_ORDERED_SET, SUB_SEQUENCE, SYMMETRIC_DIFFERENCE, SUM,
-		TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER, UNION, XOR};
+		CLOSURE, COLLECT, COLLECT_NESTED, CONCAT, COUNT, CUSTOM, DIV, DIVIDE,
+		EQUAL, EXCLUDES, EXCLUDING, EXISTS, FIRST, FLATTEN, FLOOR, FOR_ALL, GT,
+		GTE, INCLUDES, INCLUDES_ALL, INCLUDING, INDEX_OF, INSERT_AT,
+		INTERSECTION, IS_EMPTY, IS_UNIQUE, LAST, LT, LTE, MAX, MIN, MINUS, MOD,
+		MULT, NOT, NOT_EMPTY, NOT_EQUAL, OCL_AS_TYPE, OCL_IS_KIND_OF,
+		OCL_IS_TYPE_OF, ONE, OR, PLUS, PREPEND, PRODUCT, REJECT, ROUND, SELECT,
+		SIZE, SORTED_BY, SUBSTRING, SUB_ORDERED_SET, SUB_SEQUENCE,
+		SYMMETRIC_DIFFERENCE, SUM, TO_INTEGER, TO_LOWER, TO_REAL, TO_UPPER,
+		UNION, XOR};
 
 	public static String fromOperationCode(int operationCode) {
 		for (int i = 0; i < OPERATIONS.length; i++) {
@@ -197,7 +200,7 @@ public enum Operation {
 			}
 		}
 
-		return -1;
+		return CUSTOM.getOperationCode();
 	}
 
 	public int getOperationCode() {

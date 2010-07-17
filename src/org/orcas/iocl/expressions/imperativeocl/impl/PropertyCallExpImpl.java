@@ -29,6 +29,7 @@ import org.orcas.iocl.expressions.emof.Property;
 
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclPackage;
 import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
+import org.orcas.iocl.expressions.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -168,6 +169,15 @@ public class PropertyCallExpImpl extends FeaturePropertyCallImpl implements Prop
 				return referredProperty != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitPropertyCallExp(this);
 	}
 
 } //PropertyCallExpImpl

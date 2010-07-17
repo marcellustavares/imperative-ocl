@@ -123,9 +123,11 @@ public class ImperativeOclTreeWalker {
 			case IoclParser.DOT:
 				operationCallExp = getFactory().createOperationCallExp();
 
-				operationCode = Operation.toOperationCode(
-					tree.getChild(1).getText());
+				String operationName = tree.getChild(1).getText();
 
+				operationCode = Operation.toOperationCode(operationName);
+
+				operationCallExp.setName(operationName);
 				operationCallExp.setOperationCode(operationCode);
 				operationCallExp.setSource(walk(tree.getChild(0)));
 

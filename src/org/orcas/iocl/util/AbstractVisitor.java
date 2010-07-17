@@ -202,15 +202,15 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	public T visitOperationCallExp(OperationCallExp operationCallExp) {
 		T sourceResult = visit(operationCallExp.getSource());
 
-		List<T> argResult = new ArrayList<T>();
+		List<T> argResults = new ArrayList<T>();
 		List<OclExpression> argument = operationCallExp.getArgument();
 
 		for (OclExpression arg : argument) {
-			argResult.add(visit(arg));
+			argResults.add(visit(arg));
 		}
 
 		return handleOperationCallExp(
-			operationCallExp, sourceResult, argResult);
+			operationCallExp, sourceResult, argResults);
 	}
 
 	public T visitPropertyCallExp(PropertyCallExp propertyCallExp) {
@@ -349,7 +349,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		T bodyResult);
 
 	protected abstract T handleOperationCallExp(
-		OperationCallExp operationCallExp, T sourceResult, List<T> argResult);
+		OperationCallExp operationCallExp, T sourceResult, List<T> argResults);
 
 	protected abstract T handlePropertyCallExp(PropertyCallExp propertyCallExp);
 

@@ -495,13 +495,17 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="typeExp" eType="#//imperativeocl/TypeExp"/>
       </eOperations>
+      <eOperations name="visitVariable">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="variable" eType="#//imperativeocl/Variable"/>
+      </eOperations>
       <eOperations name="visitVariableExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="variableExp" eType="#//imperativeocl/VariableExp"/>
       </eOperations>
-      <eOperations name="visitVariable">
+      <eOperations name="visitVariableInitExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
-        <eParameters name="variable" eType="#//imperativeocl/Variable"/>
+        <eParameters name="variableInitExp" eType="#//imperativeocl/VariableInitExp"/>
       </eOperations>
       <eOperations name="visitWhileExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>

@@ -274,6 +274,12 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return visit(referredVariable);
 	}
 
+	public T visitVariableInitExp(VariableInitExp variableInitExp) {
+		Variable referredVarible = variableInitExp.getReferredVariable();
+
+		return visitVariable(referredVarible);
+	}
+
 	public T visitWhileExp(WhileExp whileExp) {
 		T conditionResult = visit(whileExp.getCondition());
 

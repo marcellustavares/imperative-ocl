@@ -127,8 +127,15 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.COLLECTION, _map);
 	}
 
-	protected String handleComputeExp(ComputeExp computeExp) {
-		return null;
+	protected String handleComputeExp(
+		ComputeExp computeExp, String variableResult, String bodyResult) {
+
+		_map.clear();
+		_map.put("variableName", computeExp.getReturnedElement().getName());
+		_map.put("variableResult", variableResult);
+		_map.put("bodyResult", bodyResult);
+
+		return TemplateUtil.process(Template.COMPUTE, _map);
 	}
 
 	protected String handleContinueExp(ContinueExp continueExp) {
@@ -151,7 +158,6 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		List<String> variableResults, String resultResult, String bodyResult) {
 
 		_map.clear();
-
 		_map.put("sourceResult", sourceResult);
 		_map.put("variableResults", variableResults);
 		_map.put("bodyResult", bodyResult);

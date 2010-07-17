@@ -32,6 +32,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.CollectionType;
+import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeExpression;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclFactory;
@@ -210,6 +211,21 @@ public class ImperativeOclTreeWalker {
 				typeExp.setReferredType(collectionType);
 
 				oclExpression = typeExp;
+
+				break;
+
+			case IoclParser.COMPUTE:
+				ComputeExp computeExp = getFactory().createComputeExp();
+
+				VariableExp returnedElement =
+					(VariableExp)walk(tree.getChild(0));
+
+				computeExp.setReturnedElement(
+					returnedElement.getReferredVariable());
+
+				computeExp.setBody(walk(tree.getChild(1)));
+
+				oclExpression = computeExp;
 
 				break;
 

@@ -298,7 +298,7 @@ breakExp
 	;
 
 computeExp
-	: COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpression RCURLY -> ^(COMPUTE variableDeclaration oclExpression)
+	: COMPUTE LPAREN variableDeclaration RPAREN oclExpression -> ^(COMPUTE variableDeclaration oclExpression)
 	;
 
 continueExp

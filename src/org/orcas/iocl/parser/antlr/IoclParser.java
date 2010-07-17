@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-07-16 15:55:20
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g 2010-07-17 16:05:48
 
 package org.orcas.iocl.parser.antlr;
 
@@ -127,7 +127,7 @@ public class IoclParser extends Parser {
     }
 
     public String[] getTokenNames() { return IoclParser.tokenNames; }
-    public String getGrammarFileName() { return "/Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g"; }
+    public String getGrammarFileName() { return "/Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g"; }
 
 
     protected void mismatch(IntStream input, int ttype, BitSet follow)
@@ -149,7 +149,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "oclExpression"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:105:1: oclExpression : ( imperativeExp | logicalExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:105:1: oclExpression : ( imperativeExp | logicalExp );
     public final IoclParser.oclExpression_return oclExpression() throws RecognitionException {
         IoclParser.oclExpression_return retval = new IoclParser.oclExpression_return();
         retval.start = input.LT(1);
@@ -164,12 +164,12 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:2: ( imperativeExp | logicalExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:2: ( imperativeExp | logicalExp )
             int alt1=2;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: imperativeExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: imperativeExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -183,7 +183,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:107:4: logicalExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:107:4: logicalExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -223,7 +223,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "logicalExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:110:1: logicalExp : equalityExp ( ( AND | OR | XOR ) equalityExp )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:110:1: logicalExp : equalityExp ( ( AND | OR | XOR ) equalityExp )* ;
     public final IoclParser.logicalExp_return logicalExp() throws RecognitionException {
         IoclParser.logicalExp_return retval = new IoclParser.logicalExp_return();
         retval.start = input.LT(1);
@@ -240,8 +240,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:2: ( equalityExp ( ( AND | OR | XOR ) equalityExp )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:4: equalityExp ( ( AND | OR | XOR ) equalityExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:2: ( equalityExp ( ( AND | OR | XOR ) equalityExp )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:4: equalityExp ( ( AND | OR | XOR ) equalityExp )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -251,7 +251,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExp3.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:16: ( ( AND | OR | XOR ) equalityExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:16: ( ( AND | OR | XOR ) equalityExp )*
             loop2:
             do {
                 int alt2=2;
@@ -264,7 +264,7 @@ public class IoclParser extends Parser {
 
                 switch (alt2) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:17: ( AND | OR | XOR ) equalityExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:111:17: ( AND | OR | XOR ) equalityExp
             	    {
             	    set4=(Token)input.LT(1);
             	    set4=(Token)input.LT(1);
@@ -322,7 +322,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "equalityExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:114:1: equalityExp : relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:114:1: equalityExp : relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )* ;
     public final IoclParser.equalityExp_return equalityExp() throws RecognitionException {
         IoclParser.equalityExp_return retval = new IoclParser.equalityExp_return();
         retval.start = input.LT(1);
@@ -339,8 +339,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:2: ( relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:4: relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:2: ( relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:4: relationalExp ( ( EQUAL | NOT_EQUAL ) relationalExp )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -350,7 +350,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExp6.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:18: ( ( EQUAL | NOT_EQUAL ) relationalExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:18: ( ( EQUAL | NOT_EQUAL ) relationalExp )*
             loop3:
             do {
                 int alt3=2;
@@ -363,7 +363,7 @@ public class IoclParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:19: ( EQUAL | NOT_EQUAL ) relationalExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:115:19: ( EQUAL | NOT_EQUAL ) relationalExp
             	    {
             	    set7=(Token)input.LT(1);
             	    set7=(Token)input.LT(1);
@@ -421,7 +421,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "relationalExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:118:1: relationalExp : additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:118:1: relationalExp : additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )* ;
     public final IoclParser.relationalExp_return relationalExp() throws RecognitionException {
         IoclParser.relationalExp_return retval = new IoclParser.relationalExp_return();
         retval.start = input.LT(1);
@@ -438,8 +438,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:2: ( additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:4: additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:2: ( additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:4: additiveExp ( ( LT | LTE | GT | GTE ) additiveExp )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -449,7 +449,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExp9.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:16: ( ( LT | LTE | GT | GTE ) additiveExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:16: ( ( LT | LTE | GT | GTE ) additiveExp )*
             loop4:
             do {
                 int alt4=2;
@@ -462,7 +462,7 @@ public class IoclParser extends Parser {
 
                 switch (alt4) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:17: ( LT | LTE | GT | GTE ) additiveExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:119:17: ( LT | LTE | GT | GTE ) additiveExp
             	    {
             	    set10=(Token)input.LT(1);
             	    set10=(Token)input.LT(1);
@@ -520,7 +520,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "additiveExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:122:1: additiveExp : multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:122:1: additiveExp : multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )* ;
     public final IoclParser.additiveExp_return additiveExp() throws RecognitionException {
         IoclParser.additiveExp_return retval = new IoclParser.additiveExp_return();
         retval.start = input.LT(1);
@@ -537,8 +537,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:2: ( multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:4: multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:2: ( multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:4: multiplicativeExp ( ( PLUS | MINUS ) multiplicativeExp )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -548,14 +548,14 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExp12.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:22: ( ( PLUS | MINUS ) multiplicativeExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:22: ( ( PLUS | MINUS ) multiplicativeExp )*
             loop5:
             do {
                 int alt5=2;
                 alt5 = dfa5.predict(input);
                 switch (alt5) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( PLUS | MINUS ) multiplicativeExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( PLUS | MINUS ) multiplicativeExp
             	    {
             	    set13=(Token)input.LT(1);
             	    set13=(Token)input.LT(1);
@@ -613,7 +613,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "multiplicativeExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:126:1: multiplicativeExp : unaryExp ( ( MULT | DIV ) unaryExp )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:126:1: multiplicativeExp : unaryExp ( ( MULT | DIV ) unaryExp )* ;
     public final IoclParser.multiplicativeExp_return multiplicativeExp() throws RecognitionException {
         IoclParser.multiplicativeExp_return retval = new IoclParser.multiplicativeExp_return();
         retval.start = input.LT(1);
@@ -630,8 +630,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:2: ( unaryExp ( ( MULT | DIV ) unaryExp )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:4: unaryExp ( ( MULT | DIV ) unaryExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:2: ( unaryExp ( ( MULT | DIV ) unaryExp )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:4: unaryExp ( ( MULT | DIV ) unaryExp )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -641,7 +641,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExp15.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:13: ( ( MULT | DIV ) unaryExp )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:13: ( ( MULT | DIV ) unaryExp )*
             loop6:
             do {
                 int alt6=2;
@@ -654,7 +654,7 @@ public class IoclParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:14: ( MULT | DIV ) unaryExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:127:14: ( MULT | DIV ) unaryExp
             	    {
             	    set16=(Token)input.LT(1);
             	    set16=(Token)input.LT(1);
@@ -712,7 +712,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "unaryExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:130:1: unaryExp : ( ( MINUS | NOT ) unaryExp | dotArrowExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:130:1: unaryExp : ( ( MINUS | NOT ) unaryExp | dotArrowExp );
     public final IoclParser.unaryExp_return unaryExp() throws RecognitionException {
         IoclParser.unaryExp_return retval = new IoclParser.unaryExp_return();
         retval.start = input.LT(1);
@@ -729,7 +729,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:131:2: ( ( MINUS | NOT ) unaryExp | dotArrowExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:131:2: ( ( MINUS | NOT ) unaryExp | dotArrowExp )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -748,7 +748,7 @@ public class IoclParser extends Parser {
             }
             switch (alt7) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:131:4: ( MINUS | NOT ) unaryExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:131:4: ( MINUS | NOT ) unaryExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -775,7 +775,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:132:4: dotArrowExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:132:4: dotArrowExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -815,7 +815,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "dotArrowExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:135:1: dotArrowExp : ( propertyCallExp | oclExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:135:1: dotArrowExp : ( propertyCallExp | oclExp );
     public final IoclParser.dotArrowExp_return dotArrowExp() throws RecognitionException {
         IoclParser.dotArrowExp_return retval = new IoclParser.dotArrowExp_return();
         retval.start = input.LT(1);
@@ -830,12 +830,12 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:2: ( propertyCallExp | oclExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:2: ( propertyCallExp | oclExp )
             int alt8=2;
             alt8 = dfa8.predict(input);
             switch (alt8) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: propertyCallExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: propertyCallExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -849,7 +849,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:137:4: oclExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:137:4: oclExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -889,7 +889,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "oclExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:140:1: oclExp : ( variableExp | literalExp | type | '(' oclExpression ')' -> oclExpression );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:140:1: oclExp : ( variableExp | literalExp | type | '(' oclExpression ')' -> oclExpression );
     public final IoclParser.oclExp_return oclExp() throws RecognitionException {
         IoclParser.oclExp_return retval = new IoclParser.oclExp_return();
         retval.start = input.LT(1);
@@ -914,7 +914,7 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:2: ( variableExp | literalExp | type | '(' oclExpression ')' -> oclExpression )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:2: ( variableExp | literalExp | type | '(' oclExpression ')' -> oclExpression )
             int alt9=4;
             switch ( input.LA(1) ) {
             case IDENTIFIER:
@@ -988,7 +988,7 @@ public class IoclParser extends Parser {
 
             switch (alt9) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: variableExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: variableExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1002,7 +1002,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:142:4: literalExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:142:4: literalExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1016,7 +1016,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: type
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: type
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1030,7 +1030,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:144:4: '(' oclExpression ')'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:144:4: '(' oclExpression ')'
                     {
                     char_literal26=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_oclExp587); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_LPAREN.add(char_literal26);
@@ -1094,7 +1094,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "variableExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:147:1: variableExp : simpleName -> ^( VARIABLE simpleName ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:147:1: variableExp : simpleName -> ^( VARIABLE simpleName ) ;
     public final IoclParser.variableExp_return variableExp() throws RecognitionException {
         IoclParser.variableExp_return retval = new IoclParser.variableExp_return();
         retval.start = input.LT(1);
@@ -1107,8 +1107,8 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_simpleName=new RewriteRuleSubtreeStream(adaptor,"rule simpleName");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:2: ( simpleName -> ^( VARIABLE simpleName ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:4: simpleName
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:2: ( simpleName -> ^( VARIABLE simpleName ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:4: simpleName
             {
             pushFollow(FOLLOW_simpleName_in_variableExp609);
             simpleName29=simpleName();
@@ -1132,7 +1132,7 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 148:15: -> ^( VARIABLE simpleName )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:18: ^( VARIABLE simpleName )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:148:18: ^( VARIABLE simpleName )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARIABLE, "VARIABLE"), root_1);
@@ -1172,7 +1172,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "literalExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:151:1: literalExp : ( collectionLiteralExp | primitiveLiteralExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:151:1: literalExp : ( collectionLiteralExp | primitiveLiteralExp );
     public final IoclParser.literalExp_return literalExp() throws RecognitionException {
         IoclParser.literalExp_return retval = new IoclParser.literalExp_return();
         retval.start = input.LT(1);
@@ -1187,7 +1187,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:152:2: ( collectionLiteralExp | primitiveLiteralExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:152:2: ( collectionLiteralExp | primitiveLiteralExp )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1206,7 +1206,7 @@ public class IoclParser extends Parser {
             }
             switch (alt10) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:152:4: collectionLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:152:4: collectionLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1220,7 +1220,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:153:4: primitiveLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:153:4: primitiveLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1260,7 +1260,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "collectionLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:156:1: collectionLiteralExp : collectionTypeIdentifier '{' ( collectionLiteralParts )? '}' -> ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:156:1: collectionLiteralExp : collectionTypeIdentifier '{' ( collectionLiteralParts )? '}' -> ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? ) ;
     public final IoclParser.collectionLiteralExp_return collectionLiteralExp() throws RecognitionException {
         IoclParser.collectionLiteralExp_return retval = new IoclParser.collectionLiteralExp_return();
         retval.start = input.LT(1);
@@ -1282,8 +1282,8 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_collectionTypeIdentifier=new RewriteRuleSubtreeStream(adaptor,"rule collectionTypeIdentifier");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:2: ( collectionTypeIdentifier '{' ( collectionLiteralParts )? '}' -> ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:4: collectionTypeIdentifier '{' ( collectionLiteralParts )? '}'
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:2: ( collectionTypeIdentifier '{' ( collectionLiteralParts )? '}' -> ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:4: collectionTypeIdentifier '{' ( collectionLiteralParts )? '}'
             {
             pushFollow(FOLLOW_collectionTypeIdentifier_in_collectionLiteralExp645);
             collectionTypeIdentifier32=collectionTypeIdentifier();
@@ -1294,7 +1294,7 @@ public class IoclParser extends Parser {
             char_literal33=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_collectionLiteralExp647); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LCURLY.add(char_literal33);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:33: ( collectionLiteralParts )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:33: ( collectionLiteralParts )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1303,7 +1303,7 @@ public class IoclParser extends Parser {
             }
             switch (alt11) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: collectionLiteralParts
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: collectionLiteralParts
                     {
                     pushFollow(FOLLOW_collectionLiteralParts_in_collectionLiteralExp649);
                     collectionLiteralParts34=collectionLiteralParts();
@@ -1323,7 +1323,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: collectionTypeIdentifier, collectionLiteralParts
+            // elements: collectionLiteralParts, collectionTypeIdentifier
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1336,13 +1336,13 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 157:61: -> ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:64: ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:64: ^( COLLECTION_LITERAL collectionTypeIdentifier ( collectionLiteralParts )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(COLLECTION_LITERAL, "COLLECTION_LITERAL"), root_1);
 
                 adaptor.addChild(root_1, stream_collectionTypeIdentifier.nextTree());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:110: ( collectionLiteralParts )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:157:110: ( collectionLiteralParts )?
                 if ( stream_collectionLiteralParts.hasNext() ) {
                     adaptor.addChild(root_1, stream_collectionLiteralParts.nextTree());
 
@@ -1382,7 +1382,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "collectionTypeIdentifier"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:160:1: collectionTypeIdentifier : COLLECTION_TYPE_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:160:1: collectionTypeIdentifier : COLLECTION_TYPE_LITERAL ;
     public final IoclParser.collectionTypeIdentifier_return collectionTypeIdentifier() throws RecognitionException {
         IoclParser.collectionTypeIdentifier_return retval = new IoclParser.collectionTypeIdentifier_return();
         retval.start = input.LT(1);
@@ -1395,8 +1395,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:161:2: ( COLLECTION_TYPE_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:161:4: COLLECTION_TYPE_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:161:2: ( COLLECTION_TYPE_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:161:4: COLLECTION_TYPE_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1433,7 +1433,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "collectionLiteralParts"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:164:1: collectionLiteralParts : collectionLiteralPart ( ',' collectionLiteralParts )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:164:1: collectionLiteralParts : collectionLiteralPart ( ',' collectionLiteralParts )* ;
     public final IoclParser.collectionLiteralParts_return collectionLiteralParts() throws RecognitionException {
         IoclParser.collectionLiteralParts_return retval = new IoclParser.collectionLiteralParts_return();
         retval.start = input.LT(1);
@@ -1450,8 +1450,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:2: ( collectionLiteralPart ( ',' collectionLiteralParts )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:4: collectionLiteralPart ( ',' collectionLiteralParts )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:2: ( collectionLiteralPart ( ',' collectionLiteralParts )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:4: collectionLiteralPart ( ',' collectionLiteralParts )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1461,7 +1461,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, collectionLiteralPart37.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:26: ( ',' collectionLiteralParts )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:26: ( ',' collectionLiteralParts )*
             loop12:
             do {
                 int alt12=2;
@@ -1480,7 +1480,7 @@ public class IoclParser extends Parser {
 
                 switch (alt12) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ',' collectionLiteralParts
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ',' collectionLiteralParts
             	    {
             	    char_literal38=(Token)match(input,68,FOLLOW_68_in_collectionLiteralParts688); if (state.failed) return retval;
             	    pushFollow(FOLLOW_collectionLiteralParts_in_collectionLiteralParts691);
@@ -1526,7 +1526,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "collectionLiteralPart"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:168:1: collectionLiteralPart : oclExpression ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:168:1: collectionLiteralPart : oclExpression ;
     public final IoclParser.collectionLiteralPart_return collectionLiteralPart() throws RecognitionException {
         IoclParser.collectionLiteralPart_return retval = new IoclParser.collectionLiteralPart_return();
         retval.start = input.LT(1);
@@ -1539,8 +1539,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:169:2: ( oclExpression )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:169:4: oclExpression
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:169:2: ( oclExpression )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:169:4: oclExpression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1578,7 +1578,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "primitiveLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:172:1: primitiveLiteralExp : ( numericLiteralExp | stringLiteralExp | booleanLiteralExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:172:1: primitiveLiteralExp : ( numericLiteralExp | stringLiteralExp | booleanLiteralExp );
     public final IoclParser.primitiveLiteralExp_return primitiveLiteralExp() throws RecognitionException {
         IoclParser.primitiveLiteralExp_return retval = new IoclParser.primitiveLiteralExp_return();
         retval.start = input.LT(1);
@@ -1595,7 +1595,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:173:2: ( numericLiteralExp | stringLiteralExp | booleanLiteralExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:173:2: ( numericLiteralExp | stringLiteralExp | booleanLiteralExp )
             int alt13=3;
             switch ( input.LA(1) ) {
             case INTEGER_LITERAL:
@@ -1624,7 +1624,7 @@ public class IoclParser extends Parser {
 
             switch (alt13) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:173:4: numericLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:173:4: numericLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1638,7 +1638,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:174:4: stringLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:174:4: stringLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1652,7 +1652,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:175:4: booleanLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:175:4: booleanLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1692,7 +1692,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "numericLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:178:1: numericLiteralExp : ( integerLiteralExp | realLiteralExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:178:1: numericLiteralExp : ( integerLiteralExp | realLiteralExp );
     public final IoclParser.numericLiteralExp_return numericLiteralExp() throws RecognitionException {
         IoclParser.numericLiteralExp_return retval = new IoclParser.numericLiteralExp_return();
         retval.start = input.LT(1);
@@ -1707,7 +1707,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:179:2: ( integerLiteralExp | realLiteralExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:179:2: ( integerLiteralExp | realLiteralExp )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1726,7 +1726,7 @@ public class IoclParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:179:4: integerLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:179:4: integerLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1740,7 +1740,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:180:4: realLiteralExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:180:4: realLiteralExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1780,7 +1780,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "stringLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:183:1: stringLiteralExp : STRING_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:183:1: stringLiteralExp : STRING_LITERAL ;
     public final IoclParser.stringLiteralExp_return stringLiteralExp() throws RecognitionException {
         IoclParser.stringLiteralExp_return retval = new IoclParser.stringLiteralExp_return();
         retval.start = input.LT(1);
@@ -1793,8 +1793,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:184:2: ( STRING_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:184:4: STRING_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:184:2: ( STRING_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:184:4: STRING_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1831,7 +1831,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "booleanLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:187:1: booleanLiteralExp : BOOLEAN_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:187:1: booleanLiteralExp : BOOLEAN_LITERAL ;
     public final IoclParser.booleanLiteralExp_return booleanLiteralExp() throws RecognitionException {
         IoclParser.booleanLiteralExp_return retval = new IoclParser.booleanLiteralExp_return();
         retval.start = input.LT(1);
@@ -1844,8 +1844,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:188:2: ( BOOLEAN_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:188:4: BOOLEAN_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:188:2: ( BOOLEAN_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:188:4: BOOLEAN_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1882,7 +1882,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "integerLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:191:1: integerLiteralExp : INTEGER_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:191:1: integerLiteralExp : INTEGER_LITERAL ;
     public final IoclParser.integerLiteralExp_return integerLiteralExp() throws RecognitionException {
         IoclParser.integerLiteralExp_return retval = new IoclParser.integerLiteralExp_return();
         retval.start = input.LT(1);
@@ -1895,8 +1895,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:192:2: ( INTEGER_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:192:4: INTEGER_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:192:2: ( INTEGER_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:192:4: INTEGER_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1933,7 +1933,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "realLiteralExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:195:1: realLiteralExp : REAL_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:195:1: realLiteralExp : REAL_LITERAL ;
     public final IoclParser.realLiteralExp_return realLiteralExp() throws RecognitionException {
         IoclParser.realLiteralExp_return retval = new IoclParser.realLiteralExp_return();
         retval.start = input.LT(1);
@@ -1946,8 +1946,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:196:2: ( REAL_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:196:4: REAL_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:196:2: ( REAL_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:196:4: REAL_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1984,7 +1984,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "propertyCallExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:199:1: propertyCallExp : ( modelPropertyCallExp | loopExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:199:1: propertyCallExp : ( modelPropertyCallExp | loopExp );
     public final IoclParser.propertyCallExp_return propertyCallExp() throws RecognitionException {
         IoclParser.propertyCallExp_return retval = new IoclParser.propertyCallExp_return();
         retval.start = input.LT(1);
@@ -1999,12 +1999,12 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:2: ( modelPropertyCallExp | loopExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:2: ( modelPropertyCallExp | loopExp )
             int alt15=2;
             alt15 = dfa15.predict(input);
             switch (alt15) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: modelPropertyCallExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: modelPropertyCallExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2018,7 +2018,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:201:4: loopExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:201:4: loopExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2058,7 +2058,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "modelPropertyCallExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:204:1: modelPropertyCallExp : operationCallExp ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:204:1: modelPropertyCallExp : operationCallExp ;
     public final IoclParser.modelPropertyCallExp_return modelPropertyCallExp() throws RecognitionException {
         IoclParser.modelPropertyCallExp_return retval = new IoclParser.modelPropertyCallExp_return();
         retval.start = input.LT(1);
@@ -2071,8 +2071,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 23) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:205:2: ( operationCallExp )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:205:4: operationCallExp
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:205:2: ( operationCallExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:205:4: operationCallExp
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2110,7 +2110,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "attributeCallExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:210:1: attributeCallExp : ( oclExpression DOT simpleName ( isMarkedPre )? | simpleName ( isMarkedPre )? | pathName );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:210:1: attributeCallExp : ( oclExpression DOT simpleName ( isMarkedPre )? | simpleName ( isMarkedPre )? | pathName );
     public final IoclParser.attributeCallExp_return attributeCallExp() throws RecognitionException {
         IoclParser.attributeCallExp_return retval = new IoclParser.attributeCallExp_return();
         retval.start = input.LT(1);
@@ -2135,7 +2135,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 24) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:2: ( oclExpression DOT simpleName ( isMarkedPre )? | simpleName ( isMarkedPre )? | pathName )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:2: ( oclExpression DOT simpleName ( isMarkedPre )? | simpleName ( isMarkedPre )? | pathName )
             int alt18=3;
             switch ( input.LA(1) ) {
             case BREAK:
@@ -2214,7 +2214,7 @@ public class IoclParser extends Parser {
 
             switch (alt18) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:4: oclExpression DOT simpleName ( isMarkedPre )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:4: oclExpression DOT simpleName ( isMarkedPre )?
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2235,7 +2235,7 @@ public class IoclParser extends Parser {
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleName55.getTree());
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:33: ( isMarkedPre )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:211:33: ( isMarkedPre )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2244,7 +2244,7 @@ public class IoclParser extends Parser {
                     }
                     switch (alt16) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
                             {
                             pushFollow(FOLLOW_isMarkedPre_in_attributeCallExp838);
                             isMarkedPre56=isMarkedPre();
@@ -2262,7 +2262,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: simpleName ( isMarkedPre )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: simpleName ( isMarkedPre )?
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2272,7 +2272,7 @@ public class IoclParser extends Parser {
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleName57.getTree());
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:15: ( isMarkedPre )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:15: ( isMarkedPre )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -2281,7 +2281,7 @@ public class IoclParser extends Parser {
                     }
                     switch (alt17) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
                             {
                             pushFollow(FOLLOW_isMarkedPre_in_attributeCallExp846);
                             isMarkedPre58=isMarkedPre();
@@ -2299,7 +2299,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:213:4: pathName
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:213:4: pathName
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2339,7 +2339,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "isMarkedPre"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:216:1: isMarkedPre : '@pre' ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:216:1: isMarkedPre : '@pre' ;
     public final IoclParser.isMarkedPre_return isMarkedPre() throws RecognitionException {
         IoclParser.isMarkedPre_return retval = new IoclParser.isMarkedPre_return();
         retval.start = input.LT(1);
@@ -2352,8 +2352,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 25) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:217:2: ( '@pre' )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:217:4: '@pre'
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:217:2: ( '@pre' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:217:4: '@pre'
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2390,7 +2390,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "navigationCallExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:220:1: navigationCallExp : oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )? ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:220:1: navigationCallExp : oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )? ;
     public final IoclParser.navigationCallExp_return navigationCallExp() throws RecognitionException {
         IoclParser.navigationCallExp_return retval = new IoclParser.navigationCallExp_return();
         retval.start = input.LT(1);
@@ -2415,8 +2415,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 26) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:2: ( oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )? )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:4: oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:2: ( oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )? )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:4: oclExpression DOT simpleName ( '[' arguments ']' )? ( isMarkedPre )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2437,7 +2437,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleName63.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:33: ( '[' arguments ']' )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:33: ( '[' arguments ']' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -2446,7 +2446,7 @@ public class IoclParser extends Parser {
             }
             switch (alt19) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:34: '[' arguments ']'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:34: '[' arguments ']'
                     {
                     char_literal64=(Token)match(input,70,FOLLOW_70_in_navigationCallExp881); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -2470,7 +2470,7 @@ public class IoclParser extends Parser {
 
             }
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:54: ( isMarkedPre )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:221:54: ( isMarkedPre )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -2479,7 +2479,7 @@ public class IoclParser extends Parser {
             }
             switch (alt20) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
                     {
                     pushFollow(FOLLOW_isMarkedPre_in_navigationCallExp889);
                     isMarkedPre67=isMarkedPre();
@@ -2521,7 +2521,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "loopExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:224:1: loopExp : ( iteratorExp | iterateExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:224:1: loopExp : ( iteratorExp | iterateExp );
     public final IoclParser.loopExp_return loopExp() throws RecognitionException {
         IoclParser.loopExp_return retval = new IoclParser.loopExp_return();
         retval.start = input.LT(1);
@@ -2536,12 +2536,12 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 27) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:2: ( iteratorExp | iterateExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:2: ( iteratorExp | iterateExp )
             int alt21=2;
             alt21 = dfa21.predict(input);
             switch (alt21) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: iteratorExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: iteratorExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2555,7 +2555,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:226:4: iterateExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:226:4: iterateExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2595,7 +2595,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "iteratorExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:229:1: iteratorExp : oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN -> ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:229:1: iteratorExp : oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN -> ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression ) ;
     public final IoclParser.iteratorExp_return iteratorExp() throws RecognitionException {
         IoclParser.iteratorExp_return retval = new IoclParser.iteratorExp_return();
         retval.start = input.LT(1);
@@ -2634,8 +2634,8 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 28) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:2: ( oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN -> ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:5: oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:2: ( oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN -> ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:5: oclExp ARROW ITERATOR_NAME LPAREN ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )? oclExpression RPAREN
             {
             pushFollow(FOLLOW_oclExp_in_iteratorExp918);
             oclExp70=oclExp();
@@ -2652,14 +2652,14 @@ public class IoclParser extends Parser {
             LPAREN73=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_iteratorExp924); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN73);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:39: ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:39: ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )?
             int alt23=2;
             alt23 = dfa23.predict(input);
             switch (alt23) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )? v2= variableDeclaration '|'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )? v2= variableDeclaration '|'
                     {
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )?
                     int alt22=2;
                     int LA22_0 = input.LA(1);
 
@@ -2672,7 +2672,7 @@ public class IoclParser extends Parser {
                     }
                     switch (alt22) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
                             {
                             pushFollow(FOLLOW_variableDeclaration_in_iteratorExp932);
                             v1=variableDeclaration();
@@ -2716,7 +2716,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ITERATOR_NAME, oclExp, v2, v1, oclExpression
+            // elements: oclExpression, oclExp, v1, ITERATOR_NAME, v2
             // token labels: 
             // rule labels: v1, retval, v2
             // token list labels: 
@@ -2731,20 +2731,20 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 231:3: -> ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:6: ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:6: ^( ITERATOR oclExp ITERATOR_NAME ( $v1)? ( $v2)? oclExpression )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(ITERATOR, "ITERATOR"), root_1);
 
                 adaptor.addChild(root_1, stream_oclExp.nextTree());
                 adaptor.addChild(root_1, stream_ITERATOR_NAME.nextNode());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:38: ( $v1)?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:38: ( $v1)?
                 if ( stream_v1.hasNext() ) {
                     adaptor.addChild(root_1, stream_v1.nextTree());
 
                 }
                 stream_v1.reset();
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:43: ( $v2)?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:231:43: ( $v2)?
                 if ( stream_v2.hasNext() ) {
                     adaptor.addChild(root_1, stream_v2.nextTree());
 
@@ -2785,7 +2785,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "iterateExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:234:1: iterateExp : oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN -> ^( ITERATE oclExp ( $v1)? $v2 oclExpression ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:234:1: iterateExp : oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN -> ^( ITERATE oclExp ( $v1)? $v2 oclExpression ) ;
     public final IoclParser.iterateExp_return iterateExp() throws RecognitionException {
         IoclParser.iterateExp_return retval = new IoclParser.iterateExp_return();
         retval.start = input.LT(1);
@@ -2824,8 +2824,8 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 29) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:2: ( oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN -> ^( ITERATE oclExp ( $v1)? $v2 oclExpression ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:4: oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:2: ( oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN -> ^( ITERATE oclExp ( $v1)? $v2 oclExpression ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:4: oclExp ARROW ITERATE LPAREN (v1= variableDeclaration SEMICOLON )? v2= variableDeclaration '|' oclExpression RPAREN
             {
             pushFollow(FOLLOW_oclExp_in_iterateExp984);
             oclExp78=oclExp();
@@ -2842,7 +2842,7 @@ public class IoclParser extends Parser {
             LPAREN81=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_iterateExp990); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN81);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:32: (v1= variableDeclaration SEMICOLON )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:32: (v1= variableDeclaration SEMICOLON )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -2855,7 +2855,7 @@ public class IoclParser extends Parser {
             }
             switch (alt24) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: v1= variableDeclaration SEMICOLON
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: v1= variableDeclaration SEMICOLON
                     {
                     pushFollow(FOLLOW_variableDeclaration_in_iterateExp997);
                     v1=variableDeclaration();
@@ -2893,7 +2893,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: oclExp, oclExpression, v2, ITERATE, v1
+            // elements: ITERATE, v2, v1, oclExp, oclExpression
             // token labels: 
             // rule labels: v1, retval, v2
             // token list labels: 
@@ -2908,13 +2908,13 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 236:3: -> ^( ITERATE oclExp ( $v1)? $v2 oclExpression )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:236:6: ^( ITERATE oclExp ( $v1)? $v2 oclExpression )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:236:6: ^( ITERATE oclExp ( $v1)? $v2 oclExpression )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_ITERATE.nextNode(), root_1);
 
                 adaptor.addChild(root_1, stream_oclExp.nextTree());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:236:23: ( $v1)?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:236:23: ( $v1)?
                 if ( stream_v1.hasNext() ) {
                     adaptor.addChild(root_1, stream_v1.nextTree());
 
@@ -2956,7 +2956,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "variableDeclaration"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:239:1: variableDeclaration : IDENTIFIER ( ':' type )? ( '=' oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:239:1: variableDeclaration : IDENTIFIER ( ':' type )? ( '=' oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) ;
     public final IoclParser.variableDeclaration_return variableDeclaration() throws RecognitionException {
         IoclParser.variableDeclaration_return retval = new IoclParser.variableDeclaration_return();
         retval.start = input.LT(1);
@@ -2981,13 +2981,13 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 30) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:2: ( IDENTIFIER ( ':' type )? ( '=' oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:4: IDENTIFIER ( ':' type )? ( '=' oclExpression )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:2: ( IDENTIFIER ( ':' type )? ( '=' oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:4: IDENTIFIER ( ':' type )? ( '=' oclExpression )?
             {
             IDENTIFIER86=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variableDeclaration1045); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER86);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:15: ( ':' type )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:15: ( ':' type )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -2996,7 +2996,7 @@ public class IoclParser extends Parser {
             }
             switch (alt25) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:16: ':' type
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:16: ':' type
                     {
                     char_literal87=(Token)match(input,COLON,FOLLOW_COLON_in_variableDeclaration1048); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_COLON.add(char_literal87);
@@ -3013,7 +3013,7 @@ public class IoclParser extends Parser {
 
             }
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:27: ( '=' oclExpression )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:27: ( '=' oclExpression )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3022,7 +3022,7 @@ public class IoclParser extends Parser {
             }
             switch (alt26) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:28: '=' oclExpression
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:28: '=' oclExpression
                     {
                     char_literal89=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_variableDeclaration1055); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_EQUAL.add(char_literal89);
@@ -3055,19 +3055,19 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 240:48: -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:51: ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:51: ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARIABLE, "VARIABLE"), root_1);
 
                 adaptor.addChild(root_1, stream_IDENTIFIER.nextNode());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:73: ( type )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:73: ( type )?
                 if ( stream_type.hasNext() ) {
                     adaptor.addChild(root_1, stream_type.nextTree());
 
                 }
                 stream_type.reset();
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:79: ( oclExpression )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:240:79: ( oclExpression )?
                 if ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -3107,7 +3107,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "operationCallExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:243:1: operationCallExp : ( NUMERIC_OPERATION '(' ( arguments )? ')' -> ^( NUMERIC_OPERATION ( arguments )? ) | oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')' );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:243:1: operationCallExp : ( NUMERIC_OPERATION '(' ( arguments )? ')' -> ^( NUMERIC_OPERATION ( arguments )? ) | oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')' );
     public final IoclParser.operationCallExp_return operationCallExp() throws RecognitionException {
         IoclParser.operationCallExp_return retval = new IoclParser.operationCallExp_return();
         retval.start = input.LT(1);
@@ -3141,7 +3141,7 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_arguments=new RewriteRuleSubtreeStream(adaptor,"rule arguments");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 31) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:2: ( NUMERIC_OPERATION '(' ( arguments )? ')' -> ^( NUMERIC_OPERATION ( arguments )? ) | oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')' )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:2: ( NUMERIC_OPERATION '(' ( arguments )? ')' -> ^( NUMERIC_OPERATION ( arguments )? ) | oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')' )
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -3160,7 +3160,7 @@ public class IoclParser extends Parser {
             }
             switch (alt29) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:4: NUMERIC_OPERATION '(' ( arguments )? ')'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:4: NUMERIC_OPERATION '(' ( arguments )? ')'
                     {
                     NUMERIC_OPERATION91=(Token)match(input,NUMERIC_OPERATION,FOLLOW_NUMERIC_OPERATION_in_operationCallExp1084); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_NUMERIC_OPERATION.add(NUMERIC_OPERATION91);
@@ -3168,7 +3168,7 @@ public class IoclParser extends Parser {
                     char_literal92=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_operationCallExp1086); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_LPAREN.add(char_literal92);
 
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:26: ( arguments )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:26: ( arguments )?
                     int alt27=2;
                     int LA27_0 = input.LA(1);
 
@@ -3177,7 +3177,7 @@ public class IoclParser extends Parser {
                     }
                     switch (alt27) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: arguments
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: arguments
                             {
                             pushFollow(FOLLOW_arguments_in_operationCallExp1088);
                             arguments93=arguments();
@@ -3197,7 +3197,7 @@ public class IoclParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: NUMERIC_OPERATION, arguments
+                    // elements: arguments, NUMERIC_OPERATION
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3210,12 +3210,12 @@ public class IoclParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 244:41: -> ^( NUMERIC_OPERATION ( arguments )? )
                     {
-                        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:44: ^( NUMERIC_OPERATION ( arguments )? )
+                        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:44: ^( NUMERIC_OPERATION ( arguments )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_NUMERIC_OPERATION.nextNode(), root_1);
 
-                        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:64: ( arguments )?
+                        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:244:64: ( arguments )?
                         if ( stream_arguments.hasNext() ) {
                             adaptor.addChild(root_1, stream_arguments.nextTree());
 
@@ -3231,7 +3231,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:245:4: oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')'
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:245:4: oclExp ( DOT | ARROW ) simpleName '(' ( arguments )? ')'
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3261,7 +3261,7 @@ public class IoclParser extends Parser {
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleName97.getTree());
                     char_literal98=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_operationCallExp1118); if (state.failed) return retval;
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:245:42: ( arguments )?
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:245:42: ( arguments )?
                     int alt28=2;
                     int LA28_0 = input.LA(1);
 
@@ -3270,7 +3270,7 @@ public class IoclParser extends Parser {
                     }
                     switch (alt28) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: arguments
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: arguments
                             {
                             pushFollow(FOLLOW_arguments_in_operationCallExp1121);
                             arguments99=arguments();
@@ -3315,7 +3315,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "arguments"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:248:1: arguments : oclExpression ( ',' oclExpression )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:248:1: arguments : oclExpression ( ',' oclExpression )* ;
     public final IoclParser.arguments_return arguments() throws RecognitionException {
         IoclParser.arguments_return retval = new IoclParser.arguments_return();
         retval.start = input.LT(1);
@@ -3332,8 +3332,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 32) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:2: ( oclExpression ( ',' oclExpression )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:4: oclExpression ( ',' oclExpression )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:2: ( oclExpression ( ',' oclExpression )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:4: oclExpression ( ',' oclExpression )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3343,7 +3343,7 @@ public class IoclParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, oclExpression101.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:18: ( ',' oclExpression )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:18: ( ',' oclExpression )*
             loop30:
             do {
                 int alt30=2;
@@ -3356,7 +3356,7 @@ public class IoclParser extends Parser {
 
                 switch (alt30) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:19: ',' oclExpression
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:249:19: ',' oclExpression
             	    {
             	    char_literal102=(Token)match(input,68,FOLLOW_68_in_arguments1139); if (state.failed) return retval;
             	    pushFollow(FOLLOW_oclExpression_in_arguments1142);
@@ -3402,7 +3402,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "simpleName"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:252:1: simpleName : ( SELF | IDENTIFIER );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:252:1: simpleName : ( SELF | IDENTIFIER );
     public final IoclParser.simpleName_return simpleName() throws RecognitionException {
         IoclParser.simpleName_return retval = new IoclParser.simpleName_return();
         retval.start = input.LT(1);
@@ -3415,8 +3415,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 33) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:253:2: ( SELF | IDENTIFIER )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:253:2: ( SELF | IDENTIFIER )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3460,7 +3460,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "primitiveType"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:257:1: primitiveType : PRIMITIVE_TYPE_LITERAL ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:257:1: primitiveType : PRIMITIVE_TYPE_LITERAL ;
     public final IoclParser.primitiveType_return primitiveType() throws RecognitionException {
         IoclParser.primitiveType_return retval = new IoclParser.primitiveType_return();
         retval.start = input.LT(1);
@@ -3473,8 +3473,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 34) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:258:2: ( PRIMITIVE_TYPE_LITERAL )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:258:4: PRIMITIVE_TYPE_LITERAL
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:258:2: ( PRIMITIVE_TYPE_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:258:4: PRIMITIVE_TYPE_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3511,7 +3511,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "collectionType"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:261:1: collectionType : collectionTypeIdentifier LPAREN type RPAREN -> ^( COLLECTION_TYPE collectionTypeIdentifier type ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:261:1: collectionType : collectionTypeIdentifier LPAREN type RPAREN -> ^( COLLECTION_TYPE collectionTypeIdentifier type ) ;
     public final IoclParser.collectionType_return collectionType() throws RecognitionException {
         IoclParser.collectionType_return retval = new IoclParser.collectionType_return();
         retval.start = input.LT(1);
@@ -3533,8 +3533,8 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 35) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:2: ( collectionTypeIdentifier LPAREN type RPAREN -> ^( COLLECTION_TYPE collectionTypeIdentifier type ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:4: collectionTypeIdentifier LPAREN type RPAREN
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:2: ( collectionTypeIdentifier LPAREN type RPAREN -> ^( COLLECTION_TYPE collectionTypeIdentifier type ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:4: collectionTypeIdentifier LPAREN type RPAREN
             {
             pushFollow(FOLLOW_collectionTypeIdentifier_in_collectionType1183);
             collectionTypeIdentifier106=collectionTypeIdentifier();
@@ -3557,7 +3557,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, collectionTypeIdentifier
+            // elements: collectionTypeIdentifier, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3570,7 +3570,7 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 262:48: -> ^( COLLECTION_TYPE collectionTypeIdentifier type )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:51: ^( COLLECTION_TYPE collectionTypeIdentifier type )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:262:51: ^( COLLECTION_TYPE collectionTypeIdentifier type )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(COLLECTION_TYPE, "COLLECTION_TYPE"), root_1);
@@ -3611,7 +3611,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "type"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:265:1: type : ( primitiveType | collectionType | pathName );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:265:1: type : ( primitiveType | collectionType | pathName );
     public final IoclParser.type_return type() throws RecognitionException {
         IoclParser.type_return retval = new IoclParser.type_return();
         retval.start = input.LT(1);
@@ -3628,7 +3628,7 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 36) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:266:2: ( primitiveType | collectionType | pathName )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:266:2: ( primitiveType | collectionType | pathName )
             int alt31=3;
             switch ( input.LA(1) ) {
             case PRIMITIVE_TYPE_LITERAL:
@@ -3656,7 +3656,7 @@ public class IoclParser extends Parser {
 
             switch (alt31) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:266:4: primitiveType
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:266:4: primitiveType
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3670,7 +3670,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:267:4: collectionType
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:267:4: collectionType
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3684,7 +3684,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:268:4: pathName
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:268:4: pathName
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3724,7 +3724,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "pathName"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:271:1: pathName : IDENTIFIER ( SCOPE IDENTIFIER )* -> ^( SCOPE IDENTIFIER ( IDENTIFIER )* ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:271:1: pathName : IDENTIFIER ( SCOPE IDENTIFIER )* -> ^( SCOPE IDENTIFIER ( IDENTIFIER )* ) ;
     public final IoclParser.pathName_return pathName() throws RecognitionException {
         IoclParser.pathName_return retval = new IoclParser.pathName_return();
         retval.start = input.LT(1);
@@ -3743,13 +3743,13 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 37) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:2: ( IDENTIFIER ( SCOPE IDENTIFIER )* -> ^( SCOPE IDENTIFIER ( IDENTIFIER )* ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:4: IDENTIFIER ( SCOPE IDENTIFIER )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:2: ( IDENTIFIER ( SCOPE IDENTIFIER )* -> ^( SCOPE IDENTIFIER ( IDENTIFIER )* ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:4: IDENTIFIER ( SCOPE IDENTIFIER )*
             {
             IDENTIFIER113=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_pathName1232); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER113);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:15: ( SCOPE IDENTIFIER )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:15: ( SCOPE IDENTIFIER )*
             loop32:
             do {
                 int alt32=2;
@@ -3762,7 +3762,7 @@ public class IoclParser extends Parser {
 
                 switch (alt32) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:16: SCOPE IDENTIFIER
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:16: SCOPE IDENTIFIER
             	    {
             	    SCOPE114=(Token)match(input,SCOPE,FOLLOW_SCOPE_in_pathName1235); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_SCOPE.add(SCOPE114);
@@ -3795,13 +3795,13 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 272:35: -> ^( SCOPE IDENTIFIER ( IDENTIFIER )* )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:38: ^( SCOPE IDENTIFIER ( IDENTIFIER )* )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:38: ^( SCOPE IDENTIFIER ( IDENTIFIER )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_SCOPE.nextNode(), root_1);
 
                 adaptor.addChild(root_1, stream_IDENTIFIER.nextNode());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:57: ( IDENTIFIER )*
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:272:57: ( IDENTIFIER )*
                 while ( stream_IDENTIFIER.hasNext() ) {
                     adaptor.addChild(root_1, stream_IDENTIFIER.nextNode());
 
@@ -3841,7 +3841,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "imperativeExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:277:1: imperativeExp : ( blockExp | breakExp | computeExp | continueExp | returnExp | variableInitExp | assignExp | raiseExp | whileExp | ifExp | tryExp | forExp );
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:277:1: imperativeExp : ( blockExp | breakExp | computeExp | continueExp | returnExp | variableInitExp | assignExp | raiseExp | whileExp | ifExp | tryExp | forExp );
     public final IoclParser.imperativeExp_return imperativeExp() throws RecognitionException {
         IoclParser.imperativeExp_return retval = new IoclParser.imperativeExp_return();
         retval.start = input.LT(1);
@@ -3876,12 +3876,12 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 38) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:278:2: ( blockExp | breakExp | computeExp | continueExp | returnExp | variableInitExp | assignExp | raiseExp | whileExp | ifExp | tryExp | forExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:278:2: ( blockExp | breakExp | computeExp | continueExp | returnExp | variableInitExp | assignExp | raiseExp | whileExp | ifExp | tryExp | forExp )
             int alt33=12;
             alt33 = dfa33.predict(input);
             switch (alt33) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:278:4: blockExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:278:4: blockExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3895,7 +3895,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:279:4: breakExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:279:4: breakExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3909,7 +3909,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:280:4: computeExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:280:4: computeExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3923,7 +3923,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:281:4: continueExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:281:4: continueExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3937,7 +3937,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:282:4: returnExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:282:4: returnExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3951,7 +3951,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:283:4: variableInitExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:283:4: variableInitExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3965,7 +3965,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: assignExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: assignExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3979,7 +3979,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:285:4: raiseExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:285:4: raiseExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3993,7 +3993,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 9 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:286:4: whileExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:286:4: whileExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -4007,7 +4007,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 10 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:287:4: ifExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:287:4: ifExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -4021,7 +4021,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 11 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:288:4: tryExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:288:4: tryExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -4035,7 +4035,7 @@ public class IoclParser extends Parser {
                     }
                     break;
                 case 12 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:289:4: forExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:289:4: forExp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -4075,7 +4075,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "blockExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:292:1: blockExp : ( DO )? LCURLY ( oclExpression )* RCURLY -> ^( BLOCK ( oclExpression )* ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:292:1: blockExp : ( DO )? LCURLY ( oclExpression )* RCURLY -> ^( BLOCK ( oclExpression )* ) ;
     public final IoclParser.blockExp_return blockExp() throws RecognitionException {
         IoclParser.blockExp_return retval = new IoclParser.blockExp_return();
         retval.start = input.LT(1);
@@ -4097,10 +4097,10 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 39) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:2: ( ( DO )? LCURLY ( oclExpression )* RCURLY -> ^( BLOCK ( oclExpression )* ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:4: ( DO )? LCURLY ( oclExpression )* RCURLY
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:2: ( ( DO )? LCURLY ( oclExpression )* RCURLY -> ^( BLOCK ( oclExpression )* ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:4: ( DO )? LCURLY ( oclExpression )* RCURLY
             {
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:4: ( DO )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:4: ( DO )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -4109,7 +4109,7 @@ public class IoclParser extends Parser {
             }
             switch (alt34) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: DO
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: DO
                     {
                     DO128=(Token)match(input,DO,FOLLOW_DO_in_blockExp1329); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_DO.add(DO128);
@@ -4123,7 +4123,7 @@ public class IoclParser extends Parser {
             LCURLY129=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_blockExp1332); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY129);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:15: ( oclExpression )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:15: ( oclExpression )*
             loop35:
             do {
                 int alt35=2;
@@ -4136,7 +4136,7 @@ public class IoclParser extends Parser {
 
                 switch (alt35) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
             	    {
             	    pushFollow(FOLLOW_oclExpression_in_blockExp1334);
             	    oclExpression130=oclExpression();
@@ -4172,12 +4172,12 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 293:37: -> ^( BLOCK ( oclExpression )* )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:40: ^( BLOCK ( oclExpression )* )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:40: ^( BLOCK ( oclExpression )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(BLOCK, "BLOCK"), root_1);
 
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:48: ( oclExpression )*
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:293:48: ( oclExpression )*
                 while ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -4217,7 +4217,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "breakExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:296:1: breakExp : BREAK SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:296:1: breakExp : BREAK SEMICOLON ;
     public final IoclParser.breakExp_return breakExp() throws RecognitionException {
         IoclParser.breakExp_return retval = new IoclParser.breakExp_return();
         retval.start = input.LT(1);
@@ -4232,8 +4232,8 @@ public class IoclParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 40) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:297:2: ( BREAK SEMICOLON )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:297:4: BREAK SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:297:2: ( BREAK SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:297:4: BREAK SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
@@ -4275,7 +4275,7 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "computeExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:300:1: computeExp : COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpression RCURLY -> ^( COMPUTE variableDeclaration oclExpression ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:300:1: computeExp : COMPUTE LPAREN variableDeclaration RPAREN oclExpression -> ^( COMPUTE variableDeclaration oclExpression ) ;
     public final IoclParser.computeExp_return computeExp() throws RecognitionException {
         IoclParser.computeExp_return retval = new IoclParser.computeExp_return();
         retval.start = input.LT(1);
@@ -4285,29 +4285,23 @@ public class IoclParser extends Parser {
         Token COMPUTE134=null;
         Token LPAREN135=null;
         Token RPAREN137=null;
-        Token LCURLY138=null;
-        Token RCURLY140=null;
         IoclParser.variableDeclaration_return variableDeclaration136 = null;
 
-        IoclParser.oclExpression_return oclExpression139 = null;
+        IoclParser.oclExpression_return oclExpression138 = null;
 
 
         Object COMPUTE134_tree=null;
         Object LPAREN135_tree=null;
         Object RPAREN137_tree=null;
-        Object LCURLY138_tree=null;
-        Object RCURLY140_tree=null;
         RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
-        RewriteRuleTokenStream stream_LCURLY=new RewriteRuleTokenStream(adaptor,"token LCURLY");
         RewriteRuleTokenStream stream_COMPUTE=new RewriteRuleTokenStream(adaptor,"token COMPUTE");
         RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
-        RewriteRuleTokenStream stream_RCURLY=new RewriteRuleTokenStream(adaptor,"token RCURLY");
         RewriteRuleSubtreeStream stream_variableDeclaration=new RewriteRuleSubtreeStream(adaptor,"rule variableDeclaration");
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 41) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:2: ( COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpression RCURLY -> ^( COMPUTE variableDeclaration oclExpression ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:4: COMPUTE LPAREN variableDeclaration RPAREN LCURLY oclExpression RCURLY
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:2: ( COMPUTE LPAREN variableDeclaration RPAREN oclExpression -> ^( COMPUTE variableDeclaration oclExpression ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:4: COMPUTE LPAREN variableDeclaration RPAREN oclExpression
             {
             COMPUTE134=(Token)match(input,COMPUTE,FOLLOW_COMPUTE_in_computeExp1371); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_COMPUTE.add(COMPUTE134);
@@ -4324,22 +4318,16 @@ public class IoclParser extends Parser {
             RPAREN137=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_computeExp1377); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN137);
 
-            LCURLY138=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_computeExp1379); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY138);
-
-            pushFollow(FOLLOW_oclExpression_in_computeExp1381);
-            oclExpression139=oclExpression();
+            pushFollow(FOLLOW_oclExpression_in_computeExp1379);
+            oclExpression138=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression139.getTree());
-            RCURLY140=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_computeExp1383); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY140);
-
+            if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression138.getTree());
 
 
             // AST REWRITE
-            // elements: COMPUTE, variableDeclaration, oclExpression
+            // elements: variableDeclaration, oclExpression, COMPUTE
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4350,9 +4338,9 @@ public class IoclParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 301:74: -> ^( COMPUTE variableDeclaration oclExpression )
+            // 301:60: -> ^( COMPUTE variableDeclaration oclExpression )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:77: ^( COMPUTE variableDeclaration oclExpression )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:301:63: ^( COMPUTE variableDeclaration oclExpression )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_COMPUTE.nextNode(), root_1);
@@ -4393,35 +4381,35 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "continueExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:304:1: continueExp : CONTINUE SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:304:1: continueExp : CONTINUE SEMICOLON ;
     public final IoclParser.continueExp_return continueExp() throws RecognitionException {
         IoclParser.continueExp_return retval = new IoclParser.continueExp_return();
         retval.start = input.LT(1);
         int continueExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token CONTINUE141=null;
-        Token SEMICOLON142=null;
+        Token CONTINUE139=null;
+        Token SEMICOLON140=null;
 
-        Object CONTINUE141_tree=null;
-        Object SEMICOLON142_tree=null;
+        Object CONTINUE139_tree=null;
+        Object SEMICOLON140_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 42) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:305:2: ( CONTINUE SEMICOLON )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:305:4: CONTINUE SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:305:2: ( CONTINUE SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:305:4: CONTINUE SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
-            CONTINUE141=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_continueExp1404); if (state.failed) return retval;
+            CONTINUE139=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_continueExp1400); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            CONTINUE141_tree = (Object)adaptor.create(CONTINUE141);
-            root_0 = (Object)adaptor.becomeRoot(CONTINUE141_tree, root_0);
+            CONTINUE139_tree = (Object)adaptor.create(CONTINUE139);
+            root_0 = (Object)adaptor.becomeRoot(CONTINUE139_tree, root_0);
             }
-            SEMICOLON142=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_continueExp1407); if (state.failed) return retval;
+            SEMICOLON140=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_continueExp1403); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            SEMICOLON142_tree = (Object)adaptor.create(SEMICOLON142);
-            adaptor.addChild(root_0, SEMICOLON142_tree);
+            SEMICOLON140_tree = (Object)adaptor.create(SEMICOLON140);
+            adaptor.addChild(root_0, SEMICOLON140_tree);
             }
 
             }
@@ -4451,32 +4439,32 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "returnExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:308:1: returnExp : RETURN ( oclExpression )? SEMICOLON -> ^( RETURN ( oclExpression )? ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:308:1: returnExp : RETURN ( oclExpression )? SEMICOLON -> ^( RETURN ( oclExpression )? ) ;
     public final IoclParser.returnExp_return returnExp() throws RecognitionException {
         IoclParser.returnExp_return retval = new IoclParser.returnExp_return();
         retval.start = input.LT(1);
         int returnExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token RETURN143=null;
-        Token SEMICOLON145=null;
-        IoclParser.oclExpression_return oclExpression144 = null;
+        Token RETURN141=null;
+        Token SEMICOLON143=null;
+        IoclParser.oclExpression_return oclExpression142 = null;
 
 
-        Object RETURN143_tree=null;
-        Object SEMICOLON145_tree=null;
+        Object RETURN141_tree=null;
+        Object SEMICOLON143_tree=null;
         RewriteRuleTokenStream stream_SEMICOLON=new RewriteRuleTokenStream(adaptor,"token SEMICOLON");
         RewriteRuleTokenStream stream_RETURN=new RewriteRuleTokenStream(adaptor,"token RETURN");
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 43) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:2: ( RETURN ( oclExpression )? SEMICOLON -> ^( RETURN ( oclExpression )? ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:4: RETURN ( oclExpression )? SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:2: ( RETURN ( oclExpression )? SEMICOLON -> ^( RETURN ( oclExpression )? ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:4: RETURN ( oclExpression )? SEMICOLON
             {
-            RETURN143=(Token)match(input,RETURN,FOLLOW_RETURN_in_returnExp1418); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RETURN.add(RETURN143);
+            RETURN141=(Token)match(input,RETURN,FOLLOW_RETURN_in_returnExp1414); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RETURN.add(RETURN141);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:11: ( oclExpression )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:11: ( oclExpression )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
@@ -4485,22 +4473,22 @@ public class IoclParser extends Parser {
             }
             switch (alt36) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
                     {
-                    pushFollow(FOLLOW_oclExpression_in_returnExp1420);
-                    oclExpression144=oclExpression();
+                    pushFollow(FOLLOW_oclExpression_in_returnExp1416);
+                    oclExpression142=oclExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression144.getTree());
+                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression142.getTree());
 
                     }
                     break;
 
             }
 
-            SEMICOLON145=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_returnExp1423); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_SEMICOLON.add(SEMICOLON145);
+            SEMICOLON143=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_returnExp1419); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_SEMICOLON.add(SEMICOLON143);
 
 
 
@@ -4518,12 +4506,12 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 309:36: -> ^( RETURN ( oclExpression )? )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:39: ^( RETURN ( oclExpression )? )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:39: ^( RETURN ( oclExpression )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_RETURN.nextNode(), root_1);
 
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:48: ( oclExpression )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:309:48: ( oclExpression )?
                 if ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -4563,40 +4551,40 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "variableInitExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:312:1: variableInitExp : VAR imperativeVarDeclarations SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:312:1: variableInitExp : VAR imperativeVarDeclarations SEMICOLON ;
     public final IoclParser.variableInitExp_return variableInitExp() throws RecognitionException {
         IoclParser.variableInitExp_return retval = new IoclParser.variableInitExp_return();
         retval.start = input.LT(1);
         int variableInitExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token VAR146=null;
-        Token SEMICOLON148=null;
-        IoclParser.imperativeVarDeclarations_return imperativeVarDeclarations147 = null;
+        Token VAR144=null;
+        Token SEMICOLON146=null;
+        IoclParser.imperativeVarDeclarations_return imperativeVarDeclarations145 = null;
 
 
-        Object VAR146_tree=null;
-        Object SEMICOLON148_tree=null;
+        Object VAR144_tree=null;
+        Object SEMICOLON146_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 44) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:313:2: ( VAR imperativeVarDeclarations SEMICOLON )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:313:4: VAR imperativeVarDeclarations SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:313:2: ( VAR imperativeVarDeclarations SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:313:4: VAR imperativeVarDeclarations SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
-            VAR146=(Token)match(input,VAR,FOLLOW_VAR_in_variableInitExp1443); if (state.failed) return retval;
+            VAR144=(Token)match(input,VAR,FOLLOW_VAR_in_variableInitExp1439); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            VAR146_tree = (Object)adaptor.create(VAR146);
-            root_0 = (Object)adaptor.becomeRoot(VAR146_tree, root_0);
+            VAR144_tree = (Object)adaptor.create(VAR144);
+            root_0 = (Object)adaptor.becomeRoot(VAR144_tree, root_0);
             }
-            pushFollow(FOLLOW_imperativeVarDeclarations_in_variableInitExp1446);
-            imperativeVarDeclarations147=imperativeVarDeclarations();
+            pushFollow(FOLLOW_imperativeVarDeclarations_in_variableInitExp1442);
+            imperativeVarDeclarations145=imperativeVarDeclarations();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclarations147.getTree());
-            SEMICOLON148=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variableInitExp1448); if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclarations145.getTree());
+            SEMICOLON146=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variableInitExp1444); if (state.failed) return retval;
 
             }
 
@@ -4625,35 +4613,35 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "imperativeVarDeclarations"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:316:1: imperativeVarDeclarations : imperativeVarDeclaration ( ',' imperativeVarDeclaration )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:316:1: imperativeVarDeclarations : imperativeVarDeclaration ( ',' imperativeVarDeclaration )* ;
     public final IoclParser.imperativeVarDeclarations_return imperativeVarDeclarations() throws RecognitionException {
         IoclParser.imperativeVarDeclarations_return retval = new IoclParser.imperativeVarDeclarations_return();
         retval.start = input.LT(1);
         int imperativeVarDeclarations_StartIndex = input.index();
         Object root_0 = null;
 
-        Token char_literal150=null;
+        Token char_literal148=null;
+        IoclParser.imperativeVarDeclaration_return imperativeVarDeclaration147 = null;
+
         IoclParser.imperativeVarDeclaration_return imperativeVarDeclaration149 = null;
 
-        IoclParser.imperativeVarDeclaration_return imperativeVarDeclaration151 = null;
 
-
-        Object char_literal150_tree=null;
+        Object char_literal148_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 45) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:2: ( imperativeVarDeclaration ( ',' imperativeVarDeclaration )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:4: imperativeVarDeclaration ( ',' imperativeVarDeclaration )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:2: ( imperativeVarDeclaration ( ',' imperativeVarDeclaration )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:4: imperativeVarDeclaration ( ',' imperativeVarDeclaration )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1461);
-            imperativeVarDeclaration149=imperativeVarDeclaration();
+            pushFollow(FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1457);
+            imperativeVarDeclaration147=imperativeVarDeclaration();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclaration149.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:29: ( ',' imperativeVarDeclaration )*
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclaration147.getTree());
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:29: ( ',' imperativeVarDeclaration )*
             loop37:
             do {
                 int alt37=2;
@@ -4666,15 +4654,15 @@ public class IoclParser extends Parser {
 
                 switch (alt37) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:30: ',' imperativeVarDeclaration
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:317:30: ',' imperativeVarDeclaration
             	    {
-            	    char_literal150=(Token)match(input,68,FOLLOW_68_in_imperativeVarDeclarations1464); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1467);
-            	    imperativeVarDeclaration151=imperativeVarDeclaration();
+            	    char_literal148=(Token)match(input,68,FOLLOW_68_in_imperativeVarDeclarations1460); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1463);
+            	    imperativeVarDeclaration149=imperativeVarDeclaration();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclaration151.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, imperativeVarDeclaration149.getTree());
 
             	    }
             	    break;
@@ -4712,26 +4700,26 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "imperativeVarDeclaration"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:320:1: imperativeVarDeclaration : IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:320:1: imperativeVarDeclaration : IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) ;
     public final IoclParser.imperativeVarDeclaration_return imperativeVarDeclaration() throws RecognitionException {
         IoclParser.imperativeVarDeclaration_return retval = new IoclParser.imperativeVarDeclaration_return();
         retval.start = input.LT(1);
         int imperativeVarDeclaration_StartIndex = input.index();
         Object root_0 = null;
 
-        Token IDENTIFIER152=null;
-        Token char_literal153=null;
-        Token EQUAL155=null;
-        Token IS156=null;
-        IoclParser.type_return type154 = null;
+        Token IDENTIFIER150=null;
+        Token char_literal151=null;
+        Token EQUAL153=null;
+        Token IS154=null;
+        IoclParser.type_return type152 = null;
 
-        IoclParser.oclExpression_return oclExpression157 = null;
+        IoclParser.oclExpression_return oclExpression155 = null;
 
 
-        Object IDENTIFIER152_tree=null;
-        Object char_literal153_tree=null;
-        Object EQUAL155_tree=null;
-        Object IS156_tree=null;
+        Object IDENTIFIER150_tree=null;
+        Object char_literal151_tree=null;
+        Object EQUAL153_tree=null;
+        Object IS154_tree=null;
         RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
         RewriteRuleTokenStream stream_IS=new RewriteRuleTokenStream(adaptor,"token IS");
         RewriteRuleTokenStream stream_IDENTIFIER=new RewriteRuleTokenStream(adaptor,"token IDENTIFIER");
@@ -4740,13 +4728,13 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 46) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:2: ( IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:4: IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:2: ( IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )? -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:4: IDENTIFIER ( ':' type )? ( ( EQUAL | IS ) oclExpression )?
             {
-            IDENTIFIER152=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_imperativeVarDeclaration1481); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER152);
+            IDENTIFIER150=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_imperativeVarDeclaration1477); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER150);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:15: ( ':' type )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:15: ( ':' type )?
             int alt38=2;
             int LA38_0 = input.LA(1);
 
@@ -4755,24 +4743,24 @@ public class IoclParser extends Parser {
             }
             switch (alt38) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:16: ':' type
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:16: ':' type
                     {
-                    char_literal153=(Token)match(input,COLON,FOLLOW_COLON_in_imperativeVarDeclaration1484); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_COLON.add(char_literal153);
+                    char_literal151=(Token)match(input,COLON,FOLLOW_COLON_in_imperativeVarDeclaration1480); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_COLON.add(char_literal151);
 
-                    pushFollow(FOLLOW_type_in_imperativeVarDeclaration1486);
-                    type154=type();
+                    pushFollow(FOLLOW_type_in_imperativeVarDeclaration1482);
+                    type152=type();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_type.add(type154.getTree());
+                    if ( state.backtracking==0 ) stream_type.add(type152.getTree());
 
                     }
                     break;
 
             }
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:27: ( ( EQUAL | IS ) oclExpression )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:27: ( ( EQUAL | IS ) oclExpression )?
             int alt40=2;
             int LA40_0 = input.LA(1);
 
@@ -4781,9 +4769,9 @@ public class IoclParser extends Parser {
             }
             switch (alt40) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:28: ( EQUAL | IS ) oclExpression
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:28: ( EQUAL | IS ) oclExpression
                     {
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:28: ( EQUAL | IS )
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:28: ( EQUAL | IS )
                     int alt39=2;
                     int LA39_0 = input.LA(1);
 
@@ -4802,19 +4790,19 @@ public class IoclParser extends Parser {
                     }
                     switch (alt39) {
                         case 1 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:29: EQUAL
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:29: EQUAL
                             {
-                            EQUAL155=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_imperativeVarDeclaration1492); if (state.failed) return retval; 
-                            if ( state.backtracking==0 ) stream_EQUAL.add(EQUAL155);
+                            EQUAL153=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_imperativeVarDeclaration1488); if (state.failed) return retval; 
+                            if ( state.backtracking==0 ) stream_EQUAL.add(EQUAL153);
 
 
                             }
                             break;
                         case 2 :
-                            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:37: IS
+                            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:37: IS
                             {
-                            IS156=(Token)match(input,IS,FOLLOW_IS_in_imperativeVarDeclaration1496); if (state.failed) return retval; 
-                            if ( state.backtracking==0 ) stream_IS.add(IS156);
+                            IS154=(Token)match(input,IS,FOLLOW_IS_in_imperativeVarDeclaration1492); if (state.failed) return retval; 
+                            if ( state.backtracking==0 ) stream_IS.add(IS154);
 
 
                             }
@@ -4822,12 +4810,12 @@ public class IoclParser extends Parser {
 
                     }
 
-                    pushFollow(FOLLOW_oclExpression_in_imperativeVarDeclaration1500);
-                    oclExpression157=oclExpression();
+                    pushFollow(FOLLOW_oclExpression_in_imperativeVarDeclaration1496);
+                    oclExpression155=oclExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression157.getTree());
+                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression155.getTree());
 
                     }
                     break;
@@ -4837,7 +4825,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, IDENTIFIER, oclExpression
+            // elements: oclExpression, type, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4850,19 +4838,19 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 321:58: -> ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:61: ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:61: ^( VARIABLE IDENTIFIER ( type )? ( oclExpression )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARIABLE, "VARIABLE"), root_1);
 
                 adaptor.addChild(root_1, stream_IDENTIFIER.nextNode());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:83: ( type )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:83: ( type )?
                 if ( stream_type.hasNext() ) {
                     adaptor.addChild(root_1, stream_type.nextTree());
 
                 }
                 stream_type.reset();
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:89: ( oclExpression )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:321:89: ( oclExpression )?
                 if ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -4902,41 +4890,41 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "assignExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:324:1: assignExp : dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:324:1: assignExp : dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON ;
     public final IoclParser.assignExp_return assignExp() throws RecognitionException {
         IoclParser.assignExp_return retval = new IoclParser.assignExp_return();
         retval.start = input.LT(1);
         int assignExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token set159=null;
-        Token SEMICOLON161=null;
-        IoclParser.dotArrowExp_return dotArrowExp158 = null;
+        Token set157=null;
+        Token SEMICOLON159=null;
+        IoclParser.dotArrowExp_return dotArrowExp156 = null;
 
-        IoclParser.oclExpression_return oclExpression160 = null;
+        IoclParser.oclExpression_return oclExpression158 = null;
 
 
-        Object set159_tree=null;
-        Object SEMICOLON161_tree=null;
+        Object set157_tree=null;
+        Object SEMICOLON159_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 47) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:325:2: ( dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:325:4: dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:325:2: ( dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:325:4: dotArrowExp ( IS | APPEND ) oclExpression SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_dotArrowExp_in_assignExp1527);
-            dotArrowExp158=dotArrowExp();
+            pushFollow(FOLLOW_dotArrowExp_in_assignExp1523);
+            dotArrowExp156=dotArrowExp();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, dotArrowExp158.getTree());
-            set159=(Token)input.LT(1);
-            set159=(Token)input.LT(1);
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, dotArrowExp156.getTree());
+            set157=(Token)input.LT(1);
+            set157=(Token)input.LT(1);
             if ( input.LA(1)==APPEND||input.LA(1)==IS ) {
                 input.consume();
-                if ( state.backtracking==0 ) root_0 = (Object)adaptor.becomeRoot((Object)adaptor.create(set159), root_0);
+                if ( state.backtracking==0 ) root_0 = (Object)adaptor.becomeRoot((Object)adaptor.create(set157), root_0);
                 state.errorRecovery=false;state.failed=false;
             }
             else {
@@ -4945,13 +4933,13 @@ public class IoclParser extends Parser {
                 throw mse;
             }
 
-            pushFollow(FOLLOW_oclExpression_in_assignExp1538);
-            oclExpression160=oclExpression();
+            pushFollow(FOLLOW_oclExpression_in_assignExp1534);
+            oclExpression158=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, oclExpression160.getTree());
-            SEMICOLON161=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_assignExp1540); if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, oclExpression158.getTree());
+            SEMICOLON159=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_assignExp1536); if (state.failed) return retval;
 
             }
 
@@ -4980,36 +4968,36 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "raiseExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:328:1: raiseExp : RAISE ( type | STRING_LITERAL ) SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:328:1: raiseExp : RAISE ( type | STRING_LITERAL ) SEMICOLON ;
     public final IoclParser.raiseExp_return raiseExp() throws RecognitionException {
         IoclParser.raiseExp_return retval = new IoclParser.raiseExp_return();
         retval.start = input.LT(1);
         int raiseExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token RAISE162=null;
-        Token STRING_LITERAL164=null;
-        Token SEMICOLON165=null;
-        IoclParser.type_return type163 = null;
+        Token RAISE160=null;
+        Token STRING_LITERAL162=null;
+        Token SEMICOLON163=null;
+        IoclParser.type_return type161 = null;
 
 
-        Object RAISE162_tree=null;
-        Object STRING_LITERAL164_tree=null;
-        Object SEMICOLON165_tree=null;
+        Object RAISE160_tree=null;
+        Object STRING_LITERAL162_tree=null;
+        Object SEMICOLON163_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:2: ( RAISE ( type | STRING_LITERAL ) SEMICOLON )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:4: RAISE ( type | STRING_LITERAL ) SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:2: ( RAISE ( type | STRING_LITERAL ) SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:4: RAISE ( type | STRING_LITERAL ) SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
-            RAISE162=(Token)match(input,RAISE,FOLLOW_RAISE_in_raiseExp1552); if (state.failed) return retval;
+            RAISE160=(Token)match(input,RAISE,FOLLOW_RAISE_in_raiseExp1548); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RAISE162_tree = (Object)adaptor.create(RAISE162);
-            root_0 = (Object)adaptor.becomeRoot(RAISE162_tree, root_0);
+            RAISE160_tree = (Object)adaptor.create(RAISE160);
+            root_0 = (Object)adaptor.becomeRoot(RAISE160_tree, root_0);
             }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:11: ( type | STRING_LITERAL )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:11: ( type | STRING_LITERAL )
             int alt41=2;
             int LA41_0 = input.LA(1);
 
@@ -5028,24 +5016,24 @@ public class IoclParser extends Parser {
             }
             switch (alt41) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:12: type
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:12: type
                     {
-                    pushFollow(FOLLOW_type_in_raiseExp1556);
-                    type163=type();
+                    pushFollow(FOLLOW_type_in_raiseExp1552);
+                    type161=type();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, type163.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, type161.getTree());
 
                     }
                     break;
                 case 2 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:19: STRING_LITERAL
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:329:19: STRING_LITERAL
                     {
-                    STRING_LITERAL164=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_raiseExp1560); if (state.failed) return retval;
+                    STRING_LITERAL162=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_raiseExp1556); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    STRING_LITERAL164_tree = (Object)adaptor.create(STRING_LITERAL164);
-                    adaptor.addChild(root_0, STRING_LITERAL164_tree);
+                    STRING_LITERAL162_tree = (Object)adaptor.create(STRING_LITERAL162);
+                    adaptor.addChild(root_0, STRING_LITERAL162_tree);
                     }
 
                     }
@@ -5053,7 +5041,7 @@ public class IoclParser extends Parser {
 
             }
 
-            SEMICOLON165=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_raiseExp1563); if (state.failed) return retval;
+            SEMICOLON163=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_raiseExp1559); if (state.failed) return retval;
 
             }
 
@@ -5082,49 +5070,49 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "whileExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:332:1: whileExp : WHILE LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( WHILE $condition $body) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:332:1: whileExp : WHILE LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( WHILE $condition $body) ;
     public final IoclParser.whileExp_return whileExp() throws RecognitionException {
         IoclParser.whileExp_return retval = new IoclParser.whileExp_return();
         retval.start = input.LT(1);
         int whileExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token WHILE166=null;
-        Token LPAREN167=null;
-        Token RPAREN168=null;
+        Token WHILE164=null;
+        Token LPAREN165=null;
+        Token RPAREN166=null;
         IoclParser.oclExpression_return condition = null;
 
         IoclParser.oclExpression_return body = null;
 
 
-        Object WHILE166_tree=null;
-        Object LPAREN167_tree=null;
-        Object RPAREN168_tree=null;
+        Object WHILE164_tree=null;
+        Object LPAREN165_tree=null;
+        Object RPAREN166_tree=null;
         RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
         RewriteRuleTokenStream stream_WHILE=new RewriteRuleTokenStream(adaptor,"token WHILE");
         RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 49) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:333:2: ( WHILE LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( WHILE $condition $body) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:333:4: WHILE LPAREN condition= oclExpression RPAREN body= oclExpression
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:333:2: ( WHILE LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( WHILE $condition $body) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:333:4: WHILE LPAREN condition= oclExpression RPAREN body= oclExpression
             {
-            WHILE166=(Token)match(input,WHILE,FOLLOW_WHILE_in_whileExp1575); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_WHILE.add(WHILE166);
+            WHILE164=(Token)match(input,WHILE,FOLLOW_WHILE_in_whileExp1571); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_WHILE.add(WHILE164);
 
-            LPAREN167=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_whileExp1577); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN167);
+            LPAREN165=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_whileExp1573); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN165);
 
-            pushFollow(FOLLOW_oclExpression_in_whileExp1583);
+            pushFollow(FOLLOW_oclExpression_in_whileExp1579);
             condition=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_oclExpression.add(condition.getTree());
-            RPAREN168=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_whileExp1585); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN168);
+            RPAREN166=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_whileExp1581); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN166);
 
-            pushFollow(FOLLOW_oclExpression_in_whileExp1594);
+            pushFollow(FOLLOW_oclExpression_in_whileExp1590);
             body=oclExpression();
 
             state._fsp--;
@@ -5133,7 +5121,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: WHILE, body, condition
+            // elements: condition, body, WHILE
             // token labels: 
             // rule labels: body, retval, condition
             // token list labels: 
@@ -5148,7 +5136,7 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 334:24: -> ^( WHILE $condition $body)
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:334:27: ^( WHILE $condition $body)
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:334:27: ^( WHILE $condition $body)
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_WHILE.nextNode(), root_1);
@@ -5189,24 +5177,24 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "ifExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:337:1: ifExp : IF altExp ( elifExp )* ( elseExp )? ( ENDIF )? -> ^( IF altExp ( elifExp )* ( elseExp )? ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:337:1: ifExp : IF altExp ( elifExp )* ( elseExp )? ( ENDIF )? -> ^( IF altExp ( elifExp )* ( elseExp )? ) ;
     public final IoclParser.ifExp_return ifExp() throws RecognitionException {
         IoclParser.ifExp_return retval = new IoclParser.ifExp_return();
         retval.start = input.LT(1);
         int ifExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token IF169=null;
-        Token ENDIF173=null;
-        IoclParser.altExp_return altExp170 = null;
+        Token IF167=null;
+        Token ENDIF171=null;
+        IoclParser.altExp_return altExp168 = null;
 
-        IoclParser.elifExp_return elifExp171 = null;
+        IoclParser.elifExp_return elifExp169 = null;
 
-        IoclParser.elseExp_return elseExp172 = null;
+        IoclParser.elseExp_return elseExp170 = null;
 
 
-        Object IF169_tree=null;
-        Object ENDIF173_tree=null;
+        Object IF167_tree=null;
+        Object ENDIF171_tree=null;
         RewriteRuleTokenStream stream_ENDIF=new RewriteRuleTokenStream(adaptor,"token ENDIF");
         RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
         RewriteRuleSubtreeStream stream_elifExp=new RewriteRuleSubtreeStream(adaptor,"rule elifExp");
@@ -5214,19 +5202,19 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_elseExp=new RewriteRuleSubtreeStream(adaptor,"rule elseExp");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 50) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:2: ( IF altExp ( elifExp )* ( elseExp )? ( ENDIF )? -> ^( IF altExp ( elifExp )* ( elseExp )? ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:4: IF altExp ( elifExp )* ( elseExp )? ( ENDIF )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:2: ( IF altExp ( elifExp )* ( elseExp )? ( ENDIF )? -> ^( IF altExp ( elifExp )* ( elseExp )? ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:4: IF altExp ( elifExp )* ( elseExp )? ( ENDIF )?
             {
-            IF169=(Token)match(input,IF,FOLLOW_IF_in_ifExp1617); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_IF.add(IF169);
+            IF167=(Token)match(input,IF,FOLLOW_IF_in_ifExp1613); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_IF.add(IF167);
 
-            pushFollow(FOLLOW_altExp_in_ifExp1619);
-            altExp170=altExp();
+            pushFollow(FOLLOW_altExp_in_ifExp1615);
+            altExp168=altExp();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_altExp.add(altExp170.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:14: ( elifExp )*
+            if ( state.backtracking==0 ) stream_altExp.add(altExp168.getTree());
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:14: ( elifExp )*
             loop42:
             do {
                 int alt42=2;
@@ -5245,14 +5233,14 @@ public class IoclParser extends Parser {
 
                 switch (alt42) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: elifExp
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: elifExp
             	    {
-            	    pushFollow(FOLLOW_elifExp_in_ifExp1622);
-            	    elifExp171=elifExp();
+            	    pushFollow(FOLLOW_elifExp_in_ifExp1618);
+            	    elifExp169=elifExp();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) stream_elifExp.add(elifExp171.getTree());
+            	    if ( state.backtracking==0 ) stream_elifExp.add(elifExp169.getTree());
 
             	    }
             	    break;
@@ -5262,7 +5250,7 @@ public class IoclParser extends Parser {
                 }
             } while (true);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:25: ( elseExp )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:25: ( elseExp )?
             int alt43=2;
             int LA43_0 = input.LA(1);
 
@@ -5275,21 +5263,21 @@ public class IoclParser extends Parser {
             }
             switch (alt43) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: elseExp
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: elseExp
                     {
-                    pushFollow(FOLLOW_elseExp_in_ifExp1627);
-                    elseExp172=elseExp();
+                    pushFollow(FOLLOW_elseExp_in_ifExp1623);
+                    elseExp170=elseExp();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_elseExp.add(elseExp172.getTree());
+                    if ( state.backtracking==0 ) stream_elseExp.add(elseExp170.getTree());
 
                     }
                     break;
 
             }
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ( ENDIF )?
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ( ENDIF )?
             int alt44=2;
             int LA44_0 = input.LA(1);
 
@@ -5302,10 +5290,10 @@ public class IoclParser extends Parser {
             }
             switch (alt44) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: ENDIF
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: ENDIF
                     {
-                    ENDIF173=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_ifExp1631); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_ENDIF.add(ENDIF173);
+                    ENDIF171=(Token)match(input,ENDIF,FOLLOW_ENDIF_in_ifExp1627); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_ENDIF.add(ENDIF171);
 
 
                     }
@@ -5316,7 +5304,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: altExp, IF, elifExp, elseExp
+            // elements: elifExp, altExp, IF, elseExp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5329,19 +5317,19 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 338:43: -> ^( IF altExp ( elifExp )* ( elseExp )? )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:46: ^( IF altExp ( elifExp )* ( elseExp )? )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:46: ^( IF altExp ( elifExp )* ( elseExp )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_IF.nextNode(), root_1);
 
                 adaptor.addChild(root_1, stream_altExp.nextTree());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:58: ( elifExp )*
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:58: ( elifExp )*
                 while ( stream_elifExp.hasNext() ) {
                     adaptor.addChild(root_1, stream_elifExp.nextTree());
 
                 }
                 stream_elifExp.reset();
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:67: ( elseExp )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:67: ( elseExp )?
                 if ( stream_elseExp.hasNext() ) {
                     adaptor.addChild(root_1, stream_elseExp.nextTree());
 
@@ -5381,33 +5369,33 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "elifExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:341:1: elifExp : ELIF altExp ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:341:1: elifExp : ELIF altExp ;
     public final IoclParser.elifExp_return elifExp() throws RecognitionException {
         IoclParser.elifExp_return retval = new IoclParser.elifExp_return();
         retval.start = input.LT(1);
         int elifExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token ELIF174=null;
-        IoclParser.altExp_return altExp175 = null;
+        Token ELIF172=null;
+        IoclParser.altExp_return altExp173 = null;
 
 
-        Object ELIF174_tree=null;
+        Object ELIF172_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 51) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:2: ( ELIF altExp )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:4: ELIF altExp
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:2: ( ELIF altExp )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:342:4: ELIF altExp
             {
             root_0 = (Object)adaptor.nil();
 
-            ELIF174=(Token)match(input,ELIF,FOLLOW_ELIF_in_elifExp1657); if (state.failed) return retval;
-            pushFollow(FOLLOW_altExp_in_elifExp1660);
-            altExp175=altExp();
+            ELIF172=(Token)match(input,ELIF,FOLLOW_ELIF_in_elifExp1653); if (state.failed) return retval;
+            pushFollow(FOLLOW_altExp_in_elifExp1656);
+            altExp173=altExp();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, altExp175.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, altExp173.getTree());
 
             }
 
@@ -5436,33 +5424,33 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "elseExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:345:1: elseExp : ELSE oclExpression ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:345:1: elseExp : ELSE oclExpression ;
     public final IoclParser.elseExp_return elseExp() throws RecognitionException {
         IoclParser.elseExp_return retval = new IoclParser.elseExp_return();
         retval.start = input.LT(1);
         int elseExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token ELSE176=null;
-        IoclParser.oclExpression_return oclExpression177 = null;
+        Token ELSE174=null;
+        IoclParser.oclExpression_return oclExpression175 = null;
 
 
-        Object ELSE176_tree=null;
+        Object ELSE174_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 52) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:2: ( ELSE oclExpression )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:4: ELSE oclExpression
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:2: ( ELSE oclExpression )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:346:4: ELSE oclExpression
             {
             root_0 = (Object)adaptor.nil();
 
-            ELSE176=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseExp1672); if (state.failed) return retval;
-            pushFollow(FOLLOW_oclExpression_in_elseExp1675);
-            oclExpression177=oclExpression();
+            ELSE174=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseExp1668); if (state.failed) return retval;
+            pushFollow(FOLLOW_oclExpression_in_elseExp1671);
+            oclExpression175=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, oclExpression177.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, oclExpression175.getTree());
 
             }
 
@@ -5491,43 +5479,43 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "altExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:349:1: altExp : LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( ALT_EXP $condition $body) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:349:1: altExp : LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( ALT_EXP $condition $body) ;
     public final IoclParser.altExp_return altExp() throws RecognitionException {
         IoclParser.altExp_return retval = new IoclParser.altExp_return();
         retval.start = input.LT(1);
         int altExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token LPAREN178=null;
-        Token RPAREN179=null;
+        Token LPAREN176=null;
+        Token RPAREN177=null;
         IoclParser.oclExpression_return condition = null;
 
         IoclParser.oclExpression_return body = null;
 
 
-        Object LPAREN178_tree=null;
-        Object RPAREN179_tree=null;
+        Object LPAREN176_tree=null;
+        Object RPAREN177_tree=null;
         RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
         RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 53) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:2: ( LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( ALT_EXP $condition $body) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:4: LPAREN condition= oclExpression RPAREN body= oclExpression
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:2: ( LPAREN condition= oclExpression RPAREN body= oclExpression -> ^( ALT_EXP $condition $body) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:4: LPAREN condition= oclExpression RPAREN body= oclExpression
             {
-            LPAREN178=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_altExp1688); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN178);
+            LPAREN176=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_altExp1684); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN176);
 
-            pushFollow(FOLLOW_oclExpression_in_altExp1694);
+            pushFollow(FOLLOW_oclExpression_in_altExp1690);
             condition=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_oclExpression.add(condition.getTree());
-            RPAREN179=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_altExp1696); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN179);
+            RPAREN177=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_altExp1692); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN177);
 
-            pushFollow(FOLLOW_oclExpression_in_altExp1703);
+            pushFollow(FOLLOW_oclExpression_in_altExp1699);
             body=oclExpression();
 
             state._fsp--;
@@ -5536,7 +5524,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: condition, body
+            // elements: body, condition
             // token labels: 
             // rule labels: body, retval, condition
             // token list labels: 
@@ -5551,7 +5539,7 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 350:66: -> ^( ALT_EXP $condition $body)
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:69: ^( ALT_EXP $condition $body)
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:350:69: ^( ALT_EXP $condition $body)
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(ALT_EXP, "ALT_EXP"), root_1);
@@ -5592,24 +5580,24 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "tryExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:1: tryExp : TRY LCURLY ( oclExpression )* RCURLY except -> ^( TRY ( oclExpression )* except ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:353:1: tryExp : TRY LCURLY ( oclExpression )* RCURLY except -> ^( TRY ( oclExpression )* except ) ;
     public final IoclParser.tryExp_return tryExp() throws RecognitionException {
         IoclParser.tryExp_return retval = new IoclParser.tryExp_return();
         retval.start = input.LT(1);
         int tryExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token TRY180=null;
-        Token LCURLY181=null;
-        Token RCURLY183=null;
-        IoclParser.oclExpression_return oclExpression182 = null;
+        Token TRY178=null;
+        Token LCURLY179=null;
+        Token RCURLY181=null;
+        IoclParser.oclExpression_return oclExpression180 = null;
 
-        IoclParser.except_return except184 = null;
+        IoclParser.except_return except182 = null;
 
 
-        Object TRY180_tree=null;
-        Object LCURLY181_tree=null;
-        Object RCURLY183_tree=null;
+        Object TRY178_tree=null;
+        Object LCURLY179_tree=null;
+        Object RCURLY181_tree=null;
         RewriteRuleTokenStream stream_LCURLY=new RewriteRuleTokenStream(adaptor,"token LCURLY");
         RewriteRuleTokenStream stream_TRY=new RewriteRuleTokenStream(adaptor,"token TRY");
         RewriteRuleTokenStream stream_RCURLY=new RewriteRuleTokenStream(adaptor,"token RCURLY");
@@ -5617,16 +5605,16 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_oclExpression=new RewriteRuleSubtreeStream(adaptor,"rule oclExpression");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 54) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:2: ( TRY LCURLY ( oclExpression )* RCURLY except -> ^( TRY ( oclExpression )* except ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:4: TRY LCURLY ( oclExpression )* RCURLY except
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:2: ( TRY LCURLY ( oclExpression )* RCURLY except -> ^( TRY ( oclExpression )* except ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:4: TRY LCURLY ( oclExpression )* RCURLY except
             {
-            TRY180=(Token)match(input,TRY,FOLLOW_TRY_in_tryExp1726); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_TRY.add(TRY180);
+            TRY178=(Token)match(input,TRY,FOLLOW_TRY_in_tryExp1722); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_TRY.add(TRY178);
 
-            LCURLY181=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_tryExp1728); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY181);
+            LCURLY179=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_tryExp1724); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY179);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:15: ( oclExpression )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:15: ( oclExpression )*
             loop45:
             do {
                 int alt45=2;
@@ -5639,14 +5627,14 @@ public class IoclParser extends Parser {
 
                 switch (alt45) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
             	    {
-            	    pushFollow(FOLLOW_oclExpression_in_tryExp1730);
-            	    oclExpression182=oclExpression();
+            	    pushFollow(FOLLOW_oclExpression_in_tryExp1726);
+            	    oclExpression180=oclExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression182.getTree());
+            	    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression180.getTree());
 
             	    }
             	    break;
@@ -5656,19 +5644,19 @@ public class IoclParser extends Parser {
                 }
             } while (true);
 
-            RCURLY183=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_tryExp1733); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY183);
+            RCURLY181=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_tryExp1729); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY181);
 
-            pushFollow(FOLLOW_except_in_tryExp1735);
-            except184=except();
+            pushFollow(FOLLOW_except_in_tryExp1731);
+            except182=except();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_except.add(except184.getTree());
+            if ( state.backtracking==0 ) stream_except.add(except182.getTree());
 
 
             // AST REWRITE
-            // elements: TRY, except, oclExpression
+            // elements: TRY, oclExpression, except
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5681,12 +5669,12 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 354:44: -> ^( TRY ( oclExpression )* except )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:47: ^( TRY ( oclExpression )* except )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:47: ^( TRY ( oclExpression )* except )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_TRY.nextNode(), root_1);
 
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:53: ( oclExpression )*
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:354:53: ( oclExpression )*
                 while ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -5727,28 +5715,28 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "except"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:357:1: except : EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY -> ^( EXCEPT type ( oclExpression )* ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:357:1: except : EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY -> ^( EXCEPT type ( oclExpression )* ) ;
     public final IoclParser.except_return except() throws RecognitionException {
         IoclParser.except_return retval = new IoclParser.except_return();
         retval.start = input.LT(1);
         int except_StartIndex = input.index();
         Object root_0 = null;
 
-        Token EXCEPT185=null;
-        Token LPAREN186=null;
-        Token RPAREN188=null;
-        Token LCURLY189=null;
-        Token RCURLY191=null;
-        IoclParser.type_return type187 = null;
+        Token EXCEPT183=null;
+        Token LPAREN184=null;
+        Token RPAREN186=null;
+        Token LCURLY187=null;
+        Token RCURLY189=null;
+        IoclParser.type_return type185 = null;
 
-        IoclParser.oclExpression_return oclExpression190 = null;
+        IoclParser.oclExpression_return oclExpression188 = null;
 
 
-        Object EXCEPT185_tree=null;
-        Object LPAREN186_tree=null;
-        Object RPAREN188_tree=null;
-        Object LCURLY189_tree=null;
-        Object RCURLY191_tree=null;
+        Object EXCEPT183_tree=null;
+        Object LPAREN184_tree=null;
+        Object RPAREN186_tree=null;
+        Object LCURLY187_tree=null;
+        Object RCURLY189_tree=null;
         RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
         RewriteRuleTokenStream stream_LCURLY=new RewriteRuleTokenStream(adaptor,"token LCURLY");
         RewriteRuleTokenStream stream_EXCEPT=new RewriteRuleTokenStream(adaptor,"token EXCEPT");
@@ -5758,28 +5746,28 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 55) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:2: ( EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY -> ^( EXCEPT type ( oclExpression )* ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:4: EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:2: ( EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY -> ^( EXCEPT type ( oclExpression )* ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:4: EXCEPT LPAREN type RPAREN LCURLY ( oclExpression )* RCURLY
             {
-            EXCEPT185=(Token)match(input,EXCEPT,FOLLOW_EXCEPT_in_except1757); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_EXCEPT.add(EXCEPT185);
+            EXCEPT183=(Token)match(input,EXCEPT,FOLLOW_EXCEPT_in_except1753); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_EXCEPT.add(EXCEPT183);
 
-            LPAREN186=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_except1759); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN186);
+            LPAREN184=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_except1755); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN184);
 
-            pushFollow(FOLLOW_type_in_except1761);
-            type187=type();
+            pushFollow(FOLLOW_type_in_except1757);
+            type185=type();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_type.add(type187.getTree());
-            RPAREN188=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_except1763); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN188);
+            if ( state.backtracking==0 ) stream_type.add(type185.getTree());
+            RPAREN186=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_except1759); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN186);
 
-            LCURLY189=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_except1765); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY189);
+            LCURLY187=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_except1761); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY187);
 
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:37: ( oclExpression )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:37: ( oclExpression )*
             loop46:
             do {
                 int alt46=2;
@@ -5792,14 +5780,14 @@ public class IoclParser extends Parser {
 
                 switch (alt46) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: oclExpression
             	    {
-            	    pushFollow(FOLLOW_oclExpression_in_except1767);
-            	    oclExpression190=oclExpression();
+            	    pushFollow(FOLLOW_oclExpression_in_except1763);
+            	    oclExpression188=oclExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression190.getTree());
+            	    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression188.getTree());
 
             	    }
             	    break;
@@ -5809,13 +5797,13 @@ public class IoclParser extends Parser {
                 }
             } while (true);
 
-            RCURLY191=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_except1770); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY191);
+            RCURLY189=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_except1766); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY189);
 
 
 
             // AST REWRITE
-            // elements: oclExpression, type, EXCEPT
+            // elements: EXCEPT, oclExpression, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5828,13 +5816,13 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 358:59: -> ^( EXCEPT type ( oclExpression )* )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:62: ^( EXCEPT type ( oclExpression )* )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:62: ^( EXCEPT type ( oclExpression )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_EXCEPT.nextNode(), root_1);
 
                 adaptor.addChild(root_1, stream_type.nextTree());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:76: ( oclExpression )*
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:358:76: ( oclExpression )*
                 while ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -5874,36 +5862,36 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "forExp"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:361:1: forExp : oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY -> ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression ) ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:361:1: forExp : oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY -> ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression ) ;
     public final IoclParser.forExp_return forExp() throws RecognitionException {
         IoclParser.forExp_return retval = new IoclParser.forExp_return();
         retval.start = input.LT(1);
         int forExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token ARROW193=null;
-        Token FOR_NAME194=null;
-        Token LPAREN195=null;
-        Token char_literal197=null;
-        Token RPAREN199=null;
-        Token LCURLY200=null;
-        Token RCURLY202=null;
-        IoclParser.oclExp_return oclExp192 = null;
+        Token ARROW191=null;
+        Token FOR_NAME192=null;
+        Token LPAREN193=null;
+        Token char_literal195=null;
+        Token RPAREN197=null;
+        Token LCURLY198=null;
+        Token RCURLY200=null;
+        IoclParser.oclExp_return oclExp190 = null;
 
-        IoclParser.iteratorList_return iteratorList196 = null;
+        IoclParser.iteratorList_return iteratorList194 = null;
 
-        IoclParser.oclExpression_return oclExpression198 = null;
+        IoclParser.oclExpression_return oclExpression196 = null;
 
-        IoclParser.oclExpression_return oclExpression201 = null;
+        IoclParser.oclExpression_return oclExpression199 = null;
 
 
-        Object ARROW193_tree=null;
-        Object FOR_NAME194_tree=null;
-        Object LPAREN195_tree=null;
-        Object char_literal197_tree=null;
-        Object RPAREN199_tree=null;
-        Object LCURLY200_tree=null;
-        Object RCURLY202_tree=null;
+        Object ARROW191_tree=null;
+        Object FOR_NAME192_tree=null;
+        Object LPAREN193_tree=null;
+        Object char_literal195_tree=null;
+        Object RPAREN197_tree=null;
+        Object LCURLY198_tree=null;
+        Object RCURLY200_tree=null;
         RewriteRuleTokenStream stream_ARROW=new RewriteRuleTokenStream(adaptor,"token ARROW");
         RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
         RewriteRuleTokenStream stream_LCURLY=new RewriteRuleTokenStream(adaptor,"token LCURLY");
@@ -5916,31 +5904,31 @@ public class IoclParser extends Parser {
         RewriteRuleSubtreeStream stream_iteratorList=new RewriteRuleSubtreeStream(adaptor,"rule iteratorList");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 56) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:2: ( oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY -> ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression ) )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:4: oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:2: ( oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY -> ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression ) )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:4: oclExp ARROW FOR_NAME LPAREN iteratorList ( '|' oclExpression )? RPAREN LCURLY oclExpression RCURLY
             {
-            pushFollow(FOLLOW_oclExp_in_forExp1793);
-            oclExp192=oclExp();
+            pushFollow(FOLLOW_oclExp_in_forExp1789);
+            oclExp190=oclExp();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_oclExp.add(oclExp192.getTree());
-            ARROW193=(Token)match(input,ARROW,FOLLOW_ARROW_in_forExp1795); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ARROW.add(ARROW193);
+            if ( state.backtracking==0 ) stream_oclExp.add(oclExp190.getTree());
+            ARROW191=(Token)match(input,ARROW,FOLLOW_ARROW_in_forExp1791); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ARROW.add(ARROW191);
 
-            FOR_NAME194=(Token)match(input,FOR_NAME,FOLLOW_FOR_NAME_in_forExp1797); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_FOR_NAME.add(FOR_NAME194);
+            FOR_NAME192=(Token)match(input,FOR_NAME,FOLLOW_FOR_NAME_in_forExp1793); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_FOR_NAME.add(FOR_NAME192);
 
-            LPAREN195=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_forExp1799); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN195);
+            LPAREN193=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_forExp1795); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN193);
 
-            pushFollow(FOLLOW_iteratorList_in_forExp1801);
-            iteratorList196=iteratorList();
+            pushFollow(FOLLOW_iteratorList_in_forExp1797);
+            iteratorList194=iteratorList();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_iteratorList.add(iteratorList196.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:46: ( '|' oclExpression )?
+            if ( state.backtracking==0 ) stream_iteratorList.add(iteratorList194.getTree());
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:46: ( '|' oclExpression )?
             int alt47=2;
             int LA47_0 = input.LA(1);
 
@@ -5949,42 +5937,42 @@ public class IoclParser extends Parser {
             }
             switch (alt47) {
                 case 1 :
-                    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:47: '|' oclExpression
+                    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:362:47: '|' oclExpression
                     {
-                    char_literal197=(Token)match(input,72,FOLLOW_72_in_forExp1804); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_72.add(char_literal197);
+                    char_literal195=(Token)match(input,72,FOLLOW_72_in_forExp1800); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_72.add(char_literal195);
 
-                    pushFollow(FOLLOW_oclExpression_in_forExp1806);
-                    oclExpression198=oclExpression();
+                    pushFollow(FOLLOW_oclExpression_in_forExp1802);
+                    oclExpression196=oclExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression198.getTree());
+                    if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression196.getTree());
 
                     }
                     break;
 
             }
 
-            RPAREN199=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_forExp1810); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN199);
+            RPAREN197=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_forExp1806); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN197);
 
-            LCURLY200=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_forExp1812); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY200);
+            LCURLY198=(Token)match(input,LCURLY,FOLLOW_LCURLY_in_forExp1808); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_LCURLY.add(LCURLY198);
 
-            pushFollow(FOLLOW_oclExpression_in_forExp1814);
-            oclExpression201=oclExpression();
+            pushFollow(FOLLOW_oclExpression_in_forExp1810);
+            oclExpression199=oclExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression201.getTree());
-            RCURLY202=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_forExp1816); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY202);
+            if ( state.backtracking==0 ) stream_oclExpression.add(oclExpression199.getTree());
+            RCURLY200=(Token)match(input,RCURLY,FOLLOW_RCURLY_in_forExp1812); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_RCURLY.add(RCURLY200);
 
 
 
             // AST REWRITE
-            // elements: oclExp, iteratorList, oclExpression, oclExpression, FOR_NAME
+            // elements: iteratorList, FOR_NAME, oclExpression, oclExpression, oclExp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5997,7 +5985,7 @@ public class IoclParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 363:3: -> ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression )
             {
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:6: ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression )
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:6: ^( FOR FOR_NAME oclExp iteratorList ( oclExpression )? oclExpression )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FOR, "FOR"), root_1);
@@ -6005,7 +5993,7 @@ public class IoclParser extends Parser {
                 adaptor.addChild(root_1, stream_FOR_NAME.nextNode());
                 adaptor.addChild(root_1, stream_oclExp.nextTree());
                 adaptor.addChild(root_1, stream_iteratorList.nextTree());
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:41: ( oclExpression )?
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:363:41: ( oclExpression )?
                 if ( stream_oclExpression.hasNext() ) {
                     adaptor.addChild(root_1, stream_oclExpression.nextTree());
 
@@ -6046,35 +6034,35 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "iteratorList"
-    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:366:1: iteratorList : variableDeclaration ( ',' variableDeclaration )* ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:366:1: iteratorList : variableDeclaration ( ',' variableDeclaration )* ;
     public final IoclParser.iteratorList_return iteratorList() throws RecognitionException {
         IoclParser.iteratorList_return retval = new IoclParser.iteratorList_return();
         retval.start = input.LT(1);
         int iteratorList_StartIndex = input.index();
         Object root_0 = null;
 
-        Token char_literal204=null;
+        Token char_literal202=null;
+        IoclParser.variableDeclaration_return variableDeclaration201 = null;
+
         IoclParser.variableDeclaration_return variableDeclaration203 = null;
 
-        IoclParser.variableDeclaration_return variableDeclaration205 = null;
 
-
-        Object char_literal204_tree=null;
+        Object char_literal202_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 57) ) { return retval; }
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:2: ( variableDeclaration ( ',' variableDeclaration )* )
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:4: variableDeclaration ( ',' variableDeclaration )*
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:2: ( variableDeclaration ( ',' variableDeclaration )* )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:4: variableDeclaration ( ',' variableDeclaration )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_variableDeclaration_in_iteratorList1847);
-            variableDeclaration203=variableDeclaration();
+            pushFollow(FOLLOW_variableDeclaration_in_iteratorList1843);
+            variableDeclaration201=variableDeclaration();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration203.getTree());
-            // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:24: ( ',' variableDeclaration )*
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration201.getTree());
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:24: ( ',' variableDeclaration )*
             loop48:
             do {
                 int alt48=2;
@@ -6087,15 +6075,15 @@ public class IoclParser extends Parser {
 
                 switch (alt48) {
             	case 1 :
-            	    // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:25: ',' variableDeclaration
+            	    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:367:25: ',' variableDeclaration
             	    {
-            	    char_literal204=(Token)match(input,68,FOLLOW_68_in_iteratorList1850); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_variableDeclaration_in_iteratorList1853);
-            	    variableDeclaration205=variableDeclaration();
+            	    char_literal202=(Token)match(input,68,FOLLOW_68_in_iteratorList1846); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_variableDeclaration_in_iteratorList1849);
+            	    variableDeclaration203=variableDeclaration();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration205.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration203.getTree());
 
             	    }
             	    break;
@@ -6129,8 +6117,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred1_Iocl
     public final void synpred1_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: ( imperativeExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: imperativeExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: ( imperativeExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:106:4: imperativeExp
         {
         pushFollow(FOLLOW_imperativeExp_in_synpred1_Iocl377);
         imperativeExp();
@@ -6144,8 +6132,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred12_Iocl
     public final void synpred12_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( ( PLUS | MINUS ) multiplicativeExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( PLUS | MINUS ) multiplicativeExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( ( PLUS | MINUS ) multiplicativeExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:123:23: ( PLUS | MINUS ) multiplicativeExp
         {
         if ( input.LA(1)==MINUS||input.LA(1)==PLUS ) {
             input.consume();
@@ -6169,8 +6157,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred17_Iocl
     public final void synpred17_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: ( propertyCallExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: propertyCallExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: ( propertyCallExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:136:4: propertyCallExp
         {
         pushFollow(FOLLOW_propertyCallExp_in_synpred17_Iocl556);
         propertyCallExp();
@@ -6184,8 +6172,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred18_Iocl
     public final void synpred18_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: ( variableExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: variableExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: ( variableExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:141:4: variableExp
         {
         pushFollow(FOLLOW_variableExp_in_synpred18_Iocl572);
         variableExp();
@@ -6199,8 +6187,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred20_Iocl
     public final void synpred20_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: ( type )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: type
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: ( type )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:143:4: type
         {
         pushFollow(FOLLOW_type_in_synpred20_Iocl582);
         type();
@@ -6214,8 +6202,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred23_Iocl
     public final void synpred23_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ( ',' collectionLiteralParts )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ',' collectionLiteralParts
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ( ',' collectionLiteralParts )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:165:27: ',' collectionLiteralParts
         {
         match(input,68,FOLLOW_68_in_synpred23_Iocl688); if (state.failed) return ;
         pushFollow(FOLLOW_collectionLiteralParts_in_synpred23_Iocl691);
@@ -6230,8 +6218,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred27_Iocl
     public final void synpred27_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: ( modelPropertyCallExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: modelPropertyCallExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: ( modelPropertyCallExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:200:4: modelPropertyCallExp
         {
         pushFollow(FOLLOW_modelPropertyCallExp_in_synpred27_Iocl801);
         modelPropertyCallExp();
@@ -6245,15 +6233,15 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred31_Iocl
     public final void synpred31_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: ( simpleName ( isMarkedPre )? )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: simpleName ( isMarkedPre )?
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: ( simpleName ( isMarkedPre )? )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:4: simpleName ( isMarkedPre )?
         {
         pushFollow(FOLLOW_simpleName_in_synpred31_Iocl844);
         simpleName();
 
         state._fsp--;
         if (state.failed) return ;
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:15: ( isMarkedPre )?
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:212:15: ( isMarkedPre )?
         int alt50=2;
         int LA50_0 = input.LA(1);
 
@@ -6262,7 +6250,7 @@ public class IoclParser extends Parser {
         }
         switch (alt50) {
             case 1 :
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:0:0: isMarkedPre
                 {
                 pushFollow(FOLLOW_isMarkedPre_in_synpred31_Iocl846);
                 isMarkedPre();
@@ -6282,8 +6270,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred34_Iocl
     public final void synpred34_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: ( iteratorExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: iteratorExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: ( iteratorExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:225:4: iteratorExp
         {
         pushFollow(FOLLOW_iteratorExp_in_synpred34_Iocl901);
         iteratorExp();
@@ -6300,8 +6288,8 @@ public class IoclParser extends Parser {
         IoclParser.variableDeclaration_return v1 = null;
 
 
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: (v1= variableDeclaration ',' )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: (v1= variableDeclaration ',' )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
         {
         pushFollow(FOLLOW_variableDeclaration_in_synpred35_Iocl932);
         v1=variableDeclaration();
@@ -6321,10 +6309,10 @@ public class IoclParser extends Parser {
         IoclParser.variableDeclaration_return v2 = null;
 
 
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )? v2= variableDeclaration '|'
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: ( (v1= variableDeclaration ',' )? v2= variableDeclaration '|' )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )? v2= variableDeclaration '|'
         {
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )?
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:40: (v1= variableDeclaration ',' )?
         int alt51=2;
         int LA51_0 = input.LA(1);
 
@@ -6337,7 +6325,7 @@ public class IoclParser extends Parser {
         }
         switch (alt51) {
             case 1 :
-                // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
+                // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:230:41: v1= variableDeclaration ','
                 {
                 pushFollow(FOLLOW_variableDeclaration_in_synpred36_Iocl932);
                 v1=variableDeclaration();
@@ -6367,8 +6355,8 @@ public class IoclParser extends Parser {
         IoclParser.variableDeclaration_return v1 = null;
 
 
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: (v1= variableDeclaration SEMICOLON )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: v1= variableDeclaration SEMICOLON
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: (v1= variableDeclaration SEMICOLON )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:235:33: v1= variableDeclaration SEMICOLON
         {
         pushFollow(FOLLOW_variableDeclaration_in_synpred37_Iocl997);
         v1=variableDeclaration();
@@ -6383,8 +6371,8 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred55_Iocl
     public final void synpred55_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: ( assignExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: assignExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: ( assignExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:284:4: assignExp
         {
         pushFollow(FOLLOW_assignExp_in_synpred55_Iocl1293);
         assignExp();
@@ -6398,10 +6386,10 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred69_Iocl
     public final void synpred69_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: ( elifExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: elifExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: ( elifExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:15: elifExp
         {
-        pushFollow(FOLLOW_elifExp_in_synpred69_Iocl1622);
+        pushFollow(FOLLOW_elifExp_in_synpred69_Iocl1618);
         elifExp();
 
         state._fsp--;
@@ -6413,10 +6401,10 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred70_Iocl
     public final void synpred70_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: ( elseExp )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: elseExp
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: ( elseExp )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:26: elseExp
         {
-        pushFollow(FOLLOW_elseExp_in_synpred70_Iocl1627);
+        pushFollow(FOLLOW_elseExp_in_synpred70_Iocl1623);
         elseExp();
 
         state._fsp--;
@@ -6428,10 +6416,10 @@ public class IoclParser extends Parser {
 
     // $ANTLR start synpred71_Iocl
     public final void synpred71_Iocl_fragment() throws RecognitionException {   
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ( ENDIF )
-        // /Users/Marcellus/Documents/Msc/Projects/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ENDIF
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ( ENDIF )
+        // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/src/org/orcas/iocl/parser/antlr/Iocl.g:338:36: ENDIF
         {
-        match(input,ENDIF,FOLLOW_ENDIF_in_synpred71_Iocl1631); if (state.failed) return ;
+        match(input,ENDIF,FOLLOW_ENDIF_in_synpred71_Iocl1627); if (state.failed) return ;
 
         }
     }
@@ -8104,79 +8092,77 @@ public class IoclParser extends Parser {
     public static final BitSet FOLLOW_COMPUTE_in_computeExp1371 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_LPAREN_in_computeExp1373 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_variableDeclaration_in_computeExp1375 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_computeExp1377 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_LCURLY_in_computeExp1379 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_computeExp1381 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_RCURLY_in_computeExp1383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONTINUE_in_continueExp1404 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_SEMICOLON_in_continueExp1407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RETURN_in_returnExp1418 = new BitSet(new long[]{0x1DF5E50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_returnExp1420 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_SEMICOLON_in_returnExp1423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_variableInitExp1443 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_imperativeVarDeclarations_in_variableInitExp1446 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_SEMICOLON_in_variableInitExp1448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1461 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_imperativeVarDeclarations1464 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1467 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_imperativeVarDeclaration1481 = new BitSet(new long[]{0x0000000020201002L});
-    public static final BitSet FOLLOW_COLON_in_imperativeVarDeclaration1484 = new BitSet(new long[]{0x1410000000000000L});
-    public static final BitSet FOLLOW_type_in_imperativeVarDeclaration1486 = new BitSet(new long[]{0x0000000020200002L});
-    public static final BitSet FOLLOW_EQUAL_in_imperativeVarDeclaration1492 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_IS_in_imperativeVarDeclaration1496 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_imperativeVarDeclaration1500 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dotArrowExp_in_assignExp1527 = new BitSet(new long[]{0x0000000020000040L});
-    public static final BitSet FOLLOW_set_in_assignExp1529 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_assignExp1538 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_SEMICOLON_in_assignExp1540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RAISE_in_raiseExp1552 = new BitSet(new long[]{0x1430000000000000L});
-    public static final BitSet FOLLOW_type_in_raiseExp1556 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_STRING_LITERAL_in_raiseExp1560 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_SEMICOLON_in_raiseExp1563 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_whileExp1575 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_whileExp1577 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_whileExp1583 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_whileExp1585 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_whileExp1594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_ifExp1617 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_altExp_in_ifExp1619 = new BitSet(new long[]{0x00000000001C0002L});
-    public static final BitSet FOLLOW_elifExp_in_ifExp1622 = new BitSet(new long[]{0x00000000001C0002L});
-    public static final BitSet FOLLOW_elseExp_in_ifExp1627 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_ENDIF_in_ifExp1631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELIF_in_elifExp1657 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_altExp_in_elifExp1660 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_elseExp1672 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_elseExp1675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAREN_in_altExp1688 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_altExp1694 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_altExp1696 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_altExp1703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRY_in_tryExp1726 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_LCURLY_in_tryExp1728 = new BitSet(new long[]{0x1DF5A70CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_tryExp1730 = new BitSet(new long[]{0x1DF5A70CC400E200L});
-    public static final BitSet FOLLOW_RCURLY_in_tryExp1733 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_except_in_tryExp1735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXCEPT_in_except1757 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_except1759 = new BitSet(new long[]{0x1410000000000000L});
-    public static final BitSet FOLLOW_type_in_except1761 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_except1763 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_LCURLY_in_except1765 = new BitSet(new long[]{0x1DF5A70CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_except1767 = new BitSet(new long[]{0x1DF5A70CC400E200L});
-    public static final BitSet FOLLOW_RCURLY_in_except1770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oclExp_in_forExp1793 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ARROW_in_forExp1795 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_FOR_NAME_in_forExp1797 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_forExp1799 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_iteratorList_in_forExp1801 = new BitSet(new long[]{0x0000080000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_forExp1804 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_forExp1806 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_forExp1810 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_LCURLY_in_forExp1812 = new BitSet(new long[]{0x1DF5A50CC400E200L});
-    public static final BitSet FOLLOW_oclExpression_in_forExp1814 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_RCURLY_in_forExp1816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variableDeclaration_in_iteratorList1847 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_iteratorList1850 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_variableDeclaration_in_iteratorList1853 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_RPAREN_in_computeExp1377 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_computeExp1379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONTINUE_in_continueExp1400 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_SEMICOLON_in_continueExp1403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETURN_in_returnExp1414 = new BitSet(new long[]{0x1DF5E50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_returnExp1416 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_SEMICOLON_in_returnExp1419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VAR_in_variableInitExp1439 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_imperativeVarDeclarations_in_variableInitExp1442 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_SEMICOLON_in_variableInitExp1444 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1457 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_68_in_imperativeVarDeclarations1460 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_imperativeVarDeclaration_in_imperativeVarDeclarations1463 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_imperativeVarDeclaration1477 = new BitSet(new long[]{0x0000000020201002L});
+    public static final BitSet FOLLOW_COLON_in_imperativeVarDeclaration1480 = new BitSet(new long[]{0x1410000000000000L});
+    public static final BitSet FOLLOW_type_in_imperativeVarDeclaration1482 = new BitSet(new long[]{0x0000000020200002L});
+    public static final BitSet FOLLOW_EQUAL_in_imperativeVarDeclaration1488 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_IS_in_imperativeVarDeclaration1492 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_imperativeVarDeclaration1496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dotArrowExp_in_assignExp1523 = new BitSet(new long[]{0x0000000020000040L});
+    public static final BitSet FOLLOW_set_in_assignExp1525 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_assignExp1534 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_SEMICOLON_in_assignExp1536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RAISE_in_raiseExp1548 = new BitSet(new long[]{0x1430000000000000L});
+    public static final BitSet FOLLOW_type_in_raiseExp1552 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_STRING_LITERAL_in_raiseExp1556 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_SEMICOLON_in_raiseExp1559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_whileExp1571 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_whileExp1573 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_whileExp1579 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_whileExp1581 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_whileExp1590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_ifExp1613 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_altExp_in_ifExp1615 = new BitSet(new long[]{0x00000000001C0002L});
+    public static final BitSet FOLLOW_elifExp_in_ifExp1618 = new BitSet(new long[]{0x00000000001C0002L});
+    public static final BitSet FOLLOW_elseExp_in_ifExp1623 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_ENDIF_in_ifExp1627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELIF_in_elifExp1653 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_altExp_in_elifExp1656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_elseExp1668 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_elseExp1671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAREN_in_altExp1684 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_altExp1690 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_altExp1692 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_altExp1699 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRY_in_tryExp1722 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_LCURLY_in_tryExp1724 = new BitSet(new long[]{0x1DF5A70CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_tryExp1726 = new BitSet(new long[]{0x1DF5A70CC400E200L});
+    public static final BitSet FOLLOW_RCURLY_in_tryExp1729 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_except_in_tryExp1731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXCEPT_in_except1753 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_except1755 = new BitSet(new long[]{0x1410000000000000L});
+    public static final BitSet FOLLOW_type_in_except1757 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_except1759 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_LCURLY_in_except1761 = new BitSet(new long[]{0x1DF5A70CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_except1763 = new BitSet(new long[]{0x1DF5A70CC400E200L});
+    public static final BitSet FOLLOW_RCURLY_in_except1766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oclExp_in_forExp1789 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ARROW_in_forExp1791 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_FOR_NAME_in_forExp1793 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_forExp1795 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_iteratorList_in_forExp1797 = new BitSet(new long[]{0x0000080000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_forExp1800 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_forExp1802 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_forExp1806 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_LCURLY_in_forExp1808 = new BitSet(new long[]{0x1DF5A50CC400E200L});
+    public static final BitSet FOLLOW_oclExpression_in_forExp1810 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_RCURLY_in_forExp1812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variableDeclaration_in_iteratorList1843 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_68_in_iteratorList1846 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_variableDeclaration_in_iteratorList1849 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
     public static final BitSet FOLLOW_imperativeExp_in_synpred1_Iocl377 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_synpred12_Iocl483 = new BitSet(new long[]{0x1DF0200C80000000L});
     public static final BitSet FOLLOW_multiplicativeExp_in_synpred12_Iocl492 = new BitSet(new long[]{0x0000000000000002L});
@@ -8198,8 +8184,8 @@ public class IoclParser extends Parser {
     public static final BitSet FOLLOW_variableDeclaration_in_synpred37_Iocl997 = new BitSet(new long[]{0x0000400000000000L});
     public static final BitSet FOLLOW_SEMICOLON_in_synpred37_Iocl999 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_assignExp_in_synpred55_Iocl1293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_elifExp_in_synpred69_Iocl1622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_elseExp_in_synpred70_Iocl1627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ENDIF_in_synpred71_Iocl1631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_elifExp_in_synpred69_Iocl1618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_elseExp_in_synpred70_Iocl1623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ENDIF_in_synpred71_Iocl1627 = new BitSet(new long[]{0x0000000000000002L});
 
 }

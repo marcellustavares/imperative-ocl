@@ -18,7 +18,7 @@
 package org.orcas.iocl.parser;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.ReturnExp;
@@ -27,7 +27,7 @@ import junit.framework.TestCase;
 
 public class TestReturnExp extends TestCase {
 
-	public void testReturnExp() throws ParserException {
+	public void testReturnExp() throws ImperativeOclException {
 		exp = "return;";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

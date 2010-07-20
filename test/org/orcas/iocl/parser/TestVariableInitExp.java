@@ -20,7 +20,7 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.emof.PrimitiveType;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
@@ -31,7 +31,7 @@ import org.orcas.iocl.util.PathType;
 
 public class TestVariableInitExp extends TestCase {
 
-	public void testVariableInitExp() throws ParserException {
+	public void testVariableInitExp() throws ImperativeOclException {
 		exp = "var tmp := 1+2;";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);
@@ -51,7 +51,7 @@ public class TestVariableInitExp extends TestCase {
 		assertTrue(initExpression instanceof OperationCallExp);
 	}
 
-	public void testVariableInitTypedExp() throws ParserException {
+	public void testVariableInitTypedExp() throws ImperativeOclException {
 		exp = "var tmp:String := 'Marcellus';";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

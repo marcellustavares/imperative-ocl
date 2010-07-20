@@ -17,13 +17,15 @@
 
 package org.orcas.iocl;
 
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
 public interface ImperativeOclService {
 
-	public String compileToJava(String expression) throws ParserException;
+	public String compileToJava(String expression)
+		throws ImperativeOclException;
 
-	public OclExpression parse(String expression) throws ParserException;
+	public OclExpression parse(String expression)
+		throws ImperativeOclException;
 
 }

@@ -18,7 +18,7 @@
 package org.orcas.iocl.exception;
 
 @SuppressWarnings("serial")
-public class ParserException extends Exception {
+public class ParserException extends ImperativeOclException {
 
 	public ParserException() {
 		super();

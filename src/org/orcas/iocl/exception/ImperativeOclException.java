@@ -15,33 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl;
+package org.orcas.iocl.exception;
 
-import org.orcas.iocl.exception.ImperativeOclException;
-import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+@SuppressWarnings("serial")
+public class ImperativeOclException extends Exception {
 
-public class ImperativeOclServiceUtil {
-
-	public static String compileToJava(String expression)
-		throws ImperativeOclException {
-
-		return getService().compileToJava(expression);
+	public ImperativeOclException() {
+		super();
 	}
 
-	public static OclExpression parse(String expression)
-		throws ImperativeOclException {
-
-		return getService().parse(expression);
+	public ImperativeOclException(String message) {
+		super(message);
 	}
 
-	public static ImperativeOclService getService() {
-		if (_service == null) {
-			_service = new ImperativeOclServiceImpl();
-		}
-
-		return _service;
+	public ImperativeOclException(Throwable cause) {
+		super(cause);
 	}
 
-	private static ImperativeOclService _service;
+	public ImperativeOclException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
 }

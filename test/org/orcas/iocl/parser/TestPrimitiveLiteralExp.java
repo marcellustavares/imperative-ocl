@@ -18,7 +18,7 @@
 package org.orcas.iocl.parser;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
@@ -29,7 +29,7 @@ import junit.framework.TestCase;
 
 public class TestPrimitiveLiteralExp extends TestCase {
 
-	public void testBooleanLiteralExp() throws ParserException {
+	public void testBooleanLiteralExp() throws ImperativeOclException {
 		exp = "true";
 		oclExp = ImperativeOclServiceUtil.parse(exp);
 
@@ -41,21 +41,21 @@ public class TestPrimitiveLiteralExp extends TestCase {
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 	}
 
-	public void testIntegerLiteralExp() throws ParserException {
+	public void testIntegerLiteralExp() throws ImperativeOclException {
 		exp = "2";
 		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof IntegerLiteralExp);
 	}
 
-	public void testRealLiteralExp() throws ParserException {
+	public void testRealLiteralExp() throws ImperativeOclException {
 		exp = "2.2";
 		oclExp = ImperativeOclServiceUtil.parse(exp);
 
 		assertTrue(oclExp instanceof RealLiteralExp);
 	}
 
-	public void testStringLiteralExp() throws ParserException {
+	public void testStringLiteralExp() throws ImperativeOclException {
 		exp = "'marcellus'";
 		oclExp = ImperativeOclServiceUtil.parse(exp);
 

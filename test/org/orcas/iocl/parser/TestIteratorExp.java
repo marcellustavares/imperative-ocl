@@ -20,13 +20,13 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.IteratorExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
 public class TestIteratorExp extends TestCase {
 
-	public void testIterateExp() throws ParserException {
+	public void testIterateExp() throws ImperativeOclException {
 		exp = "Sequence{1,2,3,4,5}->forAll(a | a > 2)";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

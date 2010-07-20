@@ -20,7 +20,7 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
@@ -28,7 +28,7 @@ import org.orcas.iocl.util.Operation;
 
 public class TestLogicalExp extends TestCase {
 
-	public void testLogicalExp() throws ParserException {
+	public void testLogicalExp() throws ImperativeOclException {
 		String[] exps = new String[] {
 			"true and false", "true or true ", " false xor false"};
 
@@ -53,7 +53,7 @@ public class TestLogicalExp extends TestCase {
 		}
 	}
 
-	public void testNestedLogicalExp() throws ParserException {
+	public void testNestedLogicalExp() throws ImperativeOclException {
 		String exp = "false and false or false xor true";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

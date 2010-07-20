@@ -20,13 +20,13 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 
 public class TestAssignExp extends TestCase {
 
-	public void testAssignResetExp() throws ParserException {
+	public void testAssignResetExp() throws ImperativeOclException {
 		exp = "tmp := 1+2;";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);
@@ -50,7 +50,7 @@ public class TestAssignExp extends TestCase {
 		*/
 	}
 
-	public void testAssignNotResetExp() throws ParserException {
+	public void testAssignNotResetExp() throws ImperativeOclException {
 		exp = "tmp += 'test';";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

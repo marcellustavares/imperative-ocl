@@ -18,7 +18,7 @@
 package org.orcas.iocl.parser;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.RaiseExp;
 import org.orcas.iocl.util.PathType;
@@ -27,7 +27,7 @@ import junit.framework.TestCase;
 
 public class TestRaiseExp extends TestCase {
 
-	public void testRaiseExceptionMessageExp() throws ParserException {
+	public void testRaiseExceptionMessageExp() throws ImperativeOclException {
 		exp = "raise 'custom exception message';";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);
@@ -40,7 +40,7 @@ public class TestRaiseExp extends TestCase {
 			raiseExp.getExceptionMessage(), "custom exception message");
 	}
 
-	public void testRaiseTypeExp() throws ParserException {
+	public void testRaiseTypeExp() throws ImperativeOclException {
 		exp = "raise java::lang::Exception;";
 
 		oclExp = ImperativeOclServiceUtil.parse(exp);

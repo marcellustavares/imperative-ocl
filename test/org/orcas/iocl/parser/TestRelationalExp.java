@@ -20,7 +20,7 @@ package org.orcas.iocl.parser;
 import junit.framework.TestCase;
 
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.iocl.exception.ParserException;
+import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.NumericLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
@@ -28,7 +28,7 @@ import org.orcas.iocl.util.Operation;
 
 public class TestRelationalExp extends TestCase {
 
-	public void testEqualityExp() throws ParserException {
+	public void testEqualityExp() throws ImperativeOclException {
 		String[] exps = new String[] {"1 < 2", "1.2 >= 0 "};
 
 		for (String exp : exps) {

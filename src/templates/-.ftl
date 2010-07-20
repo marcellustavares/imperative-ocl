@@ -1,1 +1,1 @@
--(${sourceResult})
+-${sourceResult}

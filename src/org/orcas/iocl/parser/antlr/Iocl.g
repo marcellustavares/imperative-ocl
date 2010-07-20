@@ -209,15 +209,7 @@ modelPropertyCallExp
 	;
 
 attributeCallExp
-	: oclExp DOT simpleName isMarkedPre? -> ^(ATTRIBUTE_CALL oclExp simpleName isMarkedPre?)
-	;
-
-isMarkedPre
-	: '@pre'
-	;
-
-navigationCallExp
-	: oclExpression DOT simpleName ('[' arguments ']')? isMarkedPre?
+	: (oclExp -> oclExp) (DOT simpleName -> ^(ATTRIBUTE_CALL $attributeCallExp simpleName))+
 	;
 
 loopExp
@@ -241,7 +233,7 @@ variableDeclaration
 
 operationCallExp
 	: NUMERIC_OPERATION '(' arguments? ')' -> ^(NUMERIC_OPERATION arguments?)
-	| oclExp ((DOT | ARROW)^ simpleName '('! arguments? ')'!)*
+	| oclExp ((DOT | ARROW)^ simpleName '('! arguments? ')'!)+
 	;
 
 arguments

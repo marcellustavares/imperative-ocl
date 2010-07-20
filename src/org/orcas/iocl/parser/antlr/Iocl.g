@@ -241,7 +241,7 @@ variableDeclaration
 
 operationCallExp
 	: NUMERIC_OPERATION '(' arguments? ')' -> ^(NUMERIC_OPERATION arguments?)
-	| oclExp (DOT | ARROW)^ simpleName '('! arguments? ')'!
+	| oclExp ((DOT | ARROW)^ simpleName '('! arguments? ')'!)*
 	;
 
 arguments

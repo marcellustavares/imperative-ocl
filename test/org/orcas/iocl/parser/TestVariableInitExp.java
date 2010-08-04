@@ -34,7 +34,7 @@ public class TestVariableInitExp extends TestCase {
 	public void testVariableInitExp() throws ImperativeOclException {
 		exp = "var tmp := 1+2;";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof VariableInitExp);
 
@@ -54,7 +54,7 @@ public class TestVariableInitExp extends TestCase {
 	public void testVariableInitTypedExp() throws ImperativeOclException {
 		exp = "var tmp:String := 'Marcellus';";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof VariableInitExp);
 
@@ -76,7 +76,7 @@ public class TestVariableInitExp extends TestCase {
 
 		exp = "var tmp:javax::portlet::Portlet := 'Marcellus';";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		variableInitExp = (VariableInitExp) oclExp;
 

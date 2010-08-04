@@ -30,7 +30,7 @@ public class TestRaiseExp extends TestCase {
 	public void testRaiseExceptionMessageExp() throws ImperativeOclException {
 		exp = "raise 'custom exception message';";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof RaiseExp);
 
@@ -43,7 +43,7 @@ public class TestRaiseExp extends TestCase {
 	public void testRaiseTypeExp() throws ImperativeOclException {
 		exp = "raise java::lang::Exception;";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof RaiseExp);
 

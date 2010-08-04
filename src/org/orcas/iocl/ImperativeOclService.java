@@ -17,15 +17,21 @@
 
 package org.orcas.iocl;
 
+import org.orcas.iocl.analyzer.Analyzer;
 import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.util.Visitor;
 
 public interface ImperativeOclService {
 
-	public String compileToJava(String expression)
+	public String compile(Object context, String expression)
 		throws ImperativeOclException;
 
-	public OclExpression parse(String expression)
+	public OclExpression parse(Object context, String expression)
 		throws ImperativeOclException;
+
+	public void setAnalyzer(Analyzer analyzer);
+
+	public void setGenerator(Visitor<String> visitor);
 
 }

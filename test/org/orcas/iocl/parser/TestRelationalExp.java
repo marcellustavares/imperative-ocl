@@ -32,7 +32,7 @@ public class TestRelationalExp extends TestCase {
 		String[] exps = new String[] {"1 < 2", "1.2 >= 0 "};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 

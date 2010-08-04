@@ -55,7 +55,7 @@ public class TestCollectionLiteralExp extends TestCase {
 			String exp, CollectionKind kind, int expectedSize)
 		throws ImperativeOclException {
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof CollectionLiteralExp);
 

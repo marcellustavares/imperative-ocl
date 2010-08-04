@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/emf-common.jar"/>
 	<classpathentry kind="lib" path="lib/emf-ecore.jar"/>
+	<classpathentry kind="lib" path="lib/kobra.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

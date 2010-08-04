@@ -25,7 +25,7 @@ import java.util.List;
 
 import org.apache.tools.ant.DirectoryScanner;
 import org.orcas.iocl.ImperativeOclServiceUtil;
-import org.orcas.util.FileUtil;
+import org.orcas.tools.FileUtil;
 
 public class JioclTranslator {
 
@@ -106,7 +106,8 @@ public class JioclTranslator {
 			}
 
 			if (line.indexOf("]>") != -1) {
-				sb.append(ImperativeOclServiceUtil.compileToJava(bodyExp));
+				sb.append(
+					ImperativeOclServiceUtil.compileToJava(null, bodyExp));
 				sb.append("\n");
 				sb.append(line.replace("]>", "}"));
 				sb.append("\n");

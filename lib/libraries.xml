@@ -43,4 +43,9 @@
 		<project-name>JUnit</project-name>
 		<project-url>http://www.junit.org</project-url>	
 	</library>
+	<library>
+		<file>kobra.jar</file>
+		<version>1.0.0</version>
+		<project-name>KobrA2 Metamodel</project-name>
+	</library>
 </libraries>

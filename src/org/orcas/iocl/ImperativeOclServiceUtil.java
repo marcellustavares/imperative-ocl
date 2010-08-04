@@ -17,26 +17,54 @@
 
 package org.orcas.iocl;
 
+import org.orcas.iocl.analyzer.Analyzer;
 import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.util.Visitor;
+import org.orcas.iocl.util.PropsKeys;
+import org.orcas.iocl.util.PropsUtil;
 
 public class ImperativeOclServiceUtil {
 
-	public static String compileToJava(String expression)
+	public static String compileToJava(Object context, String expression)
 		throws ImperativeOclException {
 
-		return getService().compileToJava(expression);
+		return getService().compile(context, expression);
 	}
 
-	public static OclExpression parse(String expression)
+	public static OclExpression parse(Object context, String expression)
 		throws ImperativeOclException {
 
-		return getService().parse(expression);
+		return getService().parse(context, expression);
 	}
 
+	public static void setAnalyzer(Analyzer analyzer) {
+		getService().setAnalyzer(analyzer);
+	}
+
+	public static void setGenerator(Visitor<String> visitor) {
+		getService().setGenerator(visitor);
+	}
+
+	@SuppressWarnings({"unchecked",  "rawtypes"})
 	public static ImperativeOclService getService() {
-		if (_service == null) {
-			_service = new ImperativeOclServiceImpl();
+		try {
+			if (_service == null) {
+				_service = new ImperativeOclServiceImpl();
+
+				Class analyzer = Class.forName(
+					PropsUtil.get(PropsKeys.IOCL_ANALYZER_CLASS));
+
+				_service.setAnalyzer((Analyzer)analyzer.newInstance());
+
+				Class generator = Class.forName(
+					PropsUtil.get(PropsKeys.IOCL_GENERATOR_CLASS));
+
+				_service.setGenerator((Visitor<String>)generator.newInstance());
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return _service;

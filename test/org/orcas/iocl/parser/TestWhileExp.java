@@ -31,7 +31,7 @@ public class TestWhileExp extends TestCase {
 			  " x := x + 1;" +
 			  "} ";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof WhileExp);
 

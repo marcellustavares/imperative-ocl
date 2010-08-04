@@ -30,13 +30,13 @@ public class TestReturnExp extends TestCase {
 	public void testReturnExp() throws ImperativeOclException {
 		exp = "return;";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof ReturnExp);
 
 		exp = "return 1+2;";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof ReturnExp);
 

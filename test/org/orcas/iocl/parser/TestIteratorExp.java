@@ -29,7 +29,7 @@ public class TestIteratorExp extends TestCase {
 	public void testIterateExp() throws ImperativeOclException {
 		exp = "Sequence{1,2,3,4,5}->forAll(a | a > 2)";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof IteratorExp);
 

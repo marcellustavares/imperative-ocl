@@ -32,7 +32,7 @@ public class TestEqualityExp extends TestCase {
 		String[] exps = new String[] {"true = false", "false <> true "};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 

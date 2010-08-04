@@ -21,17 +21,28 @@ import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
-import org.orcas.iocl.compiler.JavaVisitor;
+import org.orcas.iocl.analyzer.Analyzer;
 import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
-import org.orcas.iocl.parser.ImperativeOclTreeWalker;
+import org.orcas.iocl.expressions.util.Visitor;
+import org.orcas.iocl.parser.ParserWalker;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
 
 public class ImperativeOclServiceImpl implements ImperativeOclService {
 
-	public OclExpression parse(String exp) throws ImperativeOclException {
+	public String compile(Object context, String exp)
+		throws ImperativeOclException {
+
+		OclExpression oclExpression = parse(context, exp);
+
+		return oclExpression.accept(_visitor);
+	}
+
+	public OclExpression parse(Object context, String exp)
+		throws ImperativeOclException {
+
 		try {
 			ANTLRStringStream input = new ANTLRStringStream(exp);
 
@@ -43,7 +54,13 @@ public class ImperativeOclServiceImpl implements ImperativeOclService {
 
 			showIoclAst(tree);
 
-			return _walker.walk(tree);
+			ParserWalker walker = new ParserWalker();
+
+			OclExpression oclExpresion = walker.walk(tree);
+
+			_analyzer.check(context, oclExpresion);
+
+			return oclExpresion;
 		}
 		catch (RecognitionException re) {
 			ParserException pe = new ParserException(re);
@@ -52,17 +69,19 @@ public class ImperativeOclServiceImpl implements ImperativeOclService {
 		}
 	}
 
-	public String compileToJava(String exp) throws ImperativeOclException {
-		OclExpression oclExpression = parse(exp);
+	public void setAnalyzer(Analyzer analyzer){
+		_analyzer = analyzer;
+	}
 
-		return oclExpression.accept(_javaVisitor);
+	public void setGenerator(Visitor<String> visitor){
+		_visitor = visitor;
 	}
 
 	protected void showIoclAst(Tree tree) {
 		System.out.println(tree.toStringTree());
 	}
 
-	private JavaVisitor _javaVisitor = new JavaVisitor();
-	private ImperativeOclTreeWalker _walker = new ImperativeOclTreeWalker();
+	private Analyzer _analyzer;
+	private Visitor<String> _visitor;
 
 }

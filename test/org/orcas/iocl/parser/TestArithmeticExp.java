@@ -33,7 +33,7 @@ public class TestArithmeticExp extends TestCase {
 		String[] exps = new String[] {" -1", "- 1.2 "};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			checkUnaryExp(oclExp);
 		}
@@ -44,7 +44,7 @@ public class TestArithmeticExp extends TestCase {
 			"1*1", "2 / 3", "1.2 /	4", "2.6   *4.3"};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			checkMultiplicativeExp(oclExp);
 		}
@@ -55,7 +55,7 @@ public class TestArithmeticExp extends TestCase {
 			"1+1", "2 - 3", "1.2 +	4", "2.6   -4.3"};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			checkAdditiveExp(oclExp);
 		}
@@ -65,7 +65,7 @@ public class TestArithmeticExp extends TestCase {
 		String[] exps = new String[] {"-1+2", "-1-1"};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			checkAdditiveExp(oclExp);
 		}
@@ -73,7 +73,7 @@ public class TestArithmeticExp extends TestCase {
 		exps = new String[] {"-1*2", "-1/1"};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			checkMultiplicativeExp(oclExp);
 		}

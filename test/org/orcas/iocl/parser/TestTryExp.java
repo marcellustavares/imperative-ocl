@@ -35,7 +35,7 @@ public class TestTryExp extends TestCase {
 			  " raise 'something is wrong'; " +
 			  "}";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof TryExp);
 	}

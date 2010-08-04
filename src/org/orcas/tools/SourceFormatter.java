@@ -25,7 +25,6 @@ import java.io.StringReader;
 import org.apache.tools.ant.DirectoryScanner;
 import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.StringUtil;
-import org.orcas.util.FileUtil;
 
 public class SourceFormatter {
 

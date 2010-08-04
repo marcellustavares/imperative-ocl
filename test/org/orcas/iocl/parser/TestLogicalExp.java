@@ -33,7 +33,7 @@ public class TestLogicalExp extends TestCase {
 			"true and false", "true or true ", " false xor false"};
 
 		for (String exp : exps) {
-			oclExp = ImperativeOclServiceUtil.parse(exp);
+			oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 			OperationCallExp opCallExp = (OperationCallExp) oclExp;
 
@@ -56,7 +56,7 @@ public class TestLogicalExp extends TestCase {
 	public void testNestedLogicalExp() throws ImperativeOclException {
 		String exp = "false and false or false xor true";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		OperationCallExp opCallExp = (OperationCallExp) oclExp;
 

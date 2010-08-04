@@ -29,7 +29,7 @@ public class TestAssignExp extends TestCase {
 	public void testAssignResetExp() throws ImperativeOclException {
 		exp = "tmp := 1+2;";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof AssignExp);
 
@@ -53,7 +53,7 @@ public class TestAssignExp extends TestCase {
 	public void testAssignNotResetExp() throws ImperativeOclException {
 		exp = "tmp += 'test';";
 
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof AssignExp);
 

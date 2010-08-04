@@ -31,39 +31,39 @@ public class TestPrimitiveLiteralExp extends TestCase {
 
 	public void testBooleanLiteralExp() throws ImperativeOclException {
 		exp = "true";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 
 		exp = "false";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof BooleanLiteralExp);
 	}
 
 	public void testIntegerLiteralExp() throws ImperativeOclException {
 		exp = "2";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof IntegerLiteralExp);
 	}
 
 	public void testRealLiteralExp() throws ImperativeOclException {
 		exp = "2.2";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof RealLiteralExp);
 	}
 
 	public void testStringLiteralExp() throws ImperativeOclException {
 		exp = "'marcellus'";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		exp = "'\u4147 ok'  ";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		exp = "' t  e\t\nst '	  ";
-		oclExp = ImperativeOclServiceUtil.parse(exp);
+		oclExp = ImperativeOclServiceUtil.parse(null, exp);
 
 		assertTrue(oclExp instanceof StringLiteralExp);
 	}

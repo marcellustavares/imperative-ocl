@@ -26,7 +26,7 @@ import org.orcas.iocl.util.PropsUtil;
 
 public class ImperativeOclServiceUtil {
 
-	public static String compileToJava(Object context, String expression)
+	public static String compile(Object context, String expression)
 		throws ImperativeOclException {
 
 		return getService().compile(context, expression);

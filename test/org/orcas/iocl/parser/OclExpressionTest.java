@@ -22,7 +22,6 @@ import junit.framework.TestSuite;
 public class OclExpressionTest {
 
 	public static void main(String[] args) throws Exception {
-
 		TestSuite suite = new TestSuite();
 
 		suite.addTestSuite(TestArithmeticExp.class);

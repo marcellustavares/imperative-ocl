@@ -107,7 +107,7 @@ public class JioclTranslator {
 
 			if (line.indexOf("]>") != -1) {
 				sb.append(
-					ImperativeOclServiceUtil.compileToJava(null, bodyExp));
+					ImperativeOclServiceUtil.compile(null, bodyExp));
 				sb.append("\n");
 				sb.append(line.replace("]>", "}"));
 				sb.append("\n");

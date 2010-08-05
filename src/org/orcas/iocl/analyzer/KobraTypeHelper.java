@@ -20,6 +20,7 @@ package org.orcas.iocl.analyzer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.util.Validator;
@@ -48,6 +49,9 @@ public class KobraTypeHelper implements TypeHelper {
 	public Object resolveType(Object context, OclExpression source) {
 		if (source instanceof StringLiteralExp) {
 			return getKobraFactory().createString();
+		}
+		else if (source instanceof IntegerLiteralExp) {
+			return getKobraFactory().createInteger();
 		}
 
 		return null;
@@ -98,30 +102,6 @@ public class KobraTypeHelper implements TypeHelper {
 		operations.add(
 			createBinaryOperation(
 				org.orcas.iocl.util.Operation.CONCAT.getOperationName(),
-				getKobraFactory().createBoolean(), "string",
-				getKobraFactory().createString()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.iocl.util.Operation.GT.getOperationName(),
-				getKobraFactory().createBoolean(), "string",
-				getKobraFactory().createString()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.iocl.util.Operation.GTE.getOperationName(),
-				getKobraFactory().createBoolean(), "string",
-				getKobraFactory().createString()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.iocl.util.Operation.LT.getOperationName(),
-				getKobraFactory().createBoolean(), "string",
-				getKobraFactory().createString()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.iocl.util.Operation.LTE.getOperationName(),
 				getKobraFactory().createBoolean(), "string",
 				getKobraFactory().createString()));
 
@@ -239,7 +219,7 @@ public class KobraTypeHelper implements TypeHelper {
 				if (Validator.equals(name, operation.getName())) {
 					List<Parameter> parameters = operation.getOwnedParameter();
 
-					for (int i = 0; i < parameters.size(); i++) {
+					for (int i = 0; i < parameterTypes.size(); i++) {
 						Object parameterType = parameterTypes.get(i);
 						Type operationType = parameters.get(i).getType();
 
@@ -266,8 +246,9 @@ public class KobraTypeHelper implements TypeHelper {
 			return true;
 		}
 
-		return Validator.equals(
-			parameterType.getClass(), operarationType.getClass());
+		Class<?> operationTypeClass = operarationType.getClass();
+
+		return operationTypeClass.isInstance(parameterType);
 	}
 
 }

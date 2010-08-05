@@ -18,6 +18,7 @@
 package org.orcas.iocl.analyzer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.orcas.iocl.exception.SemanticException;
@@ -57,9 +58,16 @@ public abstract class BaseAnalyzer implements Analyzer {
 		if (!getTypeHelper().hasOperation(
 				sourceType, operationCallExp.getName(), argumentTypes)) {
 
-			throw new SemanticException(
-				"Operation " + operationCallExp.getName() +
-				" not found for type " + sourceType);
+			StringBuilder message = new StringBuilder();
+
+			message.append("Operation ");
+			message.append(operationCallExp.getName());
+			message.append(" ");
+			message.append(Arrays.toString(argumentTypes.toArray()));
+			message.append(" not found for type ");
+			message.append(sourceType);
+
+			throw new SemanticException(message.toString());
 		}
 	}
 

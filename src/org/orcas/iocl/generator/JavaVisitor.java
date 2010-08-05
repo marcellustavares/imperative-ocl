@@ -54,6 +54,7 @@ import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.util.Operation;
 import org.orcas.iocl.util.PathType;
+import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.Template;
 import org.orcas.iocl.util.TemplateUtil;
 
@@ -293,12 +294,14 @@ public class JavaVisitor extends AbstractVisitor<String> {
 			case 1:
 				_map.clear();
 				_map.put("sourceResult", sourceResult);
+				_map.put("sourceType", _getType(source));
 				_map.put("argResult", argResults.get(0));
 
 				switch (operation) {
 					case AND:
 					case APPEND:
 					case AT:
+					case CONCAT:
 					case COUNT:
 					case DIV:
 					case EQUAL:
@@ -353,6 +356,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 				switch (operation) {
 					case INSERT_AT:
+					case SUBSTRING:
 					case SUB_ORDERED_SET:
 					case SUB_SEQUENCE:
 						Template template = Template.getByName(
@@ -476,7 +480,19 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	private String _getType(OclExpression oclExpression) {
-		if (oclExpression instanceof CollectionLiteralExp) {
+		if (oclExpression instanceof BooleanLiteralExp) {
+			return StringPool.BOOLEAN;
+		}
+		else if (oclExpression instanceof IntegerLiteralExp) {
+			return StringPool.INTEGER;
+		}
+		else if (oclExpression instanceof RealLiteralExp) {
+			return StringPool.REAL;
+		}
+		else if (oclExpression instanceof StringLiteralExp) {
+			return StringPool.STRING;
+		}
+		else if (oclExpression instanceof CollectionLiteralExp) {
 			CollectionLiteralExp collectionExp =
 				(CollectionLiteralExp)oclExpression;
 

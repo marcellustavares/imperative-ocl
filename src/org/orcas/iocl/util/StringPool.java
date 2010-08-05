@@ -23,14 +23,22 @@ public class StringPool {
 
 	public static final String BLANK = "";
 
-	public static final Object COLLECTION = "Collection";
+	public static final String BOOLEAN = "Boolean";
+
+	public static final String COLLECTION = "Collection";
+
+	public static final String INTEGER = "Integer";
+
+	public static final String ORDERED_SET = "OrderedSet";
 
 	public static final String QUOTES = "\"";
 
-	public static final Object ORDERED_SET = "OrderedSet";
+	public static final String REAL = "Real";
 
-	public static final Object SEQUENCE = "Sequence";
+	public static final String SEQUENCE = "Sequence";
 
-	public static final Object SET = "Set";
+	public static final String SET = "Set";
+
+	public static final String STRING = "String";
 
 }

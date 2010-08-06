@@ -17,7 +17,6 @@
 
 package org.orcas.iocl.analyzer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,24 +45,18 @@ public abstract class BaseAnalyzer implements Analyzer {
 
 		Object sourceType = getTypeHelper().resolveType(context, source);
 
-		List argumentTypes = new ArrayList();
-
-		List<OclExpression> arguments = operationCallExp.getArgument();
-
-		for (OclExpression argument : arguments) {
-			argumentTypes.add(
-				getTypeHelper().resolveType(context, argument));
-		}
+		List parameterTypes = getTypeHelper().getOperationParameterTypes(
+			context, operationCallExp);
 
 		if (!getTypeHelper().hasOperation(
-				sourceType, operationCallExp.getName(), argumentTypes)) {
+				sourceType, operationCallExp.getName(), parameterTypes)) {
 
 			StringBuilder message = new StringBuilder();
 
 			message.append("Operation ");
 			message.append(operationCallExp.getName());
 			message.append(" ");
-			message.append(Arrays.toString(argumentTypes.toArray()));
+			message.append(Arrays.toString(parameterTypes.toArray()));
 			message.append(" not found for type ");
 			message.append(sourceType);
 

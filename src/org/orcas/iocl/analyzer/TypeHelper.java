@@ -20,8 +20,15 @@ package org.orcas.iocl.analyzer;
 import java.util.List;
 
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 
 public interface TypeHelper {
+
+	public Object getOperation(
+		Object owner, String name, List<Object> parameterTypes);
+
+	public List<Object> getOperationParameterTypes(
+		Object context, OperationCallExp operationCallExp);
 
 	public boolean hasOperation(
 		Object owner, String name, List<Object> parameterTypes);

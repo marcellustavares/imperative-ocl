@@ -18,7 +18,9 @@
 package org.orcas.iocl.analyzer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
@@ -26,10 +28,14 @@ import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableExp;
+import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.Validator;
 
 import KobrA2.SUM.Constraint.Structural.AnyType;
 import KobrA2.SUM.Constraint.Structural.Classifier;
+import KobrA2.SUM.Constraint.Structural.ComponentClass;
 import KobrA2.SUM.Constraint.Structural.Operation;
 import KobrA2.SUM.Constraint.Structural.Parameter;
 import KobrA2.SUM.Constraint.Structural.Real;
@@ -46,6 +52,11 @@ public class KobraTypeHelper implements TypeHelper {
 
 		if (owner instanceof KobrA2.SUM.Constraint.Structural.Boolean) {
 			availableOperations = createBooleanOperations();
+		}
+		else if (owner instanceof ComponentClass) {
+			ComponentClass componentClass = (ComponentClass)owner;
+
+			availableOperations =  componentClass.getOwnedOperation();
 		}
 		else if (owner instanceof KobrA2.SUM.Constraint.Structural.Integer) {
 			availableOperations = createIntegerOperations();
@@ -110,6 +121,13 @@ public class KobraTypeHelper implements TypeHelper {
 		}
 		else if (source instanceof StringLiteralExp) {
 			return getKobraFactory().createString();
+		}
+		else if (source instanceof VariableExp) {
+			VariableExp variableExp = (VariableExp)source;
+
+			Variable variable = variableExp.getReferredVariable();
+
+			return resolveVariable(context, variable);
 		}
 
 		return null;
@@ -408,6 +426,32 @@ public class KobraTypeHelper implements TypeHelper {
 		return StructuralFactory.eINSTANCE;
 	}
 
+	protected boolean isTypeConformant(
+		Object parameterType, Object operarationType) {
+
+		if (operarationType instanceof AnyType) {
+			return true;
+		}
+		else if (operarationType instanceof
+					KobrA2.SUM.Constraint.Structural.Integer) {
+
+			if (parameterType instanceof Real) {
+				return true;
+			}
+		}
+		else if (operarationType instanceof Real) {
+			if (parameterType instanceof
+					KobrA2.SUM.Constraint.Structural.Integer) {
+
+				return true;
+			}
+		}
+
+		Class<?> operationTypeClass = operarationType.getClass();
+
+		return operationTypeClass.isInstance(parameterType);
+	}
+
 	protected Operation lookup(
 		String name, List<Object> parameterTypes,
 		List<Operation> availableOperations) {
@@ -437,30 +481,28 @@ public class KobraTypeHelper implements TypeHelper {
 		return null;
 	}
 
-	protected boolean isTypeConformant(
-		Object parameterType, Object operarationType) {
+	protected Classifier resolveVariable(Object context, Variable variable) {
+		String variableName = variable.getName();
 
-		if (operarationType instanceof AnyType) {
-			return true;
-		}
-		else if (operarationType instanceof
-					KobrA2.SUM.Constraint.Structural.Integer) {
+		if (!_variablesMap.containsKey(variableName)) {
+			if (Validator.equals(variableName, StringPool.SELF)) {
+				if (context instanceof Classifier) {
+					_variablesMap.put(variableName, (Classifier)context);
+				}
+				else if (context instanceof Operation) {
+					Operation operation = (Operation)context;
 
-			if (parameterType instanceof Real) {
-				return true;
-			}
-		}
-		else if (operarationType instanceof Real) {
-			if (parameterType instanceof
-					KobrA2.SUM.Constraint.Structural.Integer) {
-
-				return true;
+					_variablesMap.put(
+						variableName, operation.getComponentClass());
+				}
 			}
 		}
 
-		Class<?> operationTypeClass = operarationType.getClass();
-
-		return operationTypeClass.isInstance(parameterType);
+		return _variablesMap.get(variableName);
 	}
+
+
+	private Map<String, Classifier> _variablesMap =
+		new HashMap<String, Classifier>();
 
 }

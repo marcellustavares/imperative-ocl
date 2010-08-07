@@ -27,11 +27,15 @@ public interface TypeHelper {
 	public Object getOperation(
 		Object owner, String name, List<Object> parameterTypes);
 
+	public Object getProperty(Object owner, String name);
+
 	public List<Object> getOperationParameterTypes(
 		Object context, OperationCallExp operationCallExp);
 
 	public boolean hasOperation(
 		Object owner, String name, List<Object> parameterTypes);
+
+	public boolean hasProperty(Object sourceType, String name);
 
 	public Object resolveType(Object context, OclExpression source);
 

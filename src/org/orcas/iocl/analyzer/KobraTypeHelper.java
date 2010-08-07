@@ -26,6 +26,7 @@ import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expressions.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
@@ -38,6 +39,7 @@ import KobrA2.SUM.Constraint.Structural.Classifier;
 import KobrA2.SUM.Constraint.Structural.ComponentClass;
 import KobrA2.SUM.Constraint.Structural.Operation;
 import KobrA2.SUM.Constraint.Structural.Parameter;
+import KobrA2.SUM.Constraint.Structural.Property;
 import KobrA2.SUM.Constraint.Structural.Real;
 import KobrA2.SUM.Constraint.Structural.StructuralFactory;
 import KobrA2.SUM.Constraint.Structural.Type;
@@ -83,6 +85,18 @@ public class KobraTypeHelper implements TypeHelper {
 		return parameterTypes;
 	}
 
+	public Object getProperty(Object owner, String name) {
+		List<Property> availableProperties = new ArrayList<Property>();
+
+		if (owner instanceof ComponentClass) {
+			ComponentClass componentClass = (ComponentClass)owner;
+
+			availableProperties = componentClass.getOwnedAttribute();
+		}
+
+		return lookup(name, availableProperties);
+	}
+
 	public boolean hasOperation(
 		Object owner, String name, List<Object> parameterTypes) {
 
@@ -90,6 +104,16 @@ public class KobraTypeHelper implements TypeHelper {
 			owner, name, parameterTypes);
 
 		if (operation == null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean hasProperty(Object owner, String name) {
+		Property property = (Property)getProperty(owner, name);
+
+		if (property == null) {
 			return false;
 		}
 
@@ -115,6 +139,16 @@ public class KobraTypeHelper implements TypeHelper {
 				owner, operationCallExp.getName(), operationParameterTypes);
 
 			return operation.getType();
+		}
+		else if (source instanceof PropertyCallExp) {
+			PropertyCallExp propertyCallExp = (PropertyCallExp)source;
+
+			Object owner = resolveType(context, propertyCallExp.getSource());
+
+			Property property = (Property)getProperty(
+				owner, propertyCallExp.getReferredProperty().getName());
+
+			return property.getType();
 		}
 		else if (source instanceof RealLiteralExp) {
 			return getKobraFactory().createInteger();
@@ -475,6 +509,18 @@ public class KobraTypeHelper implements TypeHelper {
 				}
 
 				return operation;
+			}
+		}
+
+		return null;
+	}
+
+	protected Property lookup(
+		String name, List<Property> availableProperties) {
+
+		for (Property property : availableProperties) {
+			if (Validator.equals(name, property.getName())) {
+				return property;
 			}
 		}
 

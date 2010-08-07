@@ -23,6 +23,7 @@ import java.util.List;
 import org.orcas.iocl.exception.SemanticException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public abstract class BaseAnalyzer implements Analyzer {
@@ -32,6 +33,9 @@ public abstract class BaseAnalyzer implements Analyzer {
 
 		if (oclExpresion instanceof OperationCallExp) {
 			checkOperationCallExp(context, (OperationCallExp)oclExpresion);
+		}
+		else if (oclExpresion instanceof PropertyCallExp) {
+			checkPropertyCallExp(context, (PropertyCallExp)oclExpresion);
 		}
 	}
 
@@ -57,6 +61,30 @@ public abstract class BaseAnalyzer implements Analyzer {
 			message.append(operationCallExp.getName());
 			message.append(" ");
 			message.append(Arrays.toString(parameterTypes.toArray()));
+			message.append(" not found for type ");
+			message.append(sourceType);
+
+			throw new SemanticException(message.toString());
+		}
+	}
+
+	protected void checkPropertyCallExp(
+			Object context, PropertyCallExp propertyCallExp)
+		throws SemanticException {
+
+		OclExpression source = propertyCallExp.getSource();
+
+		check(context, source);
+
+		Object sourceType = getTypeHelper().resolveType(context, source);
+
+		String propertyName = propertyCallExp.getReferredProperty().getName();
+
+		if (!getTypeHelper().hasProperty(sourceType, propertyName)) {
+			StringBuilder message = new StringBuilder();
+
+			message.append("Propery ");
+			message.append(propertyName);
 			message.append(" not found for type ");
 			message.append(sourceType);
 

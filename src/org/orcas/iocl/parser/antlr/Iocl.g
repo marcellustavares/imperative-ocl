@@ -59,6 +59,7 @@ MINUS = '-';
 NOT = 'not';
 NOT_EQUAL = '<>';
 MULT = '*';
+OPERATION_CALL;
 OR = 'or';
 PLUS = '+';
 RAISE = 'raise';
@@ -134,10 +135,28 @@ unaryExp
 	;
 
 dotArrowExp
-	: propertyCallExp
+	: oclExp propertyCallExp^+
 	| oclExp
 	;
 
+propertyCallExp
+	: (DOT | ARROW)! modelPropertyCallExp
+	| ARROW! loopExp
+	;
+
+modelPropertyCallExp
+	: operationCallExp
+	| attributeCallExp
+	;
+
+operationCallExp
+	: NUMERIC_OPERATION '(' arguments? ')' -> ^(NUMERIC_OPERATION arguments?)
+	| simpleName '(' arguments? ')' -> ^(OPERATION_CALL simpleName arguments?)
+	;
+
+attributeCallExp
+	: simpleName -> ^(ATTRIBUTE_CALL simpleName)
+	;
 oclExp
 	: variableExp
 	| literalExp
@@ -197,43 +216,23 @@ realLiteralExp
 	: REAL_LITERAL
 	;
 
-propertyCallExp
-	: modelPropertyCallExp
-	| loopExp
-	;
-
-modelPropertyCallExp
-	: operationCallExp
-	| attributeCallExp
-	//| navigationCallExp
-	;
-
-attributeCallExp
-	: (oclExp -> oclExp) (DOT simpleName -> ^(ATTRIBUTE_CALL $attributeCallExp simpleName))+
-	;
-
 loopExp
 	: iteratorExp
 	| iterateExp
 	;
 
 iteratorExp
-	:  oclExp ARROW ITERATOR_NAME LPAREN ((v1 = variableDeclaration ',')? v2 = variableDeclaration '|')? oclExpression RPAREN 
-		-> ^(ITERATOR oclExp ITERATOR_NAME $v1? $v2? oclExpression)
+	: ITERATOR_NAME LPAREN ((v1 = variableDeclaration ',')? v2 = variableDeclaration '|')? oclExpression RPAREN 
+		-> ^(ITERATOR ITERATOR_NAME $v1? $v2? oclExpression)
 	;
 
 iterateExp
-	: oclExp ARROW ITERATE LPAREN (v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpression RPAREN 
-		-> ^(ITERATE oclExp $v1? $v2 oclExpression)
+	: ITERATE LPAREN (v1 = variableDeclaration SEMICOLON)? v2 = variableDeclaration  '|' oclExpression RPAREN 
+		-> ^(ITERATE $v1? $v2 oclExpression)
 	;
 
 variableDeclaration
 	: IDENTIFIER (':' type)? ('=' oclExpression)? -> ^(VARIABLE IDENTIFIER type? oclExpression?)
-	;
-
-operationCallExp
-	: NUMERIC_OPERATION '(' arguments? ')' -> ^(NUMERIC_OPERATION arguments?)
-	| oclExp ((DOT | ARROW)^ simpleName '('! arguments? ')'!)+
 	;
 
 arguments

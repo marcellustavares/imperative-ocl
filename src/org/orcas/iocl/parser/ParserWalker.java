@@ -15,22 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.orcas.iocl.parser;
 
 import org.antlr.runtime.tree.Tree;
@@ -167,8 +151,8 @@ public class ParserWalker {
 
 				Property property = EmofFactory.eINSTANCE.createProperty();
 
-				propertyCallExp.setSource(walk(tree.getChild(0)));
-				property.setName(tree.getChild(1).getText());
+				propertyCallExp.setSource(walk(tree.getChild(1)));
+				property.setName(tree.getChild(0).getText());
 
 				propertyCallExp.setReferredProperty(property);
 
@@ -358,11 +342,13 @@ public class ParserWalker {
 			case IoclParser.ITERATE:
 				IterateExp iterateExp = getFactory().createIterateExp();
 
-				iterateExp.setSource(walk(tree.getChild(0)));
+				int lastChildIndex = tree.getChildCount() - 1;
+
+				iterateExp.setSource(walk(tree.getChild(lastChildIndex)));
 
 				iterator = iterateExp.getIterator();
 
-				for (int i = 1; i < tree.getChildCount(); i++) {
+				for (int i = 0; i < lastChildIndex; i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
 					if (exp instanceof VariableExp) {
@@ -382,12 +368,14 @@ public class ParserWalker {
 			case IoclParser.ITERATOR:
 				IteratorExp iteratorExp = getFactory().createIteratorExp();
 
-				iteratorExp.setSource(walk(tree.getChild(0)));
-				iteratorExp.setName(tree.getChild(1).getText());
+				lastChildIndex = tree.getChildCount() - 1;
+
+				iteratorExp.setSource(walk(tree.getChild(lastChildIndex)));
+				iteratorExp.setName(tree.getChild(0).getText());
 
 				iterator = iteratorExp.getIterator();
 
-				for (int i = 2; i < tree.getChildCount(); i++) {
+				for (int i = 1; i < lastChildIndex; i++) {
 					OclExpression exp = walk(tree.getChild(i));
 
 					if (exp instanceof VariableExp) {
@@ -411,6 +399,30 @@ public class ParserWalker {
 				argument = operationCallExp.getArgument();
 
 				for (int i = 0; i < tree.getChildCount(); i++) {
+					argument.add(walk(tree.getChild(i)));
+				}
+
+				oclExpression = operationCallExp;
+
+				break;
+
+			case IoclParser.OPERATION_CALL:
+				operationCallExp = getFactory().createOperationCallExp();
+
+				operationName = tree.getChild(0).getText();
+
+				operationCode = Operation.toOperationCode(operationName);
+
+				operationCallExp.setName(operationName);
+				operationCallExp.setOperationCode(operationCode);
+
+				lastChildIndex = tree.getChildCount() - 1;
+
+				operationCallExp.setSource(walk(tree.getChild(lastChildIndex)));
+
+				argument = operationCallExp.getArgument();
+
+				for (int i = 1; i < lastChildIndex; i++) {
 					argument.add(walk(tree.getChild(i)));
 				}
 

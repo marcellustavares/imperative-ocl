@@ -15,30 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.analyzer;
+package org.orcas.iocl.helper;
 
-import java.util.List;
+public class ChoiceFactory {
 
-import org.orcas.iocl.expressions.imperativeocl.OclExpression;
-import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
+	public static Choice createChoice(
+		ChoiceKind choiceKind, String name, String description) {
 
-public interface TypeHelper<C, O, P> {
-
-	public O getOperation(
-		C owner, String name, List<C> parameterTypes);
-
-	public List<O> getOperations(C owner);
-
-	public P getProperty(C owner, String name);
-
-	public List<C> getOperationParameterTypes(
-		C owner, OperationCallExp operationCallExp);
-
-	public boolean hasOperation(
-		C owner, String name, List<C> parameterTypes);
-
-	public boolean hasProperty(C owner, String name);
-
-	public C resolveType(C context, OclExpression source);
+		return new ChoiceImpl(choiceKind, name, description);
+	}
 
 }

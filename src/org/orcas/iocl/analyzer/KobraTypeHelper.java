@@ -37,6 +37,7 @@ import org.orcas.iocl.util.Validator;
 import KobrA2.SUM.Constraint.Structural.AnyType;
 import KobrA2.SUM.Constraint.Structural.Classifier;
 import KobrA2.SUM.Constraint.Structural.ComponentClass;
+import KobrA2.SUM.Constraint.Structural.Element;
 import KobrA2.SUM.Constraint.Structural.Operation;
 import KobrA2.SUM.Constraint.Structural.Parameter;
 import KobrA2.SUM.Constraint.Structural.Property;
@@ -44,48 +45,58 @@ import KobrA2.SUM.Constraint.Structural.Real;
 import KobrA2.SUM.Constraint.Structural.StructuralFactory;
 import KobrA2.SUM.Constraint.Structural.Type;
 
-@SuppressWarnings({ "rawtypes", "unchecked" })
-public class KobraTypeHelper implements TypeHelper {
+public class KobraTypeHelper implements
+	TypeHelper<Classifier, Operation, Property> {
 
-	public Object getOperation(
-		Object owner, String name, List<Object> parameterTypes) {
+	public Element createStringType() {
+		return getKobraFactory().createString();
+	}
 
-		List<Operation> availableOperations = new ArrayList<Operation>();
+	public List<Operation> getOperations(Classifier owner) {
+		List<Operation> operations = new ArrayList<Operation>();
 
 		if (owner instanceof KobrA2.SUM.Constraint.Structural.Boolean) {
-			availableOperations = createBooleanOperations();
+			operations = createBooleanOperations();
 		}
 		else if (owner instanceof ComponentClass) {
 			ComponentClass componentClass = (ComponentClass)owner;
 
-			availableOperations =  componentClass.getOwnedOperation();
+			operations =  componentClass.getOwnedOperation();
 		}
 		else if (owner instanceof KobrA2.SUM.Constraint.Structural.Integer) {
-			availableOperations = createIntegerOperations();
+			operations = createIntegerOperations();
 		}
 		else if (owner instanceof KobrA2.SUM.Constraint.Structural.Real) {
-			availableOperations = createRealOperations();
+			operations = createRealOperations();
 		}
 		else if (owner instanceof KobrA2.SUM.Constraint.Structural.String) {
-			availableOperations = createStringOperations();
+			operations = createStringOperations();
 		}
 
-		return lookup(name, parameterTypes, availableOperations);
+		return operations;
 	}
 
-	public List<Object> getOperationParameterTypes(
-		Object context, OperationCallExp operationCallExp) {
+	public Operation getOperation(
+		Classifier owner, String name, List<Classifier> parameterTypes) {
 
-		List parameterTypes = new ArrayList();
+		List<Operation> operations = getOperations(owner);
+
+		return lookup(name, parameterTypes, operations);
+	}
+
+	public List<Classifier> getOperationParameterTypes(
+		Classifier owner, OperationCallExp operationCallExp) {
+
+		List<Classifier> parameterTypes = new ArrayList<Classifier>();
 
 		for (OclExpression parameter : operationCallExp.getArgument()) {
-			parameterTypes.add(resolveType(context, parameter));
+			parameterTypes.add(resolveType(owner, parameter));
 		}
 
 		return parameterTypes;
 	}
 
-	public Object getProperty(Object owner, String name) {
+	public Property getProperty(Classifier owner, String name) {
 		List<Property> availableProperties = new ArrayList<Property>();
 
 		if (owner instanceof ComponentClass) {
@@ -98,10 +109,9 @@ public class KobraTypeHelper implements TypeHelper {
 	}
 
 	public boolean hasOperation(
-		Object owner, String name, List<Object> parameterTypes) {
+		Classifier owner, String name, List<Classifier> parameterTypes) {
 
-		Operation operation = (Operation)getOperation(
-			owner, name, parameterTypes);
+		Operation operation = getOperation(owner, name, parameterTypes);
 
 		if (operation == null) {
 			return false;
@@ -110,7 +120,7 @@ public class KobraTypeHelper implements TypeHelper {
 		return true;
 	}
 
-	public boolean hasProperty(Object owner, String name) {
+	public boolean hasProperty(Classifier owner, String name) {
 		Property property = (Property)getProperty(owner, name);
 
 		if (property == null) {
@@ -120,7 +130,7 @@ public class KobraTypeHelper implements TypeHelper {
 		return true;
 	}
 
-	public Object resolveType(Object context, OclExpression source) {
+	public Classifier resolveType(Classifier context, OclExpression source) {
 		if (source instanceof BooleanLiteralExp) {
 			return getKobraFactory().createBoolean();
 		}
@@ -130,25 +140,27 @@ public class KobraTypeHelper implements TypeHelper {
 		else if (source instanceof OperationCallExp) {
 			OperationCallExp operationCallExp = (OperationCallExp)source;
 
-			Object owner = resolveType(context, operationCallExp.getSource());
+			Classifier owner = resolveType(
+				context, operationCallExp.getSource());
 
-			List<Object> operationParameterTypes = getOperationParameterTypes(
-				context, operationCallExp);
+			List<Classifier> operationParameterTypes =
+				getOperationParameterTypes(context, operationCallExp);
 
-			Operation operation = (Operation)getOperation(
+			Operation operation = getOperation(
 				owner, operationCallExp.getName(), operationParameterTypes);
 
-			return operation.getType();
+			return (Classifier)operation.getType();
 		}
 		else if (source instanceof PropertyCallExp) {
 			PropertyCallExp propertyCallExp = (PropertyCallExp)source;
 
-			Object owner = resolveType(context, propertyCallExp.getSource());
+			Classifier owner = resolveType(
+				context, propertyCallExp.getSource());
 
 			Property property = (Property)getProperty(
 				owner, propertyCallExp.getReferredProperty().getName());
 
-			return property.getType();
+			return (Classifier)property.getType();
 		}
 		else if (source instanceof RealLiteralExp) {
 			return getKobraFactory().createInteger();
@@ -487,7 +499,7 @@ public class KobraTypeHelper implements TypeHelper {
 	}
 
 	protected Operation lookup(
-		String name, List<Object> parameterTypes,
+		String name, List<Classifier> parameterTypes,
 		List<Operation> availableOperations) {
 
 		for (Operation operation : availableOperations) {

@@ -15,38 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.iocl.util;
+package org.orcas.iocl.helper;
 
-public class StringPool {
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
-	public static final String ARROW = "->";
+public class SyntaxHelperTest extends TestCase {
 
-	public static final String BAG = "Bag";
+	public static void main(String[] args) throws Exception {
+		TestSuite suite = new TestSuite();
 
-	public static final String BLANK = "";
+		suite.addTestSuite(SyntaxHelperTest.class);
 
-	public static final String BOOLEAN = "Boolean";
+		junit.textui.TestRunner.run(suite);
+	}
 
-	public static final String COLLECTION = "Collection";
-
-	public static final String DOT = ".";
-
-	public static final String INTEGER = "Integer";
-
-	public static final String ORDERED_SET = "OrderedSet";
-
-	public static final String QUOTES = "\"";
-
-	public static final String REAL = "Real";
-
-	public static final String SELF = "self";
-
-	public static final String SEQUENCE = "Sequence";
-
-	public static final String SET = "Set";
-
-	public static final String STRING = "String";
-
-
+	public void testSynyaxHelper() {
+		assertEquals(true, false);
+	}
 
 }

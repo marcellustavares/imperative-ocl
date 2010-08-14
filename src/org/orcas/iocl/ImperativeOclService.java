@@ -17,10 +17,13 @@
 
 package org.orcas.iocl;
 
+import java.util.List;
+
 import org.orcas.iocl.analyzer.Analyzer;
 import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.util.Visitor;
+import org.orcas.iocl.helper.Choice;
 
 public interface ImperativeOclService {
 
@@ -28,6 +31,10 @@ public interface ImperativeOclService {
 		throws ImperativeOclException;
 
 	public OclExpression parse(Object context, String expression)
+		throws ImperativeOclException;
+
+	public List<Choice> getSyntaxHelp(
+			Object context, String incompleteExpression)
 		throws ImperativeOclException;
 
 	public void setAnalyzer(Analyzer analyzer);

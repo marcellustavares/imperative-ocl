@@ -17,12 +17,47 @@
 
 package org.orcas.iocl.analyzer;
 
-public class KobraAnalyzer extends BaseAnalyzer {
+import java.util.ArrayList;
+import java.util.List;
 
-	public TypeHelper getTypeHelper() {
+import org.orcas.iocl.helper.Choice;
+import org.orcas.iocl.helper.ChoiceFactory;
+import org.orcas.iocl.helper.ChoiceKind;
+
+import KobrA2.SUM.Constraint.Structural.Classifier;
+import KobrA2.SUM.Constraint.Structural.Operation;
+import KobrA2.SUM.Constraint.Structural.Property;
+
+
+public class KobraAnalyzer extends
+	BaseAnalyzer<Classifier, Operation, Property> {
+
+	public TypeHelper<Classifier, Operation, Property> getTypeHelper() {
 		return _typeHelper;
 	}
 
-	private TypeHelper _typeHelper = new KobraTypeHelper();
+	protected List<Choice> getChoices(
+		Classifier owner, List<Operation> operations) {
+
+		List<Choice> choices = new ArrayList<Choice>();
+
+		Choice choice = null;
+
+		for (Operation operation : operations) {
+			choice = ChoiceFactory.createChoice(
+				ChoiceKind.OPERATION, operation.getName(),
+				getDescriptrion(operation));
+
+			choices.add(choice);
+		}
+
+		return choices;
+	}
+
+	protected String getDescriptrion(Operation operation) {
+		return null;
+	}
+
+	private KobraTypeHelper _typeHelper = new KobraTypeHelper();
 
 }

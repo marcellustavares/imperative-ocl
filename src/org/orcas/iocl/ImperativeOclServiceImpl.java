@@ -17,6 +17,8 @@
 
 package org.orcas.iocl;
 
+import java.util.List;
+
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -26,6 +28,8 @@ import org.orcas.iocl.exception.ImperativeOclException;
 import org.orcas.iocl.exception.ParserException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.util.Visitor;
+import org.orcas.iocl.helper.Choice;
+import org.orcas.iocl.helper.SyntaxHelperVisitor;
 import org.orcas.iocl.parser.ParserWalker;
 import org.orcas.iocl.parser.antlr.IoclLexer;
 import org.orcas.iocl.parser.antlr.IoclParser;
@@ -67,6 +71,22 @@ public class ImperativeOclServiceImpl implements ImperativeOclService {
 
 			throw new ImperativeOclException(pe);
 		}
+	}
+
+	public List<Choice> getSyntaxHelp(
+			Object context, String incompleteExpression)
+		throws ImperativeOclException {
+
+		String text = incompleteExpression.trim();
+
+		OclExpression oclExpression = parse(
+			context, text.substring(0, text.length() - 1));
+
+		SyntaxHelperVisitor syntaxHelperVisitor = new SyntaxHelperVisitor();
+
+		syntaxHelperVisitor.setAnalyzer(_analyzer);
+
+		return oclExpression.accept(syntaxHelperVisitor);
 	}
 
 	public void setAnalyzer(Analyzer analyzer){

@@ -50,7 +50,6 @@ import org.orcas.iocl.expressions.imperativeocl.Variable;
 import org.orcas.iocl.expressions.imperativeocl.VariableExp;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expressions.imperativeocl.WhileExp;
-import org.orcas.iocl.expressions.util.Visitable;
 
 public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
@@ -381,14 +380,5 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handleWhileExp(
 		WhileExp whileExp, T conditionResult, T bodyResult);
-
-	protected T visit(Visitable visitable) {
-		if (visitable != null) {
-			return visitable.accept(this);
-		}
-		else {
-			return null;
-		}
-	}
 
 }

@@ -17,6 +17,7 @@
 
 package org.orcas.iocl.analyzer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,11 +25,12 @@ import org.orcas.iocl.exception.SemanticException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
+import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.helper.Choice;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
-public abstract class BaseAnalyzer implements Analyzer {
+public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 
-	public void check(Object context, OclExpression oclExpresion)
+	public void check(C context, OclExpression oclExpresion)
 		throws SemanticException {
 
 		if (oclExpresion instanceof OperationCallExp) {
@@ -39,17 +41,33 @@ public abstract class BaseAnalyzer implements Analyzer {
 		}
 	}
 
+	public List<Choice> getChoices(
+		C context, OclExpression oclExpresion) {
+
+		List<Choice> choices = new ArrayList<Choice>();
+
+		if (oclExpresion instanceof StringLiteralExp) {
+			C owner = getTypeHelper().resolveType(context, oclExpresion);
+
+			List<O> operations = getTypeHelper().getOperations(owner);
+
+			return getChoices(owner, operations);
+		}
+
+		return choices;
+	}
+
 	protected void checkOperationCallExp(
-			Object context, OperationCallExp operationCallExp)
+			C context, OperationCallExp operationCallExp)
 		throws SemanticException {
 
 		OclExpression source = operationCallExp.getSource();
 
 		check(context, source);
 
-		Object sourceType = getTypeHelper().resolveType(context, source);
+		C sourceType = getTypeHelper().resolveType(context, source);
 
-		List parameterTypes = getTypeHelper().getOperationParameterTypes(
+		List<C> parameterTypes = getTypeHelper().getOperationParameterTypes(
 			context, operationCallExp);
 
 		if (!getTypeHelper().hasOperation(
@@ -69,14 +87,14 @@ public abstract class BaseAnalyzer implements Analyzer {
 	}
 
 	protected void checkPropertyCallExp(
-			Object context, PropertyCallExp propertyCallExp)
+			C context, PropertyCallExp propertyCallExp)
 		throws SemanticException {
 
 		OclExpression source = propertyCallExp.getSource();
 
 		check(context, source);
 
-		Object sourceType = getTypeHelper().resolveType(context, source);
+		C sourceType = getTypeHelper().resolveType(context, source);
 
 		String propertyName = propertyCallExp.getReferredProperty().getName();
 
@@ -92,6 +110,9 @@ public abstract class BaseAnalyzer implements Analyzer {
 		}
 	}
 
-	public abstract TypeHelper getTypeHelper();
+	public abstract TypeHelper<C, O, P> getTypeHelper();
+
+	protected abstract List<Choice> getChoices(
+		C owner, List<O> operations);
 
 }

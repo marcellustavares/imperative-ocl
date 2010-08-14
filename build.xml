@@ -91,4 +91,13 @@
 			newenvironment="true"
 		/>
 	</target>
+	
+	<target name="test-syntax-helper">
+		<java
+			classname="org.orcas.iocl.helper.SyntaxHelperTest"
+			classpathref="project.classpath"
+			fork="true"
+			newenvironment="true"
+		/>
+	</target>
 </project>

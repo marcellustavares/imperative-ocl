@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.orcas.iocl.expressions.util.Visitable;
 import org.orcas.iocl.expressions.util.Visitor;
 
 public abstract class EAbstractVisitor<T> implements Visitor<T> {
@@ -96,6 +97,15 @@ public abstract class EAbstractVisitor<T> implements Visitor<T> {
 	}
 
 	public void eUnset(EStructuralFeature eStructuralFeature) {
+	}
+
+	protected T visit(Visitable visitable) {
+		if (visitable != null) {
+			return visitable.accept(this);
+		}
+		else {
+			return null;
+		}
 	}
 
 }

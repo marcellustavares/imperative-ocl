@@ -17,12 +17,18 @@
 
 package org.orcas.iocl.analyzer;
 
+import java.util.List;
+
 import org.orcas.iocl.exception.SemanticException;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
+import org.orcas.iocl.helper.Choice;
 
-public interface Analyzer {
+public interface Analyzer<C, O, P> {
 
-	public void check(Object context, OclExpression oclExpresion)
+	public void check(C context, OclExpression oclExpresion)
 		throws SemanticException;
+
+	public List<Choice> getChoices(
+		C context, OclExpression oclExpression);
 
 }

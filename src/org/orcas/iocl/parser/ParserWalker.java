@@ -21,6 +21,8 @@ import org.antlr.runtime.tree.Tree;
 import org.eclipse.emf.common.util.EList;
 import org.orcas.iocl.exception.SemanticException;
 import org.orcas.iocl.expressions.emof.EmofFactory;
+import org.orcas.iocl.expressions.emof.Enumeration;
+import org.orcas.iocl.expressions.emof.EnumerationLiteral;
 import org.orcas.iocl.expressions.emof.PrimitiveType;
 import org.orcas.iocl.expressions.emof.Property;
 import org.orcas.iocl.expressions.emof.Type;
@@ -35,6 +37,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.CollectionType;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
+import org.orcas.iocl.expressions.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeExpression;
 import org.orcas.iocl.expressions.imperativeocl.ImperativeOclFactory;
@@ -58,6 +61,7 @@ import org.orcas.iocl.expressions.imperativeocl.WhileExp;
 import org.orcas.iocl.parser.antlr.IoclParser;
 import org.orcas.iocl.util.Operation;
 import org.orcas.iocl.util.PathType;
+import org.orcas.iocl.util.StringPool;
 import org.orcas.iocl.util.StringUtil;
 
 public class ParserWalker {
@@ -255,6 +259,47 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.ENUM_LITERAL:
+				int lastChildIndex = tree.getChildCount() - 1;
+
+				StringBuilder packageName = new StringBuilder();
+
+				for (int i = 0; i < (lastChildIndex - 1); i++) {
+					packageName.append(tree.getChild(i).getText());
+
+					if ((i + 1) != (lastChildIndex - 1)) {
+						packageName.append(StringPool.SCOPE);
+					}
+				}
+
+				org.orcas.iocl.expressions.emof.Package enumerationPackage =
+					EmofFactory.eINSTANCE.createPackage();
+
+				enumerationPackage.setName(packageName.toString());
+
+				Enumeration enumeration =
+					EmofFactory.eINSTANCE.createEnumeration();
+
+				enumeration.setPackage(enumerationPackage);
+				enumeration.setName(
+					tree.getChild(lastChildIndex - 1).getText());
+
+				EnumerationLiteral enumerationLiteral =
+					EmofFactory.eINSTANCE.createEnumerationLiteral();
+
+				enumerationLiteral.setEnumeration(enumeration);
+				enumerationLiteral.setName(
+					tree.getChild(lastChildIndex).getText());
+
+				EnumLiteralExp enumLiteralExp =
+					getFactory().createEnumLiteralExp();
+
+				enumLiteralExp.setReferredEnumLiteral(enumerationLiteral);
+
+				oclExpression = enumLiteralExp;
+
+				break;
+
 			case IoclParser.EXCEPT:
 				CatchExp catchExp = getFactory().createCatchExp();
 
@@ -342,7 +387,7 @@ public class ParserWalker {
 			case IoclParser.ITERATE:
 				IterateExp iterateExp = getFactory().createIterateExp();
 
-				int lastChildIndex = tree.getChildCount() - 1;
+				lastChildIndex = tree.getChildCount() - 1;
 
 				iterateExp.setSource(walk(tree.getChild(lastChildIndex)));
 
@@ -430,6 +475,21 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.PATH_NAME:
+				PathType pathType = new PathType();
+
+				for (int i = 0; i < tree.getChildCount(); i++) {
+					pathType.addName(tree.getChild(i).getText());
+				}
+
+				typeExp = getFactory().createTypeExp();
+
+				typeExp.setReferredType(pathType);
+
+				oclExpression = typeExp;
+
+				break;
+
 			case IoclParser.PRIMITIVE_TYPE_LITERAL:
 				PrimitiveType primitiveType =
 					EmofFactory.eINSTANCE.createPrimitiveType();
@@ -485,21 +545,6 @@ public class ParserWalker {
 				}
 
 				oclExpression = returnExp;
-
-				break;
-
-			case IoclParser.SCOPE:
-				PathType pathType = new PathType();
-
-				for (int i = 0; i < tree.getChildCount(); i++) {
-					pathType.addName(tree.getChild(i).getText());
-				}
-
-				typeExp = getFactory().createTypeExp();
-
-				typeExp.setReferredType(pathType);
-
-				oclExpression = typeExp;
 
 				break;
 

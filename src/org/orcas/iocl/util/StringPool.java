@@ -39,6 +39,8 @@ public class StringPool {
 
 	public static final String REAL = "Real";
 
+	public static final String SCOPE = "::";
+
 	public static final String SELF = "self";
 
 	public static final String SEQUENCE = "Sequence";
@@ -46,7 +48,5 @@ public class StringPool {
 	public static final String SET = "Set";
 
 	public static final String STRING = "String";
-
-
 
 }

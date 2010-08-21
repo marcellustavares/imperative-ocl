@@ -40,6 +40,7 @@ DO = 'do';
 DIV = '/';
 DOT = '.';
 ENDIF = 'endif';
+ENUM_LITERAL;
 ELIF = 'elif';
 ELSE = 'else';
 EQUAL = '=';
@@ -61,6 +62,7 @@ NOT_EQUAL = '<>';
 MULT = '*';
 OPERATION_CALL;
 OR = 'or';
+PATH_NAME;
 PLUS = '+';
 RAISE = 'raise';
 RCURLY = '}';
@@ -158,8 +160,8 @@ attributeCallExp
 	: simpleName -> ^(ATTRIBUTE_CALL simpleName)
 	;
 oclExp
-	: variableExp
-	| literalExp
+	: literalExp 
+	| variableExp
 	| type
 	| '(' oclExpression ')' -> oclExpression 
 	;		
@@ -169,8 +171,9 @@ variableExp
 	;
 
 literalExp
-	: collectionLiteralExp 
-	| primitiveLiteralExp
+	: enumerationLiteralExp
+	| collectionLiteralExp 
+	| primitiveLiteralExp 
 	;
 
 collectionLiteralExp
@@ -216,6 +219,10 @@ realLiteralExp
 	: REAL_LITERAL
 	;
 
+enumerationLiteralExp
+	: IDENTIFIER (SCOPE IDENTIFIER)+ -> ^(ENUM_LITERAL IDENTIFIER IDENTIFIER+) 
+	;
+
 loopExp
 	: iteratorExp
 	| iterateExp
@@ -259,7 +266,7 @@ type
 	;
 
 pathName
-	: IDENTIFIER (SCOPE IDENTIFIER)* -> ^(SCOPE IDENTIFIER IDENTIFIER*)
+	: IDENTIFIER (SCOPE IDENTIFIER)* -> ^(PATH_NAME IDENTIFIER IDENTIFIER*)
 	;
 
 // Imperative Expressions

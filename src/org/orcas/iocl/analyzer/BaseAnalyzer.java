@@ -26,6 +26,8 @@ import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
+import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.helper.Choice;
 
 public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
@@ -38,6 +40,9 @@ public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 		}
 		else if (oclExpresion instanceof PropertyCallExp) {
 			checkPropertyCallExp(context, (PropertyCallExp)oclExpresion);
+		}
+		else if (oclExpresion instanceof VariableInitExp) {
+			checkVariableInitExp(context, (VariableInitExp)oclExpresion);
 		}
 	}
 
@@ -105,6 +110,34 @@ public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 			message.append(propertyName);
 			message.append(" not found for type ");
 			message.append(sourceType);
+
+			throw new SemanticException(message.toString());
+		}
+	}
+
+	protected void checkVariableInitExp(
+			C context, VariableInitExp variableInitExp)
+		throws SemanticException {
+
+		Variable referredVariable = variableInitExp.getReferredVariable();
+
+		C variableType = getTypeHelper().resolveType(
+			referredVariable.getType());
+
+		Class<?> variableTypeClass = variableType.getClass();
+
+		C initExpressionType = getTypeHelper().resolveType(
+			context, referredVariable.getInitExpression());
+
+		if (!variableTypeClass.isInstance(initExpressionType)) {
+			StringBuilder message = new StringBuilder();
+
+			message.append("Variable ");
+			message.append(referredVariable.getName());
+			message.append(" with type ");
+			message.append(variableType);
+			message.append(" is not compatible with type ");
+			message.append(initExpressionType);
 
 			throw new SemanticException(message.toString());
 		}

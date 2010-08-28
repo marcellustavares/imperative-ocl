@@ -19,6 +19,7 @@ package org.orcas.iocl.analyzer;
 
 import java.util.List;
 
+import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 
@@ -40,5 +41,7 @@ public interface TypeHelper<C, O, P> {
 	public boolean hasProperty(C owner, String name);
 
 	public C resolveType(C context, OclExpression source);
+
+	public C resolveType(Type type);
 
 }

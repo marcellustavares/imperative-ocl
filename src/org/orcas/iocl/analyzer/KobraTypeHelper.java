@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.orcas.iocl.expressions.emof.PrimitiveType;
 import org.orcas.iocl.expressions.imperativeocl.BooleanLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
@@ -174,6 +175,29 @@ public class KobraTypeHelper implements
 			Variable variable = variableExp.getReferredVariable();
 
 			return resolveVariable(context, variable);
+		}
+
+		return null;
+	}
+
+	public Classifier resolveType(org.orcas.iocl.expressions.emof.Type type) {
+		if (type instanceof PrimitiveType) {
+			PrimitiveType primitiveType = (PrimitiveType)type;
+
+			String typeName = primitiveType.getName();
+
+			if (Validator.equals(StringPool.BOOLEAN, typeName)) {
+				return getKobraFactory().createBoolean();
+			}
+			else if (Validator.equals(StringPool.INTEGER, typeName)) {
+				return getKobraFactory().createInteger();
+			}
+			else if (Validator.equals(StringPool.REAL, typeName)) {
+				return getKobraFactory().createReal();
+			}
+			else if (Validator.equals(StringPool.STRING, typeName)) {
+				return getKobraFactory().createString();
+			}
 		}
 
 		return null;

@@ -31,7 +31,7 @@ public class Main {
 
 	public static void main(String[] args) throws ImperativeOclException {
 
-		ComponentClass componentClass = Main.getKobraFactory().createComponentClass();
+		/*ComponentClass componentClass = Main.getKobraFactory().createComponentClass();
 
 		componentClass.setName("Component Test");
 
@@ -79,7 +79,13 @@ public class Main {
 		}
 
 		System.out.println(System.currentTimeMillis() - start);
+		*/
 
+		String exp = "test := 'marcellus';";
+
+		String code = ImperativeOclServiceUtil.compile(null, exp);
+
+		System.out.println(code);
 	}
 
 	public static StructuralFactory getKobraFactory() {

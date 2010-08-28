@@ -101,7 +101,7 @@ public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 		if (!getTypeHelper().hasProperty(sourceType, propertyName)) {
 			StringBuilder message = new StringBuilder();
 
-			message.append("Propery ");
+			message.append("Property ");
 			message.append(propertyName);
 			message.append(" not found for type ");
 			message.append(sourceType);

@@ -30,6 +30,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
+import org.orcas.iocl.expressions.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
@@ -100,6 +101,10 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitContinueExp(ContinueExp continueExp) {
+		return null;
+	}
+
+	public List<Choice> visitEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
 		return null;
 	}
 

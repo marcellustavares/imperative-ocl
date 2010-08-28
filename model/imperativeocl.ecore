@@ -443,6 +443,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="continueExp" eType="#//imperativeocl/ContinueExp"/>
       </eOperations>
+      <eOperations name="visitEnumLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="enumLiteralExp" eType="#//imperativeocl/EnumLiteralExp"/>
+      </eOperations>
       <eOperations name="visitForExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="forExp" eType="#//imperativeocl/ForExp"/>

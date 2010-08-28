@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.orcas.iocl.expressions.emof.Enumeration;
+import org.orcas.iocl.expressions.emof.EnumerationLiteral;
 import org.orcas.iocl.expressions.emof.Property;
 import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AltExp;
@@ -35,6 +37,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionKind;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
+import org.orcas.iocl.expressions.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
@@ -141,6 +144,19 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	protected String handleContinueExp(ContinueExp continueExp) {
 		return TemplateUtil.process(Template.CONTINUE, null);
+	}
+
+	protected String handleEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
+		EnumerationLiteral enumerationLiteral =
+			enumLiteralExp.getReferredEnumLiteral();
+
+		Enumeration enumeration = enumerationLiteral.getEnumeration();
+
+		_map.clear();
+		_map.put("enumerationName", enumeration.getName());
+		_map.put("enumerationLiteralName", enumerationLiteral.getName());
+
+		return TemplateUtil.process(Template.ENUM_LITERAL, _map);
 	}
 
 	protected String handleForExp(

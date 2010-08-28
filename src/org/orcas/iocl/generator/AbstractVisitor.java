@@ -20,6 +20,9 @@ package org.orcas.iocl.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.orcas.iocl.expressions.emof.Enumeration;
+import org.orcas.iocl.expressions.emof.EnumerationLiteral;
+import org.orcas.iocl.expressions.emof.Package;
 import org.orcas.iocl.expressions.emof.Type;
 import org.orcas.iocl.expressions.imperativeocl.AltExp;
 import org.orcas.iocl.expressions.imperativeocl.AssignExp;
@@ -32,6 +35,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
+import org.orcas.iocl.expressions.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.IterateExp;
@@ -138,6 +142,10 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	public T visitContinueExp(ContinueExp continueExp) {
 		return handleContinueExp(continueExp);
+	}
+
+	public T visitEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
+		return handleEnumLiteralExp(enumLiteralExp);
 	}
 
 	public T visitForExp(ForExp forExp) {
@@ -333,6 +341,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		ComputeExp computeExp, T variableResult, T bodyResult);
 
 	protected abstract T handleContinueExp(ContinueExp continueExp);
+
+	protected abstract T handleEnumLiteralExp(EnumLiteralExp enumLiteralExp);
 
 	protected abstract T handleForExp(
 		ForExp forExp, T conditionResult, T bodyResult, List<T> variableResults,

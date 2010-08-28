@@ -29,6 +29,7 @@ import org.orcas.iocl.expressions.imperativeocl.CollectionItem;
 import org.orcas.iocl.expressions.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ComputeExp;
 import org.orcas.iocl.expressions.imperativeocl.ContinueExp;
+import org.orcas.iocl.expressions.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.ForExp;
 import org.orcas.iocl.expressions.imperativeocl.IfExp;
 import org.orcas.iocl.expressions.imperativeocl.IntegerLiteralExp;
@@ -139,6 +140,14 @@ public interface Visitor<T> extends EObject {
 	 * @generated
 	 */
 	T visitContinueExp(ContinueExp continueExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitEnumLiteralExp(EnumLiteralExp enumLiteralExp);
 
 	/**
 	 * <!-- begin-user-doc -->

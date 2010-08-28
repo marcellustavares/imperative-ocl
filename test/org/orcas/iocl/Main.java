@@ -81,7 +81,7 @@ public class Main {
 		System.out.println(System.currentTimeMillis() - start);
 		*/
 
-		String exp = "test := 'marcellus';";
+		String exp = "do {var test:String;   test := 1;}";
 
 		String code = ImperativeOclServiceUtil.compile(null, exp);
 

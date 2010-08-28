@@ -22,27 +22,36 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.orcas.iocl.exception.SemanticException;
+import org.orcas.iocl.expressions.imperativeocl.AssignExp;
+import org.orcas.iocl.expressions.imperativeocl.BlockExp;
 import org.orcas.iocl.expressions.imperativeocl.OclExpression;
 import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expressions.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expressions.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expressions.imperativeocl.Variable;
+import org.orcas.iocl.expressions.imperativeocl.VariableExp;
 import org.orcas.iocl.expressions.imperativeocl.VariableInitExp;
 import org.orcas.iocl.helper.Choice;
 
 public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 
-	public void check(C context, OclExpression oclExpresion)
+	public void check(C context, OclExpression oclExpression)
 		throws SemanticException {
 
-		if (oclExpresion instanceof OperationCallExp) {
-			checkOperationCallExp(context, (OperationCallExp)oclExpresion);
+		if (oclExpression instanceof AssignExp) {
+			checkAssignExp(context, (AssignExp)oclExpression);
 		}
-		else if (oclExpresion instanceof PropertyCallExp) {
-			checkPropertyCallExp(context, (PropertyCallExp)oclExpresion);
+		else if (oclExpression instanceof BlockExp) {
+			checkBlockExp(context, (BlockExp)oclExpression);
 		}
-		else if (oclExpresion instanceof VariableInitExp) {
-			checkVariableInitExp(context, (VariableInitExp)oclExpresion);
+		else if (oclExpression instanceof OperationCallExp) {
+			checkOperationCallExp(context, (OperationCallExp)oclExpression);
+		}
+		else if (oclExpression instanceof PropertyCallExp) {
+			checkPropertyCallExp(context, (PropertyCallExp)oclExpression);
+		}
+		else if (oclExpression instanceof VariableInitExp) {
+			checkVariableInitExp(context, (VariableInitExp)oclExpression);
 		}
 	}
 
@@ -60,6 +69,56 @@ public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 		}
 
 		return choices;
+	}
+
+	protected void checkAssignExp(C context, AssignExp assignExp)
+		throws SemanticException {
+
+		OclExpression left = assignExp.getLeft();
+
+		C leftType = null;
+
+		if (left instanceof VariableExp) {
+			VariableExp variableExp = (VariableExp)left;
+
+			leftType = getTypeHelper().resolveType(context, variableExp);
+
+			if (leftType == null) {
+				StringBuilder message = new StringBuilder();
+
+				message.append("Variable ");
+				message.append(variableExp.getReferredVariable().getName());
+				message.append(" was not defined.");
+
+				throw new SemanticException(message.toString());
+			}
+		}
+
+		Class<?> leftTypeClass = leftType.getClass();
+
+		C defaultValueType = getTypeHelper().resolveType(
+				context, assignExp.getDefaultValue());
+
+		if (!leftTypeClass.isInstance(defaultValueType)) {
+			StringBuilder message = new StringBuilder();
+
+			message.append("Left hand expression with type ");
+			message.append(leftType);
+			message.append(" is not compatible with type ");
+			message.append(defaultValueType);
+
+			throw new SemanticException(message.toString());
+		}
+	}
+
+	protected void checkBlockExp(C context, BlockExp blockExp)
+		throws SemanticException {
+
+		List<OclExpression> body = blockExp.getBody();
+
+		for (OclExpression oclExpression : body) {
+			check(context, oclExpression);
+		}
 	}
 
 	protected void checkOperationCallExp(
@@ -124,12 +183,16 @@ public abstract class BaseAnalyzer<C, O, P> implements Analyzer<C, O, P> {
 		C variableType = getTypeHelper().resolveType(
 			referredVariable.getType());
 
+		getTypeHelper().bindVariable(referredVariable.getName(), variableType);
+
 		Class<?> variableTypeClass = variableType.getClass();
 
 		C initExpressionType = getTypeHelper().resolveType(
 			context, referredVariable.getInitExpression());
 
-		if (!variableTypeClass.isInstance(initExpressionType)) {
+		if (initExpressionType != null &&
+				!variableTypeClass.isInstance(initExpressionType)) {
+
 			StringBuilder message = new StringBuilder();
 
 			message.append("Variable ");

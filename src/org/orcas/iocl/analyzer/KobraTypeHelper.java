@@ -49,6 +49,10 @@ import KobrA2.SUM.Constraint.Structural.Type;
 public class KobraTypeHelper implements
 	TypeHelper<Classifier, Operation, Property> {
 
+	public void bindVariable(String variable, Classifier type) {
+		_variablesMap.put(variable, type);
+	}
+
 	public Element createStringType() {
 		return getKobraFactory().createString();
 	}

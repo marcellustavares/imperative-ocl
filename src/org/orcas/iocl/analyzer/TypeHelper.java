@@ -25,6 +25,8 @@ import org.orcas.iocl.expressions.imperativeocl.OperationCallExp;
 
 public interface TypeHelper<C, O, P> {
 
+	public void bindVariable(String variable, C type);
+
 	public O getOperation(
 		C owner, String name, List<C> parameterTypes);
 

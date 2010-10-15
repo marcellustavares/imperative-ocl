@@ -20,8 +20,8 @@ package org.orcas.iocl.helper;
 public class ChoiceImpl implements Choice {
 
 	public ChoiceImpl(ChoiceKind choiceKind, String name, String description) {
-		_description = description;
 		_choiceKind = choiceKind;
+		_description = description;
 		_name = name;
 	}
 

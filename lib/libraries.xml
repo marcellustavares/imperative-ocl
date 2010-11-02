@@ -48,4 +48,9 @@
 		<version>1.0.0</version>
 		<project-name>KobrA2 Metamodel</project-name>
 	</library>
+	<library>
+		<file>log4j.jar</file>
+		<version>1.2.16</version>
+		<project-name>http://logging.apache.org/log4j/</project-name>
+	</library>
 </libraries>

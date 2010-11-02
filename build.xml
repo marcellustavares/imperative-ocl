@@ -1,103 +1,44 @@
 <?xml version="1.0"?>
 
-<project name="org.orcas.iocl">
+<project name="iocl" default="all">
 	<property name="project.dir" value="." />
 
-	<property name="jar.file" value="iocl" />
+	<import file="build-common.xml" />
 
-	<path id="project.classpath">
-		<pathelement location="${project.dir}/bin" />
-		<fileset dir="${project.dir}/lib" includes="*.jar" />
-	</path>
-
-	<taskdef classpathref="project.classpath" resource="org/apache/tools/ant/antlr/antlib.xml" />
-
-	<target name="build-grammar">
-		<antlr3
-			target="${project.dir}/src/org/orcas/iocl/parser/antlr/Iocl.g"
-		   	outputdirectory="${project.dir}/src/org/orcas/iocl/parser/antlr"
-		   	multithreaded="true"
-		   	report="false"
-	   	/>
+	<target name="all">
+		<antcall target="clean" />
+		<antcall target="dist" />
 	</target>
-
+	
 	<target name="clean">
-		<delete dir="classes" />
-	</target>
+		<delete dir="dist" />
 
+		<ant dir="ioclexpression" target="clean" inheritAll="false" />
+		<ant dir="ioclengine" target="clean" inheritAll="false" />
+		<ant dir="ioclgenerator" target="clean" inheritAll="false" />
+	</target>
+	
 	<target name="compile">
-		<mkdir dir="classes"/>
+		<ant dir="ioclexpression" target="compile" inheritAll="false" />
+		<ant dir="ioclengine" target="compile" inheritAll="false" />
+		<ant dir="ioclgenerator" target="compile" inheritAll="false" />
+	</target>
 
-		<copy todir="classes">
-			<fileset dir="src" excludes="**/*.java" />
+	<target name="dist">
+		<antcall target="jar" />
+		
+		<mkdir dir="dist" />
+
+		<copy todir="dist">
+			<fileset dir="ioclexpression" includes="*.jar" />
+			<fileset dir="ioclengine" includes="*.jar" />
+			<fileset dir="ioclgenerator" includes="*.jar" />
 		</copy>
-
-		<javac
-			classpathref="project.classpath"
-			destdir="classes"
-			fork="true"
-			srcdir="src"
-		/>
 	</target>
 
-	<target name="format-source">
-		<java
-			classname="org.orcas.tools.SourceFormatter"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
-	</target>
-
-	<target name="jar" depends="compile">
-		<jar
-			basedir="classes"
-			jarfile="${jar.file}.jar"
-		/>
-	</target>
-
-	<target name="test-compiler">
-		<java
-			classname="org.orcas.iocl.compiler.TestIoclCompiler"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
-	</target>
-
-	<target name="translate-jiocl-files">
-		<java
-			classname="org.orcas.iocl.compiler.JioclTranslator"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
-	</target>
-
-	<target name="test-analyzer">
-		<java
-			classname="org.orcas.iocl.analyzer.OclExpressionTest"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
-	</target>
-	
-	<target name="test-parser">
-		<java
-			classname="org.orcas.iocl.parser.OclExpressionTest"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
-	</target>
-	
-	<target name="test-syntax-helper">
-		<java
-			classname="org.orcas.iocl.helper.SyntaxHelperTest"
-			classpathref="project.classpath"
-			fork="true"
-			newenvironment="true"
-		/>
+	<target name="jar">
+		<ant dir="ioclexpression" target="jar" inheritAll="false" />
+		<ant dir="ioclengine" target="jar" inheritAll="false" />
+		<ant dir="ioclgenerator" target="jar" inheritAll="false" />
 	</target>
 </project>

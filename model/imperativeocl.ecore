@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="expressions"
-    nsURI="http://www.orcas.org/spec/iocl/1.0/expressions" nsPrefix="expressions">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="expression"
+    nsURI="http://www.orcas.org/spec/iocl/1.0/expression" nsPrefix="expression">
   <eSubpackages name="emof" nsURI="http://www.orcas.org/spec/iocl/1.0/emof" nsPrefix="emof">
     <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//emof/Type">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"

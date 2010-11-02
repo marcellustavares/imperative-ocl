@@ -2,12 +2,12 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (C) 2010  Marcellus C. Tavares&#xA;&#xA;This program is free software: you can redistribute it and/or modify&#xA;it under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version.&#xA;&#xA;This program is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License&#xA;along with this program.  If not, see &lt;http://www.gnu.org/licenses/>."
-    modelDirectory="/imperative-ocl/src" modelPluginID="imperative-ocl" modelName="Imperativeocl"
-    updateClasspath="false" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false">
+    modelDirectory="/imperative-ocl/ioclexpression/src" modelPluginID="imperative-ocl"
+    modelName="Imperativeocl" modelPluginClass="" importerID="org.eclipse.emf.importer.ecore"
+    bundleManifest="false" complianceLevel="5.0" copyrightFields="false">
   <foreignModel>imperativeocl.ecore</foreignModel>
-  <genPackages prefix="Expressions" basePackage="org.orcas.iocl" disposableProviderFactory="true"
-      contentTypeIdentifier="org.orcas.iocl" ecorePackage="imperativeocl.ecore#/">
+  <genPackages prefix="Expression" basePackage="org.orcas.iocl" disposableProviderFactory="true"
+      ecorePackage="imperativeocl.ecore#/">
     <nestedGenPackages prefix="Emof" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//emof">
       <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/Boolean"/>
       <genDataTypes ecoreDataType="imperativeocl.ecore#//emof/String"/>
@@ -88,7 +88,7 @@
             ecoreFeature="ecore:EReference imperativeocl.ecore#//emof/Comment/annotatedElement"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="ImperativeOcl" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//imperativeocl">
+    <nestedGenPackages prefix="Imperativeocl" disposableProviderFactory="true" ecorePackage="imperativeocl.ecore#//imperativeocl">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="imperativeocl.ecore#//imperativeocl/SeverityKind">
         <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//imperativeocl/SeverityKind/error"/>
         <genEnumLiterals ecoreEnumLiteral="imperativeocl.ecore#//imperativeocl/SeverityKind/warning"/>
@@ -145,6 +145,7 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/RaiseExp/exception"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/RaiseExp/argument"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/RaiseExp/exceptionMessage"/>
       </genClasses>
       <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ContinueExp"/>
       <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/ForExp"/>
@@ -261,6 +262,7 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/OperationCallExp/argument"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference imperativeocl.ecore#//imperativeocl/OperationCallExp/referredOperation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/OperationCallExp/operationCode"/>
       </genClasses>
       <genClasses ecoreClass="imperativeocl.ecore#//imperativeocl/RealLiteralExp">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imperativeocl.ecore#//imperativeocl/RealLiteralExp/realSymbol"/>
@@ -330,6 +332,90 @@
       </genClasses>
       <genClasses image="false" ecoreClass="imperativeocl.ecore#//util/Visitor">
         <genTypeParameters ecoreTypeParameter="imperativeocl.ecore#//util/Visitor/T"/>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitAltExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitAltExp/altExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitAssignExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitAssignExp/assignExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitBlockExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitBlockExp/blockExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitBooleanLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitBooleanLiteralExp/booleanLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitBreakExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitBreakExp/breakExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitCatchExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitCatchExp/catchExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitCollectionLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitCollectionLiteralExp/collectionLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitCollectionItem">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitCollectionItem/collectionItem"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitComputeExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitComputeExp/computeExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitContinueExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitContinueExp/continueExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitEnumLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitEnumLiteralExp/enumLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitForExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitForExp/forExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitIntegerLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitIntegerLiteralExp/integerLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitIterateExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitIterateExp/iterateExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitIteratorExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitIteratorExp/iteratorExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitOperationCallExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitOperationCallExp/operationCallExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitPropertyCallExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitPropertyCallExp/propertyCallExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitRaiseExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitRaiseExp/raiseExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitRealLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitRealLiteralExp/realLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitReturnExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitReturnExp/returnExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitStringLiteralExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitStringLiteralExp/stringLiteralExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitSwitchExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitSwitchExp/switchExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitTryExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitTryExp/tryExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitTypeExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitTypeExp/typeExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitVariable">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitVariable/variable"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitVariableExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitVariableExp/variableExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitVariableInitExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitVariableInitExp/variableInitExp"/>
+        </genOperations>
+        <genOperations ecoreOperation="imperativeocl.ecore#//util/Visitor/visitWhileExp">
+          <genParameters ecoreParameter="imperativeocl.ecore#//util/Visitor/visitWhileExp/whileExp"/>
+        </genOperations>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

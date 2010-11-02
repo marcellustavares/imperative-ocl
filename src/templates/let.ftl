@@ -1,2 +1,0 @@
-${variableResult}
-${inResult}

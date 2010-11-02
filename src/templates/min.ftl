@@ -1,1 +1,0 @@
-Math.min(${sourceResult}, ${argResult})

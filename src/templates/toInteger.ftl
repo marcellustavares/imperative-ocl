@@ -1,1 +1,0 @@
-Integer.valueOf(${sourceResult})

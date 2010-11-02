@@ -1,1 +1,0 @@
-!${sourceResult}.containsAll(${argResult})

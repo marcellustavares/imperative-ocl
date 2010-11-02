@@ -1,0 +1,1 @@
+org.orcas.commons.collections.CollectionUtils.prepend(${sourceResult}, ${argResult})

@@ -1,0 +1,1 @@
+new Integer((int)Math.floor(${sourceResult}))

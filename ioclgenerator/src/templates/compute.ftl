@@ -1,0 +1,3 @@
+${variableResult}
+${bodyResult}
+return ${variableName};

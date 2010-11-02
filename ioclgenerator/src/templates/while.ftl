@@ -1,0 +1,1 @@
+while (${conditionResult}) ${bodyResult}

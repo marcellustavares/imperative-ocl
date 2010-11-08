@@ -57,6 +57,7 @@ LPAREN = '(';
 LT = '<';
 LTE = '<=';
 MINUS = '-';
+NEW = 'new';
 NOT = 'not';
 NOT_EQUAL = '<>';
 MULT = '*';
@@ -79,11 +80,11 @@ XOR = 'xor';
 }
 
 @lexer::header{
-package org.orcas.iocl.parser.antlr;
+package org.orcas.ioclengine.parser.antlr;
 }
 
 @header {
-package org.orcas.iocl.parser.antlr;
+package org.orcas.ioclengine.parser.antlr;
 }
 
 @members {
@@ -284,6 +285,7 @@ imperativeExp
 	| ifExp
 	| tryExp
 	| forExp
+	| instantiationExp
 	;
 
 blockExp
@@ -363,6 +365,10 @@ forExp
 iteratorList
 	: variableDeclaration (','! variableDeclaration)*
 	;
+
+instantiationExp
+	: NEW^ pathName '('! arguments? ')'!
+	;	
 
 BOOLEAN_LITERAL
 	: 'true' 

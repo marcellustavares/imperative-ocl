@@ -22,7 +22,7 @@ import org.orcas.ioclengine.exception.IOCLException;
 public class Main {
 
 	public static void main(String[] args) throws IOCLException {
-		 OclExpression exp = IOCLEngine.parse(null, "1+1");
+		 OclExpression exp = IOCLEngine.parse(null, "var a:Teste := new Teste();");
 	}
 
 }

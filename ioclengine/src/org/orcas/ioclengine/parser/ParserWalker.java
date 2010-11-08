@@ -19,6 +19,7 @@ package org.orcas.ioclengine.parser;
 
 import org.antlr.runtime.tree.Tree;
 import org.eclipse.emf.common.util.EList;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.orcas.iocl.expression.emof.EmofFactory;
 import org.orcas.iocl.expression.emof.Enumeration;
 import org.orcas.iocl.expression.emof.EnumerationLiteral;
@@ -40,6 +41,7 @@ import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
 import org.orcas.iocl.expression.imperativeocl.ImperativeExpression;
 import org.orcas.iocl.expression.imperativeocl.ImperativeoclFactory;
+import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
@@ -434,6 +436,34 @@ public class ParserWalker {
 
 				oclExpression = iteratorExp;
 
+				break;
+				
+			case IoclParser.NEW:
+				InstantiationExp instantiationExp = 
+					getFactory().createInstantiationExp();
+				
+				instantiationExp.se
+				
+				typeExp = (TypeExp)walk(tree.getChild(0));
+				
+				Type type = typeExp.getReferredType();
+				
+				org.orcas.iocl.expression.emof.Class instantiatedClass = 
+					EmofFactory.eINSTANCE.createClass();
+				
+				org.orcas.iocl.expression.emof.Package classPackage =
+					EmofFactory.eINSTANCE.createPackage();
+				
+				
+				
+				//classPackage.
+				
+				//instantiatedClass.se
+				
+				//instantiationExp.setInstantiatedClass(instantiatedClass);
+				
+				oclExpression = instantiationExp;
+				
 				break;
 
 			case IoclParser.NUMERIC_OPERATION:

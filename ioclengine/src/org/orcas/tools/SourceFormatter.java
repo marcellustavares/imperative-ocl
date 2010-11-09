@@ -29,7 +29,7 @@ import org.orcas.ioclengine.util.StringUtil;
 public class SourceFormatter {
 
 	public static void main(String[] args) throws Exception {
-		String basedir = "./";
+		String basedir = "../";
 
 		String copyright = FileUtil.read(
 			new File("./src/org/orcas/tools/copyright.txt"));
@@ -152,7 +152,7 @@ public class SourceFormatter {
 	}
 
 	private static String[] _getJavaFiles() {
-		String basedir = "./";
+		String basedir = "../";
 
 		DirectoryScanner ds = new DirectoryScanner();
 
@@ -160,7 +160,7 @@ public class SourceFormatter {
 		ds.setExcludes(new String[] {
 			"**\\bin\\**", "**\\IoclLexer.java", "**\\IoclParser.java",
 			"**\\input\\**", "**\\SourceFormatter.java",
-			"**\\expressions\\**"});
+			"**\\ioclexpression\\**"});
 
 		ds.setIncludes(new String[] {"**\\*.java"});
 

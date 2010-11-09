@@ -166,40 +166,40 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	}
 
 	public T visitInstantiationExp(InstantiationExp instantiationExp) {
-		org.orcas.iocl.expression.emof.Class instantiatedClass = 
+		org.orcas.iocl.expression.emof.Class instantiatedClass =
 			instantiationExp.getInstantiatedClass();
-		
+
 		List<T> packageResults = new ArrayList<T>();
-		
-		org.orcas.iocl.expression.emof.Package classPackage = 
+
+		org.orcas.iocl.expression.emof.Package classPackage =
 			instantiatedClass.getPackage();
-		
+
 		if (classPackage != null) {
-			List<org.orcas.iocl.expression.emof.Package> nestedPackages = 
+			List<org.orcas.iocl.expression.emof.Package> nestedPackages =
 				classPackage.getNestedPackage();
-			
-			for (org.orcas.iocl.expression.emof.Package nestedPackage : 
+
+			for (org.orcas.iocl.expression.emof.Package nestedPackage :
 				 nestedPackages) {
-				
+
 				packageResults.add(handlePackage(nestedPackage));
 			}
-			
+
 			packageResults.add(handlePackage(classPackage));
 		}
-		
+
 		List<T> argumentResults = new ArrayList<T>();
-		
+
 		List<OclExpression> arguments = instantiationExp.getArgument();
-		
+
 		for (OclExpression argument : arguments) {
 			argumentResults.add(visit(argument));
 		}
-		
+
 		return handleInstantiationExp(
 			instantiationExp, instantiatedClass.getName(), packageResults,
 			argumentResults);
 	}
-	
+
 
 	public T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp) {
 		return handleIntegerLiteralExp(integerLiteralExp);
@@ -384,9 +384,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		T sourceResult);
 
 	protected abstract T handleInstantiationExp(
-		InstantiationExp instantiationExp, String className, 
+		InstantiationExp instantiationExp, String className,
 		List<T> packageResults, List<T> argumentResults);
-	
+
 	protected abstract T handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp);
 
@@ -403,7 +403,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 	protected abstract T handlePackage(
 		org.orcas.iocl.expression.emof.Package pkg);
-	
+
 	protected abstract T handlePropertyCallExp(
 		PropertyCallExp propertyCallExp, T sourceResult);
 

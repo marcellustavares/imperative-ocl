@@ -20,21 +20,17 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage;
 import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.Variable;
+import org.orcas.iocl.expression.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -283,6 +279,15 @@ public class InstantiationExpImpl extends ImperativeExpressionImpl implements In
 				return argument != null && !argument.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitInstantiationExp(this);
 	}
 
 } //InstantiationExpImpl

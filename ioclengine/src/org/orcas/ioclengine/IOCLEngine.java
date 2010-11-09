@@ -56,7 +56,9 @@ public class IOCLEngine {
 
 		OclExpression oclExpression = parser.getOclExpression();
 
-		_analyzer.check(context, oclExpression);
+		if (Boolean.valueOf(PropsUtil.get("iocl.analyzer.enabled"))) {
+			_analyzer.check(context, oclExpression);
+		}
 
 		return oclExpression;
 	}
@@ -67,7 +69,7 @@ public class IOCLEngine {
 
 	private static IOCLEngine _instance = new IOCLEngine();
 
-	private static IOCLAnalyzer _analyzer;
+	private IOCLAnalyzer _analyzer;
 
 	private Logger _log = Logger.getLogger(IOCLEngine.class);
 

@@ -17,9 +17,10 @@
 
 package org.orcas.ioclengine.parser;
 
+import java.util.List;
+
 import org.antlr.runtime.tree.Tree;
 import org.eclipse.emf.common.util.EList;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.orcas.iocl.expression.emof.EmofFactory;
 import org.orcas.iocl.expression.emof.Enumeration;
 import org.orcas.iocl.expression.emof.EnumerationLiteral;
@@ -437,33 +438,54 @@ public class ParserWalker {
 				oclExpression = iteratorExp;
 
 				break;
-				
+
 			case IoclParser.NEW:
-				InstantiationExp instantiationExp = 
+				InstantiationExp instantiationExp =
 					getFactory().createInstantiationExp();
-				
-				instantiationExp.se
-				
+
 				typeExp = (TypeExp)walk(tree.getChild(0));
-				
-				Type type = typeExp.getReferredType();
-				
-				org.orcas.iocl.expression.emof.Class instantiatedClass = 
-					EmofFactory.eINSTANCE.createClass();
-				
+
+				PathType pathType = (PathType)typeExp.getReferredType();
+
 				org.orcas.iocl.expression.emof.Package classPackage =
 					EmofFactory.eINSTANCE.createPackage();
-				
-				
-				
-				//classPackage.
-				
-				//instantiatedClass.se
-				
-				//instantiationExp.setInstantiatedClass(instantiatedClass);
-				
+
+				EList<org.orcas.iocl.expression.emof.Package> nestedPackages =
+					classPackage.getNestedPackage();
+
+				List<String> qualifiedName = pathType.getQualifiedName();
+
+				int qualifiedNameSize = qualifiedName.size();
+
+				for (int i = 0; i < qualifiedNameSize - 1; i++) {
+					org.orcas.iocl.expression.emof.Package nestedPackage =
+						EmofFactory.eINSTANCE.createPackage();
+
+					nestedPackage.setName(qualifiedName.get(i));
+
+					nestedPackages.add(nestedPackage);
+				}
+
+				org.orcas.iocl.expression.emof.Class instantiatedClass =
+					EmofFactory.eINSTANCE.createClass();
+
+				if (qualifiedNameSize != 1){
+					instantiatedClass.setPackage(classPackage);
+				}
+
+				instantiatedClass.setName(
+					qualifiedName.get((qualifiedNameSize - 1)));
+
+				instantiationExp.setInstantiatedClass(instantiatedClass);
+
+				argument = instantiationExp.getArgument();
+
+				for (int i = 1; i < tree.getChildCount(); i++) {
+					argument.add(walk(tree.getChild(i)));
+				}
+
 				oclExpression = instantiationExp;
-				
+
 				break;
 
 			case IoclParser.NUMERIC_OPERATION:
@@ -505,7 +527,7 @@ public class ParserWalker {
 				break;
 
 			case IoclParser.PATH_NAME:
-				PathType pathType = new PathType();
+				pathType = new PathType();
 
 				for (int i = 0; i < tree.getChildCount(); i++) {
 					pathType.addName(tree.getChild(i).getText());

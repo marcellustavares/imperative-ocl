@@ -34,6 +34,7 @@ import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
+import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
@@ -163,6 +164,42 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		return handleForExp(
 			forExp, conditionResult, bodyResult, variableResults, sourceResult);
 	}
+
+	public T visitInstantiationExp(InstantiationExp instantiationExp) {
+		org.orcas.iocl.expression.emof.Class instantiatedClass = 
+			instantiationExp.getInstantiatedClass();
+		
+		List<T> packageResults = new ArrayList<T>();
+		
+		org.orcas.iocl.expression.emof.Package classPackage = 
+			instantiatedClass.getPackage();
+		
+		if (classPackage != null) {
+			List<org.orcas.iocl.expression.emof.Package> nestedPackages = 
+				classPackage.getNestedPackage();
+			
+			for (org.orcas.iocl.expression.emof.Package nestedPackage : 
+				 nestedPackages) {
+				
+				packageResults.add(handlePackage(nestedPackage));
+			}
+			
+			packageResults.add(handlePackage(classPackage));
+		}
+		
+		List<T> argumentResults = new ArrayList<T>();
+		
+		List<OclExpression> arguments = instantiationExp.getArgument();
+		
+		for (OclExpression argument : arguments) {
+			argumentResults.add(visit(argument));
+		}
+		
+		return handleInstantiationExp(
+			instantiationExp, instantiatedClass.getName(), packageResults,
+			argumentResults);
+	}
+	
 
 	public T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp) {
 		return handleIntegerLiteralExp(integerLiteralExp);
@@ -346,6 +383,10 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		ForExp forExp, T conditionResult, T bodyResult, List<T> variableResults,
 		T sourceResult);
 
+	protected abstract T handleInstantiationExp(
+		InstantiationExp instantiationExp, String className, 
+		List<T> packageResults, List<T> argumentResults);
+	
 	protected abstract T handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp);
 
@@ -360,6 +401,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 	protected abstract T handleOperationCallExp(
 		OperationCallExp operationCallExp, T sourceResult, List<T> argResults);
 
+	protected abstract T handlePackage(
+		org.orcas.iocl.expression.emof.Package pkg);
+	
 	protected abstract T handlePropertyCallExp(
 		PropertyCallExp propertyCallExp, T sourceResult);
 

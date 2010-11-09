@@ -451,6 +451,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="forExp" eType="#//imperativeocl/ForExp"/>
       </eOperations>
+      <eOperations name="visitInstantiationExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="instantiationExp" eType="#//imperativeocl/InstantiationExp"/>
+      </eOperations>
       <eOperations name="visitIntegerLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="integerLiteralExp" eType="#//imperativeocl/IntegerLiteralExp"/>

@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.orcas.iocl.expression.emof.Enumeration;
 import org.orcas.iocl.expression.emof.EnumerationLiteral;
+import org.orcas.iocl.expression.emof.Package;
 import org.orcas.iocl.expression.emof.Property;
 import org.orcas.iocl.expression.emof.Type;
 import org.orcas.iocl.expression.imperativeocl.AltExp;
@@ -39,6 +40,7 @@ import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
+import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
@@ -179,6 +181,18 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.FOR, _map);
 	}
 
+	protected String handleInstantiationExp(
+		InstantiationExp instantiationExp, String className, 
+		List<String> packageResults, List<String> argumentResults) {
+
+		_map.clear();
+		_map.put("className", className);
+		_map.put("packageResults", packageResults);
+		_map.put("argumentResults", argumentResults);
+		
+		return TemplateUtil.process(Template.INSTANTIATION, _map);
+	}
+	
 	protected String handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp) {
 
@@ -388,6 +402,10 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		}
 
 		return result;
+	}
+
+	protected String handlePackage(Package pkg) {
+		return pkg.getName();
 	}
 
 	protected String handlePropertyCallExp(

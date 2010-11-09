@@ -11,7 +11,7 @@ public class IOCLGenerator {
 	private IOCLGenerator() {
 		try {
 			Class generatorClass = Class.forName(
-				PropsUtil.get("iocl.generator.class"));
+				PropsUtil.get("iocl.visitor.class"));
 
 			_generator = (Visitor)generatorClass.newInstance();
 		}
@@ -25,12 +25,12 @@ public class IOCLGenerator {
 	}
 	
 	private String _generate(OclExpression expression) {
-		return expression.accept(_generator);
+		return (String)expression.accept(_generator);
 	}
 	
 	private static IOCLGenerator _instance = new IOCLGenerator();
 	
-	private static Visitor _generator;
+	private Visitor _generator;
 	
 	private Logger _log = Logger.getLogger(IOCLGenerator.class);
 }

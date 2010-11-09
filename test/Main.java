@@ -18,11 +18,14 @@
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.ioclengine.IOCLEngine;
 import org.orcas.ioclengine.exception.IOCLException;
+import org.orcas.ioclgenerator.IOCLGenerator;
 
 public class Main {
 
 	public static void main(String[] args) throws IOCLException {
-		 OclExpression exp = IOCLEngine.parse(null, "var a:Teste := new Teste();");
+		 OclExpression exp = IOCLEngine.parse(null, "var a:String := 'marcellus';");
+		 
+		 System.out.println(IOCLGenerator.generate(exp));
 	}
 
 }

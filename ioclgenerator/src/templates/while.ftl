@@ -1,1 +1,3 @@
-while (${conditionResult}) ${bodyResult}
+while (${conditionResult}) {
+${bodyResult}
+}

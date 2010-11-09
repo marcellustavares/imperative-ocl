@@ -182,17 +182,17 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	protected String handleInstantiationExp(
-		InstantiationExp instantiationExp, String className, 
+		InstantiationExp instantiationExp, String className,
 		List<String> packageResults, List<String> argumentResults) {
 
 		_map.clear();
 		_map.put("className", className);
 		_map.put("packageResults", packageResults);
 		_map.put("argumentResults", argumentResults);
-		
+
 		return TemplateUtil.process(Template.INSTANTIATION, _map);
 	}
-	
+
 	protected String handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp) {
 
@@ -539,6 +539,24 @@ public class JavaVisitor extends AbstractVisitor<String> {
 
 	private String _getType(Type type) {
 		if (type != null) {
+			if (type instanceof PathType) {
+				PathType pathType = (PathType)type;
+
+				StringBuilder sb = new StringBuilder();
+
+				List<String> qualifiedName =  pathType.getQualifiedName();
+
+				for (int i = 0; i < qualifiedName.size(); i++) {
+					sb.append(qualifiedName.get(i));
+
+					if ((i + 1) != qualifiedName.size()) {
+						sb.append(StringPool.DOT);
+					}
+				}
+
+				return sb.toString();
+			}
+
 			return type.getName();
 		}
 

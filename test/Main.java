@@ -15,16 +15,46 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.ioclengine.IOCLEngine;
-import org.orcas.ioclengine.exception.IOCLException;
 import org.orcas.ioclgenerator.IOCLGenerator;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class Main {
 
-	public static void main(String[] args) throws IOCLException {
-		 OclExpression exp = IOCLEngine.parse(null, "var a:String := 'marcellus';");
-		 
+	public static void saveXML(OclExpression exp) throws IOException {
+		ResourceSet resourceSet = new ResourceSetImpl();
+
+		Map<String, Object> map = 
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
+
+		map.put("xml", new  XMLResourceFactoryImpl());
+
+		File file = new File("expression.xml");
+
+		URI fileUri = URI.createFileURI(file.getAbsolutePath());
+
+		Resource resource = resourceSet.createResource(fileUri);
+
+		resource.getContents().add(exp);
+
+		resource.save(null);
+	}
+
+	public static void main(String[] args) throws Exception {
+		 OclExpression exp = IOCLEngine.parse(
+			 null, "a := 'Hello World!'; ");
+
+		 // saveXML(exp);
+
 		 System.out.println(IOCLGenerator.generate(exp));
 	}
 

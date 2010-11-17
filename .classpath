@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/kobra.jar"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="lib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/emf-xmi.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

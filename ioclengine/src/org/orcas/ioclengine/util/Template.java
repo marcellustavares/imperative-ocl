@@ -71,7 +71,7 @@ public enum Template {
 
 	ENUM_LITERAL("enumLiteral"),
 
-	EQUAL("="),
+	EQUAL("eq"),
 
 	EXCLUDES("excludes"),
 
@@ -89,9 +89,9 @@ public enum Template {
 
 	FOR_ALL("forAll"),
 
-	GT(">"),
+	GT("gt"),
 
-	GTE(">="),
+	GTE("gte"),
 
 	INCLUDES("includes"),
 
@@ -113,15 +113,15 @@ public enum Template {
 
 	LAST("last"),
 
-	LT("<"),
+	LT("lt"),
 
-	LTE("<="),
+	LTE("lte"),
 
 	MAX("max"),
 
 	MIN("min"),
 
-	MINUS("-"),
+	MINUS("minus"),
 
 	MOD("mod"),
 
@@ -129,7 +129,7 @@ public enum Template {
 
 	NOT_EMPTY("not"),
 
-	NOT_EQUAL("<>"),
+	NOT_EQUAL("notEqual"),
 
 	OCL_AS_TYPE("oclAsType"),
 

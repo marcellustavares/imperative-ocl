@@ -17,11 +17,6 @@
 
 package org.orcas.ioclgenerator.java;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.orcas.iocl.expression.emof.Enumeration;
 import org.orcas.iocl.expression.emof.EnumerationLiteral;
 import org.orcas.iocl.expression.emof.Package;
@@ -63,6 +58,11 @@ import org.orcas.ioclengine.util.StringPool;
 import org.orcas.ioclengine.util.Template;
 import org.orcas.ioclengine.util.TemplateUtil;
 import org.orcas.ioclgenerator.AbstractVisitor;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class JavaVisitor extends AbstractVisitor<String> {
 
@@ -287,7 +287,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 					case TO_REAL:
 					case TO_UPPER:
 						Template template = Template.getByName(
-							operation.getOperationName());
+							_getTemplateName(operation.getOperationName()));
 
 						result = TemplateUtil.process(template, _map);
 
@@ -359,7 +359,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 					case UNION:
 					case XOR:
 						Template template = Template.getByName(
-							operation.getOperationName());
+							_getTemplateName(operation.getOperationName()));
 
 						result = TemplateUtil.process(template, _map);
 
@@ -514,6 +514,14 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.WHILE, _map);
 	}
 
+	private String _getTemplateName(String operationName) {
+		if (_templateMap.containsKey(operationName)) {
+			return _templateMap.get(operationName);
+		}
+
+		return operationName;
+	}
+
 	private String _getType(OclExpression oclExpression) {
 		if (oclExpression instanceof BooleanLiteralExp) {
 			return StringPool.BOOLEAN;
@@ -564,5 +572,16 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 	private Map<String, Object> _map = new HashMap<String, Object>();
+	private Map<String, String> _templateMap = new HashMap<String, String>();
+
+	{
+		_templateMap.put("-", "minus");
+		_templateMap.put("<", "lt");
+		_templateMap.put("<=", "lte");
+		_templateMap.put(">", "gt");
+		_templateMap.put(">=", "gte");
+		_templateMap.put("=", "eq");
+		_templateMap.put("<>", "notEqual");
+	}
 
 }

@@ -248,7 +248,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		String result = null;
 
 		OclExpression source = operationCallExp.getSource();
-		Boolean isImperativeOperation = 
+		Boolean isImperativeOperation =
 			operationCallExp.getIsImperativeOperation();
 
 		int argumentsSize = argResults.size();

@@ -1,1 +1,5 @@
-(${conditionResult}) ${bodyResult}
+<#compress>
+(${conditionResult}) { 
+${bodyResult}
+}
+</#compress>

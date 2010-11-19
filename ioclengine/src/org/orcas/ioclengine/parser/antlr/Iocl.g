@@ -49,6 +49,7 @@ FOR = 'for';
 GT = '>';
 GTE = '>=';
 IF = 'if';
+IMPERATIVE_OPERATION_CALL;
 ITERATE = 'iterate';
 ITERATOR;
 IS = ':=';
@@ -286,10 +287,11 @@ imperativeExp
 	| tryExp
 	| forExp
 	| instantiationExp
+	| imperativeOperationCallExp
 	;
 
 blockExp
-	: DO? LCURLY oclExpression* RCURLY -> ^(BLOCK oclExpression*)
+	: DO? LCURLY imperativeExp* RCURLY -> ^(BLOCK imperativeExp*)
 	;
 
 breakExp
@@ -305,7 +307,7 @@ continueExp
 	;
 
 returnExp
-	: RETURN oclExpression? SEMICOLON -> ^(RETURN oclExpression?)
+	: RETURN logicalExp? SEMICOLON -> ^(RETURN logicalExp?)
 	;
 
 variableInitExp
@@ -317,11 +319,11 @@ imperativeVarDeclarations
 	;
 	
 imperativeVarDeclaration
-	: IDENTIFIER (':' type)? ((EQUAL | IS)  oclExpression)? -> ^(VARIABLE IDENTIFIER type? oclExpression?)
+	: IDENTIFIER (':' type)? ((EQUAL | IS)  logicalExp)? -> ^(VARIABLE IDENTIFIER type? logicalExp?)
 	;
 
 assignExp
-	: dotArrowExp (IS | APPEND)^ oclExpression SEMICOLON!
+	: dotArrowExp (IS | APPEND)^ logicalExp SEMICOLON!
 	;
 
 raiseExp
@@ -329,8 +331,8 @@ raiseExp
 	;
 
 whileExp
-	: WHILE LPAREN condition = oclExpression RPAREN 
-		body = oclExpression -> ^(WHILE $condition $body)
+	: WHILE LPAREN condition = logicalExp RPAREN 
+		body = imperativeExp -> ^(WHILE $condition $body)
 	;
 
 ifExp
@@ -346,15 +348,15 @@ elseExp
 	;
 	
 altExp 
-	: LPAREN condition = oclExpression RPAREN  body = oclExpression -> ^(ALT_EXP $condition $body)
+	: LPAREN condition = logicalExp RPAREN  body = imperativeExp -> ^(ALT_EXP $condition $body)
 	;
 
 tryExp
-	: TRY LCURLY oclExpression* RCURLY except -> ^(TRY oclExpression* except)
+	: TRY LCURLY imperativeExp* RCURLY except -> ^(TRY imperativeExp* except)
 	;
 
 except
-	: EXCEPT LPAREN type RPAREN LCURLY oclExpression* RCURLY -> ^(EXCEPT type oclExpression*)
+	: EXCEPT LPAREN type RPAREN LCURLY imperativeExp* RCURLY -> ^(EXCEPT type imperativeExp*)
 	;
 
 forExp	
@@ -368,7 +370,11 @@ iteratorList
 
 instantiationExp
 	: NEW^ pathName '('! arguments? ')'!
-	;	
+	;
+
+imperativeOperationCallExp
+	: dotArrowExp SEMICOLON -> ^(IMPERATIVE_OPERATION_CALL dotArrowExp)
+	;
 
 BOOLEAN_LITERAL
 	: 'true' 

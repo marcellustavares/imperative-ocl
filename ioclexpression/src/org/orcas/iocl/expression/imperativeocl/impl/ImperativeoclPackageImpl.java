@@ -1725,6 +1725,15 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOperationCallExp_IsImperativeOperation() {
+		return (EAttribute)operationCallExpEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRealLiteralExp() {
 		return realLiteralExpEClass;
 	}
@@ -2320,6 +2329,7 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 		createEReference(operationCallExpEClass, OPERATION_CALL_EXP__ARGUMENT);
 		createEReference(operationCallExpEClass, OPERATION_CALL_EXP__REFERRED_OPERATION);
 		createEAttribute(operationCallExpEClass, OPERATION_CALL_EXP__OPERATION_CODE);
+		createEAttribute(operationCallExpEClass, OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION);
 
 		realLiteralExpEClass = createEClass(REAL_LITERAL_EXP);
 		createEAttribute(realLiteralExpEClass, REAL_LITERAL_EXP__REAL_SYMBOL);
@@ -2668,6 +2678,7 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 		initEReference(getOperationCallExp_Argument(), this.getOclExpression(), null, "argument", null, 0, -1, OperationCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperationCallExp_ReferredOperation(), theEmofPackage.getOperation(), null, "referredOperation", null, 0, 1, OperationCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperationCallExp_OperationCode(), theEmofPackage.getInteger(), "operationCode", null, 0, 1, OperationCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationCallExp_IsImperativeOperation(), theEmofPackage.getBoolean(), "isImperativeOperation", null, 0, 1, OperationCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(realLiteralExpEClass, RealLiteralExp.class, "RealLiteralExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRealLiteralExp_RealSymbol(), theEmofPackage.getReal(), "realSymbol", null, 0, 1, RealLiteralExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -309,6 +309,8 @@
           eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredOperation" eType="#//emof/Operation"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationCode" eType="#//emof/Integer"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isImperativeOperation"
+          eType="#//emof/Boolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RealLiteralExp" eSuperTypes="#//imperativeocl/NumericLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="realSymbol" eType="#//emof/Real"/>

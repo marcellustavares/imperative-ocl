@@ -48,6 +48,7 @@ import org.orcas.iocl.expression.util.Visitor;
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.OperationCallExpImpl#getArgument <em>Argument</em>}</li>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.OperationCallExpImpl#getReferredOperation <em>Referred Operation</em>}</li>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.OperationCallExpImpl#getOperationCode <em>Operation Code</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.OperationCallExpImpl#getIsImperativeOperation <em>Is Imperative Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,6 +94,26 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 	 * @ordered
 	 */
 	protected Integer operationCode = OPERATION_CODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIsImperativeOperation() <em>Is Imperative Operation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIsImperativeOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean IS_IMPERATIVE_OPERATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIsImperativeOperation() <em>Is Imperative Operation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIsImperativeOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean isImperativeOperation = IS_IMPERATIVE_OPERATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +210,27 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Boolean getIsImperativeOperation() {
+		return isImperativeOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsImperativeOperation(Boolean newIsImperativeOperation) {
+		Boolean oldIsImperativeOperation = isImperativeOperation;
+		isImperativeOperation = newIsImperativeOperation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImperativeoclPackage.OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION, oldIsImperativeOperation, isImperativeOperation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -213,6 +255,8 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 				return basicGetReferredOperation();
 			case ImperativeoclPackage.OPERATION_CALL_EXP__OPERATION_CODE:
 				return getOperationCode();
+			case ImperativeoclPackage.OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION:
+				return getIsImperativeOperation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -236,6 +280,9 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 			case ImperativeoclPackage.OPERATION_CALL_EXP__OPERATION_CODE:
 				setOperationCode((Integer)newValue);
 				return;
+			case ImperativeoclPackage.OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION:
+				setIsImperativeOperation((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -257,6 +304,9 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 			case ImperativeoclPackage.OPERATION_CALL_EXP__OPERATION_CODE:
 				setOperationCode(OPERATION_CODE_EDEFAULT);
 				return;
+			case ImperativeoclPackage.OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION:
+				setIsImperativeOperation(IS_IMPERATIVE_OPERATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -275,6 +325,8 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 				return referredOperation != null;
 			case ImperativeoclPackage.OPERATION_CALL_EXP__OPERATION_CODE:
 				return OPERATION_CODE_EDEFAULT == null ? operationCode != null : !OPERATION_CODE_EDEFAULT.equals(operationCode);
+			case ImperativeoclPackage.OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION:
+				return IS_IMPERATIVE_OPERATION_EDEFAULT == null ? isImperativeOperation != null : !IS_IMPERATIVE_OPERATION_EDEFAULT.equals(isImperativeOperation);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -291,6 +343,8 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operationCode: ");
 		result.append(operationCode);
+		result.append(", isImperativeOperation: ");
+		result.append(isImperativeOperation);
 		result.append(')');
 		return result.toString();
 	}

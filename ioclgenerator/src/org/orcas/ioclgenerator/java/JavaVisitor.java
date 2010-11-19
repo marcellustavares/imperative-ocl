@@ -248,6 +248,8 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		String result = null;
 
 		OclExpression source = operationCallExp.getSource();
+		Boolean isImperativeOperation = 
+			operationCallExp.getIsImperativeOperation();
 
 		int argumentsSize = argResults.size();
 		int operationCode = operationCallExp.getOperationCode();
@@ -259,6 +261,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 			_map.put("sourceResult", sourceResult);
 			_map.put("operation", operationCallExp.getName());
 			_map.put("argResults", argResults);
+			_map.put("isImperativeOperation", isImperativeOperation);
 
 			return TemplateUtil.process(Template.CUSTOM, _map);
 		}
@@ -267,6 +270,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 			case 0:
 				_map.clear();
 				_map.put("sourceResult", sourceResult);
+				_map.put("isImperativeOperation", isImperativeOperation);
 
 				switch (operation) {
 					case ABS:

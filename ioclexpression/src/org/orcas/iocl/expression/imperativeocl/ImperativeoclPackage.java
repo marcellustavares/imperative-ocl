@@ -2154,13 +2154,22 @@ public interface ImperativeoclPackage extends EPackage {
 	int OPERATION_CALL_EXP__OPERATION_CODE = FEATURE_PROPERTY_CALL_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Is Imperative Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION = FEATURE_PROPERTY_CALL_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Operation Call Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_CALL_EXP_FEATURE_COUNT = FEATURE_PROPERTY_CALL_FEATURE_COUNT + 3;
+	int OPERATION_CALL_EXP_FEATURE_COUNT = FEATURE_PROPERTY_CALL_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.orcas.iocl.expression.imperativeocl.impl.LogExpImpl <em>Log Exp</em>}' class.
@@ -2243,6 +2252,15 @@ public interface ImperativeoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOG_EXP__OPERATION_CODE = OPERATION_CALL_EXP__OPERATION_CODE;
+
+	/**
+	 * The feature id for the '<em><b>Is Imperative Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_EXP__IS_IMPERATIVE_OPERATION = OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -6358,6 +6376,17 @@ public interface ImperativeoclPackage extends EPackage {
 	EAttribute getOperationCallExp_OperationCode();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getIsImperativeOperation <em>Is Imperative Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Imperative Operation</em>'.
+	 * @see org.orcas.iocl.expression.imperativeocl.OperationCallExp#getIsImperativeOperation()
+	 * @see #getOperationCallExp()
+	 * @generated
+	 */
+	EAttribute getOperationCallExp_IsImperativeOperation();
+
+	/**
 	 * Returns the meta object for class '{@link org.orcas.iocl.expression.imperativeocl.RealLiteralExp <em>Real Literal Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7852,6 +7881,14 @@ public interface ImperativeoclPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATION_CALL_EXP__OPERATION_CODE = eINSTANCE.getOperationCallExp_OperationCode();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Imperative Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION_CALL_EXP__IS_IMPERATIVE_OPERATION = eINSTANCE.getOperationCallExp_IsImperativeOperation();
 
 		/**
 		 * The meta object literal for the '{@link org.orcas.iocl.expression.imperativeocl.impl.RealLiteralExpImpl <em>Real Literal Exp</em>}' class.

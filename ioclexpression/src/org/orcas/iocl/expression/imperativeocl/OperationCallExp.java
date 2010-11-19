@@ -31,6 +31,7 @@ import org.orcas.iocl.expression.emof.Operation;
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getArgument <em>Argument</em>}</li>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getReferredOperation <em>Referred Operation</em>}</li>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getOperationCode <em>Operation Code</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getIsImperativeOperation <em>Is Imperative Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,5 +107,31 @@ public interface OperationCallExp extends FeaturePropertyCall {
 	 * @generated
 	 */
 	void setOperationCode(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Imperative Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Imperative Operation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Imperative Operation</em>' attribute.
+	 * @see #setIsImperativeOperation(Boolean)
+	 * @see org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage#getOperationCallExp_IsImperativeOperation()
+	 * @model dataType="org.orcas.iocl.expression.emof.Boolean"
+	 * @generated
+	 */
+	Boolean getIsImperativeOperation();
+
+	/**
+	 * Sets the value of the '{@link org.orcas.iocl.expression.imperativeocl.OperationCallExp#getIsImperativeOperation <em>Is Imperative Operation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Imperative Operation</em>' attribute.
+	 * @see #getIsImperativeOperation()
+	 * @generated
+	 */
+	void setIsImperativeOperation(Boolean value);
 
 } // OperationCallExp

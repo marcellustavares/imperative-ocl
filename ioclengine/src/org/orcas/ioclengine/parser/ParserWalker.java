@@ -374,6 +374,17 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.IMPERATIVE_OPERATION_CALL:
+				oclExpression = walk(tree.getChild(0));
+
+				if (oclExpression instanceof OperationCallExp) {
+					operationCallExp = (OperationCallExp)oclExpression;
+
+					operationCallExp.setIsImperativeOperation(true);
+				}
+
+				break;
+
 			case IoclParser.INTEGER_LITERAL:
 				IntegerLiteralExp integerLiteralExp =
 					getFactory().createIntegerLiteralExp();

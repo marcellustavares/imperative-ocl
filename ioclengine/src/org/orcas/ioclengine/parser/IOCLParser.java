@@ -37,8 +37,6 @@ public class IOCLParser {
 
 			Tree tree = (Tree) r.getTree();
 
-			System.out.println(tree.toStringTree());
-
 			ParserWalker walker = new ParserWalker();
 
 			return walker.walk(tree);

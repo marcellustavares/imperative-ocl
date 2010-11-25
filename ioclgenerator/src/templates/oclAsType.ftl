@@ -1,9 +1,9 @@
 <#compress>
-<#if argResult == 'Integer'>
-new Integer(${sourceResult})
-<#elseif argResult == 'Real'>
-new Double(${sourceResult})
+<#if argResult == 'Real'>
+(Double)${sourceResult}
 <#elseif argResult == 'String'>
 ${sourceResult}.toString()
+<#else>
+(${argResult})${sourceResult}
 </#if>
 </#compress>

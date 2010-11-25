@@ -57,16 +57,16 @@ import org.orcas.ioclengine.util.PathType;
 import org.orcas.ioclengine.util.StringPool;
 import org.orcas.ioclengine.util.Template;
 import org.orcas.ioclengine.util.TemplateUtil;
-import org.orcas.ioclgenerator.AbstractVisitor;
+import org.orcas.ioclgenerator.Handler;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class JavaVisitor extends AbstractVisitor<String> {
+public class JavaHandler implements Handler<String> {
 
-	protected String handleAltExp(
+	public String handleAltExp(
 		AltExp altExp, String conditionResult, String bodyResult) {
 
 		_map.clear();
@@ -76,7 +76,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.ALT, _map);
 	}
 
-	protected String handleAssignExp(
+	public String handleAssignExp(
 		AssignExp assignExp, String leftResult, String defaultValueResult) {
 
 		_map.clear();
@@ -86,7 +86,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.ASSIGN, _map);
 	}
 
-	protected String handleBlockExp(
+	public String handleBlockExp(
 		BlockExp blockExp, List<String> bodyResults) {
 
 		_map.clear();
@@ -95,17 +95,17 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.BLOCK, _map);
 	}
 
-	protected String handleBooleanLiteralExp(
+	public String handleBooleanLiteralExp(
 		BooleanLiteralExp booleanLiteralExp) {
 
 		return booleanLiteralExp.getBooleanSymbol().toString();
 	}
 
-	protected String handleBreakExp(BreakExp breakExp) {
+	public String handleBreakExp(BreakExp breakExp) {
 		return TemplateUtil.process(Template.BREAK, null);
 	}
 
-	protected String handleCatchExp(
+	public String handleCatchExp(
 		CatchExp catchExp, List<String> typeResults, List<String> bodyResults) {
 
 		_map.clear();
@@ -115,13 +115,13 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.CATCH, _map);
 	}
 
-	protected String handleCollectionItem(
+	public String handleCollectionItem(
 		CollectionItem collectionItem, String collectionItemResult) {
 
 		return collectionItemResult;
 	}
 
-	protected String handleCollectionLiteralExp(
+	public String handleCollectionLiteralExp(
 		CollectionLiteralExp collectionLiteralExp, List<String> partResults) {
 
 		_map.clear();
@@ -134,7 +134,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.COLLECTION, _map);
 	}
 
-	protected String handleComputeExp(
+	public String handleComputeExp(
 		ComputeExp computeExp, String variableResult, String bodyResult) {
 
 		_map.clear();
@@ -145,11 +145,11 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.COMPUTE, _map);
 	}
 
-	protected String handleContinueExp(ContinueExp continueExp) {
+	public String handleContinueExp(ContinueExp continueExp) {
 		return TemplateUtil.process(Template.CONTINUE, null);
 	}
 
-	protected String handleEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
+	public String handleEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
 		EnumerationLiteral enumerationLiteral =
 			enumLiteralExp.getReferredEnumLiteral();
 
@@ -162,7 +162,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.ENUM_LITERAL, _map);
 	}
 
-	protected String handleForExp(
+	public String handleForExp(
 		ForExp forExp, String conditionResult, String bodyResult,
 		List<String> variableResults, String sourceResult) {
 
@@ -181,7 +181,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.FOR, _map);
 	}
 
-	protected String handleInstantiationExp(
+	public String handleInstantiationExp(
 		InstantiationExp instantiationExp, String className,
 		List<String> packageResults, List<String> argumentResults) {
 
@@ -193,13 +193,13 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.INSTANTIATION, _map);
 	}
 
-	protected String handleIntegerLiteralExp(
+	public String handleIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp) {
 
 		return integerLiteralExp.getIntegerSymbol().toString();
 	}
 
-	protected String handleIterateExp(
+	public String handleIterateExp(
 		IterateExp iterateExp, String sourceResult,
 		List<String> variableResults, String resultResult, String bodyResult) {
 
@@ -216,7 +216,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 	}
 
 
-	protected String handleIteratorExp(
+	public String handleIteratorExp(
 		IteratorExp iteratorExp, String sourceResult,
 		List<String> variableResults, String bodyResult) {
 
@@ -241,7 +241,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(template, _map);
 	}
 
-	protected String handleOperationCallExp(
+	public String handleOperationCallExp(
 		OperationCallExp operationCallExp, String sourceResult,
 		List<String> argResults) {
 
@@ -408,11 +408,11 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return result;
 	}
 
-	protected String handlePackage(Package pkg) {
+	public String handlePackage(Package pkg) {
 		return pkg.getName();
 	}
 
-	protected String handlePropertyCallExp(
+	public String handlePropertyCallExp(
 		PropertyCallExp propertyCallExp, String sourceResult) {
 
 		Property referredProperty = propertyCallExp.getReferredProperty();
@@ -424,7 +424,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.PROPERTY_CALL, _map);
 	}
 
-	protected String handleRaiseExp(RaiseExp raiseExp, String typeResult) {
+	public String handleRaiseExp(RaiseExp raiseExp, String typeResult) {
 		_map.clear();
 		_map.put("typeResult", typeResult);
 		_map.put("exceptionMessage", raiseExp.getExceptionMessage());
@@ -432,22 +432,22 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.RAISE, _map);
 	}
 
-	protected String handleRealLiteralExp(RealLiteralExp realLiteralExp) {
+	public String handleRealLiteralExp(RealLiteralExp realLiteralExp) {
 		return realLiteralExp.getRealSymbol().toString();
 	}
 
-	protected String handleReturnExp(ReturnExp returnExp, String returnResult) {
+	public String handleReturnExp(ReturnExp returnExp, String returnResult) {
 		_map.clear();
 		_map.put("returnResult", returnResult);
 
 		return TemplateUtil.process(Template.RETURN, _map);
 	}
 
-	protected String handleStringLiteralExp(StringLiteralExp stringLiteralExp) {
+	public String handleStringLiteralExp(StringLiteralExp stringLiteralExp) {
 		return "\"" + stringLiteralExp.getStringSymbol() + "\"";
 	}
 
-	protected String handleSwitchExp(
+	public String handleSwitchExp(
 		SwitchExp switchExp, List<String> altPartResults, String elseResult) {
 
 		_map.clear();
@@ -457,7 +457,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.SWITCH, _map);
 	}
 
-	protected String handleTryExp(
+	public String handleTryExp(
 		TryExp tryExp, List<String> bodyResults, List<String> catchResults) {
 
 		_map.clear();
@@ -467,7 +467,7 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.TRY, _map);
 	}
 
-	protected String handleType(Type type) {
+	public String handleType(Type type) {
 		StringBuilder typeBuilder = new StringBuilder();
 
 		if (type instanceof PathType) {
@@ -490,11 +490,11 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return typeBuilder.toString();
 	}
 
-	protected String handleTypeExp(TypeExp typeExp) {
+	public String handleTypeExp(TypeExp typeExp) {
 		return handleType(typeExp.getReferredType());
 	}
 
-	protected String handleVariable(Variable variable, String initResult) {
+	public String handleVariable(Variable variable, String initResult) {
 		_map.clear();
 		_map.put("initResult", initResult);
 		_map.put("name", variable.getName());
@@ -503,12 +503,12 @@ public class JavaVisitor extends AbstractVisitor<String> {
 		return TemplateUtil.process(Template.VARIABLE, _map);
 	}
 
-	protected String handleVariableInitExp(VariableInitExp variableInitExp) {
+	public String handleVariableInitExp(VariableInitExp variableInitExp) {
 
 		return null;
 	}
 
-	protected String handleWhileExp(
+	public String handleWhileExp(
 		WhileExp whileExp, String conditionResult, String bodyResult) {
 
 		_map.clear();

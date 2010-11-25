@@ -54,13 +54,17 @@ import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expression.imperativeocl.WhileExp;
 import org.orcas.ioclengine.helper.EAbstractVisitor;
 
-public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
+public class Visitor<T> extends EAbstractVisitor<T> {
+
+	public Visitor(Handler<T> handler) {
+		_handler = handler;
+	}
 
 	public T visitAltExp(AltExp altExp) {
 		T conditionResult = visit(altExp.getCondition());
 		T bodyResult = visit(altExp.getBody());
 
-		return handleAltExp(altExp, conditionResult, bodyResult);
+		return _handler.handleAltExp(altExp, conditionResult, bodyResult);
 	}
 
 	public T visitAssignExp(AssignExp assignExp) {
@@ -68,7 +72,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T defaultValueResult = visit(assignExp.getDefaultValue());
 
-		return handleAssignExp(assignExp, leftResult, defaultValueResult);
+		return _handler.handleAssignExp(
+			assignExp, leftResult, defaultValueResult);
 	}
 
 	public T visitBlockExp(BlockExp blockExp) {
@@ -80,15 +85,15 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			bodyResults.add(visit(bodyPart));
 		}
 
-		return handleBlockExp(blockExp, bodyResults);
+		return _handler.handleBlockExp(blockExp, bodyResults);
 	}
 
 	public T visitBooleanLiteralExp(BooleanLiteralExp booleanLiteralExp) {
-		return handleBooleanLiteralExp(booleanLiteralExp);
+		return _handler.handleBooleanLiteralExp(booleanLiteralExp);
 	}
 
 	public T visitBreakExp(BreakExp breakExp) {
-		return handleBreakExp(breakExp);
+		return _handler.handleBreakExp(breakExp);
 	}
 
 	public T visitCatchExp(CatchExp catchExp) {
@@ -97,7 +102,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		List<Type> exceptions = catchExp.getException();
 
 		for (Type exception : exceptions) {
-			typeResults.add(handleType(exception));
+			typeResults.add(_handler.handleType(exception));
 		}
 
 		List<T> bodyResults = new ArrayList<T>();
@@ -108,13 +113,13 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			bodyResults.add(visit(bodyPart));
 		}
 
-		return handleCatchExp(catchExp, typeResults, bodyResults);
+		return _handler.handleCatchExp(catchExp, typeResults, bodyResults);
 	}
 
 	public T visitCollectionItem(CollectionItem collectionItem) {
 		T collectionItemResult = visit(collectionItem.getItem());
 
-		return handleCollectionItem(collectionItem, collectionItemResult);
+		return _handler.handleCollectionItem(collectionItem, collectionItemResult);
 	}
 
 	public T visitCollectionLiteralExp(
@@ -128,7 +133,8 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			partResults.add(visit(part));
 		}
 
-		return handleCollectionLiteralExp(collectionLiteralExp, partResults);
+		return _handler.handleCollectionLiteralExp(
+			collectionLiteralExp, partResults);
 	}
 
 	public T visitComputeExp(ComputeExp computeExp) {
@@ -136,15 +142,16 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T bodyResult = visit(computeExp.getBody());
 
-		return handleComputeExp(computeExp, variableResult, bodyResult);
+		return _handler.handleComputeExp(
+			computeExp, variableResult, bodyResult);
 	}
 
 	public T visitContinueExp(ContinueExp continueExp) {
-		return handleContinueExp(continueExp);
+		return _handler.handleContinueExp(continueExp);
 	}
 
 	public T visitEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
-		return handleEnumLiteralExp(enumLiteralExp);
+		return _handler.handleEnumLiteralExp(enumLiteralExp);
 	}
 
 	public T visitForExp(ForExp forExp) {
@@ -161,7 +168,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T sourceResult = visit(forExp.getSource());
 
-		return handleForExp(
+		return _handler.handleForExp(
 			forExp, conditionResult, bodyResult, variableResults, sourceResult);
 	}
 
@@ -181,10 +188,10 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			for (org.orcas.iocl.expression.emof.Package nestedPackage :
 				 nestedPackages) {
 
-				packageResults.add(handlePackage(nestedPackage));
+				packageResults.add(_handler.handlePackage(nestedPackage));
 			}
 
-			packageResults.add(handlePackage(classPackage));
+			packageResults.add(_handler.handlePackage(classPackage));
 		}
 
 		List<T> argumentResults = new ArrayList<T>();
@@ -195,14 +202,14 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			argumentResults.add(visit(argument));
 		}
 
-		return handleInstantiationExp(
+		return _handler.handleInstantiationExp(
 			instantiationExp, instantiatedClass.getName(), packageResults,
 			argumentResults);
 	}
 
 
 	public T visitIntegerLiteralExp(IntegerLiteralExp integerLiteralExp) {
-		return handleIntegerLiteralExp(integerLiteralExp);
+		return _handler.handleIntegerLiteralExp(integerLiteralExp);
 	}
 
 	public T visitIterateExp(IterateExp iterateExp) {
@@ -219,7 +226,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 		T resultResult = visit(iterateExp.getResult());
 		T bodyResult = visit(iterateExp.getBody());
 
-		return handleIterateExp(
+		return _handler.handleIterateExp(
 			iterateExp, sourceResult, variableResults, resultResult,
 			bodyResult);
 	}
@@ -237,7 +244,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T bodyResult = visit(iteratorExp.getBody());
 
-		return handleIteratorExp(
+		return _handler.handleIteratorExp(
 			iteratorExp, sourceResult, variableResults, bodyResult);
 	}
 
@@ -251,38 +258,38 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			argResults.add(visit(arg));
 		}
 
-		return handleOperationCallExp(
+		return _handler.handleOperationCallExp(
 			operationCallExp, sourceResult, argResults);
 	}
 
 	public T visitPropertyCallExp(PropertyCallExp propertyCallExp) {
 		T sourceResult = visit(propertyCallExp.getSource());
 
-		return handlePropertyCallExp(propertyCallExp, sourceResult);
+		return _handler.handlePropertyCallExp(propertyCallExp, sourceResult);
 	}
 
 	public T visitRaiseExp(RaiseExp raiseExp) {
 		T typeResult = null;
 
 		if (raiseExp.getException() != null) {
-			typeResult = handleType(raiseExp.getException());
+			typeResult = _handler.handleType(raiseExp.getException());
 		}
 
-		return handleRaiseExp(raiseExp, typeResult);
+		return _handler.handleRaiseExp(raiseExp, typeResult);
 	}
 
 	public T visitRealLiteralExp(RealLiteralExp realLiteralExp) {
-		return handleRealLiteralExp(realLiteralExp);
+		return _handler.handleRealLiteralExp(realLiteralExp);
 	}
 
 	public T visitReturnExp(ReturnExp returnExp) {
 		T returnResult = visit(returnExp.getValue());
 
-		return handleReturnExp(returnExp, returnResult);
+		return _handler.handleReturnExp(returnExp, returnResult);
 	}
 
 	public T visitStringLiteralExp(StringLiteralExp stringLiteralExp) {
-		return handleStringLiteralExp(stringLiteralExp);
+		return _handler.handleStringLiteralExp(stringLiteralExp);
 	}
 
 	public T visitSwitchExp(SwitchExp switchExp) {
@@ -296,7 +303,7 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T elseResult = visit(switchExp.getElsePart());
 
-		return handleSwitchExp(switchExp, altPartResults, elseResult);
+		return _handler.handleSwitchExp(switchExp, altPartResults, elseResult);
 	}
 
 
@@ -317,17 +324,17 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 			catchResults.add(visit(catchExp));
 		}
 
-		return handleTryExp(tryExp, bodyResults, catchResults);
+		return _handler.handleTryExp(tryExp, bodyResults, catchResults);
 	}
 
 	public T visitTypeExp(TypeExp typeExp) {
-		return handleTypeExp(typeExp);
+		return _handler.handleTypeExp(typeExp);
 	}
 
 	public T visitVariable(Variable variable) {
 		T initResult = visit(variable.getInitExpression());
 
-		return handleVariable(variable, initResult);
+		return _handler.handleVariable(variable, initResult);
 	}
 
 	public T visitVariableExp(VariableExp variableExp) {
@@ -347,90 +354,9 @@ public abstract class AbstractVisitor<T> extends EAbstractVisitor<T> {
 
 		T bodyResult = visit(whileExp.getBody());
 
-		return handleWhileExp(whileExp, conditionResult, bodyResult);
+		return _handler.handleWhileExp(whileExp, conditionResult, bodyResult);
 	}
 
-	protected abstract T handleAltExp(
-		AltExp altExp, T conditionResult, T bodyResult);
-
-	protected abstract T handleAssignExp(
-		AssignExp assignExp, T leftResult, T defaultValueResult);
-
-	protected abstract T handleBlockExp(BlockExp blockExp, List<T> bodyResults);
-
-	protected abstract T handleBooleanLiteralExp(
-		BooleanLiteralExp booleanLiteralExp);
-
-	protected abstract T handleBreakExp(BreakExp breakExp);
-
-	protected abstract T handleCatchExp(
-		CatchExp catchExp, List<T> typeResults, List<T> bodyResults);
-
-	protected abstract T handleCollectionItem(
-		CollectionItem collectionItem, T collectionItemResult);
-
-	protected abstract T handleCollectionLiteralExp(
-		CollectionLiteralExp collectionLiteralExp, List<T> partResults);
-
-	protected abstract T handleComputeExp(
-		ComputeExp computeExp, T variableResult, T bodyResult);
-
-	protected abstract T handleContinueExp(ContinueExp continueExp);
-
-	protected abstract T handleEnumLiteralExp(EnumLiteralExp enumLiteralExp);
-
-	protected abstract T handleForExp(
-		ForExp forExp, T conditionResult, T bodyResult, List<T> variableResults,
-		T sourceResult);
-
-	protected abstract T handleInstantiationExp(
-		InstantiationExp instantiationExp, String className,
-		List<T> packageResults, List<T> argumentResults);
-
-	protected abstract T handleIntegerLiteralExp(
-		IntegerLiteralExp integerLiteralExp);
-
-	protected abstract T handleIterateExp(
-		IterateExp iterateExp, T sourceResult, List<T> variableResults,
-		T resultResult, T bodyResult);
-
-	protected abstract T handleIteratorExp(
-		IteratorExp iteratorExp, T sourceResult, List<T> variableResults,
-		T bodyResult);
-
-	protected abstract T handleOperationCallExp(
-		OperationCallExp operationCallExp, T sourceResult, List<T> argResults);
-
-	protected abstract T handlePackage(
-		org.orcas.iocl.expression.emof.Package pkg);
-
-	protected abstract T handlePropertyCallExp(
-		PropertyCallExp propertyCallExp, T sourceResult);
-
-	protected abstract T handleRaiseExp(RaiseExp raiseExp, T typeResult);
-
-	protected abstract T handleRealLiteralExp(RealLiteralExp realLiteralExp);
-
-	protected abstract T handleReturnExp(ReturnExp returnExp, T valueResult);
-
-	protected abstract T handleStringLiteralExp(
-		StringLiteralExp stringLiteralExp);
-
-	protected abstract T handleSwitchExp(
-		SwitchExp switchExp, List<T> altPartResults, T elseResult);
-
-	protected abstract T handleTryExp(
-		TryExp tryExp, List<T> bodyResults, List<T> catchResults);
-
-	protected abstract T handleType(Type type);
-
-	protected abstract T handleTypeExp(TypeExp typeExp);
-
-	protected abstract T handleVariable(Variable variable, T initResult);
-
-	protected abstract T handleVariableInitExp(VariableInitExp variableInitExp);
-
-	protected abstract T handleWhileExp(
-		WhileExp whileExp, T conditionResult, T bodyResult);
+	private Handler<T> _handler;
 
 }

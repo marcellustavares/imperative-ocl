@@ -19,7 +19,6 @@ package org.orcas.ioclgenerator;
 
 import org.apache.log4j.Logger;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
-import org.orcas.iocl.expression.util.Visitor;
 import org.orcas.ioclgenerator.util.PropsUtil;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
@@ -28,9 +27,11 @@ public class IOCLGenerator {
 	private IOCLGenerator() {
 		try {
 			Class generatorClass = Class.forName(
-				PropsUtil.get("iocl.visitor.class"));
+				PropsUtil.get("iocl.handler.class"));
 
-			_generator = (Visitor)generatorClass.newInstance();
+			Handler handler = (Handler)generatorClass.newInstance();
+
+			_visitor = new Visitor(handler);
 		}
 		catch (Exception e) {
 			_log.error(e);
@@ -42,12 +43,12 @@ public class IOCLGenerator {
 	}
 
 	private String _generate(OclExpression expression) {
-		return (String)expression.accept(_generator);
+		return (String)expression.accept(_visitor);
 	}
 
 	private static IOCLGenerator _instance = new IOCLGenerator();
 
-	private Visitor _generator;
+	private Visitor _visitor;
 
 	private Logger _log = Logger.getLogger(IOCLGenerator.class);
 

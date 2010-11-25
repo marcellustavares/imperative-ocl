@@ -34,6 +34,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expression.imperativeocl.RaiseExp;
@@ -194,6 +195,14 @@ public interface Visitor<T> extends EObject {
 	 * @generated
 	 */
 	T visitOperationCallExp(OperationCallExp operationCallExp);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	T visitNullLiteralExp(NullLiteralExp nullLiteralExp);
 
 	/**
 	 * <!-- begin-user-doc -->

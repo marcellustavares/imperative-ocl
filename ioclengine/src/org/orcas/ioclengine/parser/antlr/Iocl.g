@@ -135,7 +135,12 @@ multiplicativeExp
 
 unaryExp
 	: (MINUS | NOT)^ unaryExp
+	| instantiationExp
 	| dotArrowExp
+	;
+
+instantiationExp
+	: NEW^ pathName '('! arguments? ')'!
 	;
 
 dotArrowExp
@@ -175,7 +180,8 @@ variableExp
 literalExp
 	: enumerationLiteralExp
 	| collectionLiteralExp 
-	| primitiveLiteralExp 
+	| primitiveLiteralExp
+	| nullLiteralExp
 	;
 
 collectionLiteralExp
@@ -198,6 +204,10 @@ primitiveLiteralExp
 	: numericLiteralExp
 	| stringLiteralExp
 	| booleanLiteralExp
+	;
+
+nullLiteralExp
+	: NULL_LITERAL
 	;
 
 numericLiteralExp
@@ -286,7 +296,6 @@ imperativeExp
 	| ifExp
 	| tryExp
 	| forExp
-	| instantiationExp
 	| imperativeOperationCallExp
 	;
 
@@ -368,10 +377,6 @@ iteratorList
 	: variableDeclaration (','! variableDeclaration)*
 	;
 
-instantiationExp
-	: NEW^ pathName '('! arguments? ')'!
-	;
-
 imperativeOperationCallExp
 	: dotArrowExp SEMICOLON -> ^(IMPERATIVE_OPERATION_CALL dotArrowExp)
 	;
@@ -409,6 +414,10 @@ REAL_LITERAL
 		
 STRING_LITERAL
 	: '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
+	;
+
+NULL_LITERAL
+	: 'null'
 	;
 
 ITERATOR_NAME

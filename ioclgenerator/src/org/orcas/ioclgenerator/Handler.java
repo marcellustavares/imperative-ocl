@@ -34,6 +34,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expression.imperativeocl.RaiseExp;
@@ -95,6 +96,8 @@ public interface Handler<T> {
 	public T handleIteratorExp(
 		IteratorExp iteratorExp, T sourceResult, List<T> variableResults,
 		T bodyResult);
+
+	public T handleNullLiteralExp(NullLiteralExp nullLiteralExp);
 
 	public T handleOperationCallExp(
 		OperationCallExp operationCallExp, T sourceResult, List<T> argResults);

@@ -499,6 +499,11 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.NULL_LITERAL:
+				oclExpression = getFactory().createNullLiteralExp();
+
+				break;
+
 			case IoclParser.NUMERIC_OPERATION:
 				operationCallExp =
 					createNumericOperationCallExp(tree.getText());

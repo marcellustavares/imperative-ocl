@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage;
 import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
+import org.orcas.iocl.expression.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,6 +49,15 @@ public class NullLiteralExpImpl extends LiteralExpImpl implements NullLiteralExp
 	@Override
 	protected EClass eStaticClass() {
 		return ImperativeoclPackage.Literals.NULL_LITERAL_EXP;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitNullLiteralExp(this);
 	}
 
 } //NullLiteralExpImpl

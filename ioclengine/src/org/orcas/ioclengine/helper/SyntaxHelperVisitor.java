@@ -17,8 +17,6 @@
 
 package org.orcas.ioclengine.helper;
 
-import java.util.List;
-
 import org.orcas.iocl.expression.imperativeocl.AltExp;
 import org.orcas.iocl.expression.imperativeocl.AssignExp;
 import org.orcas.iocl.expression.imperativeocl.BlockExp;
@@ -35,6 +33,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expression.imperativeocl.RaiseExp;
@@ -49,6 +48,8 @@ import org.orcas.iocl.expression.imperativeocl.VariableExp;
 import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expression.imperativeocl.WhileExp;
 import org.orcas.ioclengine.analyzer.IOCLAnalyzer;
+
+import java.util.List;
 
 public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 
@@ -129,6 +130,10 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitIteratorExp(IteratorExp iteratorExp) {
+		return null;
+	}
+
+	public List<Choice> visitNullLiteralExp(NullLiteralExp nullLiteralExp) {
 		return null;
 	}
 

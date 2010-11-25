@@ -473,6 +473,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="operationCallExp" eType="#//imperativeocl/OperationCallExp"/>
       </eOperations>
+      <eOperations name="visitNullLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="nullLiteralExp" eType="#//imperativeocl/NullLiteralExp"/>
+      </eOperations>
       <eOperations name="visitPropertyCallExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="propertyCallExp" eType="#//imperativeocl/PropertyCallExp"/>

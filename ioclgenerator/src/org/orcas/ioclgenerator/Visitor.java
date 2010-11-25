@@ -38,6 +38,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
@@ -246,6 +247,10 @@ public class Visitor<T> extends EAbstractVisitor<T> {
 
 		return _handler.handleIteratorExp(
 			iteratorExp, sourceResult, variableResults, bodyResult);
+	}
+
+	public T visitNullLiteralExp(NullLiteralExp nullLiteralExp) {
+		return _handler.handleNullLiteralExp(nullLiteralExp);
 	}
 
 	public T visitOperationCallExp(OperationCallExp operationCallExp) {

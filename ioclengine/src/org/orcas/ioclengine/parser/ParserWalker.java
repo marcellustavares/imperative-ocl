@@ -46,6 +46,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.LogExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
@@ -450,6 +451,18 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.LOG:
+				LogExp logExp = getFactory().createLogExp();
+
+				StringLiteralExp stringLiteralExp = (StringLiteralExp)walk(
+					tree.getChild(0));
+
+				logExp.setText(stringLiteralExp.getStringSymbol());
+
+				oclExpression = logExp;
+
+				break;
+
 			case IoclParser.NEW:
 				InstantiationExp instantiationExp =
 					getFactory().createInstantiationExp();
@@ -582,7 +595,7 @@ public class ParserWalker {
 					raiseExp.setException(typeExp.getReferredType());
 				}
 				else {
-					StringLiteralExp stringLiteralExp = (StringLiteralExp)exp;
+					stringLiteralExp = (StringLiteralExp)exp;
 
 					raiseExp.setExceptionMessage(
 						stringLiteralExp.getStringSymbol());
@@ -616,8 +629,7 @@ public class ParserWalker {
 				break;
 
 			case IoclParser.STRING_LITERAL:
-				StringLiteralExp stringLiteralExp =
-					getFactory().createStringLiteralExp();
+				stringLiteralExp = getFactory().createStringLiteralExp();
 
 				String stringSymbol = StringUtil.unescape(tree.getText());
 

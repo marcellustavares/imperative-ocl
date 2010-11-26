@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage;
 import org.orcas.iocl.expression.imperativeocl.LogExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
+import org.orcas.iocl.expression.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +37,8 @@ import org.orcas.iocl.expression.imperativeocl.OclExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.LogExpImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.LogExpImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.impl.LogExpImpl#getLevel <em>Level</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +54,43 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 	 * @ordered
 	 */
 	protected OclExpression condition;
+
+	/**
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getText()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXT_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getText()
+	 * @generated
+	 * @ordered
+	 */
+	protected String text = TEXT_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer LEVEL_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer level = LEVEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,6 +159,48 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setText(String newText) {
+		String oldText = text;
+		text = newText;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImperativeoclPackage.LOG_EXP__TEXT, oldText, text));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getLevel() {
+		return level;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLevel(Integer newLevel) {
+		Integer oldLevel = level;
+		level = newLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImperativeoclPackage.LOG_EXP__LEVEL, oldLevel, level));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -138,6 +220,10 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 		switch (featureID) {
 			case ImperativeoclPackage.LOG_EXP__CONDITION:
 				return getCondition();
+			case ImperativeoclPackage.LOG_EXP__TEXT:
+				return getText();
+			case ImperativeoclPackage.LOG_EXP__LEVEL:
+				return getLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -152,6 +238,12 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 		switch (featureID) {
 			case ImperativeoclPackage.LOG_EXP__CONDITION:
 				setCondition((OclExpression)newValue);
+				return;
+			case ImperativeoclPackage.LOG_EXP__TEXT:
+				setText((String)newValue);
+				return;
+			case ImperativeoclPackage.LOG_EXP__LEVEL:
+				setLevel((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -168,6 +260,12 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 			case ImperativeoclPackage.LOG_EXP__CONDITION:
 				setCondition((OclExpression)null);
 				return;
+			case ImperativeoclPackage.LOG_EXP__TEXT:
+				setText(TEXT_EDEFAULT);
+				return;
+			case ImperativeoclPackage.LOG_EXP__LEVEL:
+				setLevel(LEVEL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,8 +280,39 @@ public class LogExpImpl extends OperationCallExpImpl implements LogExp {
 		switch (featureID) {
 			case ImperativeoclPackage.LOG_EXP__CONDITION:
 				return condition != null;
+			case ImperativeoclPackage.LOG_EXP__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+			case ImperativeoclPackage.LOG_EXP__LEVEL:
+				return LEVEL_EDEFAULT == null ? level != null : !LEVEL_EDEFAULT.equals(level);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (text: ");
+		result.append(text);
+		result.append(", level: ");
+		result.append(level);
+		result.append(')');
+		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitLogExp(this);
 	}
 
 } //LogExpImpl

@@ -2272,13 +2272,31 @@ public interface ImperativeoclPackage extends EPackage {
 	int LOG_EXP__CONDITION = OPERATION_CALL_EXP_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_EXP__TEXT = OPERATION_CALL_EXP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_EXP__LEVEL = OPERATION_CALL_EXP_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Log Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOG_EXP_FEATURE_COUNT = OPERATION_CALL_EXP_FEATURE_COUNT + 1;
+	int LOG_EXP_FEATURE_COUNT = OPERATION_CALL_EXP_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.orcas.iocl.expression.imperativeocl.impl.AssertExpImpl <em>Assert Exp</em>}' class.
@@ -5763,6 +5781,28 @@ public interface ImperativeoclPackage extends EPackage {
 	EReference getLogExp_Condition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.orcas.iocl.expression.imperativeocl.LogExp#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.orcas.iocl.expression.imperativeocl.LogExp#getText()
+	 * @see #getLogExp()
+	 * @generated
+	 */
+	EAttribute getLogExp_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.orcas.iocl.expression.imperativeocl.LogExp#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see org.orcas.iocl.expression.imperativeocl.LogExp#getLevel()
+	 * @see #getLogExp()
+	 * @generated
+	 */
+	EAttribute getLogExp_Level();
+
+	/**
 	 * Returns the meta object for class '{@link org.orcas.iocl.expression.imperativeocl.AssertExp <em>Assert Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7367,6 +7407,22 @@ public interface ImperativeoclPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LOG_EXP__CONDITION = eINSTANCE.getLogExp_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG_EXP__TEXT = eINSTANCE.getLogExp_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG_EXP__LEVEL = eINSTANCE.getLogExp_Level();
 
 		/**
 		 * The meta object literal for the '{@link org.orcas.iocl.expression.imperativeocl.impl.AssertExpImpl <em>Assert Exp</em>}' class.

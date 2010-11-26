@@ -39,6 +39,7 @@ import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
 import org.orcas.iocl.expression.imperativeocl.IntegerLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.IterateExp;
 import org.orcas.iocl.expression.imperativeocl.IteratorExp;
+import org.orcas.iocl.expression.imperativeocl.LogExp;
 import org.orcas.iocl.expression.imperativeocl.NullLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
@@ -240,6 +241,13 @@ public class JavaHandler implements Handler<String> {
 		Template template = Template.getByName(iteratorName);
 
 		return TemplateUtil.process(template, _map);
+	}
+
+	public String handleLogExp(LogExp logExp) {
+		_map.clear();
+		_map.put("text", logExp.getText());
+
+		return TemplateUtil.process(Template.LOG, _map);
 	}
 
 	public String handleNullLiteralExp(NullLiteralExp nullLiteralExp) {

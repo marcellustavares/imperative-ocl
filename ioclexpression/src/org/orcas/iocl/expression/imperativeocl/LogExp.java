@@ -26,6 +26,8 @@ package org.orcas.iocl.expression.imperativeocl;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.orcas.iocl.expression.imperativeocl.LogExp#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.LogExp#getText <em>Text</em>}</li>
+ *   <li>{@link org.orcas.iocl.expression.imperativeocl.LogExp#getLevel <em>Level</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,5 +61,57 @@ public interface LogExp extends OperationCallExp, ImperativeExpression {
 	 * @generated
 	 */
 	void setCondition(OclExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Text</em>' attribute.
+	 * @see #setText(String)
+	 * @see org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage#getLogExp_Text()
+	 * @model dataType="org.orcas.iocl.expression.emof.String"
+	 * @generated
+	 */
+	String getText();
+
+	/**
+	 * Sets the value of the '{@link org.orcas.iocl.expression.imperativeocl.LogExp#getText <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text</em>' attribute.
+	 * @see #getText()
+	 * @generated
+	 */
+	void setText(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Level</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Level</em>' attribute.
+	 * @see #setLevel(Integer)
+	 * @see org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage#getLogExp_Level()
+	 * @model dataType="org.orcas.iocl.expression.emof.Integer"
+	 * @generated
+	 */
+	Integer getLevel();
+
+	/**
+	 * Sets the value of the '{@link org.orcas.iocl.expression.imperativeocl.LogExp#getLevel <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Level</em>' attribute.
+	 * @see #getLevel()
+	 * @generated
+	 */
+	void setLevel(Integer value);
 
 } // LogExp

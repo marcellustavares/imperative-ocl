@@ -53,6 +53,7 @@ IMPERATIVE_OPERATION_CALL;
 ITERATE = 'iterate';
 ITERATOR;
 IS = ':=';
+LOG = 'log';
 LCURLY = '{';
 LPAREN = '(';
 LT = '<';
@@ -296,6 +297,7 @@ imperativeExp
 	| ifExp
 	| tryExp
 	| forExp
+	| logExp
 	| imperativeOperationCallExp
 	;
 
@@ -332,7 +334,7 @@ imperativeVarDeclaration
 	;
 
 assignExp
-	: dotArrowExp (IS | APPEND)^ logicalExp SEMICOLON!
+	: IDENTIFIER (IS | APPEND)^ logicalExp SEMICOLON!
 	;
 
 raiseExp
@@ -375,6 +377,10 @@ forExp
 
 iteratorList
 	: variableDeclaration (','! variableDeclaration)*
+	;
+
+logExp
+	: LOG LPAREN STRING_LITERAL (',' IDENTIFIER)? (',' INTEGER_LITERAL)? RPAREN SEMICOLON -> ^(LOG STRING_LITERAL? INTEGER_LITERAL?)
 	;
 
 imperativeOperationCallExp

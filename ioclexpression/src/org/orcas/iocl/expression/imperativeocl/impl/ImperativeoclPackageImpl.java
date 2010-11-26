@@ -1203,6 +1203,24 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLogExp_Text() {
+		return (EAttribute)logExpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLogExp_Level() {
+		return (EAttribute)logExpEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAssertExp() {
 		return assertExpEClass;
 	}
@@ -2246,6 +2264,8 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 
 		logExpEClass = createEClass(LOG_EXP);
 		createEReference(logExpEClass, LOG_EXP__CONDITION);
+		createEAttribute(logExpEClass, LOG_EXP__TEXT);
+		createEAttribute(logExpEClass, LOG_EXP__LEVEL);
 
 		assertExpEClass = createEClass(ASSERT_EXP);
 		createEAttribute(assertExpEClass, ASSERT_EXP__SEVERITY);
@@ -2595,6 +2615,8 @@ public class ImperativeoclPackageImpl extends EPackageImpl implements Imperative
 
 		initEClass(logExpEClass, LogExp.class, "LogExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLogExp_Condition(), this.getOclExpression(), null, "condition", null, 0, 1, LogExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogExp_Text(), theEmofPackage.getString(), "text", null, 0, 1, LogExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogExp_Level(), theEmofPackage.getInteger(), "level", null, 0, 1, LogExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assertExpEClass, AssertExp.class, "AssertExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssertExp_Severity(), this.getSeverityKind(), "severity", null, 0, 1, AssertExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

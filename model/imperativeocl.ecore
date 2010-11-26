@@ -195,6 +195,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="LogExp" eSuperTypes="#//imperativeocl/OperationCallExp #//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//imperativeocl/OclExpression"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//emof/String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="#//emof/Integer"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" eType="#//imperativeocl/SeverityKind"/>
@@ -468,6 +470,10 @@
       <eOperations name="visitIteratorExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="iteratorExp" eType="#//imperativeocl/IteratorExp"/>
+      </eOperations>
+      <eOperations name="visitLogExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="logExp" eType="#//imperativeocl/LogExp"/>
       </eOperations>
       <eOperations name="visitOperationCallExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>

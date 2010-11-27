@@ -1438,7 +1438,7 @@ public class IoclParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: simpleName, arguments
+                    // elements: arguments, simpleName
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2064,7 +2064,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: collectionTypeIdentifier, collectionLiteralParts
+            // elements: collectionLiteralParts, collectionTypeIdentifier
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3095,7 +3095,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ITERATOR_NAME, oclExpression, v2, v1
+            // elements: v1, oclExpression, ITERATOR_NAME, v2
             // token labels: 
             // rule labels: v1, retval, v2
             // token list labels: 
@@ -3256,7 +3256,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: v1, oclExpression, ITERATE, v2
+            // elements: ITERATE, v2, v1, oclExpression
             // token labels: 
             // rule labels: v1, retval, v2
             // token list labels: 
@@ -3404,7 +3404,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: IDENTIFIER, oclExpression, type
+            // elements: type, oclExpression, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4513,7 +4513,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: oclExpression, COMPUTE, variableDeclaration
+            // elements: COMPUTE, variableDeclaration, oclExpression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5011,7 +5011,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: IDENTIFIER, logicalExp, type
+            // elements: type, IDENTIFIER, logicalExp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5076,35 +5076,36 @@ public class IoclParser extends Parser {
     };
 
     // $ANTLR start "assignExp"
-    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:336:1: assignExp : IDENTIFIER ( IS | APPEND ) logicalExp SEMICOLON ;
+    // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:336:1: assignExp : variableExp ( IS | APPEND ) logicalExp SEMICOLON ;
     public final IoclParser.assignExp_return assignExp() throws RecognitionException {
         IoclParser.assignExp_return retval = new IoclParser.assignExp_return();
         retval.start = input.LT(1);
         int assignExp_StartIndex = input.index();
         Object root_0 = null;
 
-        Token IDENTIFIER154=null;
         Token set155=null;
         Token SEMICOLON157=null;
+        IoclParser.variableExp_return variableExp154 = null;
+
         IoclParser.logicalExp_return logicalExp156 = null;
 
 
-        Object IDENTIFIER154_tree=null;
         Object set155_tree=null;
         Object SEMICOLON157_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:337:2: ( IDENTIFIER ( IS | APPEND ) logicalExp SEMICOLON )
-            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:337:4: IDENTIFIER ( IS | APPEND ) logicalExp SEMICOLON
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:337:2: ( variableExp ( IS | APPEND ) logicalExp SEMICOLON )
+            // /Volumes/Macintosh HD 2/Users/Marcellus/Documents/UFPE/MSc/workspace/imperative-ocl/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g:337:4: variableExp ( IS | APPEND ) logicalExp SEMICOLON
             {
             root_0 = (Object)adaptor.nil();
 
-            IDENTIFIER154=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_assignExp1593); if (state.failed) return retval;
-            if ( state.backtracking==0 ) {
-            IDENTIFIER154_tree = (Object)adaptor.create(IDENTIFIER154);
-            adaptor.addChild(root_0, IDENTIFIER154_tree);
-            }
+            pushFollow(FOLLOW_variableExp_in_assignExp1593);
+            variableExp154=variableExp();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, variableExp154.getTree());
             set155=(Token)input.LT(1);
             set155=(Token)input.LT(1);
             if ( input.LA(1)==APPEND||input.LA(1)==IS ) {
@@ -5307,7 +5308,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: body, condition, WHILE
+            // elements: WHILE, body, condition
             // token labels: 
             // rule labels: body, retval, condition
             // token list labels: 
@@ -5490,7 +5491,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: IF, elseExp, altExp, elifExp
+            // elements: altExp, IF, elifExp, elseExp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5711,7 +5712,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: body, condition
+            // elements: condition, body
             // token labels: 
             // rule labels: body, retval, condition
             // token list labels: 
@@ -5843,7 +5844,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: except, imperativeExp, TRY
+            // elements: TRY, except, imperativeExp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6147,7 +6148,7 @@ public class IoclParser extends Parser {
 
 
             // AST REWRITE
-            // elements: iteratorList, FOR_NAME, condition, body, oclExp
+            // elements: condition, oclExp, body, iteratorList, FOR_NAME
             // token labels: 
             // rule labels: body, retval, condition
             // token list labels: 
@@ -7049,8 +7050,8 @@ public class IoclParser extends Parser {
         "\10\uffff\1\0\4\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\3\uffff}>";
     static final String[] DFA1_transitionS = {
             "\1\1\3\uffff\3\1\13\uffff\1\1\4\uffff\2\1\1\25\2\uffff\3\27"+
-            "\6\uffff\1\1\1\uffff\1\1\2\uffff\1\23\1\uffff\2\1\1\uffff\1"+
-            "\1\2\uffff\1\15\1\22\1\20\1\21\1\16\1\17\1\10\1\uffff\1\24",
+            "\6\uffff\1\1\1\uffff\1\1\2\uffff\1\15\1\uffff\2\1\1\uffff\1"+
+            "\1\2\uffff\1\16\1\23\1\21\1\22\1\17\1\20\1\10\1\uffff\1\24",
             "",
             "",
             "",
@@ -7611,8 +7612,8 @@ public class IoclParser extends Parser {
         "\10\uffff\1\0\4\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\4\uffff}>";
     static final String[] DFA32_transitionS = {
             "\1\3\3\uffff\1\4\1\5\1\1\13\uffff\1\13\4\uffff\1\26\1\1\1\25"+
-            "\13\uffff\1\11\1\uffff\1\6\2\uffff\1\23\1\uffff\1\14\1\7\1\uffff"+
-            "\1\12\2\uffff\1\15\1\22\1\20\1\21\1\16\1\17\1\10\1\uffff\1\24",
+            "\13\uffff\1\11\1\uffff\1\6\2\uffff\1\15\1\uffff\1\14\1\7\1\uffff"+
+            "\1\12\2\uffff\1\16\1\23\1\21\1\22\1\17\1\20\1\10\1\uffff\1\24",
             "",
             "",
             "",
@@ -7700,7 +7701,9 @@ public class IoclParser extends Parser {
                         int index32_13 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred61_Iocl()) ) {s = 24;}
+                        if ( (synpred56_Iocl()) ) {s = 23;}
+
+                        else if ( (synpred61_Iocl()) ) {s = 24;}
 
                         else if ( (true) ) {s = 25;}
 
@@ -7995,7 +7998,7 @@ public class IoclParser extends Parser {
     public static final BitSet FOLLOW_EQUAL_in_imperativeVarDeclaration1558 = new BitSet(new long[]{0xF2D281CE1001C400L,0x0000000000000017L});
     public static final BitSet FOLLOW_IS_in_imperativeVarDeclaration1562 = new BitSet(new long[]{0xF2D281CE1001C400L,0x0000000000000017L});
     public static final BitSet FOLLOW_logicalExp_in_imperativeVarDeclaration1566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_assignExp1593 = new BitSet(new long[]{0x0000000100000040L});
+    public static final BitSet FOLLOW_variableExp_in_assignExp1593 = new BitSet(new long[]{0x0000000100000040L});
     public static final BitSet FOLLOW_set_in_assignExp1595 = new BitSet(new long[]{0xF2D281CE1001C400L,0x0000000000000017L});
     public static final BitSet FOLLOW_logicalExp_in_assignExp1604 = new BitSet(new long[]{0x0020000000000000L});
     public static final BitSet FOLLOW_SEMICOLON_in_assignExp1606 = new BitSet(new long[]{0x0000000000000002L});

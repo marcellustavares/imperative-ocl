@@ -334,7 +334,7 @@ imperativeVarDeclaration
 	;
 
 assignExp
-	: IDENTIFIER (IS | APPEND)^ logicalExp SEMICOLON!
+	: variableExp (IS | APPEND)^ logicalExp SEMICOLON!
 	;
 
 raiseExp

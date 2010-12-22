@@ -47,6 +47,7 @@ import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
 import org.orcas.iocl.expression.imperativeocl.RaiseExp;
 import org.orcas.iocl.expression.imperativeocl.RealLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ReturnExp;
+import org.orcas.iocl.expression.imperativeocl.SequenceType;
 import org.orcas.iocl.expression.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.SwitchExp;
 import org.orcas.iocl.expression.imperativeocl.TryExp;
@@ -564,6 +565,17 @@ public class JavaHandler implements Handler<String> {
 
 	private String _getType(Type type) {
 		if (type != null) {
+			if (type instanceof SequenceType) {
+				SequenceType sequenceType =(SequenceType)type;
+
+				StringBuilder sb = new StringBuilder();
+
+				sb.append("org.orcas.commons.collections.list.TreeList<");
+				sb.append(_getType(sequenceType.getElementType()));
+				sb.append(">");
+
+				return sb.toString();
+			}
 			if (type instanceof PathType) {
 				PathType pathType = (PathType)type;
 

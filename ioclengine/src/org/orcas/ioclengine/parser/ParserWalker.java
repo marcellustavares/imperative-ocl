@@ -17,8 +17,6 @@
 
 package org.orcas.ioclengine.parser;
 
-import java.util.List;
-
 import org.antlr.runtime.tree.Tree;
 import org.eclipse.emf.common.util.EList;
 import org.orcas.iocl.expression.emof.EmofFactory;
@@ -66,6 +64,8 @@ import org.orcas.ioclengine.util.Operation;
 import org.orcas.ioclengine.util.PathType;
 import org.orcas.ioclengine.util.StringPool;
 import org.orcas.ioclengine.util.StringUtil;
+
+import java.util.List;
 
 public class ParserWalker {
 
@@ -233,6 +233,10 @@ public class ParserWalker {
 
 				CollectionType collectionType = getCollectionType(
 					collectionKind);
+
+				TypeExp elementTypeExp = (TypeExp)walk(tree.getChild(1)); 
+
+				collectionType.setElementType(elementTypeExp.getReferredType());
 
 				TypeExp typeExp = getFactory().createTypeExp();
 

@@ -20,6 +20,7 @@ package org.orcas.ioclgenerator.java;
 import org.orcas.iocl.expression.emof.Enumeration;
 import org.orcas.iocl.expression.emof.EnumerationLiteral;
 import org.orcas.iocl.expression.emof.Package;
+import org.orcas.iocl.expression.emof.PrimitiveType;
 import org.orcas.iocl.expression.emof.Property;
 import org.orcas.iocl.expression.emof.Type;
 import org.orcas.iocl.expression.imperativeocl.AltExp;
@@ -60,6 +61,7 @@ import org.orcas.ioclengine.util.PathType;
 import org.orcas.ioclengine.util.StringPool;
 import org.orcas.ioclengine.util.Template;
 import org.orcas.ioclengine.util.TemplateUtil;
+import org.orcas.ioclengine.util.Validator;
 import org.orcas.ioclgenerator.Handler;
 
 import java.util.HashMap;
@@ -560,22 +562,11 @@ public class JavaHandler implements Handler<String> {
 			return collectionExp.getKind().getName();
 		}
 
-		return null;
+		return "";
 	}
 
 	private String _getType(Type type) {
 		if (type != null) {
-			if (type instanceof SequenceType) {
-				SequenceType sequenceType =(SequenceType)type;
-
-				StringBuilder sb = new StringBuilder();
-
-				sb.append("org.orcas.commons.collections.list.TreeList<");
-				sb.append(_getType(sequenceType.getElementType()));
-				sb.append(">");
-
-				return sb.toString();
-			}
 			if (type instanceof PathType) {
 				PathType pathType = (PathType)type;
 
@@ -590,6 +581,26 @@ public class JavaHandler implements Handler<String> {
 						sb.append(StringPool.DOT);
 					}
 				}
+
+				return sb.toString();
+			}
+			else if (type instanceof PrimitiveType) {
+				PrimitiveType primitiveType = (PrimitiveType)type;
+
+				String name = primitiveType.getName();
+			
+				if (Validator.equals(name, StringPool.REAL)){
+					return StringPool.DOUBLE;
+				}
+			}
+			else if (type instanceof SequenceType) {
+				SequenceType sequenceType =(SequenceType)type;
+
+				StringBuilder sb = new StringBuilder();
+
+				sb.append("org.orcas.commons.collections.list.TreeList<");
+				sb.append(_getType(sequenceType.getElementType()));
+				sb.append(">");
 
 				return sb.toString();
 			}

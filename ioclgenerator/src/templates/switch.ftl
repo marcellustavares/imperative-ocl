@@ -7,6 +7,8 @@ else if ${altPartResult}
 </#if>
 </#list>
 <#if elseResult?has_content>
-else ${elseResult}
+else {
+${elseResult}
+}
 </#if>
 </#compress>

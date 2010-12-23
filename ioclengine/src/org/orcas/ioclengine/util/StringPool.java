@@ -29,6 +29,8 @@ public class StringPool {
 
 	public static final String COLLECTION = "Collection";
 
+	public static final String DOUBLE = "Double";
+
 	public static final String DOT = ".";
 
 	public static final String INTEGER = "Integer";

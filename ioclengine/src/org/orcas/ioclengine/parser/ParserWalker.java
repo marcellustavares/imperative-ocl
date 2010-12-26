@@ -234,7 +234,7 @@ public class ParserWalker {
 				CollectionType collectionType = getCollectionType(
 					collectionKind);
 
-				TypeExp elementTypeExp = (TypeExp)walk(tree.getChild(1)); 
+				TypeExp elementTypeExp = (TypeExp)walk(tree.getChild(1));
 
 				collectionType.setElementType(elementTypeExp.getReferredType());
 

@@ -21,6 +21,8 @@ import org.apache.log4j.Logger;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.ioclgenerator.util.PropsUtil;
 
+import java.util.Map;
+
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class IOCLGenerator {
 
@@ -38,11 +40,17 @@ public class IOCLGenerator {
 		}
 	}
 
-	public static String generate(OclExpression expression) {
-		return _instance._generate(expression);
+	public static String generate(
+		Map<String, String> generationContext, OclExpression expression) {
+
+		return _instance._generate(generationContext, expression);
 	}
 
-	private String _generate(OclExpression expression) {
+	private String _generate(
+		Map<String, String> generationContext, OclExpression expression) {
+
+		_visitor.setContext(generationContext);
+
 		return (String)expression.accept(_visitor);
 	}
 

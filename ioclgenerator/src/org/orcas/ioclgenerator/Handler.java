@@ -50,6 +50,7 @@ import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expression.imperativeocl.WhileExp;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Handler<T> {
 
@@ -133,5 +134,7 @@ public interface Handler<T> {
 	public T handleVariableInitExp(VariableInitExp variableInitExp);
 
 	public T handleWhileExp(WhileExp whileExp, T conditionResult, T bodyResult);
+
+	public void setContext(Map<String, String> context);
 
 }

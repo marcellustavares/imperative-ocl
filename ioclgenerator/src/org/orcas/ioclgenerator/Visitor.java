@@ -17,9 +17,6 @@
 
 package org.orcas.ioclgenerator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.orcas.iocl.expression.emof.Type;
 import org.orcas.iocl.expression.imperativeocl.AltExp;
 import org.orcas.iocl.expression.imperativeocl.AssignExp;
@@ -56,10 +53,18 @@ import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expression.imperativeocl.WhileExp;
 import org.orcas.ioclengine.helper.EAbstractVisitor;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class Visitor<T> extends EAbstractVisitor<T> {
 
 	public Visitor(Handler<T> handler) {
 		_handler = handler;
+	}
+
+	public void setContext(Map<String, String> context) {
+		_handler.setContext(context);
 	}
 
 	public T visitAltExp(AltExp altExp) {

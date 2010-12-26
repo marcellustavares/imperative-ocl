@@ -191,7 +191,7 @@ public class JavaHandler implements Handler<String> {
 		List<String> packageResults, List<String> argumentResults) {
 
 		_map.clear();
-		_map.put("className", className);
+		_map.put("className", _getQualifiedName(className));
 		_map.put("packageResults", packageResults);
 		_map.put("argumentResults", argumentResults);
 
@@ -520,7 +520,6 @@ public class JavaHandler implements Handler<String> {
 	}
 
 	public String handleVariableInitExp(VariableInitExp variableInitExp) {
-
 		return null;
 	}
 
@@ -534,6 +533,18 @@ public class JavaHandler implements Handler<String> {
 		return TemplateUtil.process(Template.WHILE, _map);
 	}
 
+	public void setContext(Map<String, String> context) {
+		_context = context;
+	}
+
+	private String _getQualifiedName(String type) {
+		if (_context != null) {
+			return _context.get(type);
+		}
+
+		return type;
+	}
+
 	private String _getTemplateName(String operationName) {
 		if (_templateMap.containsKey(operationName)) {
 			return _templateMap.get(operationName);
@@ -541,6 +552,7 @@ public class JavaHandler implements Handler<String> {
 
 		return operationName;
 	}
+
 
 	private String _getType(OclExpression oclExpression) {
 		if (oclExpression instanceof BooleanLiteralExp) {
@@ -582,13 +594,13 @@ public class JavaHandler implements Handler<String> {
 					}
 				}
 
-				return sb.toString();
+				return _getQualifiedName(sb.toString());
 			}
 			else if (type instanceof PrimitiveType) {
 				PrimitiveType primitiveType = (PrimitiveType)type;
 
 				String name = primitiveType.getName();
-			
+
 				if (Validator.equals(name, StringPool.REAL)){
 					return StringPool.DOUBLE;
 				}
@@ -611,9 +623,9 @@ public class JavaHandler implements Handler<String> {
 		return null;
 	}
 
+	private Map<String, String> _context;
 	private Map<String, Object> _map = new HashMap<String, Object>();
 	private Map<String, String> _templateMap = new HashMap<String, String>();
-
 	{
 		_templateMap.put("-", "minus");
 		_templateMap.put("<", "lt");

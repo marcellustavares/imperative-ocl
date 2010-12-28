@@ -234,14 +234,15 @@ public class JavaHandler implements Handler<String> {
 
 		List<Variable> variables = iteratorExp.getIterator();
 
-		Variable accumulator = variables.get(0);
+		if (!variables.isEmpty()) {
+			Variable iterator = variables.get(0);
 
-		_map.put("accName", accumulator.getName());
-		_map.put("accType", _getType(accumulator.getType()));
+			_map.put("iteratorName", iterator.getName());
+		}
 
-		String iteratorName = iteratorExp.getName();
+		String operation = iteratorExp.getName();
 
-		Template template = Template.getByName(iteratorName);
+		Template template = Template.getByName(operation);
 
 		return TemplateUtil.process(template, _map);
 	}

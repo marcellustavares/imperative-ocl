@@ -1,0 +1,1 @@
+new <#list packageResults as packages>${packages}<#if packages_has_next>.</#if></#list>${className}(<#list argumentResults as arguments>${arguments}<#if arguments_has_next>, </#if></#list>)

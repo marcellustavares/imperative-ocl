@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project name="iocl-engine" basedir="." default="jar">
+	<import file="../build-common.xml" />
+
+	<property name="jar.file" value="${ant.project.name}" />
+
+	<taskdef classpathref="project.classpath" resource="org/apache/tools/ant/antlr/antlib.xml" />
+
+	<target name="build-grammar">
+		<antlr3
+			target="${project.dir}/ioclengine/src/org/orcas/ioclengine/parser/antlr/Iocl.g"
+		   	outputdirectory="${project.dir}/ioclengine/src/org/orcas/ioclengine/parser/antlr"
+		   	multithreaded="true"
+		   	report="false"
+	   	/>
+	</target>
+	
+	<target name="clean">
+		<antcall target="build-common.clean" />
+	</target>
+
+	<target name="compile">
+		<antcall target="build-common.compile" />
+	</target>
+
+	<target name="format-source" depends="compile">
+		<java
+			classname="org.orcas.tools.SourceFormatter"
+			classpathref="project.classpath"
+			fork="true"
+			newenvironment="true"
+		/>
+	</target>
+
+	<target name="jar" depends="compile">
+		<antcall target="build-common.jar" />
+	</target>
+</project>

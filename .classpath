@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="ioclexpression/src"/>
+	<classpathentry kind="src" path="ioclengine/src"/>
+	<classpathentry kind="src" path="ioclgenerator/src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="ioclengine/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="lib" path="lib/ant.jar"/>
 	<classpathentry kind="lib" path="lib/antlr.jar"/>
@@ -10,5 +13,8 @@
 	<classpathentry kind="lib" path="lib/emf-common.jar"/>
 	<classpathentry kind="lib" path="lib/emf-ecore.jar"/>
 	<classpathentry kind="lib" path="lib/kobra.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/emf-xmi.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

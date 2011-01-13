@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<project name="build-common" xmlns:antelope="antlib:ise.antelope.tasks">
+	<property name="project.dir" value=".." />
+
+	<property environment="env" />
+
+	<property file="${project.dir}/build.iocl.properties" />
+
+	<path id="project.classpath">
+		<pathelement location="${project.dir}/bin" />
+		<fileset dir="${project.dir}/lib" includes="*.jar" />
+	</path>
+
+	<path id="lib.classpath">
+		<fileset dir="${project.dir}/lib" includes="*.jar" />
+	</path>
+
+	<path id="project.classpath">
+		<pathelement path="${classpath}" />
+		<path refid="lib.classpath" />
+	</path>
+	
+	<target name="clean">
+		<delete dir="classes" />
+		<delete file="${jar.file}.jar" failonerror="false" />
+	</target>
+	
+	<target name="compile">
+		<mkdir dir="classes" />
+
+		<copy todir="classes">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+
+		<javac
+			classpathref="project.classpath"
+			compiler="${javac.compiler}"
+			debug="${javac.debug}"
+			deprecation="${javac.deprecation}"
+			destdir="classes"
+			encoding="${javac.encoding}"
+			fork="${javac.fork}"
+			includeAntRuntime="false"
+			memoryMaximumSize="${javac.memoryMaximumSize}"
+			nowarn="${javac.nowarn}"
+			srcdir="src"
+		/>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar
+			basedir="classes"
+			jarfile="${jar.file}.jar"
+		/>
+	</target>
+</project>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="expressions"
-    nsURI="http://www.orcas.org/spec/iocl/1.0/expressions" nsPrefix="expressions">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="expression"
+    nsURI="http://www.orcas.org/spec/iocl/1.0/expression" nsPrefix="expression">
   <eSubpackages name="emof" nsURI="http://www.orcas.org/spec/iocl/1.0/emof" nsPrefix="emof">
     <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//emof/Type">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
@@ -195,6 +195,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="LogExp" eSuperTypes="#//imperativeocl/OperationCallExp #//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//imperativeocl/OclExpression"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//emof/String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="#//emof/Integer"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertExp" eSuperTypes="#//imperativeocl/ImperativeExpression">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" eType="#//imperativeocl/SeverityKind"/>
@@ -309,6 +311,8 @@
           eType="#//imperativeocl/OclExpression" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="referredOperation" eType="#//emof/Operation"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationCode" eType="#//emof/Integer"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isImperativeOperation"
+          eType="#//emof/Boolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RealLiteralExp" eSuperTypes="#//imperativeocl/NumericLiteralExp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="realSymbol" eType="#//emof/Real"/>
@@ -451,6 +455,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="forExp" eType="#//imperativeocl/ForExp"/>
       </eOperations>
+      <eOperations name="visitInstantiationExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="instantiationExp" eType="#//imperativeocl/InstantiationExp"/>
+      </eOperations>
       <eOperations name="visitIntegerLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="integerLiteralExp" eType="#//imperativeocl/IntegerLiteralExp"/>
@@ -463,9 +471,17 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="iteratorExp" eType="#//imperativeocl/IteratorExp"/>
       </eOperations>
+      <eOperations name="visitLogExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="logExp" eType="#//imperativeocl/LogExp"/>
+      </eOperations>
       <eOperations name="visitOperationCallExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="operationCallExp" eType="#//imperativeocl/OperationCallExp"/>
+      </eOperations>
+      <eOperations name="visitNullLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="nullLiteralExp" eType="#//imperativeocl/NullLiteralExp"/>
       </eOperations>
       <eOperations name="visitPropertyCallExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>

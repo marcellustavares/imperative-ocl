@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.ioclengine.analayzer;
+package org.orcas.ioclengine.analyzer;
 
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;

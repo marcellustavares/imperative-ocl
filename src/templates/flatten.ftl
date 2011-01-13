@@ -1,1 +1,0 @@
-org.orcas.commons.collections.CollectionUtils.flatten(${sourceResult})

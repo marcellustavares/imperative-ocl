@@ -1,1 +1,0 @@
-throw new <#if typeResult?has_content>${typeResult}()<#else>Exception("${exceptionMessage}")</#if>;

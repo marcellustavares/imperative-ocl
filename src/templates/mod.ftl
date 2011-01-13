@@ -1,1 +1,0 @@
-new Integer(${sourceResult}%${argResult})

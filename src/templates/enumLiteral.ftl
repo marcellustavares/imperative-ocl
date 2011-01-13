@@ -1,1 +1,0 @@
-${enumerationName}.${enumerationLiteralName}

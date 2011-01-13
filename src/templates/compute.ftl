@@ -1,3 +1,0 @@
-${variableResult}
-${bodyResult}
-return ${variableName};

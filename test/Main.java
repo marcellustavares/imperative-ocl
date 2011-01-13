@@ -34,7 +34,7 @@ public class Main {
 	public static void saveXML(OclExpression exp) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 
-		Map<String, Object> map = 
+		Map<String, Object> map =
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
 
 		map.put("xml", new  XMLResourceFactoryImpl());

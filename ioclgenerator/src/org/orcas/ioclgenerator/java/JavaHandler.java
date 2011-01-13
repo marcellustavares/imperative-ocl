@@ -161,7 +161,7 @@ public class JavaHandler implements Handler<String> {
 		Enumeration enumeration = enumerationLiteral.getEnumeration();
 
 		_map.clear();
-		_map.put("enumerationName", enumeration.getName());
+		_map.put("enumerationName", _getQualifiedName(enumeration.getName()));
 		_map.put("enumerationLiteralName", enumerationLiteral.getName());
 
 		return TemplateUtil.process(Template.ENUM_LITERAL, _map);
@@ -372,9 +372,6 @@ public class JavaHandler implements Handler<String> {
 					case MIN:
 					case MOD:
 					case NOT_EQUAL:
-					case OCL_AS_TYPE:
-					case OCL_IS_KIND_OF:
-					case OCL_IS_TYPE_OF:
 					case OR:
 					case SYMMETRIC_DIFFERENCE:
 					case UNION:
@@ -394,6 +391,19 @@ public class JavaHandler implements Handler<String> {
 
 						result = TemplateUtil.process(
 							Template.ARITHMETIC_EXPRESSION, _map);
+
+						break;
+
+					case OCL_AS_TYPE:
+					case OCL_IS_KIND_OF:
+					case OCL_IS_TYPE_OF:
+						_map.put(
+							"argResult", _getQualifiedName(argResults.get(0)));
+
+						 template = Template.getByName(
+							_getTemplateName(operation.getOperationName()));
+
+						result = TemplateUtil.process(template, _map);
 
 						break;
 				}
@@ -500,6 +510,9 @@ public class JavaHandler implements Handler<String> {
 				}
 			}
 		}
+		else if (type instanceof SequenceType){
+			return "java.util.ArrayList";
+		}
 		else {
 			typeBuilder.append(type.getName());
 		}
@@ -540,7 +553,13 @@ public class JavaHandler implements Handler<String> {
 
 	private String _getQualifiedName(String type) {
 		if (_context != null) {
-			return _context.get(type);
+			String qualifiedName = _context.get(type);
+
+			if (qualifiedName != null) {
+				return qualifiedName;
+			}
+
+			return type;
 		}
 
 		return type;
@@ -611,7 +630,7 @@ public class JavaHandler implements Handler<String> {
 
 				StringBuilder sb = new StringBuilder();
 
-				sb.append("org.orcas.commons.collections.list.TreeList<");
+				sb.append("java.util.List<");
 				sb.append(_getType(sequenceType.getElementType()));
 				sb.append(">");
 

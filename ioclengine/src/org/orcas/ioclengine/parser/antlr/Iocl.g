@@ -334,7 +334,7 @@ imperativeVarDeclaration
 	;
 
 assignExp
-	: variableExp (IS | APPEND)^ logicalExp SEMICOLON!
+	: dotArrowExp (IS | APPEND)^ logicalExp SEMICOLON!
 	;
 
 raiseExp

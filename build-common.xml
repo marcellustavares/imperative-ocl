@@ -7,11 +7,6 @@
 
 	<property file="${project.dir}/build.iocl.properties" />
 
-	<path id="project.classpath">
-		<pathelement location="${project.dir}/bin" />
-		<fileset dir="${project.dir}/lib" includes="*.jar" />
-	</path>
-
 	<path id="lib.classpath">
 		<fileset dir="${project.dir}/lib" includes="*.jar" />
 	</path>
@@ -23,6 +18,8 @@
 	
 	<target name="clean">
 		<delete dir="classes" />
+		<delete dir="test-classes" />
+		<delete dir="test-results" />
 		<delete file="${jar.file}.jar" failonerror="false" />
 	</target>
 	
@@ -48,10 +45,57 @@
 		/>
 	</target>
 	
+	<target name="compile-test">
+		<mkdir dir="test-classes" />
+		<mkdir dir="test-results" />
+
+		<copy todir="test-classes">
+			<fileset dir="test" includes="**/*.png,**/*.properties,**/*.xml" />
+		</copy>
+
+		<javac
+			classpathref="project.classpath"
+			compiler="${javac.compiler}"
+			debug="${javac.debug}"
+			deprecation="${javac.deprecation}"
+			destdir="test-classes"
+			encoding="${javac.encoding}"
+			includeAntRuntime="false"
+			nowarn="${javac.nowarn}"
+			srcdir="test"
+		/>
+	</target>
+
 	<target name="jar" depends="compile">
 		<jar
 			basedir="classes"
 			jarfile="${jar.file}.jar"
 		/>
+	</target>
+
+	<target name="test">
+		<delete dir="test-classes" />
+		<delete dir="test-results" />
+
+		<antcall target="compile" />
+		<antcall target="compile-test" />
+
+		<junit dir="${project.dir}" fork="on" forkmode="once" printsummary="on">
+			<jvmarg value="-Xmx256m" />
+			<jvmarg value="-Duser.timezone=GMT" />
+			<classpath refid="project.classpath" />
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<batchtest todir="test-results">
+				<fileset dir="test-classes" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+
+		<junitreport todir="test-results">
+		  <fileset dir="test-results">
+		    <include name="TEST-*.xml"/>
+		  </fileset>
+		  <report format="frames" todir="test-results"/>
+		</junitreport>
 	</target>
 </project>

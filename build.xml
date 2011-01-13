@@ -41,4 +41,8 @@
 		<ant dir="ioclengine" target="jar" inheritAll="false" />
 		<ant dir="ioclgenerator" target="jar" inheritAll="false" />
 	</target>
+
+	<target name="test" depends="compile">
+		<ant dir="ioclengine" target="test" inheritAll="false" />
+	</target>
 </project>

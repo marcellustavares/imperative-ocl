@@ -1,3 +1,1 @@
-<#include "iteratorCommon.ftl">
-
-org.orcas.commons.collections.CollectionUtils.select(source, ${iteratorName}, "${bodyResult}")
+org.orcas.commons.collections.CollectionUtils.select(${sourceResult}, "${iteratorName}", "${bodyResult}")

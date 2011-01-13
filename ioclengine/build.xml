@@ -24,6 +24,10 @@
 		<antcall target="build-common.compile" />
 	</target>
 
+	<target name="compile-test">
+		<antcall target="build-common.compile-test" />
+	</target>
+
 	<target name="format-source" depends="compile">
 		<java
 			classname="org.orcas.tools.SourceFormatter"
@@ -35,5 +39,9 @@
 
 	<target name="jar" depends="compile">
 		<antcall target="build-common.jar" />
+	</target>
+
+	<target name="test" depends="compile-test">
+		<antcall target="build-common.test" />
 	</target>
 </project>

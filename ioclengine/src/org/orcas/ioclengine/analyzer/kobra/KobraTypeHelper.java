@@ -540,12 +540,12 @@ public class KobraTypeHelper implements
 			if (Validator.equals(name, operation.getName())) {
 				List<Parameter> parameters = operation.getOwnedParameter();
 
+				if (parameterTypes.size() != parameters.size()) {
+					continue;
+				}
+
 				for (int i = 0; i < parameterTypes.size(); i++) {
 					Object parameterType = parameterTypes.get(i);
-
-					if (parameters.isEmpty() || parameters.size() < i) {
-						continue;
-					}
 
 					Type operationType = parameters.get(i).getType();
 
@@ -579,13 +579,12 @@ public class KobraTypeHelper implements
 		if (!_variablesMap.containsKey(variableName)) {
 			if (Validator.equals(variableName, StringPool.SELF)) {
 				if (context instanceof Classifier) {
-					_variablesMap.put(variableName, (Classifier)context);
+					return (Classifier)context;
 				}
 				else if (context instanceof Operation) {
 					Operation operation = (Operation)context;
 
-					_variablesMap.put(
-						variableName, operation.getComponentClass());
+					return operation.getComponentClass();
 				}
 			}
 		}

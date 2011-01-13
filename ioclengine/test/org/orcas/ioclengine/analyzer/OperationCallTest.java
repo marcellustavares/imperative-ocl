@@ -90,9 +90,7 @@ public class OperationCallTest extends TestCase {
 		try {
 			IOCLEngine.parse(component, expression);
 
-			fail(
-				"Exception should have being raised due operation call" +
-				" with wrong parameters");
+			fail("Semantic exception not raised.");
 		}
 		catch (Exception e) {
 			assertTrue(e instanceof SemanticException);

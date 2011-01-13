@@ -26,6 +26,7 @@ import org.orcas.ioclgenerator.IOCLGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
@@ -55,7 +56,9 @@ public class Main {
 
 		 // saveXML(exp);
 
-		 System.out.println(IOCLGenerator.generate(exp));
+		 Map<String, String> context = new HashMap<String, String>();
+
+		 System.out.println(IOCLGenerator.generate(context, exp));
 	}
 
 }

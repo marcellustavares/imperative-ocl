@@ -49,9 +49,12 @@ import org.orcas.iocl.expression.imperativeocl.VariableExp;
 import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.iocl.expression.imperativeocl.WhileExp;
 import org.orcas.ioclengine.analyzer.IOCLAnalyzer;
+import org.orcas.ioclengine.analyzer.TypeHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 
 	public void setAnalyzer(IOCLAnalyzer analyzer) {
@@ -77,7 +80,9 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	public List<Choice> visitBooleanLiteralExp(
 		BooleanLiteralExp booleanLiteralExp) {
 
-		return null;
+		Object type = getTypeHelper().resolveType(_context, booleanLiteralExp);
+
+		return getOperationChoices(type);
 	}
 
 	public List<Choice> visitBreakExp(BreakExp breakExp) {
@@ -88,13 +93,13 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 		return null;
 	}
 
-	public List<Choice> visitCollectionLiteralExp(
-		CollectionLiteralExp collectionLiteralExp) {
-
+	public List<Choice> visitCollectionItem(CollectionItem collectionItem) {
 		return null;
 	}
 
-	public List<Choice> visitCollectionItem(CollectionItem collectionItem) {
+	public List<Choice> visitCollectionLiteralExp(
+		CollectionLiteralExp collectionLiteralExp) {
+
 		return null;
 	}
 
@@ -123,7 +128,9 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	public List<Choice> visitIntegerLiteralExp(
 		IntegerLiteralExp integerLiteralExp) {
 
-		return null;
+		Object type = getTypeHelper().resolveType(_context, integerLiteralExp);
+
+		return getOperationChoices(type);
 	}
 
 	public List<Choice> visitIterateExp(IterateExp iterateExp) {
@@ -145,11 +152,25 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	public List<Choice> visitOperationCallExp(
 		OperationCallExp operationCallExp) {
 
-		return null;
+		List<Choice> choices = new ArrayList<Choice>();
+
+		Object type = getTypeHelper().resolveType(_context, operationCallExp);
+
+		choices.addAll(getPropertiesChoices(type));
+		choices.addAll(getOperationChoices(type));
+
+		return choices;
 	}
 
 	public List<Choice> visitPropertyCallExp(PropertyCallExp propertyCallExp) {
-		return null;
+		List<Choice> choices = new ArrayList<Choice>();
+
+		Object type = getTypeHelper().resolveType(_context, propertyCallExp);
+
+		choices.addAll(getPropertiesChoices(type));
+		choices.addAll(getOperationChoices(type));
+
+		return choices;
 	}
 
 	public List<Choice> visitRaiseExp(RaiseExp raiseExp) {
@@ -157,7 +178,9 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitRealLiteralExp(RealLiteralExp realLiteralExp) {
-		return null;
+		Object type = getTypeHelper().resolveType(_context, realLiteralExp);
+
+		return getOperationChoices(type);
 	}
 
 	public List<Choice> visitReturnExp(ReturnExp returnExp) {
@@ -167,7 +190,9 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	public List<Choice> visitStringLiteralExp(
 		StringLiteralExp stringLiteralExp) {
 
-		return _analyzer.getChoices(_context, stringLiteralExp);
+		Object type = getTypeHelper().resolveType(_context, stringLiteralExp);
+
+		return getOperationChoices(type);
 	}
 
 	public List<Choice> visitSwitchExp(SwitchExp switchExp) {
@@ -182,20 +207,67 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 		return null;
 	}
 
+	public List<Choice> visitVariable(Variable variable) {
+		List<Choice> choices = new ArrayList<Choice>();
+
+		String variableName  = variable.getName();
+
+		Object type = getTypeHelper().resolveType(_context, variableName);
+
+		choices.addAll(getPropertiesChoices(type));
+		choices.addAll(getOperationChoices(type));
+
+		return choices;
+	}
+
 	public List<Choice> visitVariableExp(VariableExp variableExp) {
-		return null;
+		Variable referredVariable = variableExp.getReferredVariable();
+
+		return visit(referredVariable);
 	}
 
 	public List<Choice> visitVariableInitExp(VariableInitExp variableInitExp) {
 		return null;
 	}
 
-	public List<Choice> visitVariable(Variable variable) {
+	public List<Choice> visitWhileExp(WhileExp whileExp) {
 		return null;
 	}
 
-	public List<Choice> visitWhileExp(WhileExp whileExp) {
-		return null;
+	protected List<Choice> getOperationChoices(Object type) {
+		List<Choice> choices = new ArrayList<Choice>();
+
+		List<?> operations = getTypeHelper().getOperations(type);
+
+		for (Object operation : operations) {
+			Choice choice = new ChoiceImpl(
+				ChoiceKind.OPERATION,
+				getTypeHelper().getName(operation));
+
+			choices.add(choice);
+		}
+
+		return choices;
+	}
+
+	protected List<Choice> getPropertiesChoices(Object type) {
+		List<Choice> choices = new ArrayList<Choice>();
+
+		List<?> properties = getTypeHelper().getProperties(type);
+
+		for (Object property : properties) {
+			Choice choice = new ChoiceImpl(
+				ChoiceKind.PROPERTY,
+				getTypeHelper().getName(property));
+
+			choices.add(choice);
+		}
+
+		return choices;
+	}
+
+	protected TypeHelper getTypeHelper() {
+		return _analyzer.getTypeHelper();
 	}
 
 	private IOCLAnalyzer _analyzer;

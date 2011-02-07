@@ -17,47 +17,25 @@
 
 package org.orcas.ioclengine.analyzer.kobra;
 
-import java.util.ArrayList;
-import java.util.List;
+import KobrA2.SUM.Constraint.Structural.Classifier;
+import KobrA2.SUM.Constraint.Structural.EnumerationLiteral;
+import KobrA2.SUM.Constraint.Structural.Operation;
+import KobrA2.SUM.Constraint.Structural.Parameter;
+import KobrA2.SUM.Constraint.Structural.Property;
 
 import org.orcas.ioclengine.analyzer.IOCLAnalyzer;
 import org.orcas.ioclengine.analyzer.TypeHelper;
-import org.orcas.ioclengine.helper.Choice;
-import org.orcas.ioclengine.helper.ChoiceFactory;
-import org.orcas.ioclengine.helper.ChoiceKind;
-
-import KobrA2.SUM.Constraint.Structural.Classifier;
-import KobrA2.SUM.Constraint.Structural.Operation;
-import KobrA2.SUM.Constraint.Structural.Property;
 
 
 public class KobraAnalyzer extends
-	IOCLAnalyzer<Classifier, Operation, Property> {
+	IOCLAnalyzer<
+	Classifier, Operation, Property, Parameter, EnumerationLiteral> {
 
-	public TypeHelper<Classifier, Operation, Property> getTypeHelper() {
+	public TypeHelper<
+		Classifier, Operation, Property, Parameter,
+		EnumerationLiteral> getTypeHelper() {
+
 		return _typeHelper;
-	}
-
-	protected List<Choice> getChoices(
-		Classifier owner, List<Operation> operations) {
-
-		List<Choice> choices = new ArrayList<Choice>();
-
-		Choice choice = null;
-
-		for (Operation operation : operations) {
-			choice = ChoiceFactory.createChoice(
-				ChoiceKind.OPERATION, operation.getName(),
-				getDescriptrion(operation));
-
-			choices.add(choice);
-		}
-
-		return choices;
-	}
-
-	protected String getDescriptrion(Operation operation) {
-		return null;
 	}
 
 	private KobraTypeHelper _typeHelper = new KobraTypeHelper();

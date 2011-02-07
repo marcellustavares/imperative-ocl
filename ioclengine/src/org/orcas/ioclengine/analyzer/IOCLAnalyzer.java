@@ -17,25 +17,20 @@
 
 package org.orcas.ioclengine.analyzer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.orcas.iocl.expression.imperativeocl.AssignExp;
 import org.orcas.iocl.expression.imperativeocl.BlockExp;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 import org.orcas.iocl.expression.imperativeocl.PropertyCallExp;
-import org.orcas.iocl.expression.imperativeocl.StringLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.Variable;
 import org.orcas.iocl.expression.imperativeocl.VariableExp;
 import org.orcas.iocl.expression.imperativeocl.VariableInitExp;
 import org.orcas.ioclengine.exception.SemanticException;
-import org.orcas.ioclengine.helper.Choice;
-import org.orcas.ioclengine.helper.ChoiceFactory;
-import org.orcas.ioclengine.helper.ChoiceKind;
 
-public abstract class IOCLAnalyzer<C, O, P> {
+import java.util.Arrays;
+import java.util.List;
+
+public abstract class IOCLAnalyzer<C, O, P, PM, EL> {
 
 	public void check(C context, OclExpression oclExpression)
 		throws SemanticException {
@@ -55,22 +50,6 @@ public abstract class IOCLAnalyzer<C, O, P> {
 		else if (oclExpression instanceof VariableInitExp) {
 			checkVariableInitExp(context, (VariableInitExp)oclExpression);
 		}
-	}
-
-	public List<Choice> getChoices(
-		C context, OclExpression oclExpresion) {
-
-		List<Choice> choices = new ArrayList<Choice>();
-
-		if (oclExpresion instanceof StringLiteralExp) {
-			C owner = getTypeHelper().resolveType(context, oclExpresion);
-
-			List<O> operations = getTypeHelper().getOperations(owner);
-
-			return getChoices(owner, operations);
-		}
-
-		return choices;
 	}
 
 	protected void checkAssignExp(C context, AssignExp assignExp)
@@ -208,25 +187,6 @@ public abstract class IOCLAnalyzer<C, O, P> {
 		}
 	}
 
-
-	protected List<Choice> getChoices(
-		C owner, List<O> operations) {
-
-		List<Choice> choices = new ArrayList<Choice>();
-
-		Choice choice = null;
-
-		for (O operation : operations) {
-			choice = ChoiceFactory.createChoice(
-				ChoiceKind.OPERATION, getTypeHelper().getName(operation),
-				null);
-
-			choices.add(choice);
-		}
-
-		return choices;
-	}
-
-	public abstract TypeHelper<C, O, P> getTypeHelper();
+	public abstract TypeHelper<C, O, P, PM, EL> getTypeHelper();
 
 }

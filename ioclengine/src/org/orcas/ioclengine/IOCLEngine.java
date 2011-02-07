@@ -17,14 +17,17 @@
 
 package org.orcas.ioclengine;
 
-import org.antlr.runtime.tree.Tree;
 import org.apache.log4j.Logger;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.ioclengine.analyzer.IOCLAnalyzer;
 import org.orcas.ioclengine.exception.IOCLException;
+import org.orcas.ioclengine.helper.Choice;
+import org.orcas.ioclengine.helper.SyntaxHelper;
 import org.orcas.ioclengine.parser.IOCLLexer;
 import org.orcas.ioclengine.parser.IOCLParser;
 import org.orcas.ioclengine.util.PropsUtil;
+
+import java.util.List;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class IOCLEngine {
@@ -35,22 +38,36 @@ public class IOCLEngine {
 				PropsUtil.get("iocl.analyzer.class"));
 
 			_analyzer = (IOCLAnalyzer)analyzerClass.newInstance();
+			_syntaxHelper = new SyntaxHelper(_analyzer);
 		}
 		catch (Exception e) {
 			_log.error(e);
 		}
 	}
 
-	public static OclExpression parse(Object context, String exp)
+	public static List<Choice> getSyntaxHelp(Object context, String expression)
 		throws IOCLException {
 
-		return _instance._parse(context, exp);
+		return _instance._getSyntaxHelp(context, expression);
 	}
 
-	private OclExpression _parse(Object context, String exp)
+	public static OclExpression parse(Object context, String expression)
 		throws IOCLException {
 
-		IOCLLexer lexer = new IOCLLexer(exp);
+		return _instance._parse(context, expression);
+	}
+
+	private List<Choice> _getSyntaxHelp(Object context, String expression)
+		throws IOCLException {
+
+		return _syntaxHelper.getSyntaxHelp(context, expression);
+	}
+
+
+	private OclExpression _parse(Object context, String expression)
+		throws IOCLException {
+
+		IOCLLexer lexer = new IOCLLexer(expression);
 
 		IOCLParser parser = new IOCLParser(lexer.getTokenStream());
 
@@ -63,13 +80,10 @@ public class IOCLEngine {
 		return oclExpression;
 	}
 
-	protected void showIoclAst(Tree tree) {
-		System.out.println(tree.toStringTree());
-	}
-
 	private static IOCLEngine _instance = new IOCLEngine();
 
 	private IOCLAnalyzer _analyzer;
+	private SyntaxHelper _syntaxHelper;
 
 	private Logger _log = Logger.getLogger(IOCLEngine.class);
 

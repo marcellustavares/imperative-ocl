@@ -15,14 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.orcas.ioclengine.helper;
+package org.orcas.ioclengine.util;
 
-public class ChoiceFactory {
+import org.orcas.ioclengine.helper.Choice;
+import org.orcas.ioclengine.helper.ChoiceImpl;
+import org.orcas.ioclengine.helper.ChoiceKind;
 
-	public static Choice createChoice(
-		ChoiceKind choiceKind, String name, String description) {
+import java.util.ArrayList;
+import java.util.List;
 
-		return new ChoiceImpl(choiceKind, name, description);
+public class ChoiceUtil {
+
+	public static List<Choice> toChoices(List<String> results) {
+		List<Choice> choices = new ArrayList<Choice>();
+
+		for (String result : results) {
+			choices.add(new ChoiceImpl(ChoiceKind.PROPERTY, result));
+		}
+
+		return choices;
 	}
 
 }

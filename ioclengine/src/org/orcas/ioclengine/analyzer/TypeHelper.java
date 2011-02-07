@@ -17,34 +17,48 @@
 
 package org.orcas.ioclengine.analyzer;
 
-import java.util.List;
-
 import org.orcas.iocl.expression.emof.Type;
 import org.orcas.iocl.expression.imperativeocl.OclExpression;
 import org.orcas.iocl.expression.imperativeocl.OperationCallExp;
 
-public interface TypeHelper<C, O, P> {
+import java.util.List;
+
+public interface TypeHelper<C, O, P, PM, EL> {
 
 	public void bindVariable(String variable, C type);
 
-	public String getName(O operation);
+	public List<C> getAvailableEnumerations(O context);
+
+	public List<C> getAvailableTypes(O context);
+
+	public List<EL> getEnumerationLiterals(C enumeration);
+
+	public String getName(Object namedElement);
 
 	public O getOperation(
 		C owner, String name, List<C> parameterTypes);
 
+	public List<C> getOperationParameterTypes(
+			Object context, OperationCallExp operationCallExp);
+
 	public List<O> getOperations(C owner);
+
+	public List<PM> getParameters(O operation);
+
+	public List<P> getProperties(C owner);
 
 	public P getProperty(C owner, String name);
 
-	public List<C> getOperationParameterTypes(
-		C owner, OperationCallExp operationCallExp);
+	public List<String> getVariableNames();
 
 	public boolean hasOperation(
 		C owner, String name, List<C> parameterTypes);
 
-	public boolean hasProperty(C owner, String name);
+	public boolean hasProperty(C classifier, String name);
 
-	public C resolveType(C context, OclExpression source);
+	public C resolveType(O context, String variableName);
+
+	public C resolveType(Object context, OclExpression source);
 
 	public C resolveType(Type type);
 

@@ -19,26 +19,24 @@ package org.orcas.ioclengine.helper;
 
 public class ChoiceImpl implements Choice {
 
-	public ChoiceImpl(ChoiceKind choiceKind, String name, String description) {
+	public ChoiceImpl(ChoiceKind choiceKind, String value) {
 		_choiceKind = choiceKind;
-		_description = description;
-		_name = name;
+		_value = value;
 	}
 
 	public ChoiceKind getChoiceKind() {
 		return _choiceKind;
 	}
 
-	public String getDescription() {
-		return _description;
+	public String getValue() {
+		return _value;
 	}
 
-	public String getName() {
-		return _name;
+	public String toString() {
+		return _value;
 	}
 
-	private String _description;
 	private ChoiceKind _choiceKind;
-	private String _name;
+	private String _value;
 
 }

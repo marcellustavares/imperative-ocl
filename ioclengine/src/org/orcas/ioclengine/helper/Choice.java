@@ -19,8 +19,6 @@ package org.orcas.ioclengine.helper;
 
 public interface Choice {
 
-	public String getDescription();
-
-	public String getName();
+	public String getValue();
 
 }

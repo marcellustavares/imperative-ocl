@@ -17,10 +17,22 @@
 
 package org.orcas.ioclengine.analyzer.kobra;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import KobrA2.SUM.Constraint.Structural.Acquires;
+import KobrA2.SUM.Constraint.Structural.AnyType;
+import KobrA2.SUM.Constraint.Structural.Classifier;
+import KobrA2.SUM.Constraint.Structural.ComponentClass;
+import KobrA2.SUM.Constraint.Structural.Element;
+import KobrA2.SUM.Constraint.Structural.Enumeration;
+import KobrA2.SUM.Constraint.Structural.EnumerationLiteral;
+import KobrA2.SUM.Constraint.Structural.NamedElement;
+import KobrA2.SUM.Constraint.Structural.Nests;
+import KobrA2.SUM.Constraint.Structural.Operation;
+import KobrA2.SUM.Constraint.Structural.PackageableElement;
+import KobrA2.SUM.Constraint.Structural.Parameter;
+import KobrA2.SUM.Constraint.Structural.Property;
+import KobrA2.SUM.Constraint.Structural.Real;
+import KobrA2.SUM.Constraint.Structural.StructuralFactory;
+import KobrA2.SUM.Constraint.Structural.Type;
 
 import org.orcas.iocl.expression.emof.PrimitiveType;
 import org.orcas.iocl.expression.imperativeocl.BooleanLiteralExp;
@@ -36,19 +48,14 @@ import org.orcas.ioclengine.analyzer.TypeHelper;
 import org.orcas.ioclengine.util.StringPool;
 import org.orcas.ioclengine.util.Validator;
 
-import KobrA2.SUM.Constraint.Structural.AnyType;
-import KobrA2.SUM.Constraint.Structural.Classifier;
-import KobrA2.SUM.Constraint.Structural.ComponentClass;
-import KobrA2.SUM.Constraint.Structural.Element;
-import KobrA2.SUM.Constraint.Structural.Operation;
-import KobrA2.SUM.Constraint.Structural.Parameter;
-import KobrA2.SUM.Constraint.Structural.Property;
-import KobrA2.SUM.Constraint.Structural.Real;
-import KobrA2.SUM.Constraint.Structural.StructuralFactory;
-import KobrA2.SUM.Constraint.Structural.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class KobraTypeHelper implements
-	TypeHelper<Classifier, Operation, Property> {
+	TypeHelper<Classifier, Operation, Property, Parameter, EnumerationLiteral> {
 
 	public void bindVariable(String variable, Classifier type) {
 		_variablesMap.put(variable, type);
@@ -58,8 +65,91 @@ public class KobraTypeHelper implements
 		return getKobraFactory().createString();
 	}
 
-	public String getName(Operation operation) {
-		return operation.getName();
+	public List<Classifier> getAvailableEnumerations(
+		ComponentClass componentClass, List<Classifier> availableEnumerations) {
+
+		for (PackageableElement pe : componentClass.getPackagedElement()) {
+			if (pe instanceof Enumeration) {
+				availableEnumerations.add((Enumeration)pe);
+			}
+			else if (pe instanceof ComponentClass) {
+				getAvailableEnumerations(
+					(ComponentClass)pe, availableEnumerations);
+			}
+		}
+
+		return availableEnumerations;
+	}
+
+	public List<Classifier> getAvailableEnumerations(Operation context) {
+		List<Classifier> availableEnumerations = new ArrayList<Classifier>();
+
+		ComponentClass componentClass = getTopLevelComponentClass(
+			context.getComponentClass());
+
+		return getAvailableEnumerations(componentClass, availableEnumerations);
+	}
+
+	public List<Classifier> getAvailableTypes(Operation context) {
+		List<Classifier> availableTypes = new ArrayList<Classifier>();
+
+		ComponentClass componentClass = getTopLevelComponentClass(
+			context.getComponentClass());
+
+		for (PackageableElement pe : componentClass.getPackagedElement()) {
+			if (pe instanceof KobrA2.SUM.Constraint.Structural.Class) {
+				availableTypes.add((KobrA2.SUM.Constraint.Structural.Class)pe);
+			}
+		}
+
+		return availableTypes;
+	}
+
+	public List<EnumerationLiteral> getEnumerationLiterals(
+			Classifier enumeration) {
+
+		Enumeration e = (Enumeration)enumeration;
+
+		return e.getOwnedLiteral();
+	}
+
+	public String getName(Object namedElement) {
+		NamedElement element = (NamedElement)namedElement;
+
+		if (Validator.isNotNull(element.getName())) {
+			return element.getName();
+		}
+
+		if (namedElement instanceof Property) {
+			Property property = (Property)namedElement;
+
+			String componentName = property.getComponentClass().getName();
+			String firstLowerCase = componentName.substring(0, 1).toLowerCase();
+
+			return firstLowerCase.concat(componentName.substring(1));
+		}
+
+		return StringPool.BLANK;
+	}
+
+	public Operation getOperation(
+		Classifier owner, String name, List<Classifier> parameterTypes) {
+
+		List<Operation> operations = getOperations(owner);
+
+		return lookup(name, parameterTypes, operations);
+	}
+
+	public List<Classifier> getOperationParameterTypes(
+		Object context, OperationCallExp operationCallExp) {
+
+		List<Classifier> parameterTypes = new ArrayList<Classifier>();
+
+		for (OclExpression parameter : operationCallExp.getArgument()) {
+			parameterTypes.add(resolveType(context, parameter));
+		}
+
+		return parameterTypes;
 	}
 
 	public List<Operation> getOperations(Classifier owner) {
@@ -71,7 +161,8 @@ public class KobraTypeHelper implements
 		else if (owner instanceof ComponentClass) {
 			ComponentClass componentClass = (ComponentClass)owner;
 
-			operations =  componentClass.getOwnedOperation();
+			operations.addAll(createAnyTypeOperations());
+			operations.addAll(componentClass.getOwnedOperation());
 		}
 		else if (owner instanceof KobrA2.SUM.Constraint.Structural.Integer) {
 			operations = createIntegerOperations();
@@ -86,36 +177,55 @@ public class KobraTypeHelper implements
 		return operations;
 	}
 
-	public Operation getOperation(
-		Classifier owner, String name, List<Classifier> parameterTypes) {
-
-		List<Operation> operations = getOperations(owner);
-
-		return lookup(name, parameterTypes, operations);
+	public String getParameterName(Parameter parameter) {
+		return parameter.getName();
 	}
 
-	public List<Classifier> getOperationParameterTypes(
-		Classifier owner, OperationCallExp operationCallExp) {
-
-		List<Classifier> parameterTypes = new ArrayList<Classifier>();
-
-		for (OclExpression parameter : operationCallExp.getArgument()) {
-			parameterTypes.add(resolveType(owner, parameter));
-		}
-
-		return parameterTypes;
+	public List<Parameter> getParameters(Operation operation) {
+		return operation.getOwnedParameter();
 	}
 
-	public Property getProperty(Classifier owner, String name) {
-		List<Property> availableProperties = new ArrayList<Property>();
+	public List<Property> getProperties(Classifier classifier) {
+		List<Property> properties = new ArrayList<Property>();
 
-		if (owner instanceof ComponentClass) {
-			ComponentClass componentClass = (ComponentClass)owner;
+		properties.addAll(classifier.getAttribute());
 
-			availableProperties = componentClass.getOwnedAttribute();
+		if (classifier instanceof ComponentClass) {
+			ComponentClass componentClass = (ComponentClass)classifier;
+
+			for (PackageableElement pe : componentClass.getPackagedElement()) {
+				if (pe instanceof Nests) {
+					Property property =
+						((Nests)pe).getNavigableOwnedEnd().get(0);
+
+					properties.add(property);
+				}
+				else if (pe instanceof Acquires) {
+					Property property =
+						((Acquires)pe).getNavigableOwnedEnd().get(0);
+
+					properties.add(property);
+				}
+			}
 		}
 
-		return lookup(name, availableProperties);
+		return properties;
+	}
+
+	public Property getProperty(Classifier classifier, String name) {
+		List<Property> properties = getProperties(classifier);
+
+		return lookup(name, properties);
+	}
+
+	public List<String> getVariableNames() {
+		List<String> variables = new ArrayList<String>();
+
+		for (Entry<String, Classifier> entry : _variablesMap.entrySet()) {
+			variables.add(entry.getKey());
+		}
+
+		return variables;
 	}
 
 	public boolean hasOperation(
@@ -130,8 +240,8 @@ public class KobraTypeHelper implements
 		return true;
 	}
 
-	public boolean hasProperty(Classifier owner, String name) {
-		Property property = (Property)getProperty(owner, name);
+	public boolean hasProperty(Classifier classifier, String name) {
+		Property property = getProperty(classifier, name);
 
 		if (property == null) {
 			return false;
@@ -140,7 +250,7 @@ public class KobraTypeHelper implements
 		return true;
 	}
 
-	public Classifier resolveType(Classifier context, OclExpression source) {
+	public Classifier resolveType(Object context, OclExpression source) {
 		if (source instanceof BooleanLiteralExp) {
 			return getKobraFactory().createBoolean();
 		}
@@ -167,10 +277,10 @@ public class KobraTypeHelper implements
 			Classifier owner = resolveType(
 				context, propertyCallExp.getSource());
 
-			Property property = (Property)getProperty(
+			Property property = getProperty(
 				owner, propertyCallExp.getReferredProperty().getName());
 
-			return (Classifier)property.getType();
+			return (Classifier)property.getComponentClass();
 		}
 		else if (source instanceof RealLiteralExp) {
 			return getKobraFactory().createInteger();
@@ -187,6 +297,26 @@ public class KobraTypeHelper implements
 		}
 
 		return null;
+	}
+
+	public Classifier resolveType(Operation context, String variableName) {
+		Classifier type = null;
+
+		List<Parameter> parameters = context.getOwnedParameter();
+
+		if (Validator.equals(variableName, StringPool.SELF)) {
+			return context.getComponentClass();
+		}
+
+		for (Parameter parameter : parameters) {
+			if (Validator.equals(parameter.getName(), variableName)) {
+				type = (Classifier) parameter.getType();
+
+				break;
+			}
+		}
+
+		return type;
 	}
 
 	public Classifier resolveType(org.orcas.iocl.expression.emof.Type type) {
@@ -217,12 +347,6 @@ public class KobraTypeHelper implements
 
 		operations.add(
 			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.EQUAL.getOperationName(),
-				getKobraFactory().createBoolean(), "object",
-				getKobraFactory().createAnyType()));
-
-		operations.add(
-			createBinaryOperation(
 				org.orcas.ioclengine.util.Operation.OCL_AS_TYPE.
 				getOperationName(), getKobraFactory().createBoolean(), "object",
 				getKobraFactory().createAnyType()));
@@ -240,14 +364,22 @@ public class KobraTypeHelper implements
 				getOperationName(), getKobraFactory().createBoolean(), "object",
 				getKobraFactory().createAnyType()));
 
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.NOT_EQUAL.
-				getOperationName(), getKobraFactory().createBoolean(), "object",
-				getKobraFactory().createAnyType()));
-
-
 		return operations;
+	}
+
+	protected Operation createBinaryOperation(
+		String name, Classifier resultType, String parameterName,
+		Classifier parameterType) {
+
+		List<String> paramNames = new ArrayList<String>();
+
+		paramNames.add(parameterName);
+
+		List<Classifier> paramTypes = new ArrayList<Classifier>();
+
+		paramTypes.add(parameterType);
+
+		return createOperation(name, resultType, paramNames, paramTypes);
 	}
 
 	protected List<Operation> createBooleanOperations() {
@@ -302,6 +434,30 @@ public class KobraTypeHelper implements
 		return operations;
 	}
 
+	protected Operation createOperation(
+		String name, Classifier resultType, List<String> parameterNames,
+		List<Classifier> parameterTypes) {
+
+		Operation operation = getKobraFactory().createOperation();
+
+		operation.setName(name);
+		operation.setType(resultType);
+
+		List<Parameter> ownedParameters =  operation.getOwnedParameter();
+
+		for (int i = 0; i < parameterNames.size(); i++) {
+			Parameter parameter = getKobraFactory().createParameter();
+
+			parameter.setName(parameterNames.get(i));
+			parameter.setType(parameterTypes.get(i));
+
+			ownedParameters.add(parameter);
+		}
+
+		return operation;
+	}
+
+
 	protected List<Operation> createRealOperations() {
 		List<Operation> operations = new ArrayList<Operation>();
 
@@ -325,30 +481,6 @@ public class KobraTypeHelper implements
 
 		operations.add(
 			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.GT.getOperationName(),
-				getKobraFactory().createBoolean(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.GTE.getOperationName(),
-				getKobraFactory().createBoolean(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.LT.getOperationName(),
-				getKobraFactory().createBoolean(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.LTE.getOperationName(),
-				getKobraFactory().createBoolean(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
 				org.orcas.ioclengine.util.Operation.MAX.getOperationName(),
 				getKobraFactory().createReal(), "real",
 				getKobraFactory().createReal()));
@@ -360,25 +492,8 @@ public class KobraTypeHelper implements
 				getKobraFactory().createReal()));
 
 		operations.add(
-			createUnaryOperation(
-				org.orcas.ioclengine.util.Operation.MINUS.getOperationName(),
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.MINUS.getOperationName(),
-				getKobraFactory().createReal(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
 			createBinaryOperation(
 				org.orcas.ioclengine.util.Operation.MULT.getOperationName(),
-				getKobraFactory().createReal(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.PLUS.getOperationName(),
 				getKobraFactory().createReal(), "real",
 				getKobraFactory().createReal()));
 
@@ -436,44 +551,6 @@ public class KobraTypeHelper implements
 		return operations;
 	}
 
-	protected Operation createBinaryOperation(
-		String name, Classifier resultType, String parameterName,
-		Classifier parameterType) {
-
-		List<String> paramNames = new ArrayList<String>();
-
-		paramNames.add(parameterName);
-
-		List<Classifier> paramTypes = new ArrayList<Classifier>();
-
-		paramTypes.add(parameterType);
-
-		return createOperation(name, resultType, paramNames, paramTypes);
-	}
-
-	protected Operation createOperation(
-		String name, Classifier resultType, List<String> parameterNames,
-		List<Classifier> parameterTypes) {
-
-		Operation operation = getKobraFactory().createOperation();
-
-		operation.setName(name);
-		operation.setType(resultType);
-
-		List<Parameter> ownedParameters =  operation.getOwnedParameter();
-
-		for (int i = 0; i < parameterNames.size(); i++) {
-			Parameter parameter = getKobraFactory().createParameter();
-
-			parameter.setName(parameterNames.get(i));
-			parameter.setType(parameterTypes.get(i));
-
-			ownedParameters.add(parameter);
-		}
-
-		return operation;
-	}
-
 	protected Operation createTernaryOperation(
 		String name, Classifier resultType, String parameterName1,
 		Classifier parameterType1, String parameterName2,
@@ -504,6 +581,16 @@ public class KobraTypeHelper implements
 
 	protected StructuralFactory getKobraFactory() {
 		return StructuralFactory.eINSTANCE;
+	}
+
+	protected ComponentClass getTopLevelComponentClass(
+		ComponentClass componentClass) {
+
+		if (componentClass.getComponentClass() == null) {
+			return componentClass;
+		}
+
+		return getTopLevelComponentClass(componentClass.getComponentClass());
 	}
 
 	protected boolean isTypeConformant(
@@ -561,12 +648,10 @@ public class KobraTypeHelper implements
 		return null;
 	}
 
-	protected Property lookup(
-		String name, List<Property> availableProperties) {
-
-		for (Property property : availableProperties) {
-			if (Validator.equals(name, property.getName())) {
-				return property;
+	protected <T> T lookup(String name, List<T> elements) {
+		for (T element : elements) {
+			if (Validator.equals(name, getName(element))) {
+				return element;
 			}
 		}
 
@@ -587,11 +672,24 @@ public class KobraTypeHelper implements
 					return operation.getComponentClass();
 				}
 			}
+			else {
+				if (context instanceof Operation) {
+					Operation operation = (Operation)context;
+
+					Parameter parameter = lookup(
+						variableName, getParameters(operation));
+
+					if (parameter != null) {
+						_variablesMap.put(
+							getName(parameter),
+							(Classifier)parameter.getType());
+					}
+				}
+			}
 		}
 
 		return _variablesMap.get(variableName);
 	}
-
 
 	private Map<String, Classifier> _variablesMap =
 		new HashMap<String, Classifier>();

@@ -52,6 +52,7 @@ import org.orcas.ioclengine.analyzer.IOCLAnalyzer;
 import org.orcas.ioclengine.analyzer.TypeHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
@@ -66,15 +67,15 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitAltExp(AltExp altExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitAssignExp(AssignExp assignExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitBlockExp(BlockExp blockExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitBooleanLiteralExp(
@@ -86,43 +87,43 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitBreakExp(BreakExp breakExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitCatchExp(CatchExp catchExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitCollectionItem(CollectionItem collectionItem) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitCollectionLiteralExp(
 		CollectionLiteralExp collectionLiteralExp) {
 
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitComputeExp(ComputeExp computeExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitContinueExp(ContinueExp continueExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitEnumLiteralExp(EnumLiteralExp enumLiteralExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitForExp(ForExp forExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitInstantiationExp(
 		InstantiationExp instantiationExp) {
 
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitIntegerLiteralExp(
@@ -134,19 +135,19 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitIterateExp(IterateExp iterateExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitIteratorExp(IteratorExp iteratorExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitLogExp(LogExp logExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitNullLiteralExp(NullLiteralExp nullLiteralExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitOperationCallExp(
@@ -174,7 +175,7 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitRaiseExp(RaiseExp raiseExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitRealLiteralExp(RealLiteralExp realLiteralExp) {
@@ -184,7 +185,7 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitReturnExp(ReturnExp returnExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitStringLiteralExp(
@@ -196,15 +197,15 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitSwitchExp(SwitchExp switchExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitTryExp(TryExp tryExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitTypeExp(TypeExp typeExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitVariable(Variable variable) {
@@ -227,11 +228,11 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitVariableInitExp(VariableInitExp variableInitExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	public List<Choice> visitWhileExp(WhileExp whileExp) {
-		return null;
+		return Collections.emptyList();
 	}
 
 	protected List<Choice> getOperationChoices(Object type) {
@@ -240,9 +241,10 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 		List<?> operations = getTypeHelper().getOperations(type);
 
 		for (Object operation : operations) {
+			String value = getTypeHelper().getName(operation).concat("()");
+
 			Choice choice = new ChoiceImpl(
-				ChoiceKind.OPERATION,
-				getTypeHelper().getName(operation));
+				ChoiceKind.OPERATION, value);
 
 			choices.add(choice);
 		}

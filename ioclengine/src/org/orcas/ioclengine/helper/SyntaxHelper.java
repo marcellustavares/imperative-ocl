@@ -159,8 +159,7 @@ public class SyntaxHelper {
 
 		for(int i = (charArray.length-1) ; i >= 0; i--) {
 			if ((charArray[i] == ' ') || (charArray[i] == '\n') ||
-				(charArray[i] == '(') || (charArray[i] == '{') ||
-				(charArray[i] == '}')) {
+				(charArray[i] == '{') || (charArray[i] == '}')) {
 
 				beginIndex = i;
 

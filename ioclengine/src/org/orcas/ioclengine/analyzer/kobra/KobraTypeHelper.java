@@ -188,10 +188,10 @@ public class KobraTypeHelper implements
 	public List<Property> getProperties(Classifier classifier) {
 		List<Property> properties = new ArrayList<Property>();
 
-		properties.addAll(classifier.getAttribute());
-
 		if (classifier instanceof ComponentClass) {
 			ComponentClass componentClass = (ComponentClass)classifier;
+
+			properties.addAll(componentClass.getOwnedAttribute());
 
 			for (PackageableElement pe : componentClass.getPackagedElement()) {
 				if (pe instanceof Nests) {
@@ -279,6 +279,12 @@ public class KobraTypeHelper implements
 
 			Property property = getProperty(
 				owner, propertyCallExp.getReferredProperty().getName());
+
+			Type type = property.getType();
+
+			if (type != null) {
+				return (Classifier)type;
+			}
 
 			return (Classifier)property.getComponentClass();
 		}
@@ -387,29 +393,6 @@ public class KobraTypeHelper implements
 
 		operations.addAll(createAnyTypeOperations());
 
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.AND.getOperationName(),
-				getKobraFactory().createBoolean(), "boolean",
-				getKobraFactory().createBoolean()));
-
-		operations.add(
-			createUnaryOperation(
-				org.orcas.ioclengine.util.Operation.NOT.getOperationName(),
-				getKobraFactory().createBoolean()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.OR.getOperationName(),
-				getKobraFactory().createBoolean(), "boolean",
-				getKobraFactory().createBoolean()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.XOR.getOperationName(),
-				getKobraFactory().createBoolean(), "boolean",
-				getKobraFactory().createBoolean()));
-
 		return operations;
 	}
 
@@ -469,12 +452,6 @@ public class KobraTypeHelper implements
 				getKobraFactory().createReal()));
 
 		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.DIVIDE.getOperationName(),
-				getKobraFactory().createReal(), "integer",
-				getKobraFactory().createInteger()));
-
-		operations.add(
 			createUnaryOperation(
 				org.orcas.ioclengine.util.Operation.FLOOR.getOperationName(),
 				getKobraFactory().createInteger()));
@@ -488,12 +465,6 @@ public class KobraTypeHelper implements
 		operations.add(
 			createBinaryOperation(
 				org.orcas.ioclengine.util.Operation.MIN.getOperationName(),
-				getKobraFactory().createReal(), "real",
-				getKobraFactory().createReal()));
-
-		operations.add(
-			createBinaryOperation(
-				org.orcas.ioclengine.util.Operation.MULT.getOperationName(),
 				getKobraFactory().createReal(), "real",
 				getKobraFactory().createReal()));
 

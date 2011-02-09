@@ -32,6 +32,7 @@ import KobrA2.SUM.Constraint.Structural.Parameter;
 import KobrA2.SUM.Constraint.Structural.Property;
 import KobrA2.SUM.Constraint.Structural.Real;
 import KobrA2.SUM.Constraint.Structural.StructuralFactory;
+import KobrA2.SUM.Constraint.Structural.TemporaryType;
 import KobrA2.SUM.Constraint.Structural.Type;
 
 import org.orcas.iocl.expression.emof.PrimitiveType;
@@ -90,19 +91,28 @@ public class KobraTypeHelper implements
 		return getAvailableEnumerations(componentClass, availableEnumerations);
 	}
 
+	public List<Classifier> getAvailableTypes(
+		ComponentClass componentClass, List<Classifier> availableTypes) {
+
+		for (PackageableElement pe : componentClass.getPackagedElement()) {
+			if (pe instanceof KobrA2.SUM.Constraint.Structural.Class) {
+				availableTypes.add((KobrA2.SUM.Constraint.Structural.Class)pe);
+			}
+			else if (pe instanceof ComponentClass) {
+				getAvailableTypes((ComponentClass)pe, availableTypes);
+			}
+		}
+
+		return availableTypes;
+	}
+
 	public List<Classifier> getAvailableTypes(Operation context) {
 		List<Classifier> availableTypes = new ArrayList<Classifier>();
 
 		ComponentClass componentClass = getTopLevelComponentClass(
 			context.getComponentClass());
 
-		for (PackageableElement pe : componentClass.getPackagedElement()) {
-			if (pe instanceof KobrA2.SUM.Constraint.Structural.Class) {
-				availableTypes.add((KobrA2.SUM.Constraint.Structural.Class)pe);
-			}
-		}
-
-		return availableTypes;
+		return getAvailableTypes(componentClass, availableTypes);
 	}
 
 	public List<EnumerationLiteral> getEnumerationLiterals(
@@ -316,7 +326,17 @@ public class KobraTypeHelper implements
 
 		for (Parameter parameter : parameters) {
 			if (Validator.equals(parameter.getName(), variableName)) {
-				type = (Classifier) parameter.getType();
+				Type parameterType = parameter.getType();
+
+				if (parameterType instanceof TemporaryType) {
+					TemporaryType temporaryType = (TemporaryType)parameterType;
+
+					type = resolveTemporaryType(context, temporaryType);
+				}
+				else {
+					type = (Classifier)parameterType;
+
+				}
 
 				break;
 			}
@@ -623,6 +643,22 @@ public class KobraTypeHelper implements
 		for (T element : elements) {
 			if (Validator.equals(name, getName(element))) {
 				return element;
+			}
+		}
+
+		return null;
+	}
+
+	protected Classifier resolveTemporaryType(
+		Operation context, TemporaryType temporaryType) {
+
+		List<Classifier> availableTypes = getAvailableTypes(context);
+
+		for (Classifier classifier : availableTypes) {
+			if (Validator.equals(
+					classifier.getName(), temporaryType.getName())) {
+
+				return classifier;
 			}
 		}
 

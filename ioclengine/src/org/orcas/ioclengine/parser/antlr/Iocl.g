@@ -37,6 +37,7 @@ COLON = ':';
 COMPUTE = 'compute';
 CONTINUE = 'continue';
 DICT = 'Dict';
+DICT_LITERAL_EXP;
 DIV = '/';
 DO = 'do';
 DOT = '.';
@@ -138,11 +139,16 @@ multiplicativeExp
 unaryExp
 	: (MINUS | NOT)^ unaryExp
 	| instantiationExp
+	| dictLiteralExp
 	| dotArrowExp
 	;
 
 instantiationExp
 	: NEW^ pathName '('! arguments? ')'!
+	;
+
+dictLiteralExp
+	: DICT LCURLY RCURLY -> ^(DICT_LITERAL_EXP)
 	;
 
 dotArrowExp

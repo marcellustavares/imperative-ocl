@@ -35,6 +35,7 @@ import org.orcas.iocl.expression.imperativeocl.CollectionKind;
 import org.orcas.iocl.expression.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
+import org.orcas.iocl.expression.imperativeocl.DictLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.DictionaryType;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
@@ -154,6 +155,10 @@ public class JavaHandler implements Handler<String> {
 
 	public String handleContinueExp(ContinueExp continueExp) {
 		return TemplateUtil.process(Template.CONTINUE, null);
+	}
+
+	public String handleDictLiteralExp(DictLiteralExp dictLiteralExp) {
+		return "new java.util.HashMap()";
 	}
 
 	public String handleEnumLiteralExp(EnumLiteralExp enumLiteralExp) {

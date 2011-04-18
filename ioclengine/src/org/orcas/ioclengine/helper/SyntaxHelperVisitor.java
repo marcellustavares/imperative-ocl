@@ -27,6 +27,7 @@ import org.orcas.iocl.expression.imperativeocl.CollectionItem;
 import org.orcas.iocl.expression.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
+import org.orcas.iocl.expression.imperativeocl.DictLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
 import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
@@ -109,6 +110,10 @@ public class SyntaxHelperVisitor extends EAbstractVisitor<List<Choice>> {
 	}
 
 	public List<Choice> visitContinueExp(ContinueExp continueExp) {
+		return Collections.emptyList();
+	}
+
+	public List<Choice> visitDictLiteralExp(DictLiteralExp dictLiteralExp) {
 		return Collections.emptyList();
 	}
 

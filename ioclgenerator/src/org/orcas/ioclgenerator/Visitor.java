@@ -29,6 +29,7 @@ import org.orcas.iocl.expression.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
+import org.orcas.iocl.expression.imperativeocl.DictLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
 import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
@@ -156,6 +157,10 @@ public class Visitor<T> extends EAbstractVisitor<T> {
 
 	public T visitContinueExp(ContinueExp continueExp) {
 		return _handler.handleContinueExp(continueExp);
+	}
+
+	public T visitDictLiteralExp(DictLiteralExp dictLiteralExp) {
+		return _handler.handleDictLiteralExp(dictLiteralExp);
 	}
 
 	public T visitEnumLiteralExp(EnumLiteralExp enumLiteralExp) {

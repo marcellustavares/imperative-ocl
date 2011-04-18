@@ -278,6 +278,11 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 		g1 = createEGenericType(visitorEClass_T);
 		initEOperation(op, g1);
 
+		op = addEOperation(visitorEClass, null, "visitDictLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theImperativeoclPackage.getDictLiteralExp(), "dictLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(visitorEClass_T);
+		initEOperation(op, g1);
+
 		op = addEOperation(visitorEClass, null, "visitEnumLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theImperativeoclPackage.getEnumLiteralExp(), "enumLiteralExp", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(visitorEClass_T);

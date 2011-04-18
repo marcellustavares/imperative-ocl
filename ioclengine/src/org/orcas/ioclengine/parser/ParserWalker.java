@@ -312,6 +312,11 @@ public class ParserWalker {
 
 				break;
 
+			case IoclParser.DICT_LITERAL_EXP:
+				oclExpression = getFactory().createDictLiteralExp();
+
+				break;
+
 			case IoclParser.ENUM_LITERAL:
 				int lastChildIndex = tree.getChildCount() - 1;
 

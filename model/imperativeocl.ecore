@@ -447,6 +447,10 @@
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="continueExp" eType="#//imperativeocl/ContinueExp"/>
       </eOperations>
+      <eOperations name="visitDictLiteralExp">
+        <eGenericType eTypeParameter="#//util/Visitor/T"/>
+        <eParameters name="dictLiteralExp" eType="#//imperativeocl/DictLiteralExp"/>
+      </eOperations>
       <eOperations name="visitEnumLiteralExp">
         <eGenericType eTypeParameter="#//util/Visitor/T"/>
         <eParameters name="enumLiteralExp" eType="#//imperativeocl/EnumLiteralExp"/>

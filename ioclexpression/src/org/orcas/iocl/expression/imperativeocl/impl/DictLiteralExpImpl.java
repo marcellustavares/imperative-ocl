@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.orcas.iocl.expression.imperativeocl.DictLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.DictLiteralPart;
 import org.orcas.iocl.expression.imperativeocl.ImperativeoclPackage;
+import org.orcas.iocl.expression.util.Visitor;
 
 /**
  * <!-- begin-user-doc -->
@@ -159,6 +160,15 @@ public class DictLiteralExpImpl extends LiteralExpImpl implements DictLiteralExp
 				return part != null && !part.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <T, V extends Visitor<T>> T accept(V v) {
+		return v.visitDictLiteralExp(this);
 	}
 
 } //DictLiteralExpImpl

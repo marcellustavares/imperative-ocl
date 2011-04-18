@@ -36,6 +36,7 @@ import org.orcas.iocl.expression.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.CollectionLiteralPart;
 import org.orcas.iocl.expression.imperativeocl.CollectionType;
 import org.orcas.iocl.expression.imperativeocl.ComputeExp;
+import org.orcas.iocl.expression.imperativeocl.DictionaryType;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
 import org.orcas.iocl.expression.imperativeocl.ImperativeExpression;
@@ -268,6 +269,46 @@ public class ParserWalker {
 
 			case IoclParser.CONTINUE:
 				oclExpression = getFactory().createContinueExp();
+
+				break;
+
+			case IoclParser.DICT:
+				DictionaryType dictionaryType =
+					getFactory().createDictionaryType();
+
+				Tree keyTypeTree = tree.getChild(0);
+
+				if (keyTypeTree != null) {
+					TypeExp keyTypeExp = (TypeExp)walk(keyTypeTree);
+
+					dictionaryType.setKeyType(keyTypeExp.getReferredType());
+				}
+				else {
+					PrimitiveType primitiveType =
+						EmofFactory.eINSTANCE.createPrimitiveType();
+
+					primitiveType.setName("String");
+
+					dictionaryType.setKeyType(primitiveType);
+				}
+
+				elementTypeTree = tree.getChild(1);
+
+				if (elementTypeTree != null) {
+					TypeExp elementTypeExp = (TypeExp)walk(elementTypeTree);
+
+					dictionaryType.setElementType(
+						elementTypeExp.getReferredType());
+				}
+				else {
+					dictionaryType.setElementType(getFactory().createAnyType());
+				}
+
+				typeExp = getFactory().createTypeExp();
+
+				typeExp.setReferredType(dictionaryType);
+
+				oclExpression = typeExp;
 
 				break;
 

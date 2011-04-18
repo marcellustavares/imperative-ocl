@@ -36,8 +36,9 @@ COLLECTION_TYPE;
 COLON = ':';
 COMPUTE = 'compute';
 CONTINUE = 'continue';
-DO = 'do';
+DICT = 'Dict';
 DIV = '/';
+DO = 'do';
 DOT = '.';
 ENDIF = 'endif';
 ENUM_LITERAL;
@@ -275,6 +276,7 @@ collectionType
 type
 	: primitiveType
 	| collectionType
+	| DICT (LPAREN keyType=type ',' valueType=type RPAREN)? -> ^(DICT $keyType? $valueType?)
 	| pathName
 	;
 

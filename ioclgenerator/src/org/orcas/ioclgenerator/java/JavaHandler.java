@@ -24,6 +24,7 @@ import org.orcas.iocl.expression.emof.PrimitiveType;
 import org.orcas.iocl.expression.emof.Property;
 import org.orcas.iocl.expression.emof.Type;
 import org.orcas.iocl.expression.imperativeocl.AltExp;
+import org.orcas.iocl.expression.imperativeocl.AnyType;
 import org.orcas.iocl.expression.imperativeocl.AssignExp;
 import org.orcas.iocl.expression.imperativeocl.BlockExp;
 import org.orcas.iocl.expression.imperativeocl.BooleanLiteralExp;
@@ -34,6 +35,7 @@ import org.orcas.iocl.expression.imperativeocl.CollectionKind;
 import org.orcas.iocl.expression.imperativeocl.CollectionLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ComputeExp;
 import org.orcas.iocl.expression.imperativeocl.ContinueExp;
+import org.orcas.iocl.expression.imperativeocl.DictionaryType;
 import org.orcas.iocl.expression.imperativeocl.EnumLiteralExp;
 import org.orcas.iocl.expression.imperativeocl.ForExp;
 import org.orcas.iocl.expression.imperativeocl.InstantiationExp;
@@ -599,7 +601,23 @@ public class JavaHandler implements Handler<String> {
 
 	private String _getType(Type type) {
 		if (type != null) {
-			if (type instanceof PathType) {
+			if (type instanceof AnyType) {
+				return "Object";
+			}
+			else if (type instanceof DictionaryType) {
+				DictionaryType dictionaryType = (DictionaryType)type;
+
+				StringBuilder sb = new StringBuilder();
+
+				sb.append("java.util.Map<");
+				sb.append(_getType(dictionaryType.getKeyType()));
+				sb.append(",");
+				sb.append(_getType(dictionaryType.getElementType()));
+				sb.append(">");
+
+				return sb.toString();
+			}
+			else if (type instanceof PathType) {
 				PathType pathType = (PathType)type;
 
 				StringBuilder sb = new StringBuilder();

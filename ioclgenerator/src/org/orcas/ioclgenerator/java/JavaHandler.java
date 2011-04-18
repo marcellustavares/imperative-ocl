@@ -267,6 +267,7 @@ public class JavaHandler implements Handler<String> {
 		String result = null;
 
 		OclExpression source = operationCallExp.getSource();
+
 		Boolean isImperativeOperation =
 			operationCallExp.getIsImperativeOperation();
 

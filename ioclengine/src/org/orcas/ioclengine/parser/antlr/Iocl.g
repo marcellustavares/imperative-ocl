@@ -269,7 +269,7 @@ primitiveType
 	;
 
 collectionType
-	: collectionTypeIdentifier LPAREN type RPAREN -> ^(COLLECTION_TYPE collectionTypeIdentifier type) 
+	: collectionTypeIdentifier (LPAREN type RPAREN)? -> ^(COLLECTION_TYPE collectionTypeIdentifier type?) 
 	;
 
 type
@@ -394,7 +394,7 @@ BOOLEAN_LITERAL
 
 COLLECTION_TYPE_LITERAL
 	: 'Bag'
-	| 'Collection' 
+	| 'Collection'	
 	| 'OrderedSet'  
 	| 'Sequence'
 	| 'Set'

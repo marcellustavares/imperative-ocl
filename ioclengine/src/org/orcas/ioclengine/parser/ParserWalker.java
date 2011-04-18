@@ -227,6 +227,8 @@ public class ParserWalker {
 				break;
 
 			case IoclParser.COLLECTION_TYPE:
+				TypeExp typeExp = getFactory().createTypeExp();
+
 				kind = tree.getChild(0);
 
 				collectionKind = CollectionKind.get(kind.getText());
@@ -234,13 +236,16 @@ public class ParserWalker {
 				CollectionType collectionType = getCollectionType(
 					collectionKind);
 
-				TypeExp elementTypeExp = (TypeExp)walk(tree.getChild(1));
-
-				collectionType.setElementType(elementTypeExp.getReferredType());
-
-				TypeExp typeExp = getFactory().createTypeExp();
-
 				typeExp.setReferredType(collectionType);
+
+				Tree elementTypeTree = tree.getChild(1);
+
+				if (elementTypeTree != null) {
+					TypeExp elementTypeExp = (TypeExp)walk(elementTypeTree);
+
+					collectionType.setElementType(
+						elementTypeExp.getReferredType());
+				}
 
 				oclExpression = typeExp;
 

@@ -630,9 +630,15 @@ public class JavaHandler implements Handler<String> {
 
 				StringBuilder sb = new StringBuilder();
 
-				sb.append("java.util.List<");
-				sb.append(_getType(sequenceType.getElementType()));
-				sb.append(">");
+				sb.append("java.util.List");
+
+				Type elementType = sequenceType.getElementType();
+
+				if (elementType != null) {
+					sb.append("<");
+					sb.append(_getType(sequenceType.getElementType()));
+					sb.append(">");
+				}
 
 				return sb.toString();
 			}

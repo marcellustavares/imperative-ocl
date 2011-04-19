@@ -310,6 +310,7 @@ public class JavaHandler implements Handler<String> {
 					case MINUS:
 					case NOT:
 					case NOT_EMPTY:
+					case OCL_IS_UNDEFINED:
 					case SUM:
 					case TO_INTEGER:
 					case TO_LOWER:

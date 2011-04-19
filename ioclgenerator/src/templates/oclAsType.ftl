@@ -4,6 +4,6 @@
 <#elseif argResult == 'String'>
 ${sourceResult}.toString()
 <#else>
-(${argResult})${sourceResult}
+((${argResult})${sourceResult})
 </#if>
 </#compress>

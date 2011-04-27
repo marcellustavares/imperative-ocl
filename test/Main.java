@@ -26,6 +26,7 @@ import org.orcas.ioclgenerator.IOCLGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,14 +52,25 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception {
-		 OclExpression exp = IOCLEngine.parse(
-			 null, "a := 'Hello World!'; ");
+		InputStream fis = Main.class.getResourceAsStream("/test.iocl");
+
+		byte[] bytes = new byte[fis.available()];
+
+		fis.read(bytes);
+
+		fis.close();
+
+		String s = new String(bytes);
+
+		s = s.replaceAll("\r\n", "\n");
+
+		OclExpression expression = IOCLEngine.parse(null, s);
 
 		 // saveXML(exp);
 
 		 Map<String, String> context = new HashMap<String, String>();
 
-		 System.out.println(IOCLGenerator.generate(context, exp));
+		 System.out.println(IOCLGenerator.generate(context, expression));
 	}
 
 }

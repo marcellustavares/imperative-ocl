@@ -68,9 +68,9 @@ public class Main {
 
 		 // saveXML(exp);
 
-		 Map<String, String> context = new HashMap<String, String>();
+		Map<String, String> context = new HashMap<String, String>();
 
-		 System.out.println(IOCLGenerator.generate(context, expression));
+		System.out.println(IOCLGenerator.generate(context, expression));
 	}
 
 }

@@ -1,1 +1,1 @@
-${sourceResult}.remove(${argResult});
+${sourceResult}.remove(${argResult})

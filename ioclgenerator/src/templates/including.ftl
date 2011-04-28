@@ -1,1 +1,1 @@
-${sourceResult}.add(${argResult})
+org.orcas.commons.collections.CollectionUtils.including(${sourceResult}, ${argResult})

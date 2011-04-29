@@ -13,12 +13,14 @@
 	<target name="clean">
 		<delete dir="dist" />
 
+		<ant dir="commons-collections" target="clean" inheritAll="false" />
 		<ant dir="ioclexpression" target="clean" inheritAll="false" />
 		<ant dir="ioclengine" target="clean" inheritAll="false" />
 		<ant dir="ioclgenerator" target="clean" inheritAll="false" />
 	</target>
 	
 	<target name="compile">
+		<ant dir="commons-collections" target="compile" inheritAll="false" />
 		<ant dir="ioclexpression" target="compile" inheritAll="false" />
 		<ant dir="ioclengine" target="compile" inheritAll="false" />
 		<ant dir="ioclgenerator" target="compile" inheritAll="false" />
@@ -30,6 +32,7 @@
 		<mkdir dir="dist" />
 
 		<copy todir="dist">
+			<fileset dir="commons-collections" includes="*.jar" />
 			<fileset dir="ioclexpression" includes="*.jar" />
 			<fileset dir="ioclengine" includes="*.jar" />
 			<fileset dir="ioclgenerator" includes="*.jar" />
@@ -37,6 +40,7 @@
 	</target>
 
 	<target name="jar">
+		<ant dir="commons-collections" target="jar" inheritAll="false" />
 		<ant dir="ioclexpression" target="jar" inheritAll="false" />
 		<ant dir="ioclengine" target="jar" inheritAll="false" />
 		<ant dir="ioclgenerator" target="jar" inheritAll="false" />

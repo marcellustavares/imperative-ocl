@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<project name="orcas-commons-collections" basedir="." default="jar">
+	<import file="../build-common.xml" />
+
+	<property name="jar.file" value="${ant.project.name}" />
+
+	<target name="clean">
+		<antcall target="build-common.clean" />
+	</target>
+
+	<target name="compile">
+		<antcall target="build-common.compile" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<antcall target="build-common.jar" />
+	</target>
+</project>

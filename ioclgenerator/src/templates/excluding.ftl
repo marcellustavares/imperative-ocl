@@ -1,1 +1,1 @@
-${sourceResult}.remove(${argResult})
+org.orcas.commons.collections.CollectionUtils.excluding(${sourceResult}, ${argResult})

@@ -20,6 +20,12 @@
 		<project-url>http://www.antlr.org/share/1169924912745/antlr3-task.zip</project-url>	
 	</library>
 	<library>
+		<file>commons-collections.jar</file>
+		<version>3.2.1</version>
+		<project-name>Apache Commons Collections</project-name>
+		<project-url>http://commons.apache.org/collections/</project-url>	
+	</library>
+	<library>
 		<file>emf-common.jar</file>
 		<version>2.5.0</version>
 		<project-name>Eclipse Modeling Framework Project</project-name>
@@ -36,6 +42,12 @@
 		<version>2.3.16</version>
 		<project-name>FreeMarker</project-name>
 		<project-url>http://www.freemarker.org</project-url>	
+	</library>
+	<library>
+		<file>janino.jar</file>
+		<version>2.6.1</version>
+		<project-name>Janino</project-name>
+		<project-url>http://docs.codehaus.org/display/JANINO/Home</project-url>	
 	</library>
 	<library>
 		<file>junit.jar</file>
